@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Chapitre 3 — Optimiser son Obsidian, construire une mémoire long-terme et la brancher à l'IA</title>
+<title>Chapitre 4 — Optimiser son Obsidian, construire une mémoire long-terme et la brancher à l'IA</title>
 <meta name="author" content="F. Henninot — document de travail" />
-<meta name="description" content="Chapitre 3 du guide IA native : structurer son vault Obsidian par couches, brancher une IA locale sur ses notes, convertir l'existant en lot, organiser le suivi élève avec export CSV vers les outils institutionnels." />
+<meta name="description" content="Chapitre 4 du guide IA native : structurer son vault Obsidian par couches, brancher une IA locale sur ses notes, convertir l'existant en lot, organiser le suivi élève avec export CSV vers les outils institutionnels." />
 <style>
   :root{
     --bleu:#1b3a63;
@@ -89,6 +89,17 @@
   .links{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;margin:10px 0}
   .links a{padding:6px 0;border-bottom:1px dotted var(--gris-bord);display:block}
 
+  /* Bouton de téléchargement / transition */
+  .dl-box{display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:#eef4fb;border:1px solid #2c5a8f;border-radius:8px;padding:16px 20px;margin:16px 0}
+  .dl-box .txt{flex:1;min-width:240px}
+  .dl-box .txt strong{font-family:"Trebuchet MS","Segoe UI",sans-serif;font-size:1.05em;color:var(--bleu)}
+  .dl-box .txt span{font-size:.92em;color:var(--gris-texte)}
+  .dl-box a.dl{background:var(--bleu);color:#fff;font-family:"Trebuchet MS","Segoe UI",sans-serif;font-weight:700;padding:10px 22px;border-radius:6px;white-space:nowrap;text-decoration:none}
+  .dl-box a.dl:hover{background:var(--orange)}
+  .next-cta{text-align:center;margin:22px 0}
+  .next-cta a{display:inline-block;background:var(--orange);color:#fff;font-family:"Trebuchet MS","Segoe UI",sans-serif;font-weight:700;font-size:1.05em;padding:13px 26px;border-radius:8px;text-decoration:none}
+  .next-cta a:hover{background:var(--bleu)}
+
   footer{margin-top:40px;padding:20px 36px;background:var(--bleu);color:#fff;font-size:.85em;text-align:center}
   footer a{color:#ffd4bf}
 
@@ -112,7 +123,7 @@
     h2{font-size:1.3em;margin-top:1em}
     h3{font-size:1.1em}
     pre{font-size:9.5pt;page-break-inside:avoid}
-    .callout,table.cmp,.vault-tree,.layers,ol.steps>li{page-break-inside:avoid}
+    .callout,table.cmp,.vault-tree,.layers,ol.steps>li,.dl-box{page-break-inside:avoid}
     nav.toc ol{columns:2}
     .copy-btn{display:none}
     a{color:var(--bleu);text-decoration:underline}
@@ -123,131 +134,39 @@
 </head>
 <body>
 
-<button class="back-btn" onclick="if(history.length>1){history.back()}else{window.location.href='index.html'}" title="Revenir à la page précédente">← Retour</button>
+<button class="back-btn" onclick="if(history.length>1){history.back()}else{window.location.href='chapitre-3.html'}" title="Revenir à la page précédente">← Retour</button>
 
 <header class="cover">
-  <div class="school-band"><span class="num">Chapitre 3</span>Document de travail — diffusion libre</div>
+  <div class="school-band"><span class="num">Chapitre 4</span>Document de travail — diffusion libre</div>
   <h1>Optimiser son Obsidian</h1>
   <div class="sub">Construire une mémoire long-terme structurée et la brancher à l'IA. Sortir des données dispersées, en finir avec la double saisie, retrouver une vraie continuité de travail.</div>
   <div class="meta">
     <span><b>Auteur·</b> F. Henninot</span>
     <span><b>Public·</b> profs, acteurs éducatifs, particuliers organisés</span>
-    <span><b>Prérequis·</b> Chapitre 1 (IA native)</span>
+    <span><b>Prérequis·</b> Chapitres 1 à 3</span>
     <span><b>Version·</b> mai 2026</span>
   </div>
 </header>
 
 <main>
 
-<div class="callout warn">
-  <p><strong class="tag">Statut</strong> Document de travail à caractère exploratoire, sans valeur officielle. Suite des <a href="index.html">Chapitre 1</a> et <a href="chapitre-2.html">Chapitre 2</a>. Obsidian doit être installé ; l'IA locale (Chapitre 1) doit être fonctionnelle. Aucune connaissance préalable d'Obsidian n'est requise — ce chapitre est aussi accessible à qui le découvre.</p>
-</div>
+<a href="presentation.html" class="cta-presentation" style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:#fff1ea;border:1px solid #ff6b35;border-radius:8px;padding:14px 20px;margin:6px 0 20px 0;text-decoration:none;color:#1b3a63">
+  <span style="font-size:1.7em;line-height:1">📖</span>
+  <span style="flex:1;min-width:220px">
+    <strong style="font-family:'Trebuchet MS','Segoe UI',sans-serif;font-size:1.05em">À lire avant de commencer — Présentation du guide</strong><br>
+    <span style="font-size:.92em;color:#3a3f47">Le cadre, la posture et le mode d'emploi : ce qu'est ce guide, ce qu'il n'est pas, et comment s'en servir sans rester seul·e devant son écran.</span>
+  </span>
+  <span style="background:#ff6b35;color:#fff;font-family:'Trebuchet MS','Segoe UI',sans-serif;font-weight:700;padding:9px 20px;border-radius:6px;white-space:nowrap">Ouvrir →</span>
+</a>
 
-<div class="callout tip">
-  <p><strong class="tag">Mode d'emploi du guide — à lire en premier</strong> Ce chapitre est conçu pour être <strong>donné à une IA cloud</strong> (Claude, ChatGPT, Gemini, Mistral Le Chat — celle que vous utilisez déjà). Vous le lui transmettez en pièce jointe ou par copier-coller, et vous lui demandez de devenir <strong>votre assistant de mise en œuvre</strong>. Pas besoin de tout faire seul·e : l'IA générale lit ce document à votre place et vous radio-guide pas à pas, accepte vos captures d'écran, diagnostique vos erreurs. Le prompt ci-dessous active ce mode. <strong>Pas encore d'IA cloud ?</strong> Voir l'encart juste après. <strong>Un mot vous bloque ?</strong> Le <a href="glossaire.html">glossaire</a> donne la définition accessible de tous les termes techniques.</p>
+<div class="callout warn">
+  <p><strong class="tag">Statut</strong> Document de travail à caractère exploratoire, sans valeur officielle. Suite des <a href="index.html">Chapitres 1 à 3</a>. Obsidian doit être installé ; l'IA locale (Chapitre 1) doit être fonctionnelle. Aucune connaissance préalable d'Obsidian n'est requise — ce chapitre est aussi accessible à qui le découvre.</p>
 </div>
 
 <div class="callout info">
-  <p><strong class="tag">Pas encore d'IA cloud ? Créer un compte en 2 minutes</strong></p>
-  <p>Quatre services principaux. Compte gratuit, <strong>une simple adresse mail suffit</strong>, aucune carte bancaire pour la version gratuite. Choisissez celui que vous préférez — vous pourrez toujours en changer.</p>
-  <p>Plusieurs IA cloud peuvent servir de radio-guide. Le choix dépendra de vos habitudes, des accès disponibles et du cadre fixé par votre établissement.</p>
-  <ul style="margin:.3em 0 .3em 1.2em">
-    <li><strong>ChatGPT</strong> — <a href="https://chat.openai.com">chat.openai.com</a>. Le plus connu, très polyvalent. Éditeur : OpenAI (US).</li>
-    <li><strong>Claude</strong> — <a href="https://claude.ai">claude.ai</a>. Bon support des pièces jointes et des captures d'écran. Éditeur : Anthropic (US).</li>
-    <li><strong>Gemini</strong> — <a href="https://gemini.google.com">gemini.google.com</a>. L'IA de Google. Connexion directe via votre compte Google si vous en avez un.</li>
-    <li><strong>Mistral Le Chat</strong> — <a href="https://chat.mistral.ai">chat.mistral.ai</a>. Éditeur français, à privilégier pour qui souhaite un acteur européen.</li>
-  </ul>
-  <p style="font-size:.92em;font-style:italic;color:var(--gris-texte);opacity:.85"><strong>Note de l'auteur.</strong> À titre personnel, j'ai obtenu de bons résultats avec Claude pour le radio-guidage technique. Cette préférence est à éprouver soi-même ; tous les outils listés ci-dessus sont adaptés à la tâche.</p>
-  <p><strong>Cadre RGPD — important.</strong> Ces services hébergent vos conversations sur leurs serveurs (États-Unis ou UE selon l'éditeur). C'est pourquoi on les utilise <strong>uniquement pour la configuration</strong> (installation, écriture de skills, débogage technique). <strong>Jamais</strong> pour traiter des données d'élèves, de famille, de patients, de santé, ou tout contenu personnel identifiable. Une conversation d'installation parle de fichiers, de commandes, de logiciels — pas de personnes. C'est précisément l'usage à risque minimal de ces services cloud.</p>
-</div>
-
-<pre><button class="copy-btn">copier</button>Tu es mon assistant de mise en œuvre pour le document que je viens
-de te transmettre. Je l'ai parcouru mais je ne suis PAS développeur
-ni informaticien. J'ai besoin que tu deviennes mon radio-guide.
-
-RÈGLES NON NÉGOCIABLES
-1. UNE étape à la fois. Tu ne donnes JAMAIS plus d'une action par
-   message. Tu attends ma confirmation avant la suivante.
-2. Vocabulaire accessible. Aucun acronyme sans explication.
-3. Tu acceptes mes captures d'écran. Si je bloque, je t'envoie une
-   image, tu l'analyses, tu m'orientes.
-4. Tu diagnostiques les erreurs. Je colle le message, tu m'expliques
-   en français courant et tu proposes la correction.
-5. Si je décroche, on ralentit. Tu n'enchaînes pas.
-
-RÈGLES ANTI-DÉRIVE — appris du terrain
-6. TU ES LE RADIO-GUIDE. Ne renvoie JAMAIS l'utilisateur vers
-   "une autre IA", "Claude dans un autre onglet" ou "ChatGPT".
-   Tu as le rôle, tu le tiens. Si une tâche te dépasse, dis-le
-   clairement et propose une alternative simple — mais ne te
-   défausse pas vers toi-même.
-7. TU NE VOIS PAS L'ÉCRAN sauf capture envoyée. Si l'utilisateur
-   écrit du texte confus, tronqué ou hors-contexte (typique
-   d'une dictée vocale ratée), NE PRÉSUME PAS de ce qu'il voit.
-   Demande une capture ou une reformulation. JAMAIS d'invention
-   sur l'état de son ordinateur.
-8. TU NE CONNAIS PAS le métier ni le contexte de l'utilisateur
-   sauf s'il te l'a dit. N'invente ni discipline enseignée, ni
-   domaine professionnel, ni projet en cours. Si ce contexte
-   t'aide, demande-le.
-9. SI TU ES UN MODÈLE LÉGER (Haiku, GPT-mini, Gemini Flash,
-   Mistral Small), reconnais-le en début de session : "Je suis
-   un modèle léger. Pour un radio-guidage technique long avec
-   utilisateur néophyte, un modèle plus capable (Sonnet, GPT-4o,
-   Gemini Pro) serait plus fiable. Veux-tu continuer ou basculer ?"
-
-PREMIÈRE ÉTAPE OBLIGATOIRE — VÉRIFIER LA COMPATIBILITÉ MATÉRIELLE
-AVANT TOUTE recommandation d'installation, tu vérifies que ma
-machine peut faire tourner une IA locale décemment. Tu procèdes
-ainsi :
-
-a) Demande-moi si je sais trouver les caractéristiques de mon PC
-   (RAM, processeur, carte graphique, OS, type de mémoire).
-   Si non, guide-moi pas à pas pour les récupérer :
-   - Windows : Démarrer → tape "dxdiag" → Entrée. Demande-moi
-     de copier-coller le résultat. Ou : Paramètres → Système
-     → Informations système.
-   - macOS : Menu Apple → À propos de ce Mac. Demande capture
-     d'écran complète.
-   - Linux : commandes "uname -a", "free -h", "lscpu" dans
-     un terminal, et "lspci | grep -i vga" pour la carte
-     graphique. Demande-moi de coller la sortie.
-
-b) ÉVALUE la machine à partir des informations reçues :
-   - Très ancien (RAM < 8 Go, DDR2/DDR3 lent, pas de GPU,
-     processeur < 8e génération Intel) : DÉCONSEILLE l'IA
-     locale lourde. Propose un modèle 3B-4B très léger, OU
-     suggère de continuer avec une IA cloud en cadrant le RGPD,
-     OU d'attendre un renouvellement de matériel.
-   - Standard (8-16 Go RAM, CPU récent, pas de GPU dédié) :
-     recommande Llama 3.1 8B ou Mistral 7B (quantifiés).
-     PAS de Gemma 12B, PAS de modèle 70B.
-   - Confortable (16-32 Go RAM + GPU 8 Go VRAM, ou Mac Apple
-     Silicon M1+) : Gemma 3 12B devient pertinent.
-   - Puissant (32 Go+, GPU 16 Go+ VRAM) : modèles plus gros
-     possibles.
-
-c) Adapte aussi le choix LM Studio vs Ollama+Open WebUI selon
-   mon niveau d'aisance déclaré. LM Studio si néophyte total ;
-   Ollama+Open WebUI si à l'aise.
-
-d) NE PROPOSE PAS d'étape concrète d'installation avant d'avoir
-   validé ces points avec moi. C'est ton garde-fou principal :
-   ne JAMAIS faire installer une IA lourde sur une machine qui
-   ne suivra pas — ça se solde toujours par un abandon.
-
-ENSUITE SEULEMENT
-- Demande-moi où j'en suis dans le document (section, chantier).
-- Propose la première action concrète, une seule, et attends.
-
-Le document est ci-joint / ci-dessus. Commence par tes questions.</pre>
-
-<div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:#eef4fb;border:1px solid #2c5a8f;border-radius:8px;padding:16px 20px;margin:16px 0">
-  <span style="flex:1;min-width:240px">
-    <strong style="font-family:'Trebuchet MS','Segoe UI',sans-serif;font-size:1.05em;color:#1b3a63">Le document à joindre à votre IA</strong><br>
-    <span style="font-size:.92em;color:#3a3f47">Téléchargez ce chapitre au format Markdown — un fichier texte léger, idéal à donner à une IA cloud : bien moins de « tokens » qu'un PDF, et mieux structuré pour elle. Joignez-le à votre conversation avec le prompt ci-dessus.</span>
-  </span>
-  <a href="chapitre-3.md" download style="background:#1b3a63;color:#fff;font-family:'Trebuchet MS','Segoe UI',sans-serif;font-weight:700;padding:10px 22px;border-radius:6px;white-space:nowrap;text-decoration:none">Télécharger le chapitre (.md)</a>
+  <p><strong class="tag">Mode d'emploi de ce chapitre</strong> Ce document est conçu pour être <strong>lu d'abord</strong>, puis <strong>exécuté avec l'aide d'une IA cloud</strong> (Claude, ChatGPT, Gemini, Mistral Le Chat). Lisez le chapitre en entier pour comprendre l'esprit. À la fin (<a href="#radio-guidage">section 11</a>), vous trouverez le <strong>radio-guidage</strong> : un prompt à coller dans votre IA cloud habituelle, et un fichier à joindre. L'IA prend alors le relais et vous accompagne pas à pas dans l'exécution.</p>
+  <p style="margin-top:.6em;padding-top:.6em;border-top:1px dashed rgba(0,0,0,.15)"><strong>⚠ N'allez pas directement à l'action.</strong> Lisez le chapitre d'abord — la règle qui fait réussir un vault Obsidian (« partir des sorties, jamais des sources ») se comprend <em>avant</em> de construire, pas après. Le téléchargement du fichier <code>.md</code> et le prompt à coller sont rassemblés à la fin, dans la <a href="#radio-guidage">section 11</a>.</p>
+  <p style="margin-top:.6em;padding-top:.6em;border-top:1px dashed rgba(0,0,0,.15)"><strong>Un mot vous bloque ?</strong> Le <a href="glossaire.html">glossaire</a> est en lien permanent en bas de page. <strong>Le radio-guidage, c'est quoi au juste ?</strong> La page <a href="radio-guidage.html">Radio-guidage</a> l'explique une fois pour toutes.</p>
 </div>
 
 <nav class="toc" id="sommaire">
@@ -263,6 +182,8 @@ Le document est ci-joint / ci-dessus. Commence par tes questions.</pre>
     <li><a href="#suivi-eleve">Le suivi élève sans double saisie — pivot CSV</a></li>
     <li><a href="#methodologie">Méthodologie de mise en place</a></li>
     <li><a href="#pieges">Pièges et anti-patterns</a></li>
+    <li><a href="#radio-guidage"><strong>Radio-guidage — structurer son vault avec une IA cloud</strong></a></li>
+    <li><a href="#fin-parcours">Vous êtes au bout du parcours principal</a></li>
     <li><a href="#ressources">Ressources et liens</a></li>
   </ol>
 </nav>
@@ -271,9 +192,9 @@ Le document est ci-joint / ci-dessus. Commence par tes questions.</pre>
 <section id="preambule">
 <h2>1. Pourquoi Obsidian, et pourquoi maintenant</h2>
 
-<p>Au Chapitre 1, l'IA locale a une mémoire <strong>de courte durée</strong> : à chaque conversation, elle redémarre à zéro. Les skills compensent cette amnésie en injectant un contexte permanent, mais leur place est limitée — on ne met pas dix années de cours dans un <code>SKILL.md</code>.</p>
+<p>Au Chapitre 1, l'IA locale a une mémoire <strong>de courte durée</strong> : à chaque conversation, elle redémarre à zéro. Les skills du <a href="chapitre-2.html">Chapitre 2</a> compensent cette amnésie en injectant un contexte permanent, mais leur place est limitée — on ne met pas dix années de cours dans un <code>SKILL.md</code>.</p>
 
-<p>Au Chapitre 2, on a déployé un chatbot pour les élèves, mais qui parle d'<em>une</em> matière, à un <em>moment</em> donné, sans souvenirs des séances précédentes. Le résultat est utile, mais structurellement <strong>sans profondeur historique</strong>.</p>
+<p>Au Chapitre 3, on a déployé un chatbot pour les élèves, mais qui parle d'<em>une</em> matière, à un <em>moment</em> donné, sans souvenirs des séances précédentes. Le résultat est utile, mais structurellement <strong>sans profondeur historique</strong>.</p>
 
 <p>Obsidian comble exactement ce manque. C'est un <strong>logiciel de prise de notes en markdown</strong> (texte simple, fichiers lisibles partout, archivables à vie), qui stocke <strong>tout en local sur votre disque</strong>, et qui se laisse interroger par une IA via quelques plugins gratuits. En clair : un « second cerveau » qui accumule année après année, et que l'IA peut consulter à la demande.</p>
 
@@ -506,15 +427,15 @@ Je te dépose le premier fichier maintenant.</pre>
 <p>À ce rythme : 20 notes par mois, 200 par an. En deux ans, <strong>votre patrimoine pédagogique utile est dans Obsidian</strong>, votre IA le voit, et vous travaillez infiniment mieux. La couche 90-archive ne disparaît jamais — elle reste votre filet de sécurité.</p>
 
 <div class="callout danger">
-  <p><strong class="tag">Rappel RGPD</strong> Cette procédure utilise Claude/ChatGPT en cloud. Elle est <strong>strictement réservée aux supports pédagogiques</strong> (TP, séances, fiches). <strong>Jamais de copies d'élèves, jamais de bulletins, jamais de listes nominatives dans cette conversation cloud.</strong> Pour le suivi élève, on utilise exclusivement l'IA locale (§7).</p>
+  <p><strong class="tag">Rappel RGPD</strong> Cette procédure utilise Claude/ChatGPT en cloud. Elle est <strong>strictement réservée aux supports pédagogiques</strong> (TP, séances, fiches). <strong>Jamais de copies d'élèves, jamais de bulletins, jamais de listes nominatives dans cette conversation cloud.</strong> Pour le suivi élève, on utilise exclusivement l'IA locale (§8).</p>
 </div>
 </section>
 
-<!-- 7 NOUVEAU — RÉFÉRENTIEL → SKILL -->
+<!-- 7 RÉFÉRENTIEL → SKILL -->
 <section id="referentiel-skill">
 <h2>7. Transformer un référentiel officiel en skill</h2>
 
-<p>Les référentiels de diplômes (CAP, BAC PRO, BTS) sont des <strong>PDF officiels de 80 à 200 pages</strong>, denses, structurés, mais difficilement exploitables tels quels par une IA. Ils contiennent pourtant la matière la plus précieuse : codes de compétences, blocs, savoirs associés, situations professionnelles, modalités d'évaluation, coefficients. Les transformer en skill exploitable est <strong>le meilleur investissement temps qu'on puisse faire</strong> pour une discipline donnée — c'est trois heures qui économisent ensuite des dizaines d'heures de réexplications à l'IA.</p>
+<p>Les référentiels de diplômes (CAP, BAC PRO, BTS) sont des <strong>PDF officiels de 80 à 200 pages</strong>, denses, structurés, mais difficilement exploitables tels quels par une IA. Ils contiennent pourtant la matière la plus précieuse : codes de compétences, blocs, savoirs associés, situations professionnelles, modalités d'évaluation, coefficients. Les transformer en skill exploitable (la notion de skill est posée au <a href="chapitre-2.html">Chapitre 2</a>) est <strong>le meilleur investissement temps qu'on puisse faire</strong> pour une discipline donnée — c'est trois heures qui économisent ensuite des dizaines d'heures de réexplications à l'IA.</p>
 
 <h3>7.1. La cible — anatomie du skill référentiel</h3>
 <p>Un skill « référentiel » bien fait, c'est un dossier de 5 à 7 fichiers markdown reliés, avec un <code>SKILL.md</code> qui sait quand mobiliser quoi :</p>
@@ -829,7 +750,7 @@ demande la mise à jour du vault.
 </div>
 </section>
 
-<!-- 9 -->
+<!-- 10 -->
 <section id="pieges">
 <h2>10. Pièges et anti-patterns</h2>
 
@@ -848,9 +769,125 @@ demande la mise à jour du vault.
 </table>
 </section>
 
-<!-- 10 -->
+<div class="page-break"></div>
+
+<!-- 11 RADIO-GUIDAGE -->
+<section id="radio-guidage">
+<h2>11. Radio-guidage — structurer son vault Obsidian avec une IA cloud</h2>
+
+<p>Vous avez lu le chapitre, vous connaissez la règle inverse et l'architecture en couches. Voici l'outil pour <strong>construire votre vault</strong> : un prompt à coller dans une IA cloud, qui devient votre assistant patient et vous accompagne étape par étape — du diagnostic des usages prioritaires au premier test de l'IA branchée sur vos notes.</p>
+
+<h3>11.1. Marche à suivre</h3>
+<ol class="steps">
+  <li><strong>Téléchargez le fichier du chapitre</strong> au format Markdown (bouton ci-dessous).</li>
+  <li><strong>Ouvrez une nouvelle conversation</strong> avec votre IA cloud habituelle — Claude, ChatGPT, Gemini ou Mistral Le Chat, peu importe.</li>
+  <li><strong>Joignez le fichier <code>.md</code></strong> à la conversation.</li>
+  <li><strong>Copiez-collez le prompt ci-dessous</strong> et envoyez-le.</li>
+  <li><strong>Suivez les questions de l'IA</strong>, une étape à la fois. La conversation porte sur l'organisation de fichiers et l'installation de plugins — <strong>aucune donnée d'élève n'y est échangée</strong>.</li>
+</ol>
+
+<div class="dl-box">
+  <span class="txt">
+    <strong>Le document à joindre à votre IA</strong><br>
+    <span>Ce chapitre au format Markdown — un fichier texte léger, idéal à donner à une IA cloud : bien moins de « tokens » qu'un PDF, et mieux structuré pour elle.</span>
+  </span>
+  <a href="chapitre-4.md" download class="dl">Télécharger le chapitre (.md)</a>
+</div>
+
+<h3>11.2. Le prompt à copier</h3>
+<pre><button class="copy-btn">copier</button>Tu es mon assistant de mise en œuvre pour le document que je viens
+de te transmettre. Je l'ai parcouru mais je ne suis PAS développeur
+ni informaticien. J'ai besoin que tu deviennes mon radio-guide.
+
+RÈGLES NON NÉGOCIABLES
+1. UNE étape à la fois. Tu ne donnes JAMAIS plus d'une action par
+   message. Tu attends ma confirmation avant la suivante.
+2. Vocabulaire accessible. Aucun acronyme sans explication.
+3. Tu acceptes mes captures d'écran. Si je bloque, je t'envoie une
+   image, tu l'analyses, tu m'orientes.
+4. Tu diagnostiques les erreurs. Je colle le message, tu m'expliques
+   en français courant et tu proposes la correction.
+5. Si je décroche, on ralentit. Tu n'enchaînes pas.
+
+RÈGLES ANTI-DÉRIVE — appris du terrain
+6. TU ES LE RADIO-GUIDE. Ne renvoie JAMAIS l'utilisateur vers
+   "une autre IA", "Claude dans un autre onglet" ou "ChatGPT".
+   Tu as le rôle, tu le tiens. Si une tâche te dépasse, dis-le
+   clairement et propose une alternative simple — mais ne te
+   défausse pas vers toi-même.
+7. TU NE VOIS PAS L'ÉCRAN sauf capture envoyée. Si l'utilisateur
+   écrit du texte confus, tronqué ou hors-contexte (typique
+   d'une dictée vocale ratée), NE PRÉSUME PAS de ce qu'il voit.
+   Demande une capture ou une reformulation. JAMAIS d'invention
+   sur l'état de son ordinateur.
+8. TU NE CONNAIS PAS le métier ni le contexte de l'utilisateur
+   sauf s'il te l'a dit. N'invente ni discipline enseignée, ni
+   domaine professionnel, ni projet en cours. Si ce contexte
+   t'aide, demande-le.
+9. SI TU ES UN MODÈLE LÉGER (Haiku, GPT-mini, Gemini Flash,
+   Mistral Small), reconnais-le en début de session : "Je suis
+   un modèle léger. Pour un radio-guidage technique long avec
+   utilisateur néophyte, un modèle plus capable (Sonnet, GPT-4o,
+   Gemini Pro) serait plus fiable. Veux-tu continuer ou basculer ?"
+
+OBJECTIF FINAL
+Structurer mon vault Obsidian avec une architecture en couches
+numérotées et brancher mon IA locale dessus. À la fin de cette
+session, j'aurai :
+- Un vault Obsidian fonctionnel avec les couches 00 à 90 créées
+  et nommées.
+- Au moins une note structurée par couche (référentiel, trame-type,
+  exemple canonique, séance, élève fictif ou journal).
+- Smart Connections installé et indexé, Local GPT installé et
+  connecté à mon Ollama local.
+- Un premier test : poser une question à l'IA via Local GPT,
+  vérifier qu'elle s'appuie bien sur mes notes pour répondre.
+
+PREMIÈRE ÉTAPE OBLIGATOIRE — DIAGNOSTIC PRÉALABLE
+a) Vérifie que j'ai une IA locale fonctionnelle (issu du Chapitre 1).
+b) Demande-moi :
+   - Ai-je déjà Obsidian installé ?
+   - Quels usages prioritaires je veux servir avec cette mémoire
+     long-terme ? (Préparation de séances, rédaction d'appréciations,
+     suivi pédagogique, organisation personnelle, etc.)
+   - Quelle quantité de matériau existant ai-je (fichiers dispersés
+     sur disque, Drive, etc.) ?
+c) Si je n'ai pas d'usage prioritaire identifié, NE ME LANCE PAS
+   dans la création d'un vault. Demande-moi de revenir après
+   réflexion sur 2 ou 3 sorties concrètes attendues.
+d) NE PROPOSE JAMAIS d'inclure des données d'élèves nominatives
+   sans rappel du cadre établissement.
+
+Le suivi nominatif d'élève dans Obsidian est un cas sensible qui
+nécessite un cadre établissement validé (voir §8 du document). Si
+j'évoque cet usage, oriente-moi vers cette section et insiste sur
+les conditions préalables.
+
+Le document est ci-joint / ci-dessus. Commence par tes questions.</pre>
+
+<div class="callout info">
+  <p><strong class="tag">Le radio-guidage en détail</strong> Création d'un compte IA cloud, choix du modèle (Sonnet / GPT-4o / Gemini Pro / Mistral Large — pas les versions ultra-légères), les neuf règles du radio-guide expliquées, les trois phrases pour recadrer une IA qui dérape, les bonnes pratiques pendant la séance, et les trois cas où le radio-guidage par IA ne suffit pas : tout est rassemblé une fois pour toutes sur la page <a href="radio-guidage.html"><strong>Radio-guidage</strong></a>.</p>
+</div>
+</section>
+
+<!-- 12 FIN DU PARCOURS -->
+<section id="fin-parcours">
+<h2>12. Vous êtes au bout du parcours principal</h2>
+
+<p>Bravo. Vous avez installé une IA locale, vous savez la personnaliser avec des skills, vous l'utilisez avec vos élèves dans un cadre encadré, et vous avez maintenant une mémoire long-terme de votre travail.</p>
+
+<p>Des prolongements techniques existent en brouillon dans mes notes personnelles — accès distant via VPN privé, orchestration agentique sous supervision humaine — mais ils ne font pas partie du périmètre diffusé à ce stade. Ils seront proposés à la discussion lorsqu'ils auront été éprouvés sur la durée.</p>
+
+<p>Vous pouvez maintenant <strong>transmettre ce que vous avez appris</strong>. La méthodologie de radioguidage à une autre personne — collègue, conjoint, parent — est décrite au <a href="chapitre-2.html">Chapitre 2, §10</a>.</p>
+
+<div class="next-cta">
+  <a href="presentation.html">Revenir à la présentation du guide</a>
+</div>
+</section>
+
+<!-- 13 -->
 <section id="ressources">
-<h2>11. Ressources et liens</h2>
+<h2>13. Ressources et liens</h2>
 
 <h3>Obsidian — base</h3>
 <div class="links">
@@ -882,18 +919,24 @@ demande la mise à jour du vault.
   <a href="https://yaml.org/spec/1.2.2/">YAML — spécification du frontmatter</a>
 </div>
 
-<div class="callout info">
-  <p><strong class="tag">Suite du guide</strong> Le Chapitre 4 (à venir) traitera de <strong>l'automatisation et de l'agentique avec n8n</strong> : faire faire à l'IA des tâches en arrière-plan (surveillance d'inbox, briefs matinaux, dépôt automatique dans l'ENT, transcription audio…). Saut technique conséquent — ce chapitre s'adressera aux volontaires.</p>
+<div class="callout tip">
+  <p><strong class="tag">Les quatre chapitres du guide</strong></p>
+  <ul style="margin:.3em 0 .2em 1.2em">
+    <li><a href="index.html"><strong>Chapitre 1 — Installer une IA native</strong></a></li>
+    <li><a href="chapitre-2.html"><strong>Chapitre 2 — Personnaliser votre IA avec des skills</strong></a></li>
+    <li><a href="chapitre-3.html"><strong>Chapitre 3 — Transformer son IA native en assistant pédagogique</strong></a></li>
+    <li><a href="chapitre-4.html"><strong>Chapitre 4 — Optimiser son Obsidian</strong></a> (ce chapitre)</li>
+    <li><a href="radio-guidage.html"><strong>Annexe — Radio-guidage</strong></a> · <a href="glossaire.html"><strong>Annexe — Glossaire</strong></a></li>
+  </ul>
 </div>
-
 </section>
 
 </main>
 
 <footer>
-  F. Henninot · mai 2026 · Chapitre 3 du guide IA native · Document de travail ·
+  F. Henninot · mai 2026 · Chapitre 4 du guide IA native · Document de travail ·
   <a href="mailto:fr.henninot@gmail.com">fr.henninot@gmail.com</a> ·
-  <a href="index.html">← Chapitre 1</a> · <a href="chapitre-2.html">← Chapitre 2</a> · <a href="glossaire.html">Glossaire</a>
+  <a href="index.html">Chapitre 1</a> · <a href="chapitre-2.html">Chapitre 2</a> · <a href="chapitre-3.html">← Chapitre 3</a> · <a href="radio-guidage.html">Radio-guidage</a> · <a href="glossaire.html">Glossaire</a>
 </footer>
 
 <script src="glossary-linker.js"></script>
