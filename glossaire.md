@@ -2,7 +2,7 @@
 
 # Glossaire du guide IA native
 
-*Définitions accessibles aux non-techniciens des termes utilisés dans les Chapitres 1, 2 et 3. Conçu pour être donné à votre IA cloud comme référence.*
+*Définitions accessibles aux non-techniciens des termes utilisés dans les Chapitres 1 à 4. Conçu pour être donné à votre IA cloud comme référence.*
 
 > **Comment utiliser ce glossaire** Trois façons : **(1)** chercher un mot directement avec `Ctrl + F` dans votre navigateur ; **(2)** cliquer sur une lettre dans la barre alphabétique ci-dessous ; **(3)** donner ce document à votre IA cloud en plus du chapitre en cours — elle pourra ainsi expliquer un terme à la volée, dans le contexte de votre installation.
 
@@ -11,7 +11,7 @@
 ## A
 
 **Agentique** *[IA]*
-Qualifie une IA qui ne se contente pas de répondre mais qui *agit* — envoie un mail, dépose un fichier, déclenche une action. Sujet du Chapitre 4 à venir.
+Qualifie une IA qui ne se contente pas de répondre mais qui *agit* — envoie un mail, dépose un fichier, déclenche une action. Sujet de prolongements techniques encore en brouillon, hors du périmètre diffusé.
 
 **AESH** — Accompagnant d'Élève en Situation de Handicap *[Édu]*
 Professionnel qui accompagne au quotidien un élève bénéficiant d'un PPS ou d'un PAP.
@@ -36,7 +36,7 @@ Structure qui dispense la formation en alternance des apprentis.
 Logiciel de gestion administrative et pédagogique de certains établissements scolaires (suivi des notes, des absences, des compétences, communication aux familles).
 
 **Chatbot** *[IA]*
-Programme qui dialogue avec l'utilisateur sous forme de conversation. ChatGPT, Claude, Gemini sont des chatbots IA. Le Chapitre 2 explique comment en créer un dédié pour les élèves.
+Programme qui dialogue avec l'utilisateur sous forme de conversation. ChatGPT, Claude, Gemini sont des chatbots IA. Le Chapitre 3 explique comment en créer un dédié pour les élèves.
 
 **ChatGPT** *[Logiciel]*
 Assistant IA conversationnel édité par **OpenAI** (US). Le plus connu du grand public. Accessible sur [chat.openai.com](https://chat.openai.com).
@@ -60,7 +60,7 @@ Personnel d'éducation chargé de la vie scolaire, du suivi des élèves, de l'a
 Le processeur principal de l'ordinateur. Sur un PC sans carte graphique dédiée, c'est lui qui fait tourner l'IA — plus lentement qu'un GPU.
 
 **CRCN** — Cadre de Référence des Compétences Numériques *[Édu]*
-Référentiel officiel des compétences numériques à valider tout au long de la scolarité. Utilisé dans le Chapitre 2 pour positionner l'usage de l'IA par l'élève.
+Référentiel officiel des compétences numériques à valider tout au long de la scolarité. Utilisé dans le Chapitre 3 pour positionner l'usage de l'IA par l'élève.
 
 **CSV** — Comma-Separated Values *[Technique]*
 Format de fichier tableau texte. Chaque ligne du fichier est une ligne du tableau, les colonnes sont séparées par virgules ou points-virgules. Format d'échange universel entre Obsidian et Charlemagne Pro / École Directe.
@@ -96,7 +96,7 @@ Plateforme institutionnelle d'un établissement, agrégeant les outils numériqu
 Touche du clavier qui ouvre les outils de développement dans la plupart des navigateurs. Permet d'inspecter le code d'une page web, de récupérer un tableau, de voir les en-têtes d'un formulaire (utile pour adapter un skill à un outil comme Charlemagne).
 
 **Frontmatter** *[Technique]*
-En-tête YAML placé en haut d'un fichier markdown. Encadré par des `---`. Contient les métadonnées (titre, classe, date, tags) qui rendent la note filtrable. Voir le Chapitre 3 §4.2.
+En-tête YAML placé en haut d'un fichier markdown. Encadré par des `---`. Contient les métadonnées (titre, classe, date, tags) qui rendent la note filtrable. Voir le Chapitre 4 §4.2.
 
 ## G
 
@@ -104,7 +104,7 @@ En-tête YAML placé en haut d'un fichier markdown. Encadré par des `---`. Cont
 Assistant IA conversationnel édité par **Google** (US). Accessible sur [gemini.google.com](https://gemini.google.com), connexion via compte Google.
 
 **Gemma 3** *[IA]*
-Famille de modèles open weights publiée par Google DeepMind. Gemma 3 12B est aujourd'hui un des meilleurs compromis qualité/poids pour un usage local francophone. Voir Chapitre 1 §6.2.
+Famille de modèles open weights publiée par Google DeepMind. Gemma 3 12B est aujourd'hui un des meilleurs compromis qualité/poids pour un usage local francophone. Voir Chapitre 1 §5.2.
 
 **Go (gigaoctet)** *[Technique]*
 Unité de mesure du stockage et de la mémoire. 1 Go = 1 milliard d'octets. Un modèle Llama 3.1 8B pèse environ 4,7 Go ; Gemma 3 12B pèse environ 8 Go.
@@ -118,13 +118,13 @@ Structure de l'Éducation nationale dédiée à la formation continue des adulte
 ## H
 
 **Hallucination** *[IA]*
-Quand l'IA invente une information plausible mais fausse — une référence inexistante, une date inventée, une norme imaginée. Le principal défaut des LLM. À neutraliser par des règles strictes dans le system prompt (Chapitre 2 §4.1) et par l'usage de skills bien construits.
+Quand l'IA invente une information plausible mais fausse — une référence inexistante, une date inventée, une norme imaginée. Le principal défaut des LLM. À neutraliser par des règles strictes dans le system prompt (Chapitre 3 §4.1) et par l'usage de skills bien construits.
 
 **Headless** *[Technique]*
 « Sans tête », sans interface graphique. Un navigateur en mode headless tourne sans fenêtre — utile pour automatiser. Le script `generer-pdf.bat` utilise Edge en mode headless pour produire le PDF du guide.
 
 **HTML** — HyperText Markup Language *[Technique]*
-Format des pages web. Les trois chapitres de ce guide sont en HTML, ce qui leur permet d'être interactifs (liens, sommaire cliquable, boutons « copier »).
+Format des pages web. Les chapitres de ce guide sont en HTML, ce qui leur permet d'être interactifs (liens, sommaire cliquable, boutons « copier »).
 
 **HTTPS / HTTP** *[Technique]*
 Protocoles de transport web. **HTTPS** est chiffré (le « S » pour Secure) ; **HTTP** ne l'est pas. Le proxy d'un établissement peut bloquer HTTP non chiffré sur certains ports.
@@ -138,7 +138,7 @@ Terme générique pour les programmes qui imitent certaines fonctions cognitives
 Au sens de ce guide : IA qui s'exécute sur la machine de l'utilisateur, sans envoi de données à un serveur tiers. Synonymes : IA locale, IA on-device, IA en local. Tout l'objet du Chapitre 1.
 
 **IP / IPv4** — Internet Protocol *[Technique]*
-Adresse numérique unique d'un appareil sur un réseau. Format `192.168.1.42` typique d'un réseau local. Permet à un poste élève de joindre l'IA installée sur le poste enseignant (Chapitre 2 §7).
+Adresse numérique unique d'un appareil sur un réseau. Format `192.168.1.42` typique d'un réseau local. Permet à un poste élève de joindre l'IA installée sur le poste enseignant (Chapitre 3 §7).
 
 ## J
 
@@ -179,7 +179,7 @@ Qualifie un modèle capable de traiter plusieurs types de contenu — texte, ima
 ## O
 
 **Obsidian** *[Logiciel]*
-Logiciel de prise de notes en markdown, **100 % local**, avec un système de plugins très riche. Devient avec une IA branchée une « mémoire long-terme » du prof. Sujet du Chapitre 3. [obsidian.md](https://obsidian.md).
+Logiciel de prise de notes en markdown, **100 % local**, avec un système de plugins très riche. Devient avec une IA branchée une « mémoire long-terme » du prof. Sujet du Chapitre 4. [obsidian.md](https://obsidian.md).
 
 **Ollama** *[Logiciel]*
 Moteur open source qui fait tourner des modèles LLM en local. S'utilise en ligne de commande mais avec une syntaxe très simple. C'est le cœur de l'installation du Chapitre 1. [ollama.com](https://ollama.com).
@@ -188,7 +188,7 @@ Moteur open source qui fait tourner des modèles LLM en local. S'utilise en lign
 Logiciels (ou modèles) dont les fichiers sont publics et utilisables librement, sous licence. Llama, Mistral, Gemma, Qwen sont des modèles « open weights » — c'est ce qui rend possible l'IA native.
 
 **Open WebUI** *[Logiciel]*
-Interface web (type ChatGPT) qui se branche sur Ollama pour offrir une expérience graphique aux utilisateurs. Permet de créer des « models » personnalisés (Chapitre 2). [docs.openwebui.com](https://docs.openwebui.com).
+Interface web (type ChatGPT) qui se branche sur Ollama pour offrir une expérience graphique aux utilisateurs. Permet de créer des « models » personnalisés (Chapitre 3). [docs.openwebui.com](https://docs.openwebui.com).
 
 ## P
 
@@ -199,7 +199,7 @@ Logiciel qui filtre les connexions réseau entrantes et sortantes d'un ordinateu
 Stages obligatoires des élèves en filière professionnelle (CAP, BAC PRO).
 
 **Piper** *[Logiciel]*
-Logiciel open source de synthèse vocale (texte → voix), léger, exécutable en local. Permet à un chatbot IA de parler à l'élève. Voir Chapitre 2 §6.
+Logiciel open source de synthèse vocale (texte → voix), léger, exécutable en local. Permet à un chatbot IA de parler à l'élève. Voir Chapitre 3 §6.
 
 **Plugin** *[Technique]*
 Extension d'un logiciel ajoutant des fonctionnalités. Smart Connections, Local GPT, Templater sont des plugins d'Obsidian.
@@ -211,7 +211,7 @@ Numéro identifiant un service sur une machine. Ollama écoute sur le port **114
 Outil numérique de vie scolaire utilisé dans la majorité des établissements publics et certains privés.
 
 **Prompt** *[IA]*
-Le message qu'on envoie à l'IA, qui contient à la fois la consigne et le contexte. Un bon prompt fait 80 % de la qualité de la réponse. Voir Chapitre 1 §10 (bibliothèque de prompts).
+Le message qu'on envoie à l'IA, qui contient à la fois la consigne et le contexte. Un bon prompt fait 80 % de la qualité de la réponse. Voir Chapitre 2 §9 (bibliothèque de prompts).
 
 **Proxy** *[Technique]*
 Intermédiaire réseau. Dans les établissements scolaires, le proxy filtre les connexions vers Internet et peut bloquer certains ports ou certains sites. À coordonner avec le référent numérique pour l'installation.
@@ -233,7 +233,7 @@ Technique où l'IA va d'abord chercher des informations dans une base (vos notes
 Mémoire de travail de l'ordinateur. Pour faire tourner un LLM, il faut suffisamment de RAM : **8 Go** pour un usage léger, **16 Go** pour un usage confortable, **32 Go+** pour les modèles avancés.
 
 **Référentiel** *[Édu]*
-Document officiel décrivant les compétences, savoirs, modalités d'évaluation d'un diplôme. La transformation d'un référentiel en skill est traitée au Chapitre 3 §7.
+Document officiel décrivant les compétences, savoirs, modalités d'évaluation d'un diplôme. La transformation d'un référentiel en skill est traitée au Chapitre 4 §7.
 
 **Reverse proxy** *[Technique]*
 Service qui sert d'intermédiaire entre les utilisateurs et un serveur, souvent utilisé pour ajouter HTTPS, du cache ou de la sécurité. Utile pour exposer Open WebUI en HTTPS sur le réseau pédagogique.
@@ -242,7 +242,7 @@ Service qui sert d'intermédiaire entre les utilisateurs et un serveur, souvent 
 Règlement européen 2016/679 entré en application en mai 2018. Cadre légal de la protection des données personnelles dans l'UE. [gdpr-info.eu](https://gdpr-info.eu).
 
 **RUPN** — Référent d'Usage Pédagogique du Numérique *[Édu]*
-Enseignant chargé d'accompagner l'usage pédagogique du numérique dans son établissement. Souvent synonyme de « référent numérique d'établissement ». Interlocuteur clé pour le déploiement multi-postes (Chapitre 2 §7).
+Enseignant chargé d'accompagner l'usage pédagogique du numérique dans son établissement. Souvent synonyme de « référent numérique d'établissement ». Interlocuteur clé pour le déploiement multi-postes (Chapitre 3 §7).
 
 ## S
 
@@ -250,16 +250,16 @@ Enseignant chargé d'accompagner l'usage pédagogique du numérique dans son ét
 Section accueillant des élèves rencontrant des difficultés scolaires graves et durables, dans le second degré.
 
 **Skill** *[IA]*
-Au sens de ce guide : dossier contenant un fichier `SKILL.md` qui décrit à l'IA *quand* et *comment* se comporter sur une tâche donnée. L'extension cognitive du prof, capturée une fois, réutilisable mille fois. Voir Chapitre 1 §9.
+Au sens de ce guide : dossier contenant un fichier `SKILL.md` qui décrit à l'IA *quand* et *comment* se comporter sur une tâche donnée. L'extension cognitive du prof, capturée une fois, réutilisable mille fois. Voir Chapitre 2.
 
 **Smart Connections** *[Logiciel]*
-Plugin Obsidian qui indexe sémantiquement le vault et permet la recherche par *sens*, pas seulement par mots-clés. Essentiel pour brancher l'IA sur Obsidian (Chapitre 3 §5).
+Plugin Obsidian qui indexe sémantiquement le vault et permet la recherche par *sens*, pas seulement par mots-clés. Essentiel pour brancher l'IA sur Obsidian (Chapitre 4 §5).
 
 **Sous-traitant (au sens RGPD)** *[RGPD]*
 Entité qui traite des données personnelles pour le compte d'un responsable. Une école qui utilise ChatGPT pour traiter des copies d'élèves devrait avoir signé un contrat de sous-traitance avec OpenAI. Ce qui n'est jamais le cas — d'où le risque RGPD.
 
 **System prompt** *[IA]*
-Message d'amorçage caché qui définit la posture de l'IA pour toute une conversation. Visible par l'enseignant qui le rédige, invisible pour l'élève qui dialogue avec l'IA. Voir Chapitre 2 §4.
+Message d'amorçage caché qui définit la posture de l'IA pour toute une conversation. Visible par l'enseignant qui le rédige, invisible pour l'élève qui dialogue avec l'IA. Voir Chapitre 3 §4.
 
 ## T
 
@@ -280,7 +280,7 @@ Encodage standard des caractères, gérant les accents et caractères spéciaux 
 ## V
 
 **Vault** *[Logiciel]*
-Dans Obsidian : dossier racine d'un projet, contenant toutes les notes. Synonyme de « votre base de notes ». Voir Chapitre 3 §4 pour l'architecture en couches.
+Dans Obsidian : dossier racine d'un projet, contenant toutes les notes. Synonyme de « votre base de notes ». Voir Chapitre 4 §4 pour l'architecture en couches.
 
 **VRAM** — Video RAM — mémoire vive de la carte graphique *[Technique]*
 Mémoire dédiée du GPU. 8 Go de VRAM permettent de faire tourner des modèles de taille moyenne en accélération GPU (très rapide). Au-delà de 16 Go, on accède aux modèles les plus puissants.
@@ -288,7 +288,7 @@ Mémoire dédiée du GPU. 8 Go de VRAM permettent de faire tourner des modèles 
 ## W
 
 **Whisper** *[Logiciel]*
-Logiciel open source de reconnaissance vocale (voix → texte), édité initialement par OpenAI mais disponible en exécution locale. Permet à un chatbot IA d'écouter l'élève parler. Voir Chapitre 2 §6.
+Logiciel open source de reconnaissance vocale (voix → texte), édité initialement par OpenAI mais disponible en exécution locale. Permet à un chatbot IA d'écouter l'élève parler. Voir Chapitre 3 §6.
 
 ## Y
 

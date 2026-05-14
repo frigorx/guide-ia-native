@@ -16,7 +16,7 @@ Document de travail à caractère **exploratoire**, sans valeur officielle. Ni p
 
 ## Principe directeur
 
-Ce guide n'est **pas un manuel à exécuter seul**. Il est conçu pour être **donné à une IA cloud** (Claude, ChatGPT, Gemini, Mistral Le Chat) qui devient votre **radio-guide d'installation**. Chaque chapitre contient en tête un prompt de radio-guidage à copier-coller : l'IA cloud lit le document à votre place et vous accompagne pas à pas, accepte vos captures d'écran, diagnostique vos erreurs.
+Ce guide n'est **pas un manuel à exécuter seul**. Il est conçu pour être **lu d'abord**, puis **exécuté avec l'aide d'une IA cloud** (Claude, ChatGPT, Gemini, Mistral Le Chat) qui devient votre **radio-guide**. Chaque chapitre se termine par une section « Radio-guidage » : un prompt à copier-coller et un fichier à joindre. L'IA cloud prend alors le relais et vous accompagne pas à pas, accepte vos captures d'écran, diagnostique vos erreurs. La méthode commune aux quatre chapitres est détaillée une fois pour toutes dans la page [Radio-guidage](https://frigorx.github.io/guide-ia-native/radio-guidage.html).
 
 Chaque chapitre et le glossaire proposent un **bouton de téléchargement au format Markdown (`.md`)** : c'est le fichier à joindre à votre conversation avec l'IA — un texte léger, économe en tokens et mieux structuré pour elle qu'un PDF.
 
@@ -24,13 +24,15 @@ Chaque chapitre et le glossaire proposent un **bouton de téléchargement au for
 
 | Fichier | Rôle |
 |---|---|
-| `presentation.html` | **À lire avant de commencer** — cadre, statut exploratoire, principe directeur (donner le guide à une IA cloud), choix de l'IA cloud, parcours de lecture, cadrage RGPD. |
-| `index.html` | **Chapitre 1** — Installation d'une IA native (Ollama / LM Studio / Claude cadré), choix du modèle selon le matériel, premiers prompts, écriture de *skills*. |
-| `chapitre-2.html` | **Chapitre 2** — Transformation en assistant pédagogique encadré : *system prompt*, couplage référentiel matière, multi-postes, charte d'usage, évaluation. |
-| `chapitre-3.html` | **Chapitre 3** — Organisation d'une mémoire de travail : vault Obsidian en couches, branchement de l'IA locale, référentiel transformé en skill, interopérabilité prudente par CSV/XLSX. |
-| `glossaire.html` | **Annexe** — glossaire d'environ 80 entrées, accessible aux non-techniciens. Liens automatiques depuis chaque chapitre. |
+| `presentation.html` | **Avant-propos** — à lire avant de commencer : cadre, statut exploratoire, principe directeur, choix de l'IA cloud, parcours de lecture, cadrage RGPD. |
+| `index.html` | **Chapitre 1** — Installer une IA native (Ollama / LM Studio / Claude cadré), choix du modèle selon le matériel, premiers prompts. |
+| `chapitre-2.html` | **Chapitre 2** — Personnaliser votre IA avec des *skills* : concept, anatomie, exemples, écosystème, bibliothèque de prompts. |
+| `chapitre-3.html` | **Chapitre 3** — Transformer son IA en assistant pédagogique : *system prompt*, couplage référentiel matière, multi-postes, charte d'usage, évaluation. |
+| `chapitre-4.html` | **Chapitre 4** — Optimiser son Obsidian : vault en couches, branchement de l'IA locale, référentiel transformé en skill, interopérabilité prudente par CSV/XLSX. |
+| `radio-guidage.html` | **Annexe — Radio-guidage** : la méthode commune aux quatre chapitres, expliquée une fois pour toutes. |
+| `glossaire.html` | **Annexe — Glossaire** d'environ 80 entrées, accessible aux non-techniciens. Liens automatiques depuis chaque chapitre. |
 | `glossary-linker.js` | Script d'auto-liaison des termes techniques vers le glossaire. |
-| `chapitre-1.md` · `chapitre-2.md` · `chapitre-3.md` · `glossaire.md` | **Versions Markdown** — les fichiers à joindre à votre IA cloud (texte léger, économe en tokens). Téléchargeables depuis chaque page du guide. |
+| `chapitre-1.md` … `chapitre-4.md` · `glossaire.md` | **Versions Markdown** — les fichiers à joindre à votre IA cloud (texte léger, économe en tokens). Téléchargeables depuis chaque page du guide. |
 
 **Le Chapitre 1 se suffit à lui-même** : pour juste installer une IA et l'utiliser, il suffit largement.
 

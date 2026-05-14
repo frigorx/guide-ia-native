@@ -105,7 +105,7 @@
 <ol class="steps">
   <li>Ouvrir une nouvelle conversation avec votre IA cloud habituelle.</li>
   <li>Lui joindre le fichier Markdown du chapitre concerné — un bouton de téléchargement est présent sur chaque chapitre — ou, à défaut, coller le texte.</li>
-  <li>Coller le <strong>prompt de radio-guidage</strong> présent en tête de chaque chapitre (rubrique « Mode d'emploi du guide »).</li>
+  <li>Coller le <strong>prompt de radio-guidage</strong> présent dans la section finale « Radio-guidage » de chaque chapitre.</li>
   <li>Suivre les questions de l'IA. Une étape à la fois. Envoyer une capture d'écran si vous bloquez. Coller un message d'erreur pour qu'elle vous explique.</li>
 </ol>
 
@@ -113,6 +113,10 @@
 
 <div class="callout tip">
   <p><strong class="tag">La contradiction assumée</strong> Oui, on utilise une IA cloud pour installer une IA locale. C'est un échafaudage temporaire : le cloud sert le temps de comprendre et d'installer, sur des contenus techniques <strong>sans donnée personnelle</strong>. Une fois l'installation faite, l'IA locale prend le relais pour les usages sensibles. Cette contradiction apparente est en réalité le bon ordre des choses.</p>
+</div>
+
+<div class="callout info">
+  <p><strong class="tag">Le radio-guidage, en détail</strong> La méthode commune aux quatre chapitres — création d'un compte IA cloud, choix du modèle, les neuf règles du radio-guide, bonnes pratiques et limites — est décrite une fois pour toutes dans une page dédiée : <a href="radio-guidage.html">Radio-guidage</a>. Chaque chapitre se concentre ensuite sur son contenu propre.</p>
 </div>
 
 <h2>Pas encore de compte IA cloud ? Créer un compte en 2 minutes</h2>
@@ -157,16 +161,18 @@
 
 <h2>Par où commencer ? — choisir son parcours</h2>
 
-<p>Le guide se compose de trois chapitres + un glossaire. <strong>Le Chapitre 1 se suffit à lui-même</strong> : si vous voulez juste installer une IA et l'utiliser, arrêtez-vous là, c'est très bien.</p>
+<p>Le guide se compose de <strong>quatre chapitres</strong>, complétés par deux annexes (la page <a href="radio-guidage.html">Radio-guidage</a> et le <a href="glossaire.html">glossaire</a>). <strong>Le Chapitre 1 se suffit à lui-même</strong> : si vous voulez juste installer une IA et l'utiliser, arrêtez-vous là, c'est très bien.</p>
 
 <table class="cmp">
 <thead><tr><th>Vous êtes…</th><th>Faites…</th></tr></thead>
 <tbody>
-<tr><td class="crit">Vraiment néophyte, jamais touché à l'IA</td><td><strong>LM Studio</strong>, voie la plus simple (Chapitre 1). Comptez 1 à 3 heures selon votre matériel.</td></tr>
+<tr><td class="crit">Vraiment néophyte, jamais touché à l'IA</td><td><strong>Chapitre 1</strong>, voie LM Studio (la plus simple). Comptez 1 à 3 heures selon votre matériel.</td></tr>
 <tr><td class="crit">À l'aise utilisateur, pas développeur</td><td><strong>Chapitre 1 entier</strong> avec radio-guidage. Comptez une journée, étalée sur 1 ou 2 sessions.</td></tr>
-<tr><td class="crit">Vous voulez faire travailler vos élèves</td><td><strong>Chapitre 1 + Chapitre 2</strong>. Comptez 2 à 3 demi-journées supplémentaires.</td></tr>
-<tr><td class="crit">Vous voulez une mémoire long-terme de votre travail</td><td><strong>Chapitre 1 + Chapitre 3</strong> (Obsidian). Comptez 2 à 3 demi-journées supplémentaires.</td></tr>
-<tr><td class="crit">Référent numérique d'établissement / RUPN</td><td>Lire tout, avec un œil particulier sur la section « Multi-postes » du Chapitre 2.</td></tr>
+<tr><td class="crit">Personnaliser l'IA pour votre métier</td><td><strong>Chapitres 1 et 2</strong> (skills). Comptez 2 à 3 demi-journées supplémentaires.</td></tr>
+<tr><td class="crit">Faire travailler vos élèves avec l'IA</td><td><strong>Chapitres 1 à 3</strong> (chatbot pédagogique). Nécessite un cadre établissement validé.</td></tr>
+<tr><td class="crit">Une mémoire long-terme de votre travail</td><td><strong>Chapitres 1, 2 et 4</strong> (Obsidian). Comptez 2 à 3 demi-journées supplémentaires.</td></tr>
+<tr><td class="crit">Référent numérique d'établissement / RUPN</td><td>Lire tout, avec un œil particulier sur la section « Multi-postes » du Chapitre 3.</td></tr>
+<tr><td class="crit">Comprendre la méthode du radio-guidage</td><td>La page <a href="radio-guidage.html">Radio-guidage</a> — commune aux quatre chapitres.</td></tr>
 <tr><td class="crit">Un mot vous bloque</td><td>Le <a href="glossaire.html">glossaire</a>. Ou demandez à votre IA cloud.</td></tr>
 </tbody>
 </table>
@@ -179,7 +185,7 @@
 </div>
 
 <div class="callout warn">
-  <p><strong class="tag">Important — cadre établissement</strong> Tout ce qui touche aux <strong>élèves</strong> (Chapitre 2 multi-postes, Chapitre 3 suivi nominatif) nécessite un cadre établissement : validation du référent numérique (RUPN), charte numérique, accord du chef d'établissement, information des familles. Ce guide propose des outils, pas une autorisation de déploiement.</p>
+  <p><strong class="tag">Important — cadre établissement</strong> Tout ce qui touche aux <strong>élèves</strong> (Chapitre 3 multi-postes, Chapitre 4 suivi nominatif) nécessite un cadre établissement : validation du référent numérique (RUPN), charte numérique, accord du chef d'établissement, information des familles. Ce guide propose des outils, pas une autorisation de déploiement.</p>
 </div>
 
 <h2>Contenu du dépôt</h2>
@@ -187,13 +193,15 @@
 <table class="cmp">
 <thead><tr><th>Fichier</th><th>Rôle</th></tr></thead>
 <tbody>
-<tr><td class="crit">presentation.html</td><td>Cette page — cadre, posture, mode d'emploi. À lire avant de commencer.</td></tr>
-<tr><td class="crit">index.html</td><td><strong>Chapitre 1</strong> — installation de l'IA native (Ollama / LM Studio / Claude cadré), choix du modèle selon le matériel, premiers prompts, écriture de <em>skills</em>.</td></tr>
-<tr><td class="crit">chapitre-2.html</td><td><strong>Chapitre 2</strong> — transformation en assistant pédagogique encadré : <em>system prompt</em>, couplage référentiel matière, multi-postes (expérimentation encadrée), charte d'usage, scénario de séance, évaluation.</td></tr>
-<tr><td class="crit">chapitre-3.html</td><td><strong>Chapitre 3</strong> — organisation d'une mémoire de travail : architecture en couches du vault Obsidian, transformation d'un référentiel en skill, interopérabilité prudente avec les outils institutionnels par fichiers CSV/XLSX.</td></tr>
+<tr><td class="crit">presentation.html</td><td><strong>Avant-propos</strong> — cette page : cadre, posture, mode d'emploi. À lire avant de commencer.</td></tr>
+<tr><td class="crit">index.html</td><td><strong>Chapitre 1</strong> — installation de l'IA native (Ollama / LM Studio / Claude cadré), choix du modèle selon le matériel, premiers prompts.</td></tr>
+<tr><td class="crit">chapitre-2.html</td><td><strong>Chapitre 2</strong> — personnaliser votre IA avec des <em>skills</em> : concept, anatomie, exemples enseignant et particulier, écosystème, bibliothèque de prompts, radioguidage d'une autre personne.</td></tr>
+<tr><td class="crit">chapitre-3.html</td><td><strong>Chapitre 3</strong> — transformation en assistant pédagogique encadré : <em>system prompt</em>, couplage référentiel matière, multi-postes (expérimentation encadrée), charte d'usage, scénario de séance, évaluation.</td></tr>
+<tr><td class="crit">chapitre-4.html</td><td><strong>Chapitre 4</strong> — organisation d'une mémoire de travail : architecture en couches du vault Obsidian, transformation d'un référentiel en skill, interopérabilité prudente avec les outils institutionnels par fichiers CSV/XLSX.</td></tr>
+<tr><td class="crit">radio-guidage.html</td><td><strong>Annexe — radio-guidage</strong> : la méthode commune aux quatre chapitres, expliquée une fois pour toutes (compte IA cloud, choix du modèle, neuf règles, bonnes pratiques, limites).</td></tr>
 <tr><td class="crit">glossaire.html</td><td><strong>Annexe — glossaire</strong> d'environ 80 entrées, accessible aux non-techniciens. À donner aussi à l'IA cloud comme document de référence.</td></tr>
 <tr><td class="crit">glossary-linker.js</td><td>Script raccordé à chaque chapitre, qui transforme les termes techniques en liens cliquables vers le glossaire.</td></tr>
-<tr><td class="crit">chapitre-1.md · chapitre-2.md · chapitre-3.md · glossaire.md</td><td><strong>Versions Markdown</strong> — les fichiers à joindre à votre IA cloud : texte léger, économe en tokens, mieux structuré pour elle qu'un PDF. Téléchargeables depuis chaque chapitre et le glossaire.</td></tr>
+<tr><td class="crit">chapitre-1.md · chapitre-2.md · chapitre-3.md · chapitre-4.md · glossaire.md</td><td><strong>Versions Markdown</strong> — les fichiers à joindre à votre IA cloud : texte léger, économe en tokens, mieux structuré pour elle qu'un PDF. Téléchargeables depuis chaque chapitre et le glossaire.</td></tr>
 </tbody>
 </table>
 
@@ -223,7 +231,7 @@
 <footer>
   F. Henninot · mai 2026 · Présentation du guide « Installer une IA native » · Document de travail ·
   <a href="mailto:fr.henninot@gmail.com">fr.henninot@gmail.com</a> ·
-  <a href="index.html">Chapitre 1 →</a> · <a href="chapitre-2.html">Chapitre 2</a> · <a href="chapitre-3.html">Chapitre 3</a> · <a href="glossaire.html">Glossaire</a>
+  <a href="index.html">Chapitre 1 →</a> · <a href="chapitre-2.html">Chapitre 2</a> · <a href="chapitre-3.html">Chapitre 3</a> · <a href="chapitre-4.html">Chapitre 4</a> · <a href="radio-guidage.html">Radio-guidage</a> · <a href="glossaire.html">Glossaire</a>
 </footer>
 
 </body>
