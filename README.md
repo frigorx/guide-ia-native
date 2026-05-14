@@ -4,6 +4,8 @@
 
 🔗 **Version en ligne :** https://frigorx.github.io/guide-ia-native/
 
+📖 **À lire avant de commencer :** [présentation du guide](https://frigorx.github.io/guide-ia-native/presentation.html) — cadre, posture et mode d'emploi.
+
 ---
 
 ## Statut
@@ -20,6 +22,7 @@ Ce guide n'est **pas un manuel à exécuter seul**. Il est conçu pour être **d
 
 | Fichier | Rôle |
 |---|---|
+| `presentation.html` | **À lire avant de commencer** — cadre, statut exploratoire, principe directeur (donner le guide à une IA cloud), choix de l'IA cloud, parcours de lecture, cadrage RGPD. |
 | `index.html` | **Chapitre 1** — Installation d'une IA native (Ollama / LM Studio / Claude cadré), choix du modèle selon le matériel, premiers prompts, écriture de *skills*. |
 | `chapitre-2.html` | **Chapitre 2** — Transformation en assistant pédagogique encadré : *system prompt*, couplage référentiel matière, multi-postes, charte d'usage, évaluation. |
 | `chapitre-3.html` | **Chapitre 3** — Organisation d'une mémoire de travail : vault Obsidian en couches, branchement de l'IA locale, référentiel transformé en skill, interopérabilité prudente par CSV/XLSX. |

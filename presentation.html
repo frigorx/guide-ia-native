@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Présentation du guide — à lire avant de commencer</title>
+<meta name="author" content="F. Henninot — document de travail" />
+<meta name="description" content="Présentation du guide « Installer une IA native » : cadre, statut exploratoire, principe directeur (donner le guide à une IA cloud qui radio-guide), choix de l'IA cloud, parcours de lecture, cadrage RGPD." />
+<style>
+  :root{
+    --bleu:#1b3a63;--bleu-clair:#2c5a8f;--orange:#ff6b35;--orange-pale:#fff1ea;
+    --gris-fond:#f6f7f9;--gris-bord:#e3e7ec;--gris-texte:#3a3f47;
+    --vert:#2f8f5e;--rouge:#c0392b;--jaune-warn:#fff4d6;--jaune-bord:#e2b94d;
+  }
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Calibri","Carlito","Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.65;color:var(--gris-texte);background:#fff;text-align:left}
+  a{color:var(--bleu);text-decoration:underline;text-decoration-color:rgba(27,58,99,.35);text-underline-offset:2px}
+  a:hover{color:var(--orange);text-decoration-color:var(--orange)}
+  h1,h2,h3,h4{font-family:"Trebuchet MS","Segoe UI",sans-serif;color:var(--bleu);line-height:1.25;margin:0 0 .5em 0}
+  h1{font-size:2.1em}
+  h2{font-size:1.4em;margin-top:1.6em;border-bottom:2px solid var(--orange);padding-bottom:.25em;display:inline-block}
+  h3{font-size:1.1em;color:var(--bleu-clair);margin-top:1.4em}
+  p{margin:.6em 0}
+  code{background:#eef2f7;padding:.08em .35em;border-radius:3px;font-size:.92em;font-family:"SF Mono",Consolas,"Liberation Mono",monospace;color:#0e2c52}
+
+  header.cover{background:linear-gradient(135deg,#0e2447 0%,var(--bleu) 55%,#2a5586 100%);color:#fff;padding:38px 48px 32px 48px;position:relative;overflow:hidden}
+  header.cover::after{content:"";position:absolute;right:-60px;top:-60px;width:340px;height:340px;background:radial-gradient(circle, rgba(255,107,53,.55) 0%, rgba(255,107,53,0) 70%)}
+  .school-band{font-size:.78em;letter-spacing:.18em;text-transform:uppercase;opacity:.85;font-weight:600}
+  .school-band .num{background:var(--orange);color:#fff;padding:2px 9px;border-radius:3px;margin-right:9px;letter-spacing:.05em}
+  .cover h1{color:#fff;font-size:2.4em;margin:.2em 0 .15em 0;max-width:820px;line-height:1.15}
+  .cover .sub{font-size:1.1em;max-width:820px;opacity:.95}
+  .meta{margin-top:18px;font-size:.85em;opacity:.85;display:flex;gap:24px;flex-wrap:wrap}
+  .meta b{color:var(--orange)}
+
+  main{max-width:980px;margin:0 auto;padding:24px 36px 60px 36px}
+
+  .callout{padding:14px 18px;border-radius:6px;margin:14px 0;border-left:4px solid;font-size:.95em}
+  .callout p:first-child{margin-top:0}.callout p:last-child{margin-bottom:0}
+  .callout.info{background:#eef4fb;border-color:var(--bleu-clair)}
+  .callout.warn{background:var(--jaune-warn);border-color:var(--jaune-bord)}
+  .callout.tip{background:var(--orange-pale);border-color:var(--orange)}
+  .callout.ok{background:#e9f6ee;border-color:var(--vert)}
+  .callout.danger{background:#fbe9e7;border-color:var(--rouge)}
+  .callout strong.tag{display:inline-block;font-size:.75em;text-transform:uppercase;letter-spacing:.08em;background:rgba(0,0,0,.06);padding:1px 7px;border-radius:3px;margin-right:6px;vertical-align:1px}
+
+  table.cmp{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em}
+  table.cmp th,table.cmp td{border:1px solid var(--gris-bord);padding:9px 11px;vertical-align:top;text-align:left}
+  table.cmp thead th{background:var(--bleu);color:#fff;font-family:"Trebuchet MS",sans-serif}
+  table.cmp tbody tr:nth-child(odd){background:#fafbfd}
+  table.cmp td.crit{font-weight:600;color:var(--bleu);background:#eef2f7 !important;width:32%}
+
+  ol.steps{counter-reset:step;list-style:none;padding-left:0;margin:14px 0}
+  ol.steps>li{counter-increment:step;position:relative;padding:8px 0 8px 46px;margin:6px 0;border-bottom:1px dashed var(--gris-bord)}
+  ol.steps>li:last-child{border-bottom:none}
+  ol.steps>li::before{content:counter(step);position:absolute;left:0;top:8px;width:32px;height:32px;border-radius:50%;background:var(--orange);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:"Trebuchet MS",sans-serif}
+
+  .start-cta{display:flex;align-items:center;gap:18px;flex-wrap:wrap;background:var(--gris-fond);border:1px solid var(--gris-bord);border-left:4px solid var(--orange);padding:18px 22px;border-radius:6px;margin:26px 0}
+  .start-cta .txt{flex:1;min-width:220px}
+  .start-cta a.go{background:var(--orange);color:#fff;text-decoration:none;font-family:"Trebuchet MS","Segoe UI",sans-serif;font-weight:700;font-size:1.05em;padding:12px 24px;border-radius:8px;white-space:nowrap;display:inline-block}
+  .start-cta a.go:hover{background:var(--bleu)}
+
+  footer{margin-top:40px;padding:20px 36px;background:var(--bleu);color:#fff;font-size:.85em;text-align:center}
+  footer a{color:#ffd4bf}
+
+  @media print{
+    @page{size:A4;margin:14mm 14mm 16mm 14mm}
+    body{font-size:12pt;line-height:1.5}
+    header.cover{padding:24px 28px 22px 28px}
+    main{padding:8px 0 0 0;max-width:none}
+    .callout,table.cmp,ol.steps>li,.start-cta{page-break-inside:avoid}
+    a{color:var(--bleu)}
+    footer{margin-top:20px}
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="school-band"><span class="num">Présentation</span>Document de travail — diffusion libre</div>
+  <h1>Guide « Installer une IA native » — à lire avant de commencer</h1>
+  <div class="sub">Le cadre, la posture, le mode d'emploi. Ce que ce guide est, ce qu'il n'est pas, et comment s'en servir sans rester seul·e devant son écran.</div>
+  <div class="meta">
+    <span><b>Auteur·</b> F. Henninot</span>
+    <span><b>Public·</b> enseignants toutes filières, particuliers soucieux de leurs données</span>
+    <span><b>Version·</b> mai 2026</span>
+  </div>
+</header>
+
+<main>
+
+<div class="callout warn">
+  <p><strong class="tag">Statut</strong> Document de travail à caractère <strong>exploratoire</strong>, sans valeur officielle. Ni préconisation institutionnelle, ni solution clé en main, ni guide académique validé. Il propose une démarche progressive pour qu'un enseignant volontaire installe une IA locale sur son ordinateur, en comprenne les limites, puis envisage des usages pédagogiques prudents — en gardant la maîtrise des données traitées.</p>
+</div>
+
+<div class="callout info">
+  <p><strong class="tag">Qu'est-ce qu'une « IA native » ?</strong> Une <strong>IA native</strong> (ou « IA locale ») est une IA installée directement sur votre ordinateur, qui fonctionne <strong>sans connexion à Internet</strong>. Vos données ne quittent pas votre poste. C'est l'équivalent, pour l'IA, de Word installé sur votre PC face à Google Docs en ligne.</p>
+</div>
+
+<h2>Principe directeur — à lire avant tout le reste</h2>
+
+<p><strong>Ce guide n'est pas un manuel à exécuter seul.</strong> Il est conçu pour être <strong>donné à une IA cloud</strong> (Claude, ChatGPT, Gemini, Mistral Le Chat) qui devient <strong>votre radio-guide d'installation et de mise en œuvre</strong>.</p>
+
+<p>Le geste type :</p>
+
+<ol class="steps">
+  <li>Ouvrir une nouvelle conversation avec votre IA cloud habituelle.</li>
+  <li>Lui joindre le PDF — ou coller le texte — du chapitre qui vous concerne.</li>
+  <li>Coller le <strong>prompt de radio-guidage</strong> présent en tête de chaque chapitre (rubrique « Mode d'emploi du guide »).</li>
+  <li>Suivre les questions de l'IA. Une étape à la fois. Envoyer une capture d'écran si vous bloquez. Coller un message d'erreur pour qu'elle vous explique.</li>
+</ol>
+
+<p><strong>Pourquoi cette approche.</strong> Installer Ollama, écrire un skill, structurer un vault Obsidian — ce sont des chantiers où l'on bute toujours sur un détail imprévu. Une procédure papier ne peut pas anticiper ces cas. Une IA, oui : elle s'adapte à VOUS, à votre machine, à votre niveau. <strong>L'objectif n'est pas que vous deveniez expert·e, c'est que vous arriviez au bout.</strong></p>
+
+<div class="callout tip">
+  <p><strong class="tag">La contradiction assumée</strong> Oui, on utilise une IA cloud pour installer une IA locale. C'est un échafaudage temporaire : le cloud sert le temps de comprendre et d'installer, sur des contenus techniques <strong>sans donnée personnelle</strong>. Une fois l'installation faite, l'IA locale prend le relais pour les usages sensibles. Cette contradiction apparente est en réalité le bon ordre des choses.</p>
+</div>
+
+<h2>Pas encore de compte IA cloud ? Créer un compte en 2 minutes</h2>
+
+<p>Une simple adresse mail suffit, aucune carte bancaire pour la version gratuite. Quatre services possibles (par ordre alphabétique) :</p>
+
+<ul>
+  <li><strong>ChatGPT</strong> — <a href="https://chat.openai.com">chat.openai.com</a> — éditeur OpenAI (États-Unis).</li>
+  <li><strong>Claude</strong> — <a href="https://claude.ai">claude.ai</a> — éditeur Anthropic (États-Unis).</li>
+  <li><strong>Gemini</strong> — <a href="https://gemini.google.com">gemini.google.com</a> — éditeur Google, connexion via compte Google.</li>
+  <li><strong>Mistral Le Chat</strong> — <a href="https://chat.mistral.ai">chat.mistral.ai</a> — éditeur français, à privilégier pour qui souhaite un acteur européen.</li>
+</ul>
+
+<p>Le choix dépendra de vos habitudes, des accès disponibles et du cadre fixé par votre établissement. <em>À titre personnel, l'auteur a obtenu de bons résultats avec Claude pour le radio-guidage technique, mais cela reste une préférence d'usage à éprouver soi-même.</em></p>
+
+<div class="callout danger">
+  <p><strong class="tag">Cadre RGPD — important</strong> Ces services hébergent vos conversations sur leurs serveurs (États-Unis ou UE). On les utilise <strong>uniquement pour la configuration</strong> (installation, écriture de skills, débogage). <strong>Jamais</strong> pour traiter des données d'élèves, de famille, de patients, ou tout contenu personnel identifiable. Une conversation d'installation parle de fichiers, de commandes, de logiciels — pas de personnes. C'est l'usage à risque minimal.</p>
+</div>
+
+<h2>Quel modèle d'IA cloud choisir pour le radio-guidage ?</h2>
+
+<p>Tous les modèles ne se valent pas pour ce rôle exigeant. Privilégier les modèles capables :</p>
+
+<ul>
+  <li><strong>Claude Sonnet ou Opus</strong> (pas Haiku seul)</li>
+  <li><strong>ChatGPT GPT-4o ou GPT-5</strong> (pas GPT-mini)</li>
+  <li><strong>Gemini Pro</strong> (pas Flash)</li>
+  <li><strong>Mistral Large</strong></li>
+</ul>
+
+<p>Les modèles ultra-légers (Haiku, mini, Flash, Small) sont parfaits pour la conversation courante mais peuvent décrocher sur un radio-guidage technique long avec un utilisateur néophyte — ils ont tendance à se défausser, à halluciner du contexte, ou à supposer ce qu'ils ne savent pas. Si vous démarrez avec un modèle léger et que ça déraille, basculez sur un modèle plus puissant.</p>
+
+<h2>Trois phrases pour recadrer une IA qui dérape</h2>
+
+<p>À garder sous la main, à utiliser dès que l'IA semble s'égarer :</p>
+
+<div class="callout tip">
+  <p>Si elle vous renvoie vers une autre IA : <em>« Non, c'est toi mon radio-guide. Reprends ton rôle, une étape à la fois. »</em></p>
+  <p>Si elle parle d'un contexte que vous n'avez pas mentionné : <em>« Tu inventes un contexte qui n'est pas le mien. Recommence sans supposer. »</em></p>
+  <p>Si elle prétend voir votre écran sans capture : <em>« Tu ne peux pas voir mon écran. Demande-moi une capture, ne devine pas. »</em></p>
+</div>
+
+<h2>Par où commencer ? — choisir son parcours</h2>
+
+<p>Le guide se compose de trois chapitres + un glossaire. <strong>Le Chapitre 1 se suffit à lui-même</strong> : si vous voulez juste installer une IA et l'utiliser, arrêtez-vous là, c'est très bien.</p>
+
+<table class="cmp">
+<thead><tr><th>Vous êtes…</th><th>Faites…</th></tr></thead>
+<tbody>
+<tr><td class="crit">Vraiment néophyte, jamais touché à l'IA</td><td><strong>LM Studio</strong>, voie la plus simple (Chapitre 1). Comptez 1 à 3 heures selon votre matériel.</td></tr>
+<tr><td class="crit">À l'aise utilisateur, pas développeur</td><td><strong>Chapitre 1 entier</strong> avec radio-guidage. Comptez une journée, étalée sur 1 ou 2 sessions.</td></tr>
+<tr><td class="crit">Vous voulez faire travailler vos élèves</td><td><strong>Chapitre 1 + Chapitre 2</strong>. Comptez 2 à 3 demi-journées supplémentaires.</td></tr>
+<tr><td class="crit">Vous voulez une mémoire long-terme de votre travail</td><td><strong>Chapitre 1 + Chapitre 3</strong> (Obsidian). Comptez 2 à 3 demi-journées supplémentaires.</td></tr>
+<tr><td class="crit">Référent numérique d'établissement / RUPN</td><td>Lire tout, avec un œil particulier sur la section « Multi-postes » du Chapitre 2.</td></tr>
+<tr><td class="crit">Un mot vous bloque</td><td>Le <a href="glossaire.html">glossaire</a>. Ou demandez à votre IA cloud.</td></tr>
+</tbody>
+</table>
+
+<h3>Un mot d'honnêteté sur le temps</h3>
+<p>Cette installation <strong>n'est pas magique</strong>. C'est un travail accessible à qui sait utiliser une souris, un clavier, copier-coller et lire un message d'erreur — pas besoin d'être informaticien. <strong>Mais il faut accepter que ça prenne du temps.</strong> L'auteur de ce guide a mis <strong>une journée complète</strong> pour boucler son propre Chapitre 1, avec quelques moments d'arrachage de cheveux. Marie-Laure, première testeuse du guide, qui n'avait jamais touché à un terminal, y est arrivée sur <strong>une grosse après-midi</strong>. Personne ne le fait en claquant des doigts. Mais tout le monde y arrive avec un peu de patience et un bon radio-guidage par IA cloud.</p>
+
+<div class="callout ok">
+  <p><strong class="tag">Conseil pratique</strong> Ne tentez pas de tout enchaîner en une après-midi. Mieux vaut une heure par jour pendant une semaine. Les utilisateurs qui ont voulu tout faire d'un bloc ont parfois abandonné ; ceux qui ont pris le temps sont allés au bout.</p>
+</div>
+
+<div class="callout warn">
+  <p><strong class="tag">Important — cadre établissement</strong> Tout ce qui touche aux <strong>élèves</strong> (Chapitre 2 multi-postes, Chapitre 3 suivi nominatif) nécessite un cadre établissement : validation du référent numérique (RUPN), charte numérique, accord du chef d'établissement, information des familles. Ce guide propose des outils, pas une autorisation de déploiement.</p>
+</div>
+
+<h2>Contenu du dépôt</h2>
+
+<table class="cmp">
+<thead><tr><th>Fichier</th><th>Rôle</th></tr></thead>
+<tbody>
+<tr><td class="crit">presentation.html</td><td>Cette page — cadre, posture, mode d'emploi. À lire avant de commencer.</td></tr>
+<tr><td class="crit">index.html</td><td><strong>Chapitre 1</strong> — installation de l'IA native (Ollama / LM Studio / Claude cadré), choix du modèle selon le matériel, premiers prompts, écriture de <em>skills</em>.</td></tr>
+<tr><td class="crit">chapitre-2.html</td><td><strong>Chapitre 2</strong> — transformation en assistant pédagogique encadré : <em>system prompt</em>, couplage référentiel matière, multi-postes (expérimentation encadrée), charte d'usage, scénario de séance, évaluation.</td></tr>
+<tr><td class="crit">chapitre-3.html</td><td><strong>Chapitre 3</strong> — organisation d'une mémoire de travail : architecture en couches du vault Obsidian, transformation d'un référentiel en skill, interopérabilité prudente avec les outils institutionnels par fichiers CSV/XLSX.</td></tr>
+<tr><td class="crit">glossaire.html</td><td><strong>Annexe — glossaire</strong> d'environ 80 entrées, accessible aux non-techniciens. À donner aussi à l'IA cloud comme document de référence.</td></tr>
+<tr><td class="crit">glossary-linker.js</td><td>Script raccordé à chaque chapitre, qui transforme les termes techniques en liens cliquables vers le glossaire.</td></tr>
+</tbody>
+</table>
+
+<div class="callout info">
+  <p><strong class="tag">Pour info</strong> Des prolongements techniques existent en brouillon personnel — accès distant via VPN privé, orchestration agentique sous supervision humaine — mais <strong>ne font pas partie du périmètre de diffusion</strong> à ce stade. Ils seront proposés à la discussion lorsqu'ils auront été éprouvés sur la durée.</p>
+</div>
+
+<h2>Lire ou imprimer</h2>
+<ul>
+  <li><strong>En ligne</strong> — naviguez directement entre les chapitres via les liens en bas de chaque page.</li>
+  <li><strong>Hors ligne</strong> — téléchargez les fichiers <code>.html</code> et ouvrez-les dans un navigateur ; tout fonctionne sans connexion.</li>
+  <li><strong>En PDF</strong> — ouvrez un chapitre dans Edge, Chrome ou Firefox, puis <code>Ctrl + P</code> → destination « Enregistrer au format PDF » → format A4. La feuille de style d'impression est calibrée pour ce mode.</li>
+</ul>
+
+<div class="start-cta">
+  <div class="txt"><strong>Vous avez le cadre.</strong> Le Chapitre 1 se suffit à lui-même : installation d'une IA native sur votre ordinateur, pas à pas, radio-guidée.</div>
+  <a class="go" href="index.html">Commencer — Chapitre 1 →</a>
+</div>
+
+<h2>Contact</h2>
+<p>Adresse : <a href="mailto:fr.henninot@gmail.com">fr.henninot@gmail.com</a></p>
+<p>Tout retour, signalement de coquille, suggestion d'amélioration ou désaccord argumenté est bienvenu — l'objectif est de faire évoluer le document à partir des usages réels. Diffusion libre dans le périmètre de la communauté éducative, sous réserve de la mention du statut exploratoire du document.</p>
+
+</main>
+
+<footer>
+  F. Henninot · mai 2026 · Présentation du guide « Installer une IA native » · Document de travail ·
+  <a href="mailto:fr.henninot@gmail.com">fr.henninot@gmail.com</a> ·
+  <a href="index.html">Chapitre 1 →</a> · <a href="chapitre-2.html">Chapitre 2</a> · <a href="chapitre-3.html">Chapitre 3</a> · <a href="glossaire.html">Glossaire</a>
+</footer>
+
+</body>
+</html>
