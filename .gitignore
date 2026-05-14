@@ -1,0 +1,5 @@
+# Outil interne de conversion HTML → Markdown (non diffusé)
+_convert-md.py
+
+# PDF éventuellement générés en local
+*.pdf
