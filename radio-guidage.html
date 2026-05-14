@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Annexe — Le radio-guidage par IA cloud</title>
+<meta name="author" content="F. Henninot — document de travail" />
+<meta name="description" content="Annexe du guide IA native : la méthode du radio-guidage par IA cloud, commune aux quatre chapitres. Principe, marche à suivre, choix de l'IA cloud, neuf règles du radio-guide, bonnes pratiques et limites." />
+<style>
+  :root{
+    --bleu:#1b3a63;
+    --bleu-clair:#2c5a8f;
+    --orange:#ff6b35;
+    --orange-pale:#fff1ea;
+    --gris-fond:#f6f7f9;
+    --gris-bord:#e3e7ec;
+    --gris-texte:#3a3f47;
+    --vert:#2f8f5e;
+    --rouge:#c0392b;
+    --jaune-warn:#fff4d6;
+    --jaune-bord:#e2b94d;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Calibri","Carlito","Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.65;color:var(--gris-texte);background:#fff;text-align:left}
+  a{color:var(--bleu);text-decoration:underline;text-decoration-color:rgba(27,58,99,.35);text-underline-offset:2px}
+  a:hover{color:var(--orange);text-decoration-color:var(--orange)}
+  h1,h2,h3,h4{font-family:"Trebuchet MS","Segoe UI",sans-serif;color:var(--bleu);line-height:1.25;margin:0 0 .5em 0}
+  h1{font-size:2.1em}
+  h2{font-size:1.4em;margin-top:1.6em;border-bottom:2px solid var(--orange);padding-bottom:.25em;display:inline-block}
+  h3{font-size:1.1em;color:var(--bleu-clair);margin-top:1.4em}
+  p{margin:.6em 0}
+  code{background:#eef2f7;padding:.08em .35em;border-radius:3px;font-size:.92em;font-family:"SF Mono",Consolas,"Liberation Mono",monospace;color:#0e2c52}
+
+  header.cover{background:linear-gradient(135deg,#0e2447 0%,var(--bleu) 55%,#2a5586 100%);color:#fff;padding:38px 48px 32px 48px;position:relative;overflow:hidden}
+  header.cover::after{content:"";position:absolute;right:-60px;top:-60px;width:340px;height:340px;background:radial-gradient(circle, rgba(255,107,53,.55) 0%, rgba(255,107,53,0) 70%)}
+  .school-band{font-size:.78em;letter-spacing:.18em;text-transform:uppercase;opacity:.85;font-weight:600}
+  .school-band .num{background:var(--orange);color:#fff;padding:2px 9px;border-radius:3px;margin-right:9px;letter-spacing:.05em}
+  .cover h1{color:#fff;font-size:2.4em;margin:.2em 0 .15em 0;max-width:820px;line-height:1.15}
+  .cover .sub{font-size:1.1em;max-width:820px;opacity:.95}
+  .meta{margin-top:18px;font-size:.85em;opacity:.85;display:flex;gap:24px;flex-wrap:wrap}
+  .meta b{color:var(--orange)}
+
+  main{max-width:980px;margin:0 auto;padding:24px 36px 60px 36px}
+
+  nav.toc{background:var(--gris-fond);border:1px solid var(--gris-bord);border-left:4px solid var(--orange);padding:16px 22px;border-radius:6px;margin:24px 0 12px 0}
+  nav.toc h3{margin:0 0 .4em 0;color:var(--bleu)}
+  nav.toc ol{margin:0;padding-left:22px;columns:2;column-gap:30px}
+  nav.toc li{margin:.25em 0;break-inside:avoid}
+  nav.toc a{text-decoration:none}
+
+  .callout{padding:14px 18px;border-radius:6px;margin:14px 0;border-left:4px solid;font-size:.95em}
+  .callout p:first-child{margin-top:0}
+  .callout p:last-child{margin-bottom:0}
+  .callout.info{background:#eef4fb;border-color:var(--bleu-clair)}
+  .callout.warn{background:var(--jaune-warn);border-color:var(--jaune-bord)}
+  .callout.tip{background:var(--orange-pale);border-color:var(--orange)}
+  .callout.ok{background:#e9f6ee;border-color:var(--vert)}
+  .callout.danger{background:#fbe9e7;border-color:var(--rouge)}
+  .callout strong.tag{display:inline-block;font-size:.75em;text-transform:uppercase;letter-spacing:.08em;background:rgba(0,0,0,.06);padding:1px 7px;border-radius:3px;margin-right:6px;vertical-align:1px}
+
+  table.cmp{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em}
+  table.cmp th,table.cmp td{border:1px solid var(--gris-bord);padding:9px 11px;vertical-align:top;text-align:left}
+  table.cmp thead th{background:var(--bleu);color:#fff;font-family:"Trebuchet MS",sans-serif}
+  table.cmp tbody tr:nth-child(odd){background:#fafbfd}
+  table.cmp td.crit{font-weight:600;color:var(--bleu);background:#eef2f7 !important;width:26%}
+
+  ol.steps{counter-reset:step;list-style:none;padding-left:0;margin:14px 0}
+  ol.steps>li{counter-increment:step;position:relative;padding:8px 0 8px 46px;margin:6px 0;border-bottom:1px dashed var(--gris-bord)}
+  ol.steps>li:last-child{border-bottom:none}
+  ol.steps>li::before{content:counter(step);position:absolute;left:0;top:8px;width:32px;height:32px;border-radius:50%;background:var(--orange);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:"Trebuchet MS",sans-serif}
+
+  .rule{background:#fff;border:1px solid var(--gris-bord);border-left:4px solid var(--bleu-clair);padding:10px 14px;border-radius:4px;margin:8px 0}
+  .rule .n{display:inline-block;background:var(--bleu);color:#fff;font-family:"Trebuchet MS",sans-serif;font-weight:700;font-size:.85em;width:24px;height:24px;line-height:24px;text-align:center;border-radius:50%;margin-right:8px}
+  .rule.anti{border-left-color:var(--orange)}
+
+  .links{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;margin:10px 0}
+  .links a{padding:6px 0;border-bottom:1px dotted var(--gris-bord);display:block}
+
+  footer{margin-top:40px;padding:20px 36px;background:var(--bleu);color:#fff;font-size:.85em;text-align:center}
+  footer a{color:#ffd4bf}
+
+  .back-btn{position:fixed;bottom:22px;right:22px;background:var(--bleu);color:#fff;border:none;padding:11px 20px;border-radius:8px;cursor:pointer;font-family:"Trebuchet MS","Segoe UI",sans-serif;font-size:15px;font-weight:600;box-shadow:0 3px 12px rgba(0,0,0,.28);z-index:1000;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:background .15s,transform .15s}
+  .back-btn:hover{background:var(--orange);color:#fff;transform:translateY(-1px)}
+  .back-btn:active{transform:translateY(0)}
+  @media print{.back-btn{display:none}}
+
+  a.glossary-link{color:inherit;text-decoration:underline dotted rgba(27,58,99,.45);text-underline-offset:3px;text-decoration-thickness:1px;cursor:help}
+  a.glossary-link:hover{color:var(--orange);text-decoration-color:var(--orange)}
+  @media print{a.glossary-link{color:inherit;text-decoration:none}}
+
+  @media print{
+    @page{size:A4;margin:14mm 14mm 16mm 14mm}
+    body{font-size:12pt;line-height:1.5}
+    header.cover{padding:24px 28px 22px 28px}
+    main{padding:8px 0 0 0;max-width:none}
+    h1{font-size:1.9em}
+    h2{font-size:1.3em;margin-top:1em}
+    h3{font-size:1.1em}
+    .callout,table.cmp,ol.steps>li,.rule{page-break-inside:avoid}
+    nav.toc ol{columns:2}
+    a{color:var(--bleu);text-decoration:underline}
+    footer{margin-top:20px}
+  }
+</style>
+</head>
+<body>
+
+<button class="back-btn" onclick="if(history.length>1){history.back()}else{window.location.href='index.html'}" title="Revenir à la page précédente">← Retour</button>
+
+<header class="cover">
+  <div class="school-band"><span class="num">Annexe</span>Radio-guidage — document de travail, diffusion libre</div>
+  <h1>Le radio-guidage par IA cloud</h1>
+  <div class="sub">La méthode commune aux quatre chapitres, expliquée une fois pour toutes. Chaque chapitre s'y réfère ; cette page la détaille.</div>
+  <div class="meta">
+    <span><b>Auteur·</b> F. Henninot</span>
+    <span><b>Rôle·</b> annexe transversale aux Chapitres 1 à 4</span>
+    <span><b>Version·</b> mai 2026</span>
+  </div>
+</header>
+
+<main>
+
+<div class="callout info">
+  <p><strong class="tag">À quoi sert cette page</strong> Les quatre chapitres du guide se terminent tous par une section « Radio-guidage » courte : un prompt à coller, un fichier à joindre. Cette annexe explique <strong>une seule fois</strong> tout ce qui est commun — le principe, le choix de l'IA cloud, les règles du radio-guide, les bonnes pratiques, les limites. Inutile de la lire en entier avant de commencer : revenez-y quand un point vous intrigue.</p>
+</div>
+
+<nav class="toc" id="sommaire">
+  <h3>Sommaire</h3>
+  <ol>
+    <li><a href="#principe">Le principe — se faire installer par une IA</a></li>
+    <li><a href="#marche">La marche à suivre générique</a></li>
+    <li><a href="#compte">Pas encore d'IA cloud ? Créer un compte</a></li>
+    <li><a href="#modele">Quel modèle d'IA cloud choisir ?</a></li>
+    <li><a href="#regles">Les neuf règles du radio-guide</a></li>
+    <li><a href="#recadrer">Trois phrases pour recadrer une IA qui dérape</a></li>
+    <li><a href="#bonnes-pratiques">Bonnes pratiques pendant une séance</a></li>
+    <li><a href="#limites">Quand le radio-guidage par IA ne suffit pas</a></li>
+  </ol>
+</nav>
+
+<!-- 1 -->
+<section id="principe">
+<h2>1. Le principe — se faire installer par une IA</h2>
+
+<p><strong>Pour installer et configurer une IA, le plus efficace est d'utiliser une IA.</strong> L'expérience le montre : un utilisateur non technique qui suit un tutoriel papier décroche à la première erreur inattendue. À l'inverse, celui qui dialogue avec une IA cloud avance à son rythme, lui montre ses écrans, lui fait diagnostiquer ses erreurs — et arrive au bout.</p>
+
+<p>Chaque chapitre du guide est donc conçu pour être <strong>donné à une IA cloud</strong> (Claude, ChatGPT, Gemini, Mistral Le Chat — celle que vous utilisez déjà), accompagné d'un prompt qui la transforme en <strong>radio-guide</strong> : un assistant patient, gratuit, accessible depuis un navigateur, qui vous accompagne pas à pas dans l'exécution.</p>
+
+<h3>1.1. Pourquoi ça marche</h3>
+<p>Le prompt de radio-guidage verrouille trois choses qui font échouer les tutoriels classiques :</p>
+<ul>
+  <li><strong>La cadence.</strong> Une étape à la fois empêche de se perdre dans une procédure de douze étapes.</li>
+  <li><strong>Le vocabulaire.</strong> Interdire les acronymes non expliqués force l'IA à parler simplement.</li>
+  <li><strong>Le diagnostic.</strong> Les captures d'écran et les messages d'erreur sont traités au cas par cas — là où un PDF reste muet.</li>
+</ul>
+
+<div class="callout tip">
+  <p><strong class="tag">La contradiction assumée</strong> Oui, on utilise une IA cloud pour installer une IA locale. C'est un <strong>échafaudage temporaire</strong> : le cloud sert le temps de comprendre et d'installer, sur des contenus techniques <strong>sans aucune donnée personnelle</strong>. Une fois l'installation faite, l'IA locale prend le relais pour les usages sensibles. Cette contradiction apparente est en réalité le bon ordre des choses.</p>
+</div>
+</section>
+
+<!-- 2 -->
+<section id="marche">
+<h2>2. La marche à suivre générique</h2>
+
+<p>La même séquence vaut pour les quatre chapitres. Seuls le fichier à joindre et le prompt à coller changent — ils sont donnés à la fin de chaque chapitre.</p>
+
+<ol class="steps">
+  <li><strong>Téléchargez le fichier du chapitre</strong> au format Markdown (bouton en fin de chapitre). Un seul fichier à la fois, celui du chapitre que vous exécutez.</li>
+  <li><strong>Ouvrez une nouvelle conversation</strong> avec votre IA cloud habituelle. Une conversation neuve, pas un fil déjà encombré.</li>
+  <li><strong>Joignez le fichier <code>.md</code></strong> à la conversation (pièce jointe), ou collez son texte si la pièce jointe n'est pas disponible.</li>
+  <li><strong>Copiez-collez le prompt de radio-guidage</strong> donné en fin de chapitre, et envoyez-le.</li>
+  <li><strong>Suivez les questions de l'IA</strong>, une étape à la fois. Envoyez une capture d'écran dès que vous bloquez, collez les messages d'erreur tels quels.</li>
+</ol>
+
+<div class="callout info">
+  <p><strong class="tag">Une session = un objectif</strong> Chaque chapitre a son propre prompt, calibré sur sa cible : installation pour le Chapitre 1, écriture d'un skill pour le Chapitre 2, chatbot pédagogique pour le Chapitre 3, vault Obsidian pour le Chapitre 4. Ne mélangez pas : une conversation, un chapitre, un objectif.</p>
+</div>
+</section>
+
+<!-- 3 -->
+<section id="compte">
+<h2>3. Pas encore d'IA cloud ? Créer un compte en 2 minutes</h2>
+
+<p>Quatre services principaux. Compte gratuit, <strong>une simple adresse mail suffit</strong>, aucune carte bancaire pour la version gratuite. Choisissez celui que vous préférez — vous pourrez toujours en changer. Le choix dépendra de vos habitudes, des accès disponibles et du cadre fixé par votre établissement.</p>
+
+<ul>
+  <li><strong>ChatGPT</strong> — <a href="https://chat.openai.com">chat.openai.com</a>. Le plus connu, très polyvalent. Éditeur : OpenAI (US).</li>
+  <li><strong>Claude</strong> — <a href="https://claude.ai">claude.ai</a>. Bon support des pièces jointes et des captures d'écran. Éditeur : Anthropic (US).</li>
+  <li><strong>Gemini</strong> — <a href="https://gemini.google.com">gemini.google.com</a>. L'IA de Google. Connexion directe via votre compte Google si vous en avez un.</li>
+  <li><strong>Mistral Le Chat</strong> — <a href="https://chat.mistral.ai">chat.mistral.ai</a>. Éditeur français, à privilégier pour qui souhaite un acteur européen.</li>
+</ul>
+
+<p style="font-size:.95em;font-style:italic;color:var(--gris-texte)"><strong>Note de l'auteur.</strong> À titre personnel, j'ai obtenu de bons résultats avec Claude pour le radio-guidage technique. Cette préférence est à éprouver soi-même ; tous les outils listés ci-dessus sont adaptés à la tâche.</p>
+
+<div class="callout danger">
+  <p><strong class="tag">Cadre RGPD — important</strong> Ces services hébergent vos conversations sur leurs serveurs (États-Unis ou UE selon l'éditeur). C'est pourquoi on les utilise <strong>uniquement pour la configuration</strong> (installation, écriture de skills, débogage technique). <strong>Jamais</strong> pour traiter des données d'élèves, de famille, de patients, de santé, ou tout contenu personnel identifiable. Une conversation de radio-guidage parle de fichiers, de commandes, de logiciels — pas de personnes. C'est précisément l'usage à risque minimal de ces services cloud.</p>
+</div>
+</section>
+
+<!-- 4 -->
+<section id="modele">
+<h2>4. Quel modèle d'IA cloud choisir pour le radio-guidage ?</h2>
+
+<p>Tous les modèles ne se valent pas pour ce rôle exigeant. Privilégier les modèles capables :</p>
+
+<ul>
+  <li><strong>Claude Sonnet ou Opus</strong> (pas Haiku seul)</li>
+  <li><strong>ChatGPT GPT-4o ou GPT-5</strong> (pas GPT-mini)</li>
+  <li><strong>Gemini Pro</strong> (pas Flash)</li>
+  <li><strong>Mistral Large</strong></li>
+</ul>
+
+<p>Les modèles ultra-légers (Haiku, mini, Flash, Small) sont parfaits pour la conversation courante mais peuvent décrocher sur un radio-guidage technique long avec un utilisateur néophyte — ils ont tendance à se défausser, à halluciner du contexte, ou à supposer ce qu'ils ne savent pas. Si vous démarrez avec un modèle léger et que ça déraille, basculez sur un modèle plus puissant.</p>
+</section>
+
+<div class="page-break"></div>
+
+<!-- 5 -->
+<section id="regles">
+<h2>5. Les neuf règles du radio-guide</h2>
+
+<p>Ces neuf règles sont intégrées <strong>à l'identique dans le prompt de chaque chapitre</strong>. Les cinq premières cadrent la posture ; les quatre suivantes — les règles anti-dérive — ont été ajoutées après des tests réels où des modèles légers déraillaient. Les voici expliquées.</p>
+
+<h3>5.1. Règles de posture (1 à 5)</h3>
+<div class="rule"><span class="n">1</span><strong>Une étape à la fois.</strong> L'IA ne donne jamais plus d'une action par message et attend votre confirmation. C'est ce qui empêche de se noyer.</div>
+<div class="rule"><span class="n">2</span><strong>Vocabulaire accessible.</strong> Aucun acronyme sans explication. L'IA part du principe que vous ne savez rien — et c'est très bien ainsi.</div>
+<div class="rule"><span class="n">3</span><strong>Captures d'écran acceptées.</strong> Quand vous bloquez, vous envoyez une image ; l'IA l'analyse et vous oriente. C'est souvent plus rapide que de décrire.</div>
+<div class="rule"><span class="n">4</span><strong>Diagnostic des erreurs.</strong> Vous collez le message d'erreur tel quel ; l'IA l'explique en français courant et propose la correction.</div>
+<div class="rule"><span class="n">5</span><strong>Si vous décrochez, on ralentit.</strong> L'IA n'enchaîne pas : elle pose une question pour comprendre où vous en êtes.</div>
+
+<h3>5.2. Règles anti-dérive (6 à 9)</h3>
+<div class="rule anti"><span class="n">6</span><strong>L'IA est le radio-guide.</strong> Elle ne vous renvoie jamais vers « une autre IA » ou « Claude dans un autre onglet ». Si une tâche la dépasse, elle le dit clairement et propose une alternative simple — elle ne se défausse pas.</div>
+<div class="rule anti"><span class="n">7</span><strong>L'IA ne voit pas votre écran</strong> sauf capture envoyée. Si votre message est confus ou tronqué (typique d'une dictée vocale ratée), elle ne présume rien : elle demande une capture ou une reformulation. Jamais d'invention sur l'état de votre ordinateur.</div>
+<div class="rule anti"><span class="n">8</span><strong>L'IA ne connaît pas votre métier</strong> ni votre contexte, sauf si vous le lui avez dit. Elle n'invente ni discipline enseignée, ni domaine professionnel, ni projet en cours. Si ce contexte l'aide, elle le demande.</div>
+<div class="rule anti"><span class="n">9</span><strong>Un modèle léger se déclare.</strong> Si l'IA est un modèle léger (Haiku, GPT-mini, Gemini Flash, Mistral Small), elle le reconnaît en début de session et vous propose de basculer sur un modèle plus capable.</div>
+
+<div class="callout warn">
+  <p><strong class="tag">Leçon de terrain</strong> Les règles 6 à 9 viennent d'observations réelles. Lors d'un test avec un modèle léger, l'IA a improvisé sans relire le document, halluciné l'état d'un écran qu'elle ne voyait pas, et tenté de se défausser. Ces quatre règles sont les garde-fous qui évitent ces dérives — elles sont dans le prompt de chaque chapitre, ne les retirez pas.</p>
+</div>
+</section>
+
+<!-- 6 -->
+<section id="recadrer">
+<h2>6. Trois phrases pour recadrer une IA qui dérape</h2>
+
+<p>À garder sous la main, à utiliser dès que l'IA semble s'égarer pendant une séance :</p>
+
+<div class="callout tip">
+  <p>Si elle vous renvoie vers une autre IA : <em>« Non, c'est toi mon radio-guide. Reprends ton rôle, une étape à la fois. »</em></p>
+  <p>Si elle parle d'un contexte que vous n'avez pas mentionné : <em>« Tu inventes un contexte qui n'est pas le mien. Recommence sans supposer. »</em></p>
+  <p>Si elle prétend voir votre écran sans capture : <em>« Tu ne peux pas voir mon écran. Demande-moi une capture, ne devine pas. »</em></p>
+</div>
+</section>
+
+<!-- 7 -->
+<section id="bonnes-pratiques">
+<h2>7. Bonnes pratiques pendant une séance</h2>
+
+<ul>
+  <li><strong>Ne jamais coller de données personnelles</strong> dans la conversation de radio-guidage — ni élève, ni famille, ni santé. Le sujet est purement technique : fichiers, commandes, logiciels.</li>
+  <li><strong>Capture d'écran &gt; recopie à la main.</strong> L'IA lit l'image, situe précisément la fenêtre, gagne du temps et évite les erreurs de transcription.</li>
+  <li><strong>Dire « je ne comprends pas »</strong> dès qu'un mot accroche. L'IA reformule — c'est exactement son rôle.</li>
+  <li><strong>Une session = un poste.</strong> Si vous installez sur plusieurs ordinateurs, ouvrez un fil distinct par poste : les configurations diffèrent.</li>
+  <li><strong>Ne pas tout enchaîner.</strong> Mieux vaut une heure par jour pendant une semaine qu'un marathon d'une après-midi. Les sessions courtes vont au bout.</li>
+</ul>
+</section>
+
+<!-- 8 -->
+<section id="limites">
+<h2>8. Quand le radio-guidage par IA ne suffit pas</h2>
+
+<p>Le radio-guidage couvre la grande majorité des cas. Trois situations demandent toutefois un arbitrage humain — l'IA donnera des pistes, mais pas la décision :</p>
+
+<table class="cmp">
+<thead><tr><th>Situation</th><th>Que faire</th></tr></thead>
+<tbody>
+<tr><td class="crit">Poste académique verrouillé, sans droits administrateur</td><td>L'installation de Docker (et parfois d'autres logiciels) demande les droits administrateur. En parler en amont au RUPN / référent informatique. À défaut, LM Studio s'installe en mode utilisateur sans droits étendus.</td></tr>
+<tr><td class="crit">Blocage réseau du proxy d'établissement</td><td>Le filtrage académique peut bloquer certains ports ou protocoles. Solutions à étudier avec le référent numérique : réseau pédagogique dédié, reverse proxy HTTPS, instance par salle.</td></tr>
+<tr><td class="crit">Carte graphique non reconnue par le moteur</td><td>Cas matériel spécifique. L'IA peut proposer des pistes (pilotes, mode CPU), mais une carte non supportée peut imposer de rester sur un modèle léger en CPU, ou de demander l'avis d'un collègue référent.</td></tr>
+</tbody>
+</table>
+
+<div class="callout info">
+  <p><strong class="tag">En résumé</strong> Dans ces trois cas, le radio-guidage reste utile pour <em>comprendre</em> le blocage et préparer la discussion — mais la résolution passe par un humain : référent numérique, chef d'établissement, ou collègue plus avancé. Ce n'est pas un échec de la méthode, c'est sa limite normale.</p>
+</div>
+</section>
+
+</main>
+
+<footer>
+  F. Henninot · mai 2026 · Annexe « Radio-guidage » du guide IA native · Document de travail ·
+  <a href="mailto:fr.henninot@gmail.com">fr.henninot@gmail.com</a> ·
+  <a href="index.html">Chapitre 1</a> · <a href="chapitre-2.html">Chapitre 2</a> · <a href="chapitre-3.html">Chapitre 3</a> · <a href="chapitre-4.html">Chapitre 4</a> · <a href="glossaire.html">Glossaire</a>
+</footer>
+
+<script src="glossary-linker.js"></script>
+
+</body>
+</html>
