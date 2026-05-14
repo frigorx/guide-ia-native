@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Glossaire — Guide IA native</title>
+<meta name="author" content="F. Henninot — document de travail" />
+<meta name="description" content="Glossaire des termes techniques utilisés dans le guide IA native (chapitres 1, 2, 3). Définitions accessibles aux non-techniciens." />
+<style>
+  :root{
+    --bleu:#1b3a63;
+    --bleu-clair:#2c5a8f;
+    --orange:#ff6b35;
+    --orange-pale:#fff1ea;
+    --gris-fond:#f6f7f9;
+    --gris-bord:#e3e7ec;
+    --gris-texte:#3a3f47;
+    --vert:#2f8f5e;
+    --jaune-warn:#fff4d6;
+    --jaune-bord:#e2b94d;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Calibri","Carlito","Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.65;color:var(--gris-texte);background:#fff;text-align:left}
+  a{color:var(--bleu);text-decoration:underline;text-decoration-color:rgba(27,58,99,.35);text-underline-offset:2px}
+  a:hover{color:var(--orange);text-decoration-color:var(--orange)}
+  h1,h2,h3,h4{font-family:"Trebuchet MS","Segoe UI",sans-serif;color:var(--bleu);line-height:1.25;margin:0 0 .5em 0}
+  h1{font-size:2.1em;letter-spacing:-.01em}
+  h2{font-size:1.4em;margin-top:1.6em;border-bottom:2px solid var(--orange);padding-bottom:.25em;display:inline-block}
+  h3{font-size:1.05em;color:var(--bleu-clair);margin-top:1em}
+  p{margin:.6em 0}
+  code{background:#eef2f7;padding:.08em .35em;border-radius:3px;font-size:.92em;font-family:"SF Mono",Consolas,"Liberation Mono",monospace;color:#0e2c52}
+
+  header.cover{background:linear-gradient(135deg,#0e2447 0%,var(--bleu) 55%,#2a5586 100%);color:#fff;padding:32px 48px 24px 48px;position:relative;overflow:hidden}
+  header.cover::after{content:"";position:absolute;right:-60px;top:-60px;width:340px;height:340px;background:radial-gradient(circle, rgba(255,107,53,.55) 0%, rgba(255,107,53,0) 70%)}
+  .school-band{font-size:.78em;letter-spacing:.18em;text-transform:uppercase;opacity:.85;font-weight:600}
+  .school-band .badge{background:var(--orange);color:#fff;padding:2px 9px;border-radius:3px;margin-right:9px;letter-spacing:.05em}
+  .cover h1{color:#fff;font-size:2.2em;margin:.2em 0 .15em 0;max-width:820px;line-height:1.15}
+  .cover .sub{font-size:1.05em;max-width:820px;opacity:.95}
+  .meta{margin-top:14px;font-size:.85em;opacity:.85;display:flex;gap:24px;flex-wrap:wrap}
+  .meta b{color:var(--orange)}
+
+  main{max-width:980px;margin:0 auto;padding:24px 36px 60px 36px}
+
+  .callout{padding:14px 18px;border-radius:6px;margin:14px 0;border-left:4px solid;font-size:.95em}
+  .callout p:first-child{margin-top:0}
+  .callout p:last-child{margin-bottom:0}
+  .callout.info{background:#eef4fb;border-color:var(--bleu-clair)}
+  .callout.warn{background:var(--jaune-warn);border-color:var(--jaune-bord)}
+  .callout.tip{background:var(--orange-pale);border-color:var(--orange)}
+  .callout strong.tag{display:inline-block;font-size:.75em;text-transform:uppercase;letter-spacing:.08em;background:rgba(0,0,0,.06);padding:1px 7px;border-radius:3px;margin-right:6px;vertical-align:1px}
+
+  /* Navigation alphabet */
+  .alphabet{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;padding:14px;background:var(--gris-fond);border-radius:6px;margin:14px 0;border:1px solid var(--gris-bord)}
+  .alphabet a{display:inline-block;width:30px;height:30px;line-height:30px;text-align:center;background:#fff;border:1px solid var(--gris-bord);border-radius:4px;text-decoration:none;font-family:"Trebuchet MS",sans-serif;color:var(--bleu);font-weight:600}
+  .alphabet a:hover{background:var(--orange);color:#fff;border-color:var(--orange)}
+
+  /* Sections thématiques */
+  .themes{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin:14px 0}
+  .theme-card{background:var(--gris-fond);border-left:3px solid var(--orange);padding:8px 12px;border-radius:4px;font-size:.88em}
+  .theme-card a{text-decoration:none;color:var(--bleu);font-weight:600;font-family:"Trebuchet MS",sans-serif}
+
+  /* Glossaire entries */
+  dl.glossary{margin:0}
+  dl.glossary dt{font-weight:700;color:var(--bleu);font-family:"Trebuchet MS",sans-serif;font-size:1.02em;margin-top:14px;border-bottom:1px solid var(--gris-bord);padding-bottom:3px}
+  dl.glossary dt .acro{color:var(--orange);font-weight:400;font-style:italic;font-size:.88em;margin-left:6px}
+  dl.glossary dt .anchor{font-size:.6em;color:var(--gris-texte);opacity:.4;font-weight:400;margin-left:8px;letter-spacing:.1em}
+  dl.glossary dd{margin:6px 0 8px 0;padding-left:0}
+  dl.glossary dd .ex{display:block;background:var(--gris-fond);padding:6px 10px;border-radius:4px;margin-top:5px;font-size:.92em;border-left:2px solid var(--bleu-clair)}
+  dl.glossary dd .voir{display:inline-block;margin-top:3px;font-size:.85em;color:var(--bleu-clair);font-style:italic}
+
+  /* Letter sections */
+  .letter-section{margin-top:24px;padding-top:8px}
+  .letter-section h3{display:inline-block;background:var(--bleu);color:#fff;padding:4px 16px;font-size:1.4em;margin:0 0 6px 0;border-radius:4px;font-family:"Trebuchet MS",sans-serif}
+
+  footer{margin-top:40px;padding:20px 36px;background:var(--bleu);color:#fff;font-size:.85em;text-align:center}
+  footer a{color:#ffd4bf}
+
+  /* Bouton Retour flottant — accessibilité navigation */
+  .back-btn{position:fixed;bottom:22px;right:22px;background:var(--bleu);color:#fff;border:none;padding:11px 20px;border-radius:8px;cursor:pointer;font-family:"Trebuchet MS","Segoe UI",sans-serif;font-size:15px;font-weight:600;box-shadow:0 3px 12px rgba(0,0,0,.28);z-index:1000;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:background .15s,transform .15s}
+  .back-btn:hover{background:var(--orange);color:#fff;transform:translateY(-1px)}
+  .back-btn:active{transform:translateY(0)}
+  @media print{.back-btn{display:none}}
+
+  @media print{
+    @page{size:A4;margin:14mm 14mm 16mm 14mm}
+    body{font-size:12pt;line-height:1.5}
+    header.cover{padding:20px 26px 16px 26px}
+    main{padding:8px 0 0 0;max-width:none}
+    h1{font-size:1.9em}
+    h2{font-size:1.3em;margin-top:1em}
+    .alphabet{display:none}
+    .themes{page-break-inside:avoid}
+    dl.glossary dt{page-break-after:avoid}
+    dl.glossary dd{page-break-inside:avoid}
+    .letter-section{page-break-inside:avoid}
+    a{color:var(--bleu);text-decoration:underline}
+    footer{margin-top:20px}
+  }
+</style>
+</head>
+<body>
+
+<button class="back-btn" onclick="if(history.length>1){history.back()}else{window.location.href='index.html'}" title="Revenir à la page précédente">← Retour</button>
+
+<header class="cover">
+  <div class="school-band"><span class="badge">Annexe</span>Glossaire — document de travail, diffusion libre</div>
+  <h1>Glossaire du guide IA native</h1>
+  <div class="sub">Définitions accessibles aux non-techniciens des termes utilisés dans les Chapitres 1, 2 et 3. Conçu pour être donné à votre IA cloud comme référence.</div>
+  <div class="meta">
+    <span><b>Auteur·</b> F. Henninot</span>
+    <span><b>Version·</b> mai 2026</span>
+    <span><b>Format·</b> HTML interactif + e-book PDF</span>
+  </div>
+</header>
+
+<main>
+
+<div class="callout tip">
+  <p><strong class="tag">Comment utiliser ce glossaire</strong> Trois façons : <strong>(1)</strong> chercher un mot directement avec <code>Ctrl + F</code> dans votre navigateur ; <strong>(2)</strong> cliquer sur une lettre dans la barre alphabétique ci-dessous ; <strong>(3)</strong> donner ce document à votre IA cloud en plus du chapitre en cours — elle pourra ainsi expliquer un terme à la volée, dans le contexte de votre installation.</p>
+</div>
+
+<h3>Aller directement à une lettre</h3>
+<div class="alphabet">
+  <a href="#L-A">A</a><a href="#L-B">B</a><a href="#L-C">C</a><a href="#L-D">D</a><a href="#L-E">E</a><a href="#L-F">F</a><a href="#L-G">G</a><a href="#L-H">H</a><a href="#L-I">I</a><a href="#L-J">J</a><a href="#L-L">L</a><a href="#L-M">M</a><a href="#L-O">O</a><a href="#L-P">P</a><a href="#L-Q">Q</a><a href="#L-R">R</a><a href="#L-S">S</a><a href="#L-T">T</a><a href="#L-U">U</a><a href="#L-V">V</a><a href="#L-W">W</a><a href="#L-Y">Y</a>
+</div>
+
+<h3>Aller par thème</h3>
+<div class="themes">
+  <div class="theme-card"><a href="#theme-ia">IA et modèles</a></div>
+  <div class="theme-card"><a href="#theme-logiciels">Logiciels et outils</a></div>
+  <div class="theme-card"><a href="#theme-technique">Concepts techniques</a></div>
+  <div class="theme-card"><a href="#theme-rgpd">RGPD et réglementaire</a></div>
+  <div class="theme-card"><a href="#theme-edu">Pédagogie et milieu éducatif</a></div>
+</div>
+
+<dl class="glossary">
+
+<!-- A -->
+<section class="letter-section"><h3 id="L-A">A</h3>
+
+<dt id="agentique">Agentique <span class="anchor">[IA]</span></dt>
+<dd>Qualifie une IA qui ne se contente pas de répondre mais qui <em>agit</em> — envoie un mail, dépose un fichier, déclenche une action. Sujet du Chapitre 4 à venir.</dd>
+
+<dt id="aesh">AESH <span class="acro">Accompagnant d'Élève en Situation de Handicap</span> <span class="anchor">[Édu]</span></dt>
+<dd>Professionnel qui accompagne au quotidien un élève bénéficiant d'un PPS ou d'un PAP.</dd>
+
+<dt id="api">API <span class="acro">Application Programming Interface</span> <span class="anchor">[Technique]</span></dt>
+<dd>Façon dont deux logiciels se parlent. Une « clé API » permet à un programme d'utiliser un service distant (par exemple appeler ChatGPT depuis un autre logiciel).</dd>
+
+</section>
+
+<!-- B -->
+<section class="letter-section"><h3 id="L-B">B</h3>
+
+<dt id="b-billions">B <span class="acro">Billions (milliards de paramètres)</span> <span class="anchor">[IA]</span></dt>
+<dd>Le « 8B » dans « Llama 3.1 8B » signifie 8 milliards de paramètres. Plus le nombre est élevé, plus le modèle est intelligent — et plus il est lourd à faire tourner.</dd>
+
+<dt id="bom">BOM <span class="acro">Byte Order Mark</span> <span class="anchor">[Technique]</span></dt>
+<dd>Marque cachée au début d'un fichier indiquant son encodage. Certains logiciels (comme Charlemagne Pro) exigent un fichier CSV avec BOM en UTF-8 pour bien lire les accents.</dd>
+
+</section>
+
+<!-- C -->
+<section class="letter-section"><h3 id="L-C">C</h3>
+
+<dt id="cfa">CFA <span class="acro">Centre de Formation d'Apprentis</span> <span class="anchor">[Édu]</span></dt>
+<dd>Structure qui dispense la formation en alternance des apprentis.</dd>
+
+<dt id="charlemagne">Charlemagne Pro <span class="acro">C-Pro</span> <span class="anchor">[Logiciel]</span></dt>
+<dd>Logiciel de gestion administrative et pédagogique de certains établissements scolaires (suivi des notes, des absences, des compétences, communication aux familles).</dd>
+
+<dt id="chatbot">Chatbot <span class="anchor">[IA]</span></dt>
+<dd>Programme qui dialogue avec l'utilisateur sous forme de conversation. ChatGPT, Claude, Gemini sont des chatbots IA. Le Chapitre 2 explique comment en créer un dédié pour les élèves.</dd>
+
+<dt id="chatgpt">ChatGPT <span class="anchor">[Logiciel]</span></dt>
+<dd>Assistant IA conversationnel édité par <strong>OpenAI</strong> (US). Le plus connu du grand public. Accessible sur <a href="https://chat.openai.com">chat.openai.com</a>.</dd>
+
+<dt id="claude">Claude <span class="anchor">[Logiciel]</span></dt>
+<dd>Assistant IA conversationnel édité par <strong>Anthropic</strong> (US). Préconisé à titre personnel par l'auteur du guide pour le radio-guidage technique. Accessible sur <a href="https://claude.ai">claude.ai</a>.</dd>
+
+<dt id="cli">CLI <span class="acro">Command-Line Interface</span> <span class="anchor">[Technique]</span></dt>
+<dd>Interface en ligne de commande — on tape des instructions texte plutôt que de cliquer. Le « Terminal » sur Mac, « PowerShell » ou « cmd » sur Windows.</dd>
+
+<dt id="cloud">Cloud <span class="anchor">[Technique]</span></dt>
+<dd>Services hébergés sur des serveurs distants, accessibles par Internet. Opposé à « local » (sur votre propre machine). ChatGPT et Claude tournent en cloud ; Ollama tourne en local.</dd>
+
+<dt id="cnil">CNIL <span class="acro">Commission Nationale de l'Informatique et des Libertés</span> <span class="anchor">[RGPD]</span></dt>
+<dd>Autorité française indépendante de protection des données personnelles. Émet des recommandations et peut sanctionner.</dd>
+
+<dt id="cpe">CPE <span class="acro">Conseiller Principal d'Éducation</span> <span class="anchor">[Édu]</span></dt>
+<dd>Personnel d'éducation chargé de la vie scolaire, du suivi des élèves, de l'animation éducative.</dd>
+
+<dt id="cpu">CPU <span class="acro">Central Processing Unit</span> <span class="anchor">[Technique]</span></dt>
+<dd>Le processeur principal de l'ordinateur. Sur un PC sans carte graphique dédiée, c'est lui qui fait tourner l'IA — plus lentement qu'un GPU.</dd>
+
+<dt id="crcn">CRCN <span class="acro">Cadre de Référence des Compétences Numériques</span> <span class="anchor">[Édu]</span></dt>
+<dd>Référentiel officiel des compétences numériques à valider tout au long de la scolarité. Utilisé dans le Chapitre 2 pour positionner l'usage de l'IA par l'élève.</dd>
+
+<dt id="csv">CSV <span class="acro">Comma-Separated Values</span> <span class="anchor">[Technique]</span></dt>
+<dd>Format de fichier tableau texte. Chaque ligne du fichier est une ligne du tableau, les colonnes sont séparées par virgules ou points-virgules. Format d'échange universel entre Obsidian et Charlemagne Pro / École Directe.</dd>
+
+</section>
+
+<!-- D -->
+<section class="letter-section"><h3 id="L-D">D</h3>
+
+<dt id="docker">Docker <span class="anchor">[Logiciel]</span></dt>
+<dd>Logiciel qui permet d'installer et faire tourner d'autres logiciels dans des « conteneurs » isolés. Utilisé ici pour installer Open WebUI en une commande. À télécharger sur <a href="https://docker.com">docker.com</a> (Docker Desktop).</dd>
+
+<dt id="docx">DOCX / PPTX / XLSX <span class="anchor">[Technique]</span></dt>
+<dd>Formats Microsoft Word (DOCX), PowerPoint (PPTX), Excel (XLSX) modernes — depuis 2007. Reconnaissables au « X » final, qui signifie qu'il s'agit de fichiers XML compressés.</dd>
+
+<dt id="dpo">DPO <span class="acro">Data Protection Officer / Délégué à la Protection des Données</span> <span class="anchor">[RGPD]</span></dt>
+<dd>Personne chargée de veiller au respect du RGPD dans une organisation. Chaque académie a un DPO.</dd>
+
+<dt id="dys">DYS <span class="acro">Troubles « DYS »</span> <span class="anchor">[Édu]</span></dt>
+<dd>Famille de troubles des apprentissages : dyslexie, dyspraxie, dysorthographie, dyscalculie, etc. Justifient des aménagements pédagogiques.</dd>
+
+</section>
+
+<!-- E -->
+<section class="letter-section"><h3 id="L-E">E</h3>
+
+<dt id="ed">École Directe <span class="acro">ED</span> <span class="anchor">[Logiciel]</span></dt>
+<dd>Outil numérique de vie scolaire largement utilisé dans les établissements privés (notes, absences, cahier de texte, communication familles).</dd>
+
+<dt id="embedding">Embedding <span class="anchor">[IA]</span></dt>
+<dd>Représentation numérique d'un texte sous forme de vecteur de nombres. Permet à l'IA de trouver des notes « similaires en sens » — pas seulement en mots-clés. Utilisé par le plugin Smart Connections dans Obsidian.</dd>
+
+<dt id="ent">ENT <span class="acro">Espace Numérique de Travail</span> <span class="anchor">[Édu]</span></dt>
+<dd>Plateforme institutionnelle d'un établissement, agrégeant les outils numériques (mail, agenda, ressources, vie scolaire).</dd>
+
+</section>
+
+<!-- F -->
+<section class="letter-section"><h3 id="L-F">F</h3>
+
+<dt id="f12">F12 <span class="anchor">[Technique]</span></dt>
+<dd>Touche du clavier qui ouvre les outils de développement dans la plupart des navigateurs. Permet d'inspecter le code d'une page web, de récupérer un tableau, de voir les en-têtes d'un formulaire (utile pour adapter un skill à un outil comme Charlemagne).</dd>
+
+<dt id="frontmatter">Frontmatter <span class="anchor">[Technique]</span></dt>
+<dd>En-tête YAML placé en haut d'un fichier markdown. Encadré par des <code>---</code>. Contient les métadonnées (titre, classe, date, tags) qui rendent la note filtrable. Voir le Chapitre 3 §4.2.</dd>
+
+</section>
+
+<!-- G -->
+<section class="letter-section"><h3 id="L-G">G</h3>
+
+<dt id="gemini">Gemini <span class="anchor">[Logiciel]</span></dt>
+<dd>Assistant IA conversationnel édité par <strong>Google</strong> (US). Accessible sur <a href="https://gemini.google.com">gemini.google.com</a>, connexion via compte Google.</dd>
+
+<dt id="gemma">Gemma 3 <span class="anchor">[IA]</span></dt>
+<dd>Famille de modèles open weights publiée par Google DeepMind. Gemma 3 12B est aujourd'hui un des meilleurs compromis qualité/poids pour un usage local francophone. Voir Chapitre 1 §6.2.</dd>
+
+<dt id="go">Go (gigaoctet) <span class="anchor">[Technique]</span></dt>
+<dd>Unité de mesure du stockage et de la mémoire. 1 Go = 1 milliard d'octets. Un modèle Llama 3.1 8B pèse environ 4,7 Go ; Gemma 3 12B pèse environ 8 Go.</dd>
+
+<dt id="gpu">GPU <span class="acro">Graphics Processing Unit</span> <span class="anchor">[Technique]</span></dt>
+<dd>Carte graphique. Initialement pour les jeux vidéo, devenue essentielle pour accélérer l'IA. Les NVIDIA RTX (3060+) sont la cible idéale ; les Mac Apple Silicon (M1+) sont excellents grâce à leur mémoire unifiée.</dd>
+
+<dt id="greta">GRETA <span class="acro">Groupement d'Établissements</span> <span class="anchor">[Édu]</span></dt>
+<dd>Structure de l'Éducation nationale dédiée à la formation continue des adultes.</dd>
+
+</section>
+
+<!-- H -->
+<section class="letter-section"><h3 id="L-H">H</h3>
+
+<dt id="hallucination">Hallucination <span class="anchor">[IA]</span></dt>
+<dd>Quand l'IA invente une information plausible mais fausse — une référence inexistante, une date inventée, une norme imaginée. Le principal défaut des LLM. À neutraliser par des règles strictes dans le system prompt (Chapitre 2 §4.1) et par l'usage de skills bien construits.</dd>
+
+<dt id="headless">Headless <span class="anchor">[Technique]</span></dt>
+<dd>« Sans tête », sans interface graphique. Un navigateur en mode headless tourne sans fenêtre — utile pour automatiser. Le script <code>generer-pdf.bat</code> utilise Edge en mode headless pour produire le PDF du guide.</dd>
+
+<dt id="html">HTML <span class="acro">HyperText Markup Language</span> <span class="anchor">[Technique]</span></dt>
+<dd>Format des pages web. Les trois chapitres de ce guide sont en HTML, ce qui leur permet d'être interactifs (liens, sommaire cliquable, boutons « copier »).</dd>
+
+<dt id="https">HTTPS / HTTP <span class="anchor">[Technique]</span></dt>
+<dd>Protocoles de transport web. <strong>HTTPS</strong> est chiffré (le « S » pour Secure) ; <strong>HTTP</strong> ne l'est pas. Le proxy d'un établissement peut bloquer HTTP non chiffré sur certains ports.</dd>
+
+</section>
+
+<!-- I -->
+<section class="letter-section"><h3 id="L-I">I</h3>
+
+<dt id="ia">IA <span class="acro">Intelligence Artificielle</span> <span class="anchor">[IA]</span></dt>
+<dd>Terme générique pour les programmes qui imitent certaines fonctions cognitives humaines. Aujourd'hui, le sujet du moment est l'<strong>IA générative</strong>, capable de produire texte, image, son.</dd>
+
+<dt id="ia-native">IA native (ou IA locale) <span class="anchor">[IA]</span></dt>
+<dd>Au sens de ce guide : IA qui s'exécute sur la machine de l'utilisateur, sans envoi de données à un serveur tiers. Synonymes : IA locale, IA on-device, IA en local. Tout l'objet du Chapitre 1.</dd>
+
+<dt id="ip">IP / IPv4 <span class="acro">Internet Protocol</span> <span class="anchor">[Technique]</span></dt>
+<dd>Adresse numérique unique d'un appareil sur un réseau. Format <code>192.168.1.42</code> typique d'un réseau local. Permet à un poste élève de joindre l'IA installée sur le poste enseignant (Chapitre 2 §7).</dd>
+
+</section>
+
+<!-- J -->
+<section class="letter-section"><h3 id="L-J">J</h3>
+
+<dt id="json">JSON <span class="acro">JavaScript Object Notation</span> <span class="anchor">[Technique]</span></dt>
+<dd>Format de données texte structurées, à la fois lisible par les humains et par les programmes. Utilisé pour configurer beaucoup d'outils modernes.</dd>
+
+</section>
+
+<!-- L -->
+<section class="letter-section"><h3 id="L-L">L</h3>
+
+<dt id="llama">Llama <span class="anchor">[IA]</span></dt>
+<dd>Famille de modèles open weights publiée par <strong>Meta</strong> (US). Excellente en français, très polyvalente. Llama 3.1 8B est une référence en milieu de gamme.</dd>
+
+<dt id="llm">LLM <span class="acro">Large Language Model</span> <span class="anchor">[IA]</span></dt>
+<dd>« Grand modèle de langage ». La famille des IA conversationnelles modernes : Llama, Mistral, Gemma, ChatGPT, Claude. Tous fonctionnent sur le même principe : prédire le mot suivant dans un texte.</dd>
+
+<dt id="lm-studio">LM Studio <span class="anchor">[Logiciel]</span></dt>
+<dd>Application desktop tout-en-un pour faire tourner des modèles LLM en local. Plus simple à installer qu'Ollama (un seul installateur), mais moins flexible. <a href="https://lmstudio.ai">lmstudio.ai</a>.</dd>
+
+<dt id="local">Local <span class="anchor">[Technique]</span></dt>
+<dd>Sur votre propre machine. Opposé à « cloud » (sur un serveur distant). Une IA locale tourne sans Internet une fois installée.</dd>
+
+<dt id="localhost">Localhost <span class="anchor">[Technique]</span></dt>
+<dd>« Votre propre machine », vue depuis le réseau. <code>localhost:3000</code> signifie « accéder au service qui écoute sur le port 3000 de ma machine ». C'est ainsi qu'on ouvre Open WebUI depuis le navigateur.</dd>
+
+</section>
+
+<!-- M -->
+<section class="letter-section"><h3 id="L-M">M</h3>
+
+<dt id="markdown">Markdown <span class="acro">.md</span> <span class="anchor">[Technique]</span></dt>
+<dd>Format texte enrichi très léger, lisible tel quel. Quelques caractères suffisent à produire des titres, des listes, du gras. Utilisé pour les fichiers de skills, les notes Obsidian, et le source de ce guide.</dd>
+
+<dt id="mistral">Mistral / Mixtral <span class="anchor">[IA]</span></dt>
+<dd>Famille de modèles open weights publiée par <strong>Mistral AI</strong> (français). Excellente en français, choix souverain européen. Mistral 7B est une référence légère.</dd>
+
+<dt id="modele">Modèle (au sens IA) <span class="anchor">[IA]</span></dt>
+<dd>Le « cerveau » de l'IA, sous forme d'un gros fichier (plusieurs Go) contenant les « poids » du réseau de neurones. Exemples : Llama 3.1 8B, Gemma 3 12B, Mistral 7B.</dd>
+
+<dt id="multimodal">Multimodal <span class="anchor">[IA]</span></dt>
+<dd>Qualifie un modèle capable de traiter plusieurs types de contenu — texte, image, audio. Gemma 3 a une version multimodale qui lit les images.</dd>
+
+</section>
+
+<!-- O -->
+<section class="letter-section"><h3 id="L-O">O</h3>
+
+<dt id="obsidian">Obsidian <span class="anchor">[Logiciel]</span></dt>
+<dd>Logiciel de prise de notes en markdown, <strong>100 % local</strong>, avec un système de plugins très riche. Devient avec une IA branchée une « mémoire long-terme » du prof. Sujet du Chapitre 3. <a href="https://obsidian.md">obsidian.md</a>.</dd>
+
+<dt id="ollama">Ollama <span class="anchor">[Logiciel]</span></dt>
+<dd>Moteur open source qui fait tourner des modèles LLM en local. S'utilise en ligne de commande mais avec une syntaxe très simple. C'est le cœur de l'installation du Chapitre 1. <a href="https://ollama.com">ollama.com</a>.</dd>
+
+<dt id="open-source">Open source / Open weights <span class="anchor">[IA]</span></dt>
+<dd>Logiciels (ou modèles) dont les fichiers sont publics et utilisables librement, sous licence. Llama, Mistral, Gemma, Qwen sont des modèles « open weights » — c'est ce qui rend possible l'IA native.</dd>
+
+<dt id="open-webui">Open WebUI <span class="anchor">[Logiciel]</span></dt>
+<dd>Interface web (type ChatGPT) qui se branche sur Ollama pour offrir une expérience graphique aux utilisateurs. Permet de créer des « models » personnalisés (Chapitre 2). <a href="https://docs.openwebui.com">docs.openwebui.com</a>.</dd>
+
+</section>
+
+<!-- P -->
+<section class="letter-section"><h3 id="L-P">P</h3>
+
+<dt id="parefeu">Pare-feu <span class="anchor">[Technique]</span></dt>
+<dd>Logiciel qui filtre les connexions réseau entrantes et sortantes d'un ordinateur. Peut bloquer un service Open WebUI accessible aux postes élèves — à autoriser sur le profil « réseau privé ».</dd>
+
+<dt id="pfmp">PFMP <span class="acro">Période de Formation en Milieu Professionnel</span> <span class="anchor">[Édu]</span></dt>
+<dd>Stages obligatoires des élèves en filière professionnelle (CAP, BAC PRO).</dd>
+
+<dt id="piper">Piper <span class="anchor">[Logiciel]</span></dt>
+<dd>Logiciel open source de synthèse vocale (texte → voix), léger, exécutable en local. Permet à un chatbot IA de parler à l'élève. Voir Chapitre 2 §6.</dd>
+
+<dt id="plugin">Plugin <span class="anchor">[Technique]</span></dt>
+<dd>Extension d'un logiciel ajoutant des fonctionnalités. Smart Connections, Local GPT, Templater sont des plugins d'Obsidian.</dd>
+
+<dt id="port">Port <span class="anchor">[Technique]</span></dt>
+<dd>Numéro identifiant un service sur une machine. Ollama écoute sur le port <strong>11434</strong>, Open WebUI sur le <strong>3000</strong>. Un proxy d'établissement peut bloquer certains ports.</dd>
+
+<dt id="pronote">Pronote <span class="anchor">[Logiciel]</span></dt>
+<dd>Outil numérique de vie scolaire utilisé dans la majorité des établissements publics et certains privés.</dd>
+
+<dt id="prompt">Prompt <span class="anchor">[IA]</span></dt>
+<dd>Le message qu'on envoie à l'IA, qui contient à la fois la consigne et le contexte. Un bon prompt fait 80 % de la qualité de la réponse. Voir Chapitre 1 §10 (bibliothèque de prompts).</dd>
+
+<dt id="proxy">Proxy <span class="anchor">[Technique]</span></dt>
+<dd>Intermédiaire réseau. Dans les établissements scolaires, le proxy filtre les connexions vers Internet et peut bloquer certains ports ou certains sites. À coordonner avec le référent numérique pour l'installation.</dd>
+
+</section>
+
+<!-- Q -->
+<section class="letter-section"><h3 id="L-Q">Q</h3>
+
+<dt id="quantification">Quantification / Quantifié <span class="anchor">[IA]</span></dt>
+<dd>Technique de compression d'un modèle pour qu'il tienne sur du matériel modeste. Un modèle « quantifié en Q4 » pèse environ 4 fois moins qu'en pleine précision, avec une perte de qualité minime. La quantification est appliquée automatiquement par Ollama pour la plupart des modèles téléchargés.</dd>
+
+<dt id="qwen">Qwen <span class="anchor">[IA]</span></dt>
+<dd>Famille de modèles open weights publiée par <strong>Alibaba</strong> (Chine). Excellente en raisonnement structuré et en code. La provenance peut soulever des questions de gouvernance institutionnelle — point de vigilance selon le contexte.</dd>
+
+</section>
+
+<!-- R -->
+<section class="letter-section"><h3 id="L-R">R</h3>
+
+<dt id="rag">RAG <span class="acro">Retrieval-Augmented Generation</span> <span class="anchor">[IA]</span></dt>
+<dd>Technique où l'IA va d'abord chercher des informations dans une base (vos notes, vos PDF, vos référentiels) <em>avant</em> de répondre. Plus précis, moins d'hallucinations. C'est ce que font Smart Connections + Local GPT dans Obsidian.</dd>
+
+<dt id="ram">RAM <span class="acro">Random Access Memory — mémoire vive</span> <span class="anchor">[Technique]</span></dt>
+<dd>Mémoire de travail de l'ordinateur. Pour faire tourner un LLM, il faut suffisamment de RAM : <strong>8 Go</strong> pour un usage léger, <strong>16 Go</strong> pour un usage confortable, <strong>32 Go+</strong> pour les modèles avancés.</dd>
+
+<dt id="referentiel">Référentiel <span class="anchor">[Édu]</span></dt>
+<dd>Document officiel décrivant les compétences, savoirs, modalités d'évaluation d'un diplôme. La transformation d'un référentiel en skill est traitée au Chapitre 3 §7.</dd>
+
+<dt id="reverse-proxy">Reverse proxy <span class="anchor">[Technique]</span></dt>
+<dd>Service qui sert d'intermédiaire entre les utilisateurs et un serveur, souvent utilisé pour ajouter HTTPS, du cache ou de la sécurité. Utile pour exposer Open WebUI en HTTPS sur le réseau pédagogique.</dd>
+
+<dt id="rgpd">RGPD <span class="acro">Règlement Général sur la Protection des Données</span> <span class="anchor">[RGPD]</span></dt>
+<dd>Règlement européen 2016/679 entré en application en mai 2018. Cadre légal de la protection des données personnelles dans l'UE. <a href="https://gdpr-info.eu">gdpr-info.eu</a>.</dd>
+
+<dt id="rupn">RUPN <span class="acro">Référent d'Usage Pédagogique du Numérique</span> <span class="anchor">[Édu]</span></dt>
+<dd>Enseignant chargé d'accompagner l'usage pédagogique du numérique dans son établissement. Souvent synonyme de « référent numérique d'établissement ». Interlocuteur clé pour le déploiement multi-postes (Chapitre 2 §7).</dd>
+
+</section>
+
+<!-- S -->
+<section class="letter-section"><h3 id="L-S">S</h3>
+
+<dt id="segpa">SEGPA <span class="acro">Section d'Enseignement Général et Professionnel Adapté</span> <span class="anchor">[Édu]</span></dt>
+<dd>Section accueillant des élèves rencontrant des difficultés scolaires graves et durables, dans le second degré.</dd>
+
+<dt id="skill">Skill <span class="anchor">[IA]</span></dt>
+<dd>Au sens de ce guide : dossier contenant un fichier <code>SKILL.md</code> qui décrit à l'IA <em>quand</em> et <em>comment</em> se comporter sur une tâche donnée. L'extension cognitive du prof, capturée une fois, réutilisable mille fois. Voir Chapitre 1 §9.</dd>
+
+<dt id="smart-connections">Smart Connections <span class="anchor">[Logiciel]</span></dt>
+<dd>Plugin Obsidian qui indexe sémantiquement le vault et permet la recherche par <em>sens</em>, pas seulement par mots-clés. Essentiel pour brancher l'IA sur Obsidian (Chapitre 3 §5).</dd>
+
+<dt id="sous-traitant">Sous-traitant (au sens RGPD) <span class="anchor">[RGPD]</span></dt>
+<dd>Entité qui traite des données personnelles pour le compte d'un responsable. Une école qui utilise ChatGPT pour traiter des copies d'élèves devrait avoir signé un contrat de sous-traitance avec OpenAI. Ce qui n'est jamais le cas — d'où le risque RGPD.</dd>
+
+<dt id="system-prompt">System prompt <span class="anchor">[IA]</span></dt>
+<dd>Message d'amorçage caché qui définit la posture de l'IA pour toute une conversation. Visible par l'enseignant qui le rédige, invisible pour l'élève qui dialogue avec l'IA. Voir Chapitre 2 §4.</dd>
+
+</section>
+
+<!-- T -->
+<section class="letter-section"><h3 id="L-T">T</h3>
+
+<dt id="tdah">TDAH <span class="acro">Trouble du Déficit de l'Attention avec ou sans Hyperactivité</span> <span class="anchor">[Édu]</span></dt>
+<dd>Trouble neurodéveloppemental qui affecte l'attention, l'impulsivité, parfois l'activité motrice. Justifie des aménagements (consignes courtes, pauses, etc.).</dd>
+
+<dt id="terminal">Terminal <span class="anchor">[Technique]</span></dt>
+<dd>Application qui permet de taper des commandes texte. Sur Windows : <strong>PowerShell</strong> ou <strong>cmd</strong>. Sur Mac : <strong>Terminal</strong>. Sur Linux : généralement <strong>bash</strong>.</dd>
+
+<dt id="token">Token <span class="anchor">[IA]</span></dt>
+<dd>Unité élémentaire que manipule un LLM — environ 4 caractères en français. Une page de texte ≈ 500 tokens. Les modèles ont une « fenêtre de contexte » exprimée en tokens (Gemma 3 : 128 000 tokens).</dd>
+
+</section>
+
+<!-- U -->
+<section class="letter-section"><h3 id="L-U">U</h3>
+
+<dt id="utf8">UTF-8 <span class="anchor">[Technique]</span></dt>
+<dd>Encodage standard des caractères, gérant les accents et caractères spéciaux du français. Beaucoup d'outils (dont Charlemagne Pro pour les imports CSV) exigent ce format, parfois avec un BOM en plus.</dd>
+
+</section>
+
+<!-- V -->
+<section class="letter-section"><h3 id="L-V">V</h3>
+
+<dt id="vault">Vault <span class="anchor">[Logiciel]</span></dt>
+<dd>Dans Obsidian : dossier racine d'un projet, contenant toutes les notes. Synonyme de « votre base de notes ». Voir Chapitre 3 §4 pour l'architecture en couches.</dd>
+
+<dt id="vram">VRAM <span class="acro">Video RAM — mémoire vive de la carte graphique</span> <span class="anchor">[Technique]</span></dt>
+<dd>Mémoire dédiée du GPU. 8 Go de VRAM permettent de faire tourner des modèles de taille moyenne en accélération GPU (très rapide). Au-delà de 16 Go, on accède aux modèles les plus puissants.</dd>
+
+</section>
+
+<!-- W -->
+<section class="letter-section"><h3 id="L-W">W</h3>
+
+<dt id="whisper">Whisper <span class="anchor">[Logiciel]</span></dt>
+<dd>Logiciel open source de reconnaissance vocale (voix → texte), édité initialement par OpenAI mais disponible en exécution locale. Permet à un chatbot IA d'écouter l'élève parler. Voir Chapitre 2 §6.</dd>
+
+</section>
+
+<!-- Y -->
+<section class="letter-section"><h3 id="L-Y">Y</h3>
+
+<dt id="yaml">YAML <span class="acro">YAML Ain't Markup Language</span> <span class="anchor">[Technique]</span></dt>
+<dd>Format texte de configuration, structuré par indentation. Utilisé pour les en-têtes (frontmatter) des notes Obsidian et des fichiers SKILL.md. Très simple à lire et à écrire.</dd>
+
+</section>
+
+</dl>
+
+<!-- Index thématiques -->
+<h2 id="theme-ia" style="margin-top:36px">Index thématique</h2>
+
+<h3 id="theme-ia">IA et modèles</h3>
+<p style="font-size:.92em"><a href="#agentique">Agentique</a> · <a href="#b-billions">B (paramètres)</a> · <a href="#chatbot">Chatbot</a> · <a href="#embedding">Embedding</a> · <a href="#gemma">Gemma 3</a> · <a href="#hallucination">Hallucination</a> · <a href="#ia">IA</a> · <a href="#ia-native">IA native</a> · <a href="#llama">Llama</a> · <a href="#llm">LLM</a> · <a href="#mistral">Mistral</a> · <a href="#modele">Modèle</a> · <a href="#multimodal">Multimodal</a> · <a href="#open-source">Open source</a> · <a href="#prompt">Prompt</a> · <a href="#quantification">Quantification</a> · <a href="#qwen">Qwen</a> · <a href="#rag">RAG</a> · <a href="#skill">Skill</a> · <a href="#system-prompt">System prompt</a> · <a href="#token">Token</a></p>
+
+<h3 id="theme-logiciels">Logiciels et outils</h3>
+<p style="font-size:.92em"><a href="#charlemagne">Charlemagne Pro</a> · <a href="#chatgpt">ChatGPT</a> · <a href="#claude">Claude</a> · <a href="#docker">Docker</a> · <a href="#ed">École Directe</a> · <a href="#gemini">Gemini</a> · <a href="#lm-studio">LM Studio</a> · <a href="#obsidian">Obsidian</a> · <a href="#ollama">Ollama</a> · <a href="#open-webui">Open WebUI</a> · <a href="#piper">Piper</a> · <a href="#plugin">Plugin</a> · <a href="#pronote">Pronote</a> · <a href="#smart-connections">Smart Connections</a> · <a href="#vault">Vault</a> · <a href="#whisper">Whisper</a></p>
+
+<h3 id="theme-technique">Concepts techniques</h3>
+<p style="font-size:.92em"><a href="#api">API</a> · <a href="#bom">BOM</a> · <a href="#cli">CLI</a> · <a href="#cloud">Cloud</a> · <a href="#cpu">CPU</a> · <a href="#csv">CSV</a> · <a href="#docx">DOCX/PPTX/XLSX</a> · <a href="#f12">F12</a> · <a href="#frontmatter">Frontmatter</a> · <a href="#go">Go</a> · <a href="#gpu">GPU</a> · <a href="#headless">Headless</a> · <a href="#html">HTML</a> · <a href="#https">HTTPS/HTTP</a> · <a href="#ip">IP</a> · <a href="#json">JSON</a> · <a href="#local">Local</a> · <a href="#localhost">Localhost</a> · <a href="#markdown">Markdown</a> · <a href="#parefeu">Pare-feu</a> · <a href="#port">Port</a> · <a href="#proxy">Proxy</a> · <a href="#ram">RAM</a> · <a href="#reverse-proxy">Reverse proxy</a> · <a href="#terminal">Terminal</a> · <a href="#utf8">UTF-8</a> · <a href="#vram">VRAM</a> · <a href="#yaml">YAML</a></p>
+
+<h3 id="theme-rgpd">RGPD et réglementaire</h3>
+<p style="font-size:.92em"><a href="#cnil">CNIL</a> · <a href="#dpo">DPO</a> · <a href="#rgpd">RGPD</a> · <a href="#sous-traitant">Sous-traitant</a></p>
+
+<h3 id="theme-edu">Pédagogie et milieu éducatif</h3>
+<p style="font-size:.92em"><a href="#aesh">AESH</a> · <a href="#cfa">CFA</a> · <a href="#cpe">CPE</a> · <a href="#crcn">CRCN</a> · <a href="#dys">DYS</a> · <a href="#ent">ENT</a> · <a href="#greta">GRETA</a> · <a href="#pfmp">PFMP</a> · <a href="#referentiel">Référentiel</a> · <a href="#rupn">RUPN</a> · <a href="#segpa">SEGPA</a> · <a href="#tdah">TDAH</a></p>
+
+<div class="callout info" style="margin-top:24px">
+  <p><strong class="tag">Manque un terme ?</strong> Ce glossaire est versionné. N'hésitez pas à signaler un terme manquant ou une définition à clarifier — l'objectif est qu'aucun mot du guide ne reste obscur pour qui le découvre.</p>
+</div>
+
+</main>
+
+<footer>
+  F. Henninot · mai 2026 · Glossaire du guide IA native · Document de travail ·
+  <a href="mailto:fr.henninot@gmail.com">fr.henninot@gmail.com</a> ·
+  <a href="index.html">Chapitre 1</a> · <a href="chapitre-2.html">Chapitre 2</a> · <a href="chapitre-3.html">Chapitre 3</a>
+</footer>
+
+</body>
+</html>
