@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Chapitre 2 — Transformer son IA native en assistant pédagogique pour les élèves</title>
+<title>Chapitre 3 — Transformer son IA native en assistant pédagogique pour les élèves</title>
 <meta name="author" content="F. Henninot — document de travail" />
-<meta name="description" content="Chapitre 2 du guide IA native : transformer son installation locale en chatbot pédagogique pour les élèves. Cadrage du system prompt, couplage avec un skill matière, déploiement multi-postes, charte d'usage, scénario de séance et modalités d'évaluation." />
+<meta name="description" content="Chapitre 3 du guide IA native : transformer son installation locale en chatbot pédagogique pour les élèves. Cadrage du system prompt, couplage avec un skill matière, déploiement multi-postes, charte d'usage, scénario de séance et modalités d'évaluation." />
 <style>
   :root{
     --bleu:#1b3a63;
@@ -123,6 +123,17 @@
   .links{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;margin:10px 0}
   .links a{padding:6px 0;border-bottom:1px dotted var(--gris-bord);display:block}
 
+  /* Bouton de téléchargement / transition */
+  .dl-box{display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:#eef4fb;border:1px solid #2c5a8f;border-radius:8px;padding:16px 20px;margin:16px 0}
+  .dl-box .txt{flex:1;min-width:240px}
+  .dl-box .txt strong{font-family:"Trebuchet MS","Segoe UI",sans-serif;font-size:1.05em;color:var(--bleu)}
+  .dl-box .txt span{font-size:.92em;color:var(--gris-texte)}
+  .dl-box a.dl{background:var(--bleu);color:#fff;font-family:"Trebuchet MS","Segoe UI",sans-serif;font-weight:700;padding:10px 22px;border-radius:6px;white-space:nowrap;text-decoration:none}
+  .dl-box a.dl:hover{background:var(--orange)}
+  .next-cta{text-align:center;margin:22px 0}
+  .next-cta a{display:inline-block;background:var(--orange);color:#fff;font-family:"Trebuchet MS","Segoe UI",sans-serif;font-weight:700;font-size:1.05em;padding:13px 26px;border-radius:8px;text-decoration:none}
+  .next-cta a:hover{background:var(--bleu)}
+
   footer{margin-top:40px;padding:20px 36px;background:var(--bleu);color:#fff;font-size:.85em;text-align:center}
   footer a{color:#ffd4bf}
 
@@ -146,7 +157,7 @@
     h2{font-size:1.3em;margin-top:1em}
     h3{font-size:1.1em}
     pre{font-size:9.5pt;page-break-inside:avoid}
-    .callout,table.cmp,.charte,.seance,.schema-flow,ol.steps>li{page-break-inside:avoid}
+    .callout,table.cmp,.charte,.seance,.schema-flow,ol.steps>li,.dl-box{page-break-inside:avoid}
     nav.toc ol{columns:2}
     .copy-btn{display:none}
     a{color:var(--bleu);text-decoration:underline}
@@ -157,131 +168,39 @@
 </head>
 <body>
 
-<button class="back-btn" onclick="if(history.length>1){history.back()}else{window.location.href='index.html'}" title="Revenir à la page précédente">← Retour</button>
+<button class="back-btn" onclick="if(history.length>1){history.back()}else{window.location.href='chapitre-2.html'}" title="Revenir à la page précédente">← Retour</button>
 
 <header class="cover">
-  <div class="school-band"><span class="num">Chapitre 2</span>Document de travail — diffusion libre</div>
+  <div class="school-band"><span class="num">Chapitre 3</span>Document de travail — diffusion libre</div>
   <h1>Transformer son IA native en assistant pédagogique</h1>
   <div class="sub">Cadrer, coupler à un skill matière, déployer en classe, évaluer. Pour enseignants, CPE, AESH et formateurs.</div>
   <div class="meta">
     <span><b>Auteur·</b> F. Henninot</span>
     <span><b>Public·</b> profs, CPE, AESH, formateurs</span>
-    <span><b>Prérequis·</b> avoir terminé le Chapitre 1</span>
+    <span><b>Prérequis·</b> Chapitres 1 et 2</span>
     <span><b>Version·</b> mai 2026</span>
   </div>
 </header>
 
 <main>
 
-<div class="callout warn">
-  <p><strong class="tag">Statut</strong> Document de travail à caractère exploratoire, sans valeur officielle. Ne se substitue ni aux préconisations académiques ni au cadre fixé par chaque établissement. Suite directe du <a href="index.html">Chapitre 1 — installation de l'IA native</a> : la maîtrise des notions de modèle, de skill et d'interface y est supposée acquise.</p>
-</div>
+<a href="presentation.html" class="cta-presentation" style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:#fff1ea;border:1px solid #ff6b35;border-radius:8px;padding:14px 20px;margin:6px 0 20px 0;text-decoration:none;color:#1b3a63">
+  <span style="font-size:1.7em;line-height:1">📖</span>
+  <span style="flex:1;min-width:220px">
+    <strong style="font-family:'Trebuchet MS','Segoe UI',sans-serif;font-size:1.05em">À lire avant de commencer — Présentation du guide</strong><br>
+    <span style="font-size:.92em;color:#3a3f47">Le cadre, la posture et le mode d'emploi : ce qu'est ce guide, ce qu'il n'est pas, et comment s'en servir sans rester seul·e devant son écran.</span>
+  </span>
+  <span style="background:#ff6b35;color:#fff;font-family:'Trebuchet MS','Segoe UI',sans-serif;font-weight:700;padding:9px 20px;border-radius:6px;white-space:nowrap">Ouvrir →</span>
+</a>
 
-<div class="callout tip">
-  <p><strong class="tag">Mode d'emploi du guide — à lire en premier</strong> Ce chapitre est conçu pour être <strong>donné à une IA cloud</strong> (Claude, ChatGPT, Gemini, Mistral Le Chat — celle que vous utilisez déjà). Vous le lui transmettez en pièce jointe ou par copier-coller, et vous lui demandez de devenir <strong>votre assistant de mise en œuvre</strong>. Pas besoin de tout faire seul·e : l'IA générale lit ce document à votre place et vous radio-guide pas à pas, accepte vos captures d'écran, diagnostique vos erreurs. Le prompt ci-dessous active ce mode. <strong>Pas encore d'IA cloud ?</strong> Voir l'encart juste après. <strong>Un mot vous bloque ?</strong> Le <a href="glossaire.html">glossaire</a> donne la définition accessible de tous les termes techniques.</p>
+<div class="callout warn">
+  <p><strong class="tag">Statut</strong> Document de travail à caractère exploratoire, sans valeur officielle. Ne se substitue ni aux préconisations académiques ni au cadre fixé par chaque établissement. Suite des <a href="index.html">Chapitre 1</a> (installation) et <a href="chapitre-2.html">Chapitre 2</a> (skills) : la maîtrise des notions de modèle, de skill et d'interface y est supposée acquise.</p>
 </div>
 
 <div class="callout info">
-  <p><strong class="tag">Pas encore d'IA cloud ? Créer un compte en 2 minutes</strong></p>
-  <p>Quatre services principaux. Compte gratuit, <strong>une simple adresse mail suffit</strong>, aucune carte bancaire pour la version gratuite. Choisissez celui que vous préférez — vous pourrez toujours en changer.</p>
-  <p>Plusieurs IA cloud peuvent servir de radio-guide. Le choix dépendra de vos habitudes, des accès disponibles et du cadre fixé par votre établissement.</p>
-  <ul style="margin:.3em 0 .3em 1.2em">
-    <li><strong>ChatGPT</strong> — <a href="https://chat.openai.com">chat.openai.com</a>. Le plus connu, très polyvalent. Éditeur : OpenAI (US).</li>
-    <li><strong>Claude</strong> — <a href="https://claude.ai">claude.ai</a>. Bon support des pièces jointes et des captures d'écran. Éditeur : Anthropic (US).</li>
-    <li><strong>Gemini</strong> — <a href="https://gemini.google.com">gemini.google.com</a>. L'IA de Google. Connexion directe via votre compte Google si vous en avez un.</li>
-    <li><strong>Mistral Le Chat</strong> — <a href="https://chat.mistral.ai">chat.mistral.ai</a>. Éditeur français, à privilégier pour qui souhaite un acteur européen.</li>
-  </ul>
-  <p style="font-size:.92em;font-style:italic;color:var(--gris-texte);opacity:.85"><strong>Note de l'auteur.</strong> À titre personnel, j'ai obtenu de bons résultats avec Claude pour le radio-guidage technique. Cette préférence est à éprouver soi-même ; tous les outils listés ci-dessus sont adaptés à la tâche.</p>
-  <p><strong>Cadre RGPD — important.</strong> Ces services hébergent vos conversations sur leurs serveurs (États-Unis ou UE selon l'éditeur). C'est pourquoi on les utilise <strong>uniquement pour la configuration</strong> (installation, écriture de skills, débogage technique). <strong>Jamais</strong> pour traiter des données d'élèves, de famille, de patients, de santé, ou tout contenu personnel identifiable. Une conversation d'installation parle de fichiers, de commandes, de logiciels — pas de personnes. C'est précisément l'usage à risque minimal de ces services cloud.</p>
-</div>
-
-<pre><button class="copy-btn">copier</button>Tu es mon assistant de mise en œuvre pour le document que je viens
-de te transmettre. Je l'ai parcouru mais je ne suis PAS développeur
-ni informaticien. J'ai besoin que tu deviennes mon radio-guide.
-
-RÈGLES NON NÉGOCIABLES
-1. UNE étape à la fois. Tu ne donnes JAMAIS plus d'une action par
-   message. Tu attends ma confirmation avant la suivante.
-2. Vocabulaire accessible. Aucun acronyme sans explication.
-3. Tu acceptes mes captures d'écran. Si je bloque, je t'envoie une
-   image, tu l'analyses, tu m'orientes.
-4. Tu diagnostiques les erreurs. Je colle le message, tu m'expliques
-   en français courant et tu proposes la correction.
-5. Si je décroche, on ralentit. Tu n'enchaînes pas.
-
-RÈGLES ANTI-DÉRIVE — appris du terrain
-6. TU ES LE RADIO-GUIDE. Ne renvoie JAMAIS l'utilisateur vers
-   "une autre IA", "Claude dans un autre onglet" ou "ChatGPT".
-   Tu as le rôle, tu le tiens. Si une tâche te dépasse, dis-le
-   clairement et propose une alternative simple — mais ne te
-   défausse pas vers toi-même.
-7. TU NE VOIS PAS L'ÉCRAN sauf capture envoyée. Si l'utilisateur
-   écrit du texte confus, tronqué ou hors-contexte (typique
-   d'une dictée vocale ratée), NE PRÉSUME PAS de ce qu'il voit.
-   Demande une capture ou une reformulation. JAMAIS d'invention
-   sur l'état de son ordinateur.
-8. TU NE CONNAIS PAS le métier ni le contexte de l'utilisateur
-   sauf s'il te l'a dit. N'invente ni discipline enseignée, ni
-   domaine professionnel, ni projet en cours. Si ce contexte
-   t'aide, demande-le.
-9. SI TU ES UN MODÈLE LÉGER (Haiku, GPT-mini, Gemini Flash,
-   Mistral Small), reconnais-le en début de session : "Je suis
-   un modèle léger. Pour un radio-guidage technique long avec
-   utilisateur néophyte, un modèle plus capable (Sonnet, GPT-4o,
-   Gemini Pro) serait plus fiable. Veux-tu continuer ou basculer ?"
-
-PREMIÈRE ÉTAPE OBLIGATOIRE — VÉRIFIER LA COMPATIBILITÉ MATÉRIELLE
-AVANT TOUTE recommandation d'installation, tu vérifies que ma
-machine peut faire tourner une IA locale décemment. Tu procèdes
-ainsi :
-
-a) Demande-moi si je sais trouver les caractéristiques de mon PC
-   (RAM, processeur, carte graphique, OS, type de mémoire).
-   Si non, guide-moi pas à pas pour les récupérer :
-   - Windows : Démarrer → tape "dxdiag" → Entrée. Demande-moi
-     de copier-coller le résultat. Ou : Paramètres → Système
-     → Informations système.
-   - macOS : Menu Apple → À propos de ce Mac. Demande capture
-     d'écran complète.
-   - Linux : commandes "uname -a", "free -h", "lscpu" dans
-     un terminal, et "lspci | grep -i vga" pour la carte
-     graphique. Demande-moi de coller la sortie.
-
-b) ÉVALUE la machine à partir des informations reçues :
-   - Très ancien (RAM < 8 Go, DDR2/DDR3 lent, pas de GPU,
-     processeur < 8e génération Intel) : DÉCONSEILLE l'IA
-     locale lourde. Propose un modèle 3B-4B très léger, OU
-     suggère de continuer avec une IA cloud en cadrant le RGPD,
-     OU d'attendre un renouvellement de matériel.
-   - Standard (8-16 Go RAM, CPU récent, pas de GPU dédié) :
-     recommande Llama 3.1 8B ou Mistral 7B (quantifiés).
-     PAS de Gemma 12B, PAS de modèle 70B.
-   - Confortable (16-32 Go RAM + GPU 8 Go VRAM, ou Mac Apple
-     Silicon M1+) : Gemma 3 12B devient pertinent.
-   - Puissant (32 Go+, GPU 16 Go+ VRAM) : modèles plus gros
-     possibles.
-
-c) Adapte aussi le choix LM Studio vs Ollama+Open WebUI selon
-   mon niveau d'aisance déclaré. LM Studio si néophyte total ;
-   Ollama+Open WebUI si à l'aise.
-
-d) NE PROPOSE PAS d'étape concrète d'installation avant d'avoir
-   validé ces points avec moi. C'est ton garde-fou principal :
-   ne JAMAIS faire installer une IA lourde sur une machine qui
-   ne suivra pas — ça se solde toujours par un abandon.
-
-ENSUITE SEULEMENT
-- Demande-moi où j'en suis dans le document (section, chantier).
-- Propose la première action concrète, une seule, et attends.
-
-Le document est ci-joint / ci-dessus. Commence par tes questions.</pre>
-
-<div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:#eef4fb;border:1px solid #2c5a8f;border-radius:8px;padding:16px 20px;margin:16px 0">
-  <span style="flex:1;min-width:240px">
-    <strong style="font-family:'Trebuchet MS','Segoe UI',sans-serif;font-size:1.05em;color:#1b3a63">Le document à joindre à votre IA</strong><br>
-    <span style="font-size:.92em;color:#3a3f47">Téléchargez ce chapitre au format Markdown — un fichier texte léger, idéal à donner à une IA cloud : bien moins de « tokens » qu'un PDF, et mieux structuré pour elle. Joignez-le à votre conversation avec le prompt ci-dessus.</span>
-  </span>
-  <a href="chapitre-2.md" download style="background:#1b3a63;color:#fff;font-family:'Trebuchet MS','Segoe UI',sans-serif;font-weight:700;padding:10px 22px;border-radius:6px;white-space:nowrap;text-decoration:none">Télécharger le chapitre (.md)</a>
+  <p><strong class="tag">Mode d'emploi de ce chapitre</strong> Ce document est conçu pour être <strong>lu d'abord</strong>, puis <strong>exécuté avec l'aide d'une IA cloud</strong> (Claude, ChatGPT, Gemini, Mistral Le Chat). Lisez le chapitre en entier pour comprendre l'esprit. À la fin (<a href="#radio-guidage">section 12</a>), vous trouverez le <strong>radio-guidage</strong> : un prompt à coller dans votre IA cloud habituelle, et un fichier à joindre. L'IA prend alors le relais et vous accompagne pas à pas dans l'exécution.</p>
+  <p style="margin-top:.6em;padding-top:.6em;border-top:1px dashed rgba(0,0,0,.15)"><strong>⚠ N'allez pas directement à l'action.</strong> Lisez le chapitre d'abord — déployer un chatbot pour des élèves engage votre responsabilité pédagogique et le cadre RGPD : c'est le contexte du chapitre qui le sécurise. Le téléchargement du fichier <code>.md</code> et le prompt à coller sont rassemblés à la fin, dans la <a href="#radio-guidage">section 12</a>.</p>
+  <p style="margin-top:.6em;padding-top:.6em;border-top:1px dashed rgba(0,0,0,.15)"><strong>Un mot vous bloque ?</strong> Le <a href="glossaire.html">glossaire</a> est en lien permanent en bas de page. <strong>Le radio-guidage, c'est quoi au juste ?</strong> La page <a href="radio-guidage.html">Radio-guidage</a> l'explique une fois pour toutes.</p>
 </div>
 
 <nav class="toc" id="sommaire">
@@ -298,6 +217,8 @@ Le document est ci-joint / ci-dessus. Commence par tes questions.</pre>
     <li><a href="#seance">Scénario d'une séance type</a></li>
     <li><a href="#evaluation">Évaluation et progression</a></li>
     <li><a href="#pieges">Pièges et garde-fous</a></li>
+    <li><a href="#radio-guidage"><strong>Radio-guidage — créer son chatbot pédagogique</strong></a></li>
+    <li><a href="#et-maintenant">Vous avez un chatbot pédagogique. Et maintenant ?</a></li>
     <li><a href="#ressources">Ressources et liens</a></li>
   </ol>
 </nav>
@@ -306,15 +227,15 @@ Le document est ci-joint / ci-dessus. Commence par tes questions.</pre>
 <section id="preambule">
 <h2>1. Changement de nature — du prof-utilisateur à l'élève-utilisateur</h2>
 
-<p>Au Chapitre 1, l'IA est un assistant <em>du prof</em>. Le prof prompte, le prof contrôle, le prof valide. L'élève ne sait même pas que l'IA existe. C'est l'usage le plus simple, le plus sûr, et c'est celui qui rapporte le plus de gain de temps direct.</p>
+<p>Aux Chapitres 1 et 2, l'IA est un assistant <em>du prof</em>. Le prof prompte, le prof contrôle, le prof valide. L'élève ne sait même pas que l'IA existe. C'est l'usage le plus simple, le plus sûr, et c'est celui qui rapporte le plus de gain de temps direct.</p>
 
-<p>Le Chapitre 2 propose un saut : l'IA devient un assistant <em>de l'élève</em>. L'élève prompte, l'IA répond, le prof cadre. <strong>La nature de l'outil change radicalement</strong> : on passe d'un usage privé à un usage public, d'un acte productif à un acte éducatif, d'une responsabilité technique à une responsabilité pédagogique.</p>
+<p>Le Chapitre 3 propose un saut : l'IA devient un assistant <em>de l'élève</em>. L'élève prompte, l'IA répond, le prof cadre. <strong>La nature de l'outil change radicalement</strong> : on passe d'un usage privé à un usage public, d'un acte productif à un acte éducatif, d'une responsabilité technique à une responsabilité pédagogique.</p>
 
 <div class="callout info">
   <p><strong class="tag">À qui s'adresse ce chapitre</strong> Enseignants toutes disciplines, mais aussi CPE (entretiens d'écoute, prévention), AESH (adaptation aux profils DYS/TDAH, médiation cognitive), formateurs (CFA, GRETA, formation continue), parents-coéducateurs. La mécanique est la même ; seuls le cadrage et les contenus varient.</p>
 </div>
 
-<p>Ce chapitre suppose acquis l'écosystème du Chapitre 1 : Ollama installé, Open WebUI accessible, au moins un modèle téléchargé, premiers skills créés. Tout ce qui suit se construit <strong>dans Open WebUI</strong>, sans installation supplémentaire.</p>
+<p>Ce chapitre suppose acquis les Chapitres 1 et 2 : Ollama installé, Open WebUI accessible, au moins un modèle téléchargé, et la maîtrise des skills. Tout ce qui suit se construit <strong>dans Open WebUI</strong>, sans installation supplémentaire.</p>
 </section>
 
 <!-- 2 -->
@@ -361,7 +282,7 @@ Le document est ci-joint / ci-dessus. Commence par tes questions.</pre>
 <p>Dans Open WebUI, ces quatre éléments se combinent dans un objet appelé <strong>« Model »</strong> (modèle personnalisé). Pour le créer : <em>Workspace → Models → + Create new model</em>. Vous donnez un nom (« M. Frigori — tuteur CAP IFCA », « La prof de français — relecture », « Tuteur de révision SEGPA »…), une icône, un modèle de base, un system prompt, et vous attachez un ou plusieurs skills. Les élèves sélectionnent ce model dans le menu déroulant. <strong>Aucune programmation</strong> : tout passe par des champs texte dans l'interface.</p>
 
 <div class="callout tip">
-  <p><strong class="tag">Le levier essentiel</strong> 90 % de la qualité d'un chatbot pédagogique se joue dans le <strong>system prompt</strong>. Un excellent system prompt sur un modèle moyen bat largement un mauvais system prompt sur un modèle excellent. C'est l'endroit où l'enseignant injecte sa pédagogie.</p>
+  <p><strong class="tag">Le levier essentiel</strong> 90 % de la qualité d'un chatbot pédagogique se joue dans le <strong>system prompt</strong>. Un excellent system prompt sur un modèle moyen bat largement un mauvais system prompt sur un modèle excellent. C'est l'endroit où l'enseignant injecte sa pédagogie. Le <a href="chapitre-2.html">Chapitre 2</a> a posé le concept de skill ; ici on l'attache à une posture.</p>
 </div>
 </section>
 
@@ -434,7 +355,7 @@ veut travailler. Ne commence pas tant qu'il n'a pas répondu.</pre>
 <section id="couplage-skill">
 <h2>5. Coupler avec un skill matière</h2>
 
-<p>Le system prompt fixe la <em>posture</em>. Le skill apporte le <em>contenu</em> : référentiel précis de la matière, barème de l'enseignant, exemples canoniques de productions attendues, lexique métier. C'est l'addition des deux qui rend le tuteur crédible.</p>
+<p>Le system prompt fixe la <em>posture</em>. Le skill apporte le <em>contenu</em> : référentiel précis de la matière, barème de l'enseignant, exemples canoniques de productions attendues, lexique métier. C'est l'addition des deux qui rend le tuteur crédible. Si la notion de skill ne vous est pas familière, revenez au <a href="chapitre-2.html">Chapitre 2</a> avant de poursuivre.</p>
 
 <p>Concrètement, dans Open WebUI : créer un model personnalisé, coller le system prompt dans le champ « System », puis dans « Knowledge » attacher les documents qui constituent le skill (référentiel.md, barème.md, exemples.md). À chaque question de l'élève, l'IA consulte automatiquement ces documents avant de répondre. <strong>Les hallucinations chutent drastiquement</strong> dès qu'un skill bien fait est connecté.</p>
 
@@ -621,9 +542,121 @@ veut travailler. Ne commence pas tant qu'il n'a pas répondu.</pre>
 </table>
 </section>
 
-<!-- 12 -->
+<div class="page-break"></div>
+
+<!-- 12 RADIO-GUIDAGE -->
+<section id="radio-guidage">
+<h2>12. Radio-guidage — créer son chatbot pédagogique avec une IA cloud</h2>
+
+<p>Vous avez lu le chapitre, vous connaissez les enjeux et les garde-fous. Voici l'outil pour <strong>construire votre chatbot</strong> : un prompt à coller dans une IA cloud, qui devient votre assistant patient et vous accompagne étape par étape — du diagnostic du cadre établissement au premier test.</p>
+
+<h3>12.1. Marche à suivre</h3>
+<ol class="steps">
+  <li><strong>Téléchargez le fichier du chapitre</strong> au format Markdown (bouton ci-dessous).</li>
+  <li><strong>Ouvrez une nouvelle conversation</strong> avec votre IA cloud habituelle — Claude, ChatGPT, Gemini ou Mistral Le Chat, peu importe.</li>
+  <li><strong>Joignez le fichier <code>.md</code></strong> à la conversation.</li>
+  <li><strong>Copiez-collez le prompt ci-dessous</strong> et envoyez-le.</li>
+  <li><strong>Suivez les questions de l'IA</strong>, une étape à la fois. La configuration porte sur des fichiers et des réglages — <strong>aucune donnée d'élève n'est échangée avec l'IA cloud</strong>.</li>
+</ol>
+
+<div class="dl-box">
+  <span class="txt">
+    <strong>Le document à joindre à votre IA</strong><br>
+    <span>Ce chapitre au format Markdown — un fichier texte léger, idéal à donner à une IA cloud : bien moins de « tokens » qu'un PDF, et mieux structuré pour elle.</span>
+  </span>
+  <a href="chapitre-3.md" download class="dl">Télécharger le chapitre (.md)</a>
+</div>
+
+<h3>12.2. Le prompt à copier</h3>
+<pre><button class="copy-btn">copier</button>Tu es mon assistant de mise en œuvre pour le document que je viens
+de te transmettre. Je l'ai parcouru mais je ne suis PAS développeur
+ni informaticien. J'ai besoin que tu deviennes mon radio-guide.
+
+RÈGLES NON NÉGOCIABLES
+1. UNE étape à la fois. Tu ne donnes JAMAIS plus d'une action par
+   message. Tu attends ma confirmation avant la suivante.
+2. Vocabulaire accessible. Aucun acronyme sans explication.
+3. Tu acceptes mes captures d'écran. Si je bloque, je t'envoie une
+   image, tu l'analyses, tu m'orientes.
+4. Tu diagnostiques les erreurs. Je colle le message, tu m'expliques
+   en français courant et tu proposes la correction.
+5. Si je décroche, on ralentit. Tu n'enchaînes pas.
+
+RÈGLES ANTI-DÉRIVE — appris du terrain
+6. TU ES LE RADIO-GUIDE. Ne renvoie JAMAIS l'utilisateur vers
+   "une autre IA", "Claude dans un autre onglet" ou "ChatGPT".
+   Tu as le rôle, tu le tiens. Si une tâche te dépasse, dis-le
+   clairement et propose une alternative simple — mais ne te
+   défausse pas vers toi-même.
+7. TU NE VOIS PAS L'ÉCRAN sauf capture envoyée. Si l'utilisateur
+   écrit du texte confus, tronqué ou hors-contexte (typique
+   d'une dictée vocale ratée), NE PRÉSUME PAS de ce qu'il voit.
+   Demande une capture ou une reformulation. JAMAIS d'invention
+   sur l'état de son ordinateur.
+8. TU NE CONNAIS PAS le métier ni le contexte de l'utilisateur
+   sauf s'il te l'a dit. N'invente ni discipline enseignée, ni
+   domaine professionnel, ni projet en cours. Si ce contexte
+   t'aide, demande-le.
+9. SI TU ES UN MODÈLE LÉGER (Haiku, GPT-mini, Gemini Flash,
+   Mistral Small), reconnais-le en début de session : "Je suis
+   un modèle léger. Pour un radio-guidage technique long avec
+   utilisateur néophyte, un modèle plus capable (Sonnet, GPT-4o,
+   Gemini Pro) serait plus fiable. Veux-tu continuer ou basculer ?"
+
+OBJECTIF FINAL
+Créer un chatbot pédagogique destiné à mes élèves, dans Open WebUI.
+À la fin de cette session, j'aurai :
+- Un « modèle personnalisé » Open WebUI avec un nom, une icône,
+  une description.
+- Un system prompt soigné qui cadre la posture pédagogique
+  (socratique, sans donner la réponse directement, vocabulaire
+  adapté au niveau, interdiction d'inventer, sortie de rôle en
+  cas d'évocation de mal-être).
+- Un skill matière couplé (référentiel, exemples canoniques).
+- Un premier test avec une question d'élève réaliste.
+
+PREMIÈRE ÉTAPE OBLIGATOIRE — DIAGNOSTIC PRÉALABLE
+a) Vérifie que j'ai Ollama + Open WebUI fonctionnels (issu du
+   Chapitre 1). Si non, oriente-moi vers le Chapitre 1.
+b) Vérifie que je sais écrire un skill (issu du Chapitre 2). Si
+   non, oriente-moi vers le Chapitre 2.
+c) Demande-moi :
+   - Quelle matière, quel niveau, quel public ?
+   - Quels aménagements spécifiques (DYS, TDAH, SEGPA, AESH
+     absente) ?
+   - Quel cadre établissement est validé (chef d'établissement,
+     RUPN, DPO, charte, info familles) ?
+d) Si le cadre établissement n'est pas validé, EXPLIQUE que
+   l'usage doit rester strictement personnel sans connexion
+   d'élèves, et oriente-moi vers le bandeau de précaution en
+   tête du chapitre.
+
+Ne PROPOSE PAS de déployer un chatbot multi-postes sans
+validation du cadre établissement.
+
+Le document est ci-joint / ci-dessus. Commence par tes questions.</pre>
+
+<div class="callout info">
+  <p><strong class="tag">Le radio-guidage en détail</strong> Création d'un compte IA cloud, choix du modèle (Sonnet / GPT-4o / Gemini Pro / Mistral Large — pas les versions ultra-légères), les neuf règles du radio-guide expliquées, les trois phrases pour recadrer une IA qui dérape, les bonnes pratiques pendant la séance, et les trois cas où le radio-guidage par IA ne suffit pas : tout est rassemblé une fois pour toutes sur la page <a href="radio-guidage.html"><strong>Radio-guidage</strong></a>.</p>
+</div>
+</section>
+
+<!-- 13 ET MAINTENANT -->
+<section id="et-maintenant">
+<h2>13. Vous avez un chatbot pédagogique. Et maintenant ?</h2>
+
+<p>Vous savez maintenant transformer votre IA en assistant pour vos élèves, avec les garde-fous qu'il faut.</p>
+
+<p>Le <strong>Chapitre 4</strong> s'attaque à un autre besoin : la <strong>mémoire long-terme</strong>. Aujourd'hui votre IA recommence à zéro à chaque conversation. Avec Obsidian branché à votre IA locale, elle gagne accès à votre patrimoine pédagogique — vos cours, vos fiches, vos références, accumulés au fil des années. Et vous sortez de la double saisie avec Charlemagne Pro et autres outils institutionnels.</p>
+
+<div class="next-cta">
+  <a href="chapitre-4.html">Chapitre 4 — Optimiser son Obsidian →</a>
+</div>
+</section>
+
+<!-- 14 -->
 <section id="ressources">
-<h2>12. Ressources et liens</h2>
+<h2>14. Ressources et liens</h2>
 
 <h3>Documentation Open WebUI</h3>
 <div class="links">
@@ -655,17 +688,21 @@ veut travailler. Ne commence pas tant qu'il n'a pas répondu.</pre>
 </div>
 
 <div class="callout tip">
-  <p><strong class="tag">Suite du guide</strong> <a href="chapitre-3.html"><strong>Chapitre 3 — Optimiser son Obsidian</strong></a> : construire une mémoire long-terme, brancher l'IA dessus, transformer un référentiel en skill, gérer le suivi élève sans double saisie et piloter le pivot CSV avec Charlemagne Pro.</p>
+  <p><strong class="tag">Suite du guide</strong></p>
+  <ul style="margin:.3em 0 .2em 1.2em">
+    <li><a href="index.html"><strong>Chapitre 1 — Installer une IA native</strong></a> · <a href="chapitre-2.html"><strong>Chapitre 2 — Personnaliser votre IA avec des skills</strong></a> : les prérequis de ce chapitre.</li>
+    <li><a href="chapitre-4.html"><strong>Chapitre 4 — Optimiser son Obsidian</strong></a> : construire une mémoire long-terme, brancher l'IA dessus, transformer un référentiel en skill, gérer le suivi élève sans double saisie et piloter le pivot CSV avec Charlemagne Pro.</li>
+    <li><a href="radio-guidage.html"><strong>Annexe — Radio-guidage</strong></a> : la méthode commune à tous les chapitres, expliquée une fois pour toutes.</li>
+  </ul>
 </div>
-
 </section>
 
 </main>
 
 <footer>
-  F. Henninot · mai 2026 · Chapitre 2 du guide IA native · Document de travail ·
+  F. Henninot · mai 2026 · Chapitre 3 du guide IA native · Document de travail ·
   <a href="mailto:fr.henninot@gmail.com">fr.henninot@gmail.com</a> ·
-  <a href="index.html">← Chapitre 1</a> · <a href="chapitre-3.html">Chapitre 3 →</a> · <a href="glossaire.html">Glossaire</a>
+  <a href="index.html">Chapitre 1</a> · <a href="chapitre-2.html">← Chapitre 2</a> · <a href="chapitre-4.html">Chapitre 4 →</a> · <a href="radio-guidage.html">Radio-guidage</a> · <a href="glossaire.html">Glossaire</a>
 </footer>
 
 <script src="glossary-linker.js"></script>
