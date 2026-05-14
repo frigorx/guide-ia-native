@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Chapitre 2 — Transformer son IA native en assistant pédagogique pour les élèves</title>
+<title>Chapitre 2 — Personnaliser votre IA avec des skills</title>
 <meta name="author" content="F. Henninot — document de travail" />
-<meta name="description" content="Chapitre 2 du guide IA native : transformer son installation locale en chatbot pédagogique pour les élèves. Cadrage du system prompt, couplage avec un skill matière, déploiement multi-postes, charte d'usage, scénario de séance et modalités d'évaluation." />
+<meta name="description" content="Chapitre 2 du guide IA native : le concept de skill, anatomie d'un skill, exemples enseignant et particulier, écosystème de skills, bibliothèque de prompts, radioguidage d'une autre personne." />
 <style>
   :root{
     --bleu:#1b3a63;
@@ -41,9 +41,12 @@
   p{margin:.6em 0}
   code{background:#eef2f7;padding:.08em .35em;border-radius:3px;font-size:.92em;font-family:"SF Mono",Consolas,"Liberation Mono",monospace;color:#0e2c52}
   pre{background:#0f1f33;color:#e8eef7;padding:14px 16px;border-radius:8px;overflow-x:auto;font-size:.86em;line-height:1.5;font-family:"SF Mono",Consolas,monospace;position:relative}
+  pre .cmt{color:#7d92ad;font-style:italic}
+  pre .acc{color:#ffb38a}
   .copy-btn{position:absolute;top:8px;right:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:.75em;padding:3px 8px;border-radius:4px;cursor:pointer;font-family:inherit}
   .copy-btn:hover{background:var(--orange);border-color:var(--orange)}
 
+  /* Layout */
   header.cover{
     background:linear-gradient(135deg,#0e2447 0%,var(--bleu) 55%,#2a5586 100%);
     color:#fff;padding:38px 48px 32px 48px;position:relative;overflow:hidden;
@@ -55,7 +58,6 @@
   .school-band{
     font-size:.78em;letter-spacing:.18em;text-transform:uppercase;opacity:.85;font-weight:600;
   }
-  .school-band .num{background:var(--orange);color:#fff;padding:2px 9px;border-radius:3px;margin-right:9px;letter-spacing:.05em}
   .cover h1{color:#fff;font-size:2.4em;margin:.2em 0 .15em 0;max-width:780px;line-height:1.15}
   .cover .sub{font-size:1.1em;max-width:780px;opacity:.95}
   .meta{margin-top:18px;font-size:.85em;opacity:.85;display:flex;gap:24px;flex-wrap:wrap}
@@ -63,6 +65,7 @@
 
   main{max-width:980px;margin:0 auto;padding:24px 36px 60px 36px}
 
+  /* TOC */
   nav.toc{
     background:var(--gris-fond);border:1px solid var(--gris-bord);border-left:4px solid var(--orange);
     padding:16px 22px;border-radius:6px;margin:24px 0 12px 0;
@@ -72,6 +75,7 @@
   nav.toc li{margin:.25em 0;break-inside:avoid}
   nav.toc a{text-decoration:none}
 
+  /* Encadrés */
   .callout{padding:14px 18px;border-radius:6px;margin:14px 0;border-left:4px solid;font-size:.95em}
   .callout p:first-child{margin-top:0}
   .callout p:last-child{margin-bottom:0}
@@ -82,12 +86,24 @@
   .callout.danger{background:#fbe9e7;border-color:var(--rouge)}
   .callout strong.tag{display:inline-block;font-size:.75em;text-transform:uppercase;letter-spacing:.08em;background:rgba(0,0,0,.06);padding:1px 7px;border-radius:3px;margin-right:6px;vertical-align:1px}
 
+  /* Tableau comparatif */
   table.cmp{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em}
   table.cmp th,table.cmp td{border:1px solid var(--gris-bord);padding:9px 11px;vertical-align:top;text-align:left}
   table.cmp thead th{background:var(--bleu);color:#fff;font-family:"Trebuchet MS",sans-serif}
   table.cmp tbody tr:nth-child(odd){background:#fafbfd}
   table.cmp td.crit{font-weight:600;color:var(--bleu);background:#eef2f7 !important;width:22%}
+  .badge{display:inline-block;padding:1px 7px;border-radius:10px;font-size:.78em;font-weight:600}
+  .b-ok{background:#d9f0e2;color:#1e6b3e}
+  .b-mid{background:#fff0d6;color:#8a5a00}
+  .b-no{background:#fadcd9;color:#a02a1c}
 
+  /* Schéma skill */
+  .skill-tree{font-family:"SF Mono",Consolas,monospace;font-size:.88em;background:#0f1f33;color:#e8eef7;padding:14px 18px;border-radius:8px;line-height:1.65}
+  .skill-tree .dir{color:#ffb38a}
+  .skill-tree .file{color:#d2e6ff}
+  .skill-tree .cmt{color:#7d92ad}
+
+  /* Étapes numérotées */
   ol.steps{counter-reset:step;list-style:none;padding-left:0;margin:14px 0}
   ol.steps>li{counter-increment:step;position:relative;padding:8px 0 8px 46px;margin:6px 0;border-bottom:1px dashed var(--gris-bord)}
   ol.steps>li:last-child{border-bottom:none}
@@ -99,30 +115,28 @@
     font-family:"Trebuchet MS",sans-serif;
   }
 
-  .schema-flow{display:flex;align-items:stretch;gap:8px;margin:14px 0;flex-wrap:wrap}
-  .schema-flow .node{flex:1;min-width:140px;background:#fff;border:1px solid var(--gris-bord);border-top:3px solid var(--bleu);padding:10px;border-radius:4px;font-size:.88em;text-align:center}
-  .schema-flow .node b{display:block;color:var(--bleu);font-family:"Trebuchet MS",sans-serif;margin-bottom:3px}
-  .schema-flow .arrow{display:flex;align-items:center;color:var(--orange);font-size:1.6em;font-weight:700}
+  /* Grid prompts */
+  .prompts{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+  .prompt-card{background:#fff;border:1px solid var(--gris-bord);border-top:3px solid var(--orange);padding:12px 14px;border-radius:4px}
+  .prompt-card h4{margin:0 0 6px 0;font-size:.85em}
+  .prompt-card .ex{font-size:.85em;background:var(--gris-fond);padding:8px 10px;border-radius:4px;margin-top:6px;border-left:2px solid var(--bleu-clair);font-family:"SF Mono",Consolas,monospace}
 
-  .charte{
-    background:#fff;border:2px solid var(--bleu);border-radius:8px;padding:18px 22px;margin:16px 0;
-    position:relative;
-  }
-  .charte::before{
-    content:"CHARTE";position:absolute;top:-12px;left:18px;background:var(--bleu);color:#fff;
-    padding:3px 12px;font-family:"Trebuchet MS",sans-serif;font-size:.78em;letter-spacing:.15em;border-radius:2px;
-  }
-  .charte h4{margin-top:.6em;color:var(--bleu);text-transform:none;letter-spacing:0;font-size:1em;font-family:"Trebuchet MS",sans-serif}
-  .charte ul{margin:.3em 0;padding-left:22px}
-  .charte .sign{margin-top:14px;display:flex;gap:30px;font-size:.9em;color:var(--gris-texte)}
-  .charte .sign div{flex:1;border-top:1px solid var(--gris-bord);padding-top:6px}
-
-  .seance{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;margin:14px 0;background:var(--gris-fond);padding:14px 18px;border-radius:6px;border-left:4px solid var(--orange)}
-  .seance .phase{font-weight:700;color:var(--bleu);font-family:"Trebuchet MS",sans-serif;white-space:nowrap}
-
+  /* Liens ressources */
   .links{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;margin:10px 0}
   .links a{padding:6px 0;border-bottom:1px dotted var(--gris-bord);display:block}
 
+  /* Bouton de téléchargement / transition */
+  .dl-box{display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:#eef4fb;border:1px solid #2c5a8f;border-radius:8px;padding:16px 20px;margin:16px 0}
+  .dl-box .txt{flex:1;min-width:240px}
+  .dl-box .txt strong{font-family:"Trebuchet MS","Segoe UI",sans-serif;font-size:1.05em;color:var(--bleu)}
+  .dl-box .txt span{font-size:.92em;color:var(--gris-texte)}
+  .dl-box a.dl{background:var(--bleu);color:#fff;font-family:"Trebuchet MS","Segoe UI",sans-serif;font-weight:700;padding:10px 22px;border-radius:6px;white-space:nowrap;text-decoration:none}
+  .dl-box a.dl:hover{background:var(--orange)}
+  .next-cta{text-align:center;margin:22px 0}
+  .next-cta a{display:inline-block;background:var(--orange);color:#fff;font-family:"Trebuchet MS","Segoe UI",sans-serif;font-weight:700;font-size:1.05em;padding:13px 26px;border-radius:8px;text-decoration:none}
+  .next-cta a:hover{background:var(--bleu)}
+
+  /* Footer */
   footer{margin-top:40px;padding:20px 36px;background:var(--bleu);color:#fff;font-size:.85em;text-align:center}
   footer a{color:#ffd4bf}
 
@@ -137,6 +151,13 @@
   a.glossary-link:hover{color:var(--orange);text-decoration-color:var(--orange)}
   @media print{a.glossary-link{color:inherit;text-decoration:none}}
 
+  /* Mini schema cycle */
+  .schema-flow{display:flex;align-items:stretch;gap:8px;margin:14px 0;flex-wrap:wrap}
+  .schema-flow .node{flex:1;min-width:140px;background:#fff;border:1px solid var(--gris-bord);border-top:3px solid var(--bleu);padding:10px;border-radius:4px;font-size:.88em;text-align:center}
+  .schema-flow .node b{display:block;color:var(--bleu);font-family:"Trebuchet MS",sans-serif;margin-bottom:3px}
+  .schema-flow .arrow{display:flex;align-items:center;color:var(--orange);font-size:1.6em;font-weight:700}
+
+  /* Page numbering pour le PDF */
   @media print{
     @page{size:A4;margin:14mm 14mm 16mm 14mm}
     body{font-size:12pt;line-height:1.5}
@@ -146,7 +167,7 @@
     h2{font-size:1.3em;margin-top:1em}
     h3{font-size:1.1em}
     pre{font-size:9.5pt;page-break-inside:avoid}
-    .callout,table.cmp,.charte,.seance,.schema-flow,ol.steps>li{page-break-inside:avoid}
+    .callout,table.cmp,.skill-tree,.prompts,.schema-flow,ol.steps>li,.dl-box{page-break-inside:avoid}
     nav.toc ol{columns:2}
     .copy-btn{display:none}
     a{color:var(--bleu);text-decoration:underline}
@@ -160,41 +181,342 @@
 <button class="back-btn" onclick="if(history.length>1){history.back()}else{window.location.href='index.html'}" title="Revenir à la page précédente">← Retour</button>
 
 <header class="cover">
-  <div class="school-band"><span class="num">Chapitre 2</span>Document de travail — diffusion libre</div>
-  <h1>Transformer son IA native en assistant pédagogique</h1>
-  <div class="sub">Cadrer, coupler à un skill matière, déployer en classe, évaluer. Pour enseignants, CPE, AESH et formateurs.</div>
+  <div class="school-band"><span style="background:var(--orange);color:#fff;padding:2px 9px;border-radius:3px;margin-right:9px;letter-spacing:.05em">Chapitre 2</span>Document de travail — diffusion libre</div>
+  <h1>Personnaliser votre IA avec des skills</h1>
+  <div class="sub">Le concept qui transforme une IA générique en collègue de discipline. Un savoir-faire capturé une fois, exploitable mille fois, partageable par simple copie de dossier.</div>
   <div class="meta">
     <span><b>Auteur·</b> F. Henninot</span>
-    <span><b>Public·</b> profs, CPE, AESH, formateurs</span>
-    <span><b>Prérequis·</b> avoir terminé le Chapitre 1</span>
+    <span><b>Public·</b> enseignants &amp; particuliers, sans prérequis technique</span>
+    <span><b>Prérequis·</b> Chapitre 1 (IA native installée)</span>
     <span><b>Version·</b> mai 2026</span>
   </div>
 </header>
 
 <main>
 
-<div class="callout warn">
-  <p><strong class="tag">Statut</strong> Document de travail à caractère exploratoire, sans valeur officielle. Ne se substitue ni aux préconisations académiques ni au cadre fixé par chaque établissement. Suite directe du <a href="index.html">Chapitre 1 — installation de l'IA native</a> : la maîtrise des notions de modèle, de skill et d'interface y est supposée acquise.</p>
-</div>
+<a href="presentation.html" class="cta-presentation" style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:#fff1ea;border:1px solid #ff6b35;border-radius:8px;padding:14px 20px;margin:6px 0 20px 0;text-decoration:none;color:#1b3a63">
+  <span style="font-size:1.7em;line-height:1">📖</span>
+  <span style="flex:1;min-width:220px">
+    <strong style="font-family:'Trebuchet MS','Segoe UI',sans-serif;font-size:1.05em">À lire avant de commencer — Présentation du guide</strong><br>
+    <span style="font-size:.92em;color:#3a3f47">Le cadre, la posture et le mode d'emploi : ce qu'est ce guide, ce qu'il n'est pas, et comment s'en servir sans rester seul·e devant son écran.</span>
+  </span>
+  <span style="background:#ff6b35;color:#fff;font-family:'Trebuchet MS','Segoe UI',sans-serif;font-weight:700;padding:9px 20px;border-radius:6px;white-space:nowrap">Ouvrir →</span>
+</a>
 
-<div class="callout tip">
-  <p><strong class="tag">Mode d'emploi du guide — à lire en premier</strong> Ce chapitre est conçu pour être <strong>donné à une IA cloud</strong> (Claude, ChatGPT, Gemini, Mistral Le Chat — celle que vous utilisez déjà). Vous le lui transmettez en pièce jointe ou par copier-coller, et vous lui demandez de devenir <strong>votre assistant de mise en œuvre</strong>. Pas besoin de tout faire seul·e : l'IA générale lit ce document à votre place et vous radio-guide pas à pas, accepte vos captures d'écran, diagnostique vos erreurs. Le prompt ci-dessous active ce mode. <strong>Pas encore d'IA cloud ?</strong> Voir l'encart juste après. <strong>Un mot vous bloque ?</strong> Le <a href="glossaire.html">glossaire</a> donne la définition accessible de tous les termes techniques.</p>
+<div class="callout warn">
+  <p><strong class="tag">Statut</strong> Document de travail à caractère exploratoire, sans valeur officielle. Suite du <a href="index.html">Chapitre 1</a> : l'IA locale doit être installée et fonctionnelle pour exécuter ce chapitre.</p>
 </div>
 
 <div class="callout info">
-  <p><strong class="tag">Pas encore d'IA cloud ? Créer un compte en 2 minutes</strong></p>
-  <p>Quatre services principaux. Compte gratuit, <strong>une simple adresse mail suffit</strong>, aucune carte bancaire pour la version gratuite. Choisissez celui que vous préférez — vous pourrez toujours en changer.</p>
-  <p>Plusieurs IA cloud peuvent servir de radio-guide. Le choix dépendra de vos habitudes, des accès disponibles et du cadre fixé par votre établissement.</p>
-  <ul style="margin:.3em 0 .3em 1.2em">
-    <li><strong>ChatGPT</strong> — <a href="https://chat.openai.com">chat.openai.com</a>. Le plus connu, très polyvalent. Éditeur : OpenAI (US).</li>
-    <li><strong>Claude</strong> — <a href="https://claude.ai">claude.ai</a>. Bon support des pièces jointes et des captures d'écran. Éditeur : Anthropic (US).</li>
-    <li><strong>Gemini</strong> — <a href="https://gemini.google.com">gemini.google.com</a>. L'IA de Google. Connexion directe via votre compte Google si vous en avez un.</li>
-    <li><strong>Mistral Le Chat</strong> — <a href="https://chat.mistral.ai">chat.mistral.ai</a>. Éditeur français, à privilégier pour qui souhaite un acteur européen.</li>
-  </ul>
-  <p style="font-size:.92em;font-style:italic;color:var(--gris-texte);opacity:.85"><strong>Note de l'auteur.</strong> À titre personnel, j'ai obtenu de bons résultats avec Claude pour le radio-guidage technique. Cette préférence est à éprouver soi-même ; tous les outils listés ci-dessus sont adaptés à la tâche.</p>
-  <p><strong>Cadre RGPD — important.</strong> Ces services hébergent vos conversations sur leurs serveurs (États-Unis ou UE selon l'éditeur). C'est pourquoi on les utilise <strong>uniquement pour la configuration</strong> (installation, écriture de skills, débogage technique). <strong>Jamais</strong> pour traiter des données d'élèves, de famille, de patients, de santé, ou tout contenu personnel identifiable. Une conversation d'installation parle de fichiers, de commandes, de logiciels — pas de personnes. C'est précisément l'usage à risque minimal de ces services cloud.</p>
+  <p><strong class="tag">Mode d'emploi de ce chapitre</strong> Ce document est conçu pour être <strong>lu d'abord</strong>, puis <strong>exécuté avec l'aide d'une IA cloud</strong> (Claude, ChatGPT, Gemini, Mistral Le Chat). Lisez le chapitre en entier pour comprendre l'esprit. À la fin (<a href="#radio-guidage">section 11</a>), vous trouverez le <strong>radio-guidage</strong> : un prompt à coller dans votre IA cloud habituelle, et un fichier à joindre. L'IA prend alors le relais et vous accompagne pas à pas dans l'exécution.</p>
+  <p style="margin-top:.6em;padding-top:.6em;border-top:1px dashed rgba(0,0,0,.15)"><strong>⚠ N'allez pas directement à l'action.</strong> Lisez le chapitre d'abord — c'est en comprenant <em>ce qu'est</em> un skill et <em>pourquoi</em> il change tout que vous écrirez le vôtre correctement. Le téléchargement du fichier <code>.md</code> et le prompt à coller sont rassemblés à la fin, dans la <a href="#radio-guidage">section 11</a>.</p>
+  <p style="margin-top:.6em;padding-top:.6em;border-top:1px dashed rgba(0,0,0,.15)"><strong>Un mot vous bloque ?</strong> Le <a href="glossaire.html">glossaire</a> est en lien permanent en bas de page. <strong>Le radio-guidage, c'est quoi au juste ?</strong> La page <a href="radio-guidage.html">Radio-guidage</a> l'explique une fois pour toutes.</p>
 </div>
 
+<nav class="toc" id="sommaire">
+  <h3>Sommaire</h3>
+  <ol>
+    <li><a href="#preambule">Préambule — pourquoi un chapitre dédié aux skills</a></li>
+    <li><a href="#quoi">Qu'est-ce qu'un skill, simplement ?</a></li>
+    <li><a href="#anatomie">Anatomie d'un skill</a></li>
+    <li><a href="#exemple-a">Exemple A — skill enseignant</a></li>
+    <li><a href="#exemple-b">Exemple B — skill particulier</a></li>
+    <li><a href="#pourquoi">Pourquoi ça change tout</a></li>
+    <li><a href="#description">Anatomie de la description — le bon déclenchement</a></li>
+    <li><a href="#ecosysteme">Construire son écosystème de skills</a></li>
+    <li><a href="#prompts">Bibliothèque de prompts — exemples</a></li>
+    <li><a href="#radioguider">Radioguider une autre personne — la méthode</a></li>
+    <li><a href="#radio-guidage"><strong>Radio-guidage — écrire son premier skill avec une IA cloud</strong></a></li>
+    <li><a href="#et-maintenant">Vous savez créer des skills. Et maintenant ?</a></li>
+    <li><a href="#ressources">Ressources et liens</a></li>
+  </ol>
+</nav>
+
+<!-- ========== 1 PREAMBULE ========== -->
+<section id="preambule">
+<h2>1. Préambule — pourquoi un chapitre dédié aux skills</h2>
+
+<p>Au <a href="index.html">Chapitre 1</a>, vous avez installé une IA locale. Elle fonctionne, elle parle, elle raisonne. Mais elle est encore <strong>générique</strong> : elle ne connaît rien de vous, de votre métier, de vos contraintes. Vous lui réexpliquez tout à chaque conversation.</p>
+
+<p>La grille de lecture en 4 briques du Chapitre 1 le disait : interface, moteur, modèle… et <strong>skills</strong>. Les trois premières briques sont standard, identiques pour tout le monde. La quatrième fait toute la différence. <strong>Un modèle moyen avec d'excellents skills bat un modèle excellent sans contexte.</strong> Ce chapitre est entièrement consacré à cette quatrième brique.</p>
+
+<div class="callout tip">
+  <p><strong class="tag">Ce que vous saurez faire en sortie</strong> Écrire un skill à partir d'une tâche que vous faites chaque semaine, le faire mobiliser automatiquement par votre IA locale, le tester et l'ajuster — puis construire, par accumulation, un véritable écosystème de skills qui couvre vos tâches récurrentes. Le tout transférable à un collègue par simple copie de dossier.</p>
+</div>
+
+<div class="callout info">
+  <p><strong class="tag">Aucun prérequis technique nouveau</strong> Un skill, c'est un fichier texte. Si vous savez écrire dans un traitement de texte et copier un dossier, vous savez écrire un skill. La seule exigence : avoir une IA locale fonctionnelle (Chapitre 1).</p>
+</div>
+</section>
+
+<!-- ========== 2 QUOI ========== -->
+<section id="quoi">
+<h2>2. Qu'est-ce qu'un skill, simplement ?</h2>
+
+<div class="callout info" style="font-size:.9em">
+  <p><strong class="tag">Précision de vocabulaire</strong> Dans ce guide, le mot <strong>« skill »</strong> est utilisé au sens large : un ensemble d'instructions, de documents et de règles qui spécialisent l'IA pour un usage métier. Le terme vient à l'origine d'Anthropic (Claude), mais le concept est universel. Selon l'outil utilisé, on parlera aussi de <em>system prompt</em>, <em>modèle personnalisé</em>, <em>Modelfile</em> (Ollama), <em>workspace</em> ou <em>base documentaire (RAG)</em> — c'est la même idée.</p>
+</div>
+
+<p>Un <strong>skill</strong> (« compétence », « savoir-faire ») est un <strong>dossier</strong> qui contient un fichier texte décrivant à l'IA : <em>quand</em> elle doit s'en servir, <em>comment</em> elle doit s'en servir, et <em>avec quoi</em>. Une fois ce dossier déposé au bon endroit, l'IA le mobilise automatiquement dès qu'elle reconnaît un déclencheur. Vous n'avez plus à tout réexpliquer à chaque conversation.</p>
+
+<div class="callout tip">
+  <p><strong class="tag">Analogie</strong> Un skill, c'est <strong>la fiche de poste</strong> qu'on remet à un nouveau collaborateur. Ce nouveau collaborateur, ici, c'est l'IA. Vous l'écrivez une fois, elle s'en sert mille fois, et vous pouvez la transmettre à quelqu'un d'autre par simple copie du dossier.</p>
+</div>
+</section>
+
+<!-- ========== 3 ANATOMIE ========== -->
+<section id="anatomie">
+<h2>3. Anatomie d'un skill</h2>
+<div class="skill-tree">
+<span class="dir">mon-skill/</span>
+├── <span class="file">SKILL.md</span>           <span class="cmt"># Le fichier principal — instructions à l'IA</span>
+├── <span class="dir">references/</span>      <span class="cmt"># (optionnel) docs que l'IA peut consulter</span>
+│   └── <span class="file">bareme.md</span>
+└── <span class="dir">assets/</span>          <span class="cmt"># (optionnel) modèles, gabarits</span>
+    └── <span class="file">modele.docx</span>
+</div>
+
+<p>Le fichier <code>SKILL.md</code> commence par un en-tête (« frontmatter ») YAML, puis des instructions en français courant. Voici deux exemples concrets — un côté enseignant, un côté particulier — pour montrer que <strong>le format est exactement le même</strong>, seul le contenu change.</p>
+</section>
+
+<!-- ========== 4 EXEMPLE A ========== -->
+<section id="exemple-a">
+<h2>4. Exemple A — skill enseignant</h2>
+<p><em>Rédiger automatiquement une appréciation de bulletin trimestriel à partir de quelques notes et observations.</em></p>
+<pre><button class="copy-btn">copier</button>---
+name: appreciation-bulletin
+description: À partir de notes brutes, observations et postures observées en
+  classe, rédige une appréciation de bulletin équilibrée, formulée à la
+  troisième personne, sans jugement personnel, en 2 à 4 phrases. Utiliser
+  dès que l'utilisateur évoque "appréciation", "bulletin", "synthèse
+  trimestrielle", "commentaire de notes".
+---
+
+# Appréciation de bulletin — protocole personnel
+
+## Quand utiliser ce skill
+Dès que l'utilisateur fournit un nom d'élève, des notes ou des
+observations, et demande une appréciation à coller dans un bulletin.
+
+## Règles de rédaction
+- 2 à 4 phrases maximum.
+- Toujours commencer par un constat factuel (jamais un jugement).
+- Citer un point d'effort observé, puis un axe de progrès concret.
+- Aucun nom propre dans la formulation (sauf prénom si demandé).
+- Vocabulaire bienveillant mais honnête. Pas de "doit faire plus
+  d'efforts" sec — préférer "gagnerait à mobiliser davantage...".
+
+## Étapes
+1. Lire les notes et observations fournies.
+2. Identifier UN point fort réel et UN axe de progrès concret.
+3. Composer 3 phrases : constat / point fort / axe de progrès.
+4. Relire pour bannir tout jugement de valeur sur la personne.</pre>
+</section>
+
+<!-- ========== 5 EXEMPLE B ========== -->
+<section id="exemple-b">
+<h2>5. Exemple B — skill particulier</h2>
+<p><em>Proposer chaque dimanche des menus de la semaine adaptés aux contraintes de la famille.</em></p>
+<pre><button class="copy-btn">copier</button>---
+name: menus-famille-semaine
+description: Propose 7 dîners équilibrés pour la semaine, adaptés aux
+  contraintes alimentaires de la famille (allergies, goûts, budget),
+  avec liste de courses regroupée par rayon. Utiliser dès que l'utilisateur
+  évoque "menus de la semaine", "que cuisiner", "liste de courses",
+  "planning repas".
+---
+
+# Menus de la semaine — protocole famille
+
+## Profil famille (à adapter)
+- 2 adultes, 2 enfants (8 et 11 ans).
+- Allergie aux fruits à coque.
+- Pas de porc.
+- Budget course raisonnable (autour de 100 €/semaine).
+- Le mercredi midi, repas plus simple (enfants à la maison).
+
+## Quand utiliser ce skill
+Toute demande de planification des repas de la semaine ou de
+préparation de liste de courses.
+
+## Règles de proposition
+- Toujours 7 dîners (lundi à dimanche).
+- Au moins 2 repas végétariens dans la semaine.
+- 1 plat "facile" le vendredi soir (jour fatigué).
+- Privilégier les légumes de saison.
+- Aucun ingrédient interdit ne doit apparaître.
+
+## Format de sortie
+Un tableau Jour / Plat / Temps de préparation, puis une liste
+de courses regroupée par rayon (frais, sec, légumes, boucherie).</pre>
+</section>
+
+<!-- ========== 6 POURQUOI ========== -->
+<section id="pourquoi">
+<h2>6. Pourquoi ça change tout</h2>
+<p>Sans skill, à chaque session je dois <strong>tout réexpliquer</strong> au modèle : qui je suis, quel format je veux, quelles sont mes contraintes. C'est fatigant, la qualité dépend de ma vigilance, et un détail oublié donne un résultat à côté.</p>
+
+<p>Avec un skill correctement écrit, l'IA <strong>se déclenche d'elle-même</strong> dès qu'elle reconnaît un déclencheur dans ma demande. Le skill devient une <em>extension cognitive</em> : un savoir-faire capturé une fois, exploitable mille fois, partageable par simple copie de dossier.</p>
+</section>
+
+<!-- ========== 7 DESCRIPTION ========== -->
+<section id="description">
+<h2>7. Anatomie de la description — le bon déclenchement</h2>
+<p>Le champ <code>description</code> du frontmatter est <strong>capital</strong>. C'est lui qui décide si l'IA mobilise le skill ou non. Il doit énumérer explicitement les formulations utilisateur qui doivent déclencher le skill. Exemple :</p>
+<pre>description: Rédige un support de cours complet au format établissement
+  (template 9 sections, 1500 mots min). Utiliser dès que l'utilisateur
+  évoque "rédiger un cours", "préparer une fiche d'exercice", "construire
+  une séance", "préparer un TP", même sans mentionner explicitement le skill.</pre>
+</section>
+
+<div class="page-break"></div>
+
+<!-- ========== 8 ECOSYSTEME ========== -->
+<section id="ecosysteme">
+<h2>8. Construire son écosystème de skills</h2>
+
+<p>On n'a pas <em>un</em> skill, on en a une demi-douzaine qui couvrent les tâches récurrentes. Voici deux écosystèmes types — un côté enseignant, un côté particulier — qui servent de modèles.</p>
+
+<h3>8.1. Écosystème type enseignant</h3>
+<table class="cmp">
+  <thead><tr><th>Skill</th><th>Rôle</th><th>Déclencheurs typiques</th></tr></thead>
+  <tbody>
+    <tr><td class="crit">contexte-classe</td><td>Cadre permanent : niveaux enseignés, public, charte graphique, contraintes pédagogiques</td><td>chargé en arrière-plan</td></tr>
+    <tr><td class="crit">appreciation-bulletin</td><td>Rédaction d'appréciations équilibrées à partir de notes et observations</td><td>« appréciation », « bulletin », « synthèse trimestrielle »</td></tr>
+    <tr><td class="crit">redaction-cours</td><td>Production d'un support de cours au format établissement</td><td>« rédige une fiche », « prépare une séance »</td></tr>
+    <tr><td class="crit">differenciation</td><td>3 versions calibrées d'un exercice (consolidation / standard / approfondissement)</td><td>« différencier », « 3 niveaux »</td></tr>
+    <tr><td class="crit">mail-parents</td><td>Reformulation d'un mail à un parent dans un ton mesuré, professionnel</td><td>« mail aux parents », « répondre poliment »</td></tr>
+    <tr><td class="crit">cahier-de-texte</td><td>Récit de séance → fiche prête à coller dans l'ENT</td><td>« cahier de texte », « ce que j'ai fait en classe »</td></tr>
+  </tbody>
+</table>
+
+<h3>8.2. Écosystème type particulier</h3>
+<table class="cmp">
+  <thead><tr><th>Skill</th><th>Rôle</th><th>Déclencheurs typiques</th></tr></thead>
+  <tbody>
+    <tr><td class="crit">contexte-famille</td><td>Profil famille permanent : composition, allergies, contraintes, budget</td><td>chargé en arrière-plan</td></tr>
+    <tr><td class="crit">menus-semaine</td><td>7 dîners équilibrés + liste de courses regroupée par rayon</td><td>« menus », « liste de courses », « planning repas »</td></tr>
+    <tr><td class="crit">courriers-admin</td><td>Lettres administratives (résiliation, réclamation, demande) au format normalisé</td><td>« écris une lettre à », « rédige un courrier »</td></tr>
+    <tr><td class="crit">budget-mensuel</td><td>Catégorisation et synthèse à partir d'un relevé bancaire (en local, jamais cloud)</td><td>« mes dépenses », « catégoriser »</td></tr>
+    <tr><td class="crit">recettes-de-saison</td><td>Idées de recettes adaptées aux légumes de saison et au temps disponible</td><td>« quoi cuisiner », « recette rapide »</td></tr>
+    <tr><td class="crit">vacances-organisation</td><td>Planification d'un séjour : checklist, itinéraire, valise</td><td>« préparer un voyage », « checklist vacances »</td></tr>
+  </tbody>
+</table>
+
+<h3>8.3. Méthode de construction — la même pour tous</h3>
+<p>L'écosystème se construit <strong>par accumulation</strong>, jamais d'un bloc :</p>
+<ol>
+  <li>Repérer une tâche que je fais <strong>plus d'une fois par semaine</strong>.</li>
+  <li>La faire une fois <em>avec</em> l'IA, en notant ce que je dois lui réexpliquer à chaque session.</li>
+  <li>Capturer ces explications dans un <code>SKILL.md</code> brouillon.</li>
+  <li>Tester sur 2 à 3 cas réels. Ajuster.</li>
+  <li>Geler la version, la nommer, la verser dans le dossier <code>skills/</code>.</li>
+</ol>
+</section>
+
+<!-- ========== 9 PROMPTS ========== -->
+<section id="prompts">
+<h2>9. Bibliothèque de prompts — exemples</h2>
+
+<p>Six exemples — trois côté enseignant, trois côté particulier — à copier-coller, ajuster, observer. <strong>Ces prompts fonctionnent même sans skill installé</strong> : ils servent de modèles pour comprendre comment formuler une demande efficace, et de point de départ pour rédiger le skill correspondant.</p>
+
+<h3>Côté enseignant</h3>
+<div class="prompts">
+  <div class="prompt-card">
+    <h4>Rédiger une appréciation</h4>
+    <p>Synthèse de bulletin équilibrée.</p>
+    <div class="ex">Rédige une appréciation de bulletin pour un élève de 3e en mathématiques. Notes : 12, 9, 14, 11. Observations : participe à l'oral, manque de rigueur à l'écrit, progrès en géométrie. 3 phrases max, ton bienveillant et factuel.</div>
+  </div>
+  <div class="prompt-card">
+    <h4>Différencier un exercice</h4>
+    <p>3 versions calibrées.</p>
+    <div class="ex">Voici un exercice de [discipline] : [coller l'énoncé]. Produis 3 versions : consolidation (élève fragile), standard (cœur de classe), approfondissement (élève autonome). Même objectif d'apprentissage, niveaux d'aide différents.</div>
+  </div>
+  <div class="prompt-card">
+    <h4>Reformuler un mail aux parents</h4>
+    <p>Ton mesuré, professionnel.</p>
+    <div class="ex">Reformule ce mail à un parent dans un ton calme, factuel, sans accusation, en proposant un rendez-vous. Texte initial : [coller]. Objectif : obtenir un échange constructif, pas envenimer.</div>
+  </div>
+</div>
+
+<h3>Côté particulier</h3>
+<div class="prompts">
+  <div class="prompt-card">
+    <h4>Menus de la semaine</h4>
+    <p>7 dîners + liste de courses.</p>
+    <div class="ex">Propose 7 dîners pour la semaine. Famille de 4 (2 adultes, 2 enfants de 8 et 11 ans). Pas de fruits à coque (allergie). Budget course raisonnable. Au moins 2 repas végé. Présente : tableau jour/plat, puis liste de courses par rayon.</div>
+  </div>
+  <div class="prompt-card">
+    <h4>Lettre de résiliation</h4>
+    <p>Courrier administratif normalisé.</p>
+    <div class="ex">Rédige une lettre de résiliation de contrat d'assurance habitation, échéance dans 2 mois, motif : déménagement. Ton formel mais courtois. Avec bloc adresse et formule de politesse standard. Format A4 prêt à imprimer.</div>
+  </div>
+  <div class="prompt-card">
+    <h4>Préparer un voyage</h4>
+    <p>Checklist + valise + itinéraire.</p>
+    <div class="ex">Je pars 5 jours à Lisbonne en mai avec mon conjoint. Aide-moi à préparer : checklist administrative (documents, billets), liste valise saison, idées d'itinéraire jour par jour avec un musée et une promenade à pied chaque jour.</div>
+  </div>
+</div>
+</section>
+
+<div class="page-break"></div>
+
+<!-- ========== 10 RADIOGUIDER ========== -->
+<section id="radioguider">
+<h2>10. Radioguider une autre personne — la méthode</h2>
+
+<p>Le but de ce guide n'est pas de produire un expert en IA, c'est de permettre à toute personne — collègue, conjoint, parent — d'<strong>atteindre l'autonomie opérationnelle</strong> en quelques heures. La séquence proposée tient en quatre demi-journées étalées sur deux semaines.</p>
+
+<ol class="steps">
+  <li>
+    <strong>J1 — Cadrage et installation radioguidée (2 h)</strong>
+    <p>Lecture rapide des sections 1 à 3 du <a href="index.html">Chapitre 1</a> (le « pourquoi »). Ouverture de <a href="https://claude.ai">claude.ai</a> ou ChatGPT. Téléchargement du fichier du Chapitre 1, puis copier-coller du <strong>prompt du radio-guidage (Chapitre 1, §8)</strong>. Suivre les questions/étapes, envoyer des captures d'écran en cas de blocage. Sortie : Ollama installé, un modèle téléchargé, premier dialogue qui répond. Objectif : <em>« ça parle »</em>.</p>
+  </li>
+  <li>
+    <strong>J2 — Premier usage utile (2 h)</strong>
+    <p>Un cas réel choisi par la personne : reformuler un mail délicat, préparer un planning, expliquer une notion, organiser une checklist. On constate la valeur de l'outil <em>avant</em> d'écrire le moindre skill.</p>
+  </li>
+  <li>
+    <strong>J3 — Écriture du premier skill (3 h)</strong>
+    <p>Choisir <strong>une seule tâche</strong> récurrente. Rédiger un <code>SKILL.md</code> minimal (frontmatter + 30 lignes), inspiré des exemples (<a href="#exemple-a">§4</a> et <a href="#exemple-b">§5</a>). Tester sur 3 cas. C'est la marche la plus exigeante. Le mentor doit être disponible.</p>
+  </li>
+  <li>
+    <strong>J4 — Autonomie et écosystème (2 h)</strong>
+    <p>La personne a un skill qui marche. Elle en écrit un deuxième seule. Elle connaît la procédure et sait où trouver les ressources. Le radioguidage est terminé.</p>
+  </li>
+</ol>
+
+<div class="callout ok">
+  <p><strong class="tag">Indicateur de réussite</strong> Au bout de ces quatre étapes, la personne doit être capable de produire <strong>de mémoire</strong> un skill nouveau pour une tâche qu'elle choisit elle-même. Si ce n'est pas le cas, on reprend J3 sur un cas plus simple.</p>
+</div>
+</section>
+
+<div class="page-break"></div>
+
+<!-- ========== 11 RADIO-GUIDAGE ========== -->
+<section id="radio-guidage">
+<h2>11. Radio-guidage — écrire son premier skill avec une IA cloud</h2>
+
+<p>Vous avez lu le chapitre, vous comprenez ce qu'est un skill et pourquoi il change tout. Voici l'outil pour <strong>écrire le vôtre</strong> : un prompt à coller dans une IA cloud, qui devient votre assistant patient et vous accompagne étape par étape — du choix de la tâche au skill testé et ajusté.</p>
+
+<h3>11.1. Marche à suivre</h3>
+<ol class="steps">
+  <li><strong>Téléchargez le fichier du chapitre</strong> au format Markdown (bouton ci-dessous).</li>
+  <li><strong>Ouvrez une nouvelle conversation</strong> avec votre IA cloud habituelle — Claude, ChatGPT, Gemini ou Mistral Le Chat, peu importe.</li>
+  <li><strong>Joignez le fichier <code>.md</code></strong> à la conversation.</li>
+  <li><strong>Copiez-collez le prompt ci-dessous</strong> et envoyez-le.</li>
+  <li><strong>Suivez les questions de l'IA</strong>, une étape à la fois. Le skill que vous écrivez ne contient pas de données personnelles — c'est un fichier d'instructions.</li>
+</ol>
+
+<div class="dl-box">
+  <span class="txt">
+    <strong>Le document à joindre à votre IA</strong><br>
+    <span>Ce chapitre au format Markdown — un fichier texte léger, idéal à donner à une IA cloud : bien moins de « tokens » qu'un PDF, et mieux structuré pour elle.</span>
+  </span>
+  <a href="chapitre-2.md" download class="dl">Télécharger le chapitre (.md)</a>
+</div>
+
+<h3>11.2. Le prompt à copier</h3>
 <pre><button class="copy-btn">copier</button>Tu es mon assistant de mise en œuvre pour le document que je viens
 de te transmettre. Je l'ai parcouru mais je ne suis PAS développeur
 ni informaticien. J'ai besoin que tu deviennes mon radio-guide.
@@ -230,434 +552,80 @@ RÈGLES ANTI-DÉRIVE — appris du terrain
    utilisateur néophyte, un modèle plus capable (Sonnet, GPT-4o,
    Gemini Pro) serait plus fiable. Veux-tu continuer ou basculer ?"
 
-PREMIÈRE ÉTAPE OBLIGATOIRE — VÉRIFIER LA COMPATIBILITÉ MATÉRIELLE
-AVANT TOUTE recommandation d'installation, tu vérifies que ma
-machine peut faire tourner une IA locale décemment. Tu procèdes
-ainsi :
+OBJECTIF FINAL
+Écrire mon premier skill personnel et le tester avec succès. À la
+fin de cette session, j'aurai :
+- Un dossier `mon-premier-skill/` avec un fichier `SKILL.md`
+  contenant un frontmatter YAML (name, description) et des
+  instructions claires en français.
+- Le skill mobilisé automatiquement par mon IA locale dès que je
+  formule une demande qui correspond à sa description.
+- Trois tests réussis sur trois cas concrets de mon choix.
 
-a) Demande-moi si je sais trouver les caractéristiques de mon PC
-   (RAM, processeur, carte graphique, OS, type de mémoire).
-   Si non, guide-moi pas à pas pour les récupérer :
-   - Windows : Démarrer → tape "dxdiag" → Entrée. Demande-moi
-     de copier-coller le résultat. Ou : Paramètres → Système
-     → Informations système.
-   - macOS : Menu Apple → À propos de ce Mac. Demande capture
-     d'écran complète.
-   - Linux : commandes "uname -a", "free -h", "lscpu" dans
-     un terminal, et "lspci | grep -i vga" pour la carte
-     graphique. Demande-moi de coller la sortie.
+PREMIÈRE ÉTAPE OBLIGATOIRE — DIAGNOSTIC PRÉALABLE
+a) Vérifie que j'ai bien une IA locale fonctionnelle (issue du
+   Chapitre 1). Si non, oriente-moi vers le Chapitre 1.
+b) Demande-moi quelle tâche récurrente je fais plus d'une fois
+   par semaine et que je voudrais déléguer à l'IA. Exemples
+   typiques : rédiger une appréciation de bulletin, préparer un
+   menu de la semaine, structurer un mail à un parent, reformuler
+   une consigne.
+c) À partir de ma réponse, aide-moi à formuler le skill : choix
+   du nom, rédaction de la description (déclencheurs),
+   structuration des règles, format de sortie attendu.
+d) Accompagne-moi dans le test sur 3 cas réels et l'ajustement du
+   skill jusqu'à ce qu'il produise un résultat satisfaisant.
 
-b) ÉVALUE la machine à partir des informations reçues :
-   - Très ancien (RAM < 8 Go, DDR2/DDR3 lent, pas de GPU,
-     processeur < 8e génération Intel) : DÉCONSEILLE l'IA
-     locale lourde. Propose un modèle 3B-4B très léger, OU
-     suggère de continuer avec une IA cloud en cadrant le RGPD,
-     OU d'attendre un renouvellement de matériel.
-   - Standard (8-16 Go RAM, CPU récent, pas de GPU dédié) :
-     recommande Llama 3.1 8B ou Mistral 7B (quantifiés).
-     PAS de Gemma 12B, PAS de modèle 70B.
-   - Confortable (16-32 Go RAM + GPU 8 Go VRAM, ou Mac Apple
-     Silicon M1+) : Gemma 3 12B devient pertinent.
-   - Puissant (32 Go+, GPU 16 Go+ VRAM) : modèles plus gros
-     possibles.
-
-c) Adapte aussi le choix LM Studio vs Ollama+Open WebUI selon
-   mon niveau d'aisance déclaré. LM Studio si néophyte total ;
-   Ollama+Open WebUI si à l'aise.
-
-d) NE PROPOSE PAS d'étape concrète d'installation avant d'avoir
-   validé ces points avec moi. C'est ton garde-fou principal :
-   ne JAMAIS faire installer une IA lourde sur une machine qui
-   ne suivra pas — ça se solde toujours par un abandon.
-
-ENSUITE SEULEMENT
-- Demande-moi où j'en suis dans le document (section, chantier).
-- Propose la première action concrète, une seule, et attends.
+Ne PROPOSE PAS d'écrire un skill avant d'avoir validé que l'IA
+locale tourne et identifié une tâche concrète à automatiser.
 
 Le document est ci-joint / ci-dessus. Commence par tes questions.</pre>
 
-<div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:#eef4fb;border:1px solid #2c5a8f;border-radius:8px;padding:16px 20px;margin:16px 0">
-  <span style="flex:1;min-width:240px">
-    <strong style="font-family:'Trebuchet MS','Segoe UI',sans-serif;font-size:1.05em;color:#1b3a63">Le document à joindre à votre IA</strong><br>
-    <span style="font-size:.92em;color:#3a3f47">Téléchargez ce chapitre au format Markdown — un fichier texte léger, idéal à donner à une IA cloud : bien moins de « tokens » qu'un PDF, et mieux structuré pour elle. Joignez-le à votre conversation avec le prompt ci-dessus.</span>
-  </span>
-  <a href="chapitre-2.md" download style="background:#1b3a63;color:#fff;font-family:'Trebuchet MS','Segoe UI',sans-serif;font-weight:700;padding:10px 22px;border-radius:6px;white-space:nowrap;text-decoration:none">Télécharger le chapitre (.md)</a>
-</div>
-
-<nav class="toc" id="sommaire">
-  <h3>Sommaire</h3>
-  <ol>
-    <li><a href="#preambule">Changement de nature — du prof-utilisateur à l'élève-utilisateur</a></li>
-    <li><a href="#enjeux">Les enjeux propres au tutorat IA</a></li>
-    <li><a href="#architecture">Architecture d'un chatbot pédagogique</a></li>
-    <li><a href="#system-prompt">Le system prompt — l'art du cadrage</a></li>
-    <li><a href="#couplage-skill">Coupler avec un skill matière</a></li>
-    <li><a href="#voix">L'IA qui parle et qui écoute — la voix</a></li>
-    <li><a href="#multipostes">Configuration multi-postes — 1 PC pour toute la salle</a></li>
-    <li><a href="#charte">Charte d'usage élève — modèle prêt à imprimer</a></li>
-    <li><a href="#seance">Scénario d'une séance type</a></li>
-    <li><a href="#evaluation">Évaluation et progression</a></li>
-    <li><a href="#pieges">Pièges et garde-fous</a></li>
-    <li><a href="#ressources">Ressources et liens</a></li>
-  </ol>
-</nav>
-
-<!-- 1 -->
-<section id="preambule">
-<h2>1. Changement de nature — du prof-utilisateur à l'élève-utilisateur</h2>
-
-<p>Au Chapitre 1, l'IA est un assistant <em>du prof</em>. Le prof prompte, le prof contrôle, le prof valide. L'élève ne sait même pas que l'IA existe. C'est l'usage le plus simple, le plus sûr, et c'est celui qui rapporte le plus de gain de temps direct.</p>
-
-<p>Le Chapitre 2 propose un saut : l'IA devient un assistant <em>de l'élève</em>. L'élève prompte, l'IA répond, le prof cadre. <strong>La nature de l'outil change radicalement</strong> : on passe d'un usage privé à un usage public, d'un acte productif à un acte éducatif, d'une responsabilité technique à une responsabilité pédagogique.</p>
-
 <div class="callout info">
-  <p><strong class="tag">À qui s'adresse ce chapitre</strong> Enseignants toutes disciplines, mais aussi CPE (entretiens d'écoute, prévention), AESH (adaptation aux profils DYS/TDAH, médiation cognitive), formateurs (CFA, GRETA, formation continue), parents-coéducateurs. La mécanique est la même ; seuls le cadrage et les contenus varient.</p>
-</div>
-
-<p>Ce chapitre suppose acquis l'écosystème du Chapitre 1 : Ollama installé, Open WebUI accessible, au moins un modèle téléchargé, premiers skills créés. Tout ce qui suit se construit <strong>dans Open WebUI</strong>, sans installation supplémentaire.</p>
-</section>
-
-<!-- 2 -->
-<section id="enjeux">
-<h2>2. Les enjeux propres au tutorat IA</h2>
-
-<p>Trois enjeux deviennent vitaux dès qu'un élève dialogue directement avec l'IA. Les nommer dès le départ, sinon le projet déraille en silence.</p>
-
-<h3>2.1. L'hallucination devient un ennemi pédagogique</h3>
-<p>Quand l'IA invente une réponse pour le prof, le prof la repère et l'écarte. Quand l'IA invente une réponse pour l'élève, l'élève la prend pour argent comptant et l'apprend. <strong>C'est une dégradation de l'enseignement</strong>, pas un simple bug technique. La règle absolue à inscrire dans le system prompt : <em>en cas de doute, l'IA dit « je ne suis pas certain·e, vérifie avec ton professeur »</em>. Jamais d'invention plausible.</p>
-
-<h3>2.2. La posture pédagogique inverse l'instinct du modèle</h3>
-<p>Les IA conversationnelles sont entraînées à <strong>donner la réponse</strong>, vite et bien. C'est exactement le contraire de la posture d'un tuteur : un bon tuteur fait <em>chercher</em>, pose des questions, laisse l'élève achopper, ne sauve la situation qu'en dernier recours. Le system prompt doit <strong>contre-balancer l'instinct du modèle</strong> en explicitant la posture socratique. Si on ne le fait pas, l'IA balance la solution à la première question, et tout le travail cognitif de l'élève est court-circuité.</p>
-
-<h3>2.3. RGPD côté élève — la conservation des logs</h3>
-<p>Open WebUI enregistre par défaut <strong>toutes les conversations</strong> sur le disque du poste enseignant. Ces conversations contiennent des productions d'élèves, des hésitations, parfois des éléments personnels qu'ils ont confiés. Tant que tout reste local, il n'y a pas de transfert hors UE — donc pas de problème côté RGPD article 28. Mais <strong>la conservation et la durée de stockage deviennent votre responsabilité</strong>. À cadrer dans la charte numérique de l'établissement : qui peut accéder, combien de temps on conserve, comment l'élève peut demander l'effacement.</p>
-
-<div class="callout warn">
-  <p><strong class="tag">Trois questions à se poser avant de déployer</strong></p>
-  <ol style="margin:.3em 0 .2em 1.2em">
-    <li>Mon system prompt interdit-il <em>explicitement</em> l'invention et la réponse directe ?</li>
-    <li>Ai-je informé l'élève (et selon l'âge ses responsables légaux) que ses échanges sont conservés localement ?</li>
-    <li>Ai-je une durée de conservation et une procédure d'effacement écrites ?</li>
-  </ol>
+  <p><strong class="tag">Le radio-guidage en détail</strong> Création d'un compte IA cloud, choix du modèle (Sonnet / GPT-4o / Gemini Pro / Mistral Large — pas les versions ultra-légères), les neuf règles du radio-guide expliquées, les trois phrases pour recadrer une IA qui dérape, les bonnes pratiques pendant la séance, et les trois cas où le radio-guidage par IA ne suffit pas : tout est rassemblé une fois pour toutes sur la page <a href="radio-guidage.html"><strong>Radio-guidage</strong></a>.</p>
 </div>
 </section>
 
-<!-- 3 -->
-<section id="architecture">
-<h2>3. Architecture d'un chatbot pédagogique</h2>
+<!-- ========== 12 ET MAINTENANT ========== -->
+<section id="et-maintenant">
+<h2>12. Vous savez créer des skills. Et maintenant ?</h2>
 
-<p>Un chatbot pédagogique, c'est quatre briques empilées. Chacune se règle indépendamment, ce qui rend le résultat ajustable au cas par cas.</p>
+<p>Vous avez compris le concept de skill, écrit votre premier skill, structuré un écosystème. Votre IA personnelle est maintenant calibrée sur votre travail.</p>
 
-<div class="schema-flow">
-  <div class="node"><b>Modèle</b>Gemma 3, Llama, Mistral…</div>
-  <div class="arrow">+</div>
-  <div class="node"><b>System prompt</b>La posture, les règles, le ton</div>
-  <div class="arrow">+</div>
-  <div class="node"><b>Skill matière</b>Référentiel, barème, exemples</div>
-  <div class="arrow">+</div>
-  <div class="node"><b>Interface</b>Texte, voix, multi-postes</div>
-</div>
+<p>Le <strong>Chapitre 3</strong> explore une autre dimension : utiliser cette IA non plus seulement pour <em>vous</em>, mais comme <strong>assistant pédagogique pour vos élèves</strong>. C'est un saut de nature, pas juste de degré — on passe d'un usage privé à un usage public, d'une responsabilité technique à une responsabilité éducative.</p>
 
-<p>Dans Open WebUI, ces quatre éléments se combinent dans un objet appelé <strong>« Model »</strong> (modèle personnalisé). Pour le créer : <em>Workspace → Models → + Create new model</em>. Vous donnez un nom (« M. Frigori — tuteur CAP IFCA », « La prof de français — relecture », « Tuteur de révision SEGPA »…), une icône, un modèle de base, un system prompt, et vous attachez un ou plusieurs skills. Les élèves sélectionnent ce model dans le menu déroulant. <strong>Aucune programmation</strong> : tout passe par des champs texte dans l'interface.</p>
-
-<div class="callout tip">
-  <p><strong class="tag">Le levier essentiel</strong> 90 % de la qualité d'un chatbot pédagogique se joue dans le <strong>system prompt</strong>. Un excellent system prompt sur un modèle moyen bat largement un mauvais system prompt sur un modèle excellent. C'est l'endroit où l'enseignant injecte sa pédagogie.</p>
+<div class="next-cta">
+  <a href="chapitre-3.html">Chapitre 3 — Transformer son IA native en assistant pédagogique →</a>
 </div>
 </section>
 
-<div class="page-break"></div>
-
-<!-- 4 -->
-<section id="system-prompt">
-<h2>4. Le system prompt — l'art du cadrage</h2>
-
-<h3>4.1. Les sept règles d'or</h3>
-<p>Un system prompt pédagogique solide tient en sept règles. Elles sont à adapter à la matière, mais elles structurent tous les bons cadrages :</p>
-
-<ol style="margin:.4em 0 .4em 1.5em">
-  <li><strong>Identité claire.</strong> « Tu es [rôle] pour des [public] en [niveau]. »</li>
-  <li><strong>Posture socratique.</strong> « Tu ne donnes JAMAIS la réponse directement. Tu poses une question qui guide. »</li>
-  <li><strong>Tolérance à l'erreur.</strong> « Quand l'élève se trompe, tu valorises l'essai avant de réorienter. »</li>
-  <li><strong>Niveau de langue cadré.</strong> « Phrases courtes. Vocabulaire accessible. Tu vouvoies / tu tutoies. »</li>
-  <li><strong>Interdiction d'inventer.</strong> « Si tu n'es pas certain·e d'une valeur, d'une règle, d'une norme : tu dis « à vérifier avec votre professeur ». Jamais d'invention. »</li>
-  <li><strong>Cadre du sujet.</strong> « Tu réponds uniquement aux questions liées à [matière]. Pour le reste, tu rediriges. »</li>
-  <li><strong>Sortie de cadre.</strong> « Si l'élève évoque un mal-être, une situation personnelle préoccupante, tu sors du jeu de rôle, tu invites à en parler à un adulte de confiance, et tu rappelles que tu n'es pas un humain. »</li>
-</ol>
-
-<h3>4.2. Anatomie d'un system prompt commenté</h3>
-<p>Exemple complet pour un tuteur de révision transversal. À adapter par n'importe quel enseignant à sa discipline.</p>
-
-<pre><button class="copy-btn">copier</button>Tu es un tuteur de révision pour des élèves de 3e en mathématiques.
-
-POSTURE
-- Tu ne donnes JAMAIS la réponse directement à un exercice.
-- Tu poses une question qui aide l'élève à avancer d'UN pas.
-- Tu attends la réponse de l'élève avant de poursuivre.
-- Si l'élève se trompe : tu valorises ce qui est correct dans son
-  raisonnement avant de pointer ce qui ne va pas.
-- Si l'élève bloque vraiment après 2 tentatives : tu redonnes UN
-  indice supplémentaire, pas la solution complète.
-
-NIVEAU DE LANGUE
-- Tu vouvoies systématiquement.
-- Phrases courtes. Une idée par phrase.
-- Vocabulaire de 3e. Pas d'acronyme sans explication.
-- Tu peux écrire des formules mathématiques simples.
-
-INTERDICTION D'INVENTER
-- Si tu n'es pas certain·e d'un théorème, d'une formule, d'une règle :
-  tu écris "à vérifier dans votre manuel ou avec votre professeur".
-- Jamais une valeur, une date, une référence inventée.
-
-CADRE DU SUJET
-- Tu réponds uniquement aux questions de mathématiques niveau 3e.
-- Pour les autres matières : "ce n'est pas mon domaine, demande à
-  ton tuteur de [matière]".
-
-SORTIE DU JEU DE RÔLE
-- Si l'élève évoque un mal-être, une situation difficile, du
-  harcèlement : tu sors immédiatement du rôle de tuteur, tu dis
-  "ce que tu me dis est important, parles-en à un adulte en qui
-  tu as confiance (CPE, infirmière scolaire, parent)" et tu
-  rappelles que tu es un programme, pas un humain.
-
-DÉMARRAGE
-Quand l'élève arrive, salue-le. Demande-lui sur quel chapitre il
-veut travailler. Ne commence pas tant qu'il n'a pas répondu.</pre>
-
-<div class="callout info">
-  <p><strong class="tag">Adapter selon le rôle</strong> Pour un <strong>AESH</strong>, ajouter une consigne d'adaptation cognitive (« phrases de 12 mots maximum, une consigne à la fois, pas de double tâche »). Pour un <strong>CPE</strong> sur un module d'écoute, supprimer la posture socratique mathématique et la remplacer par une posture d'écoute active. Pour un <strong>formateur en CFA</strong>, raccrocher au métier et au geste professionnel plutôt qu'au seul savoir académique.</p>
-</div>
-</section>
-
-<!-- 5 -->
-<section id="couplage-skill">
-<h2>5. Coupler avec un skill matière</h2>
-
-<p>Le system prompt fixe la <em>posture</em>. Le skill apporte le <em>contenu</em> : référentiel précis de la matière, barème de l'enseignant, exemples canoniques de productions attendues, lexique métier. C'est l'addition des deux qui rend le tuteur crédible.</p>
-
-<p>Concrètement, dans Open WebUI : créer un model personnalisé, coller le system prompt dans le champ « System », puis dans « Knowledge » attacher les documents qui constituent le skill (référentiel.md, barème.md, exemples.md). À chaque question de l'élève, l'IA consulte automatiquement ces documents avant de répondre. <strong>Les hallucinations chutent drastiquement</strong> dès qu'un skill bien fait est connecté.</p>
-
-<table class="cmp">
-<thead><tr><th>Tuteur cible</th><th>Skill à attacher (exemple)</th></tr></thead>
-<tbody>
-<tr><td class="crit">Tuteur maths 3e</td><td>Programme officiel cycle 4, formulaire de référence, 10 exercices types corrigés avec commentaires</td></tr>
-<tr><td class="crit">Tuteur français 2de</td><td>Programme 2de, fiches méthode (commentaire, dissertation), 5 textes étudiés en classe</td></tr>
-<tr><td class="crit">Tuteur révision CAP IFCA</td><td>Référentiel CAP IFCA, lexique métier, schémas de cycle frigorifique annotés</td></tr>
-<tr><td class="crit">Module d'écoute CPE</td><td>Charte d'écoute active, protocole de signalement, ressources externes (3018, 3020…)</td></tr>
-<tr><td class="crit">Compagnon AESH</td><td>Adaptations cognitives par profil (TDAH, DYS, TSA), reformulations types, signaux d'alerte</td></tr>
-</tbody>
-</table>
-</section>
-
-<!-- 6 -->
-<section id="voix">
-<h2>6. L'IA qui parle et qui écoute — la voix</h2>
-
-<p>Open WebUI sait depuis 2024 transformer la voix de l'élève en texte (entrée micro) et lire ses réponses à voix haute (sortie audio). C'est un atout majeur pour les élèves <strong>DYS</strong> (qui parlent normalement mais peinent à l'écrit) et pour les <strong>jeunes élèves de CAP</strong> souvent plus à l'aise à l'oral.</p>
-
-<p>Pour activer, dans Open WebUI : <em>Settings → Audio</em>. Choisir un moteur de reconnaissance vocale (Whisper en local, gratuit) et un moteur de synthèse vocale (les voix natives du navigateur fonctionnent, ou Piper pour plus de qualité). Une icône micro apparaît dans la zone de saisie de chaque conversation.</p>
-
-<div class="callout info">
-  <p><strong class="tag">À savoir</strong> Whisper en local demande un peu de puissance — sur un PC modeste, comptez 5 à 10 secondes pour transcrire une phrase. Sur Mac Apple Silicon ou PC avec carte graphique, c'est quasi instantané. Pour la sortie voix, les voix natives du navigateur sont gratuites et suffisantes pour démarrer. La qualité « professionnelle » (Piper et équivalents) demande quelques minutes de configuration supplémentaire — à voir avec votre référent numérique si besoin.</p>
-</div>
-</section>
-
-<div class="page-break"></div>
-
-<!-- 7 -->
-<section id="multipostes">
-<h2>7. Configuration multi-postes — 1 PC pour toute la salle</h2>
-
-<div class="callout danger">
-  <p><strong class="tag">Expérimentation encadrée — pas un déploiement ordinaire</strong></p>
-  <p>Cette configuration ne doit <strong>pas être mise en œuvre seul·e</strong> dans une salle de classe. Elle nécessite, dans cet ordre :</p>
-  <ol style="margin:.3em 0 .2em 1.2em">
-    <li>l'accord explicite du <strong>chef d'établissement</strong> ;</li>
-    <li>la validation du <strong>référent numérique d'établissement (RUPN)</strong> sur l'ouverture du port côté réseau pédagogique ;</li>
-    <li>l'avis du <strong>DPO académique</strong> si des données nominatives d'élèves transitent ;</li>
-    <li>une <strong>charte d'usage écrite</strong> intégrée au règlement intérieur ou aux pratiques de classe ;</li>
-    <li>l'<strong>information écrite des familles</strong> sur l'usage de l'outil et la conservation des traces.</li>
-  </ol>
-  <p>À défaut de ce cadre, l'usage doit rester <strong>strictement personnel à l'enseignant</strong>, sans connexion d'élèves. La section ci-après décrit la procédure technique uniquement à des fins d'expérimentation encadrée et de préparation pédagogique.</p>
-</div>
-
-<p>L'IA est installée sur un seul poste (votre poste enseignant ou un PC dédié à la salle). Les postes élèves y accèdent <strong>par le navigateur</strong>, via le réseau pédagogique local. Aucun logiciel à installer côté élève.</p>
-
-<ol class="steps">
-  <li>
-    <strong>Identifier l'adresse IP du poste enseignant.</strong>
-    <p>Sur Windows : touche Windows + R, taper <code>cmd</code>, Entrée, puis <code>ipconfig</code>. Repérer l'adresse IPv4 (format <code>192.168.x.x</code> ou <code>10.x.x.x</code>). Sur Mac : Préférences Système → Réseau, l'adresse est visible sous le Wi-Fi ou Ethernet actif.</p>
-  </li>
-  <li>
-    <strong>Vérifier que Open WebUI écoute sur le réseau, pas seulement en local.</strong>
-    <p>Par défaut Docker ouvre le port sur toutes les interfaces (<code>0.0.0.0:3000</code>). C'est ce qu'on veut. Le pare-feu Windows peut demander une autorisation au premier accès : autoriser sur le profil « Réseau privé » uniquement.</p>
-  </li>
-  <li>
-    <strong>Tester depuis un poste élève.</strong>
-    <p>Ouvrir le navigateur du poste élève. Saisir <code>http://[adresse-IP-prof]:3000</code> (par exemple <code>http://192.168.1.42:3000</code>). L'interface Open WebUI s'affiche. L'élève se crée un compte local ou utilise un compte partagé que vous avez préparé.</p>
-  </li>
-  <li>
-    <strong>Cadrer avec le référent numérique de l'établissement.</strong>
-    <p>L'ouverture d'un port sur le réseau pédagogique nécessite l'accord du <strong>référent numérique d'établissement (RUPN)</strong>. Question à anticiper : le filtrage réseau de l'académie peut bloquer les connexions HTTP non chiffrées (port 3000). Solutions possibles : activer HTTPS via reverse proxy, utiliser un réseau Wi-Fi pédagogique dédié, ou installer une instance par salle.</p>
-  </li>
-  <li>
-    <strong>Estimer la charge.</strong>
-    <p>Un PC bien équipé (32 Go RAM + GPU NVIDIA RTX 3060 ou Mac M2/M3) tient sans problème <strong>10 à 15 élèves simultanés</strong> sur un modèle Gemma 3 12B. Au-delà, prévoir une seconde machine ou un modèle plus léger.</p>
-  </li>
-</ol>
-
-<div class="callout danger">
-  <p><strong class="tag">Point de vigilance RGPD</strong> Dans une configuration multi-postes, les conversations de <strong>tous les élèves</strong> sont enregistrées sur le PC enseignant. À cadrer obligatoirement dans la charte numérique de l'établissement. Privilégier des comptes nominatifs (et non un compte commun) pour la traçabilité.</p>
-</div>
-</section>
-
-<!-- 8 -->
-<section id="charte">
-<h2>8. Charte d'usage élève — modèle prêt à imprimer</h2>
-
-<p>Document à distribuer à chaque élève avant la première utilisation. À adapter au niveau et à la matière. Le faire signer par l'élève et, pour les mineurs, par le responsable légal. Le conserver avec les pièces administratives de la classe.</p>
-
-<div class="charte">
-  <h4>Charte d'usage — assistant IA en classe</h4>
-  <p style="font-size:.9em"><em>Établissement / Classe / Année — à compléter</em></p>
-
-  <h4>Ce que l'assistant IA fait</h4>
-  <ul>
-    <li>Il m'aide à comprendre une notion en posant des questions.</li>
-    <li>Il me donne des indices pour avancer sur un exercice.</li>
-    <li>Il me dit quand je suis sur la bonne piste, quand je me trompe.</li>
-    <li>Il sait que je suis en classe de [niveau], en [matière].</li>
-  </ul>
-
-  <h4>Ce que l'assistant IA NE fait PAS</h4>
-  <ul>
-    <li>Il <strong>ne me donne pas les réponses</strong> directement.</li>
-    <li>Il ne remplace pas mon professeur.</li>
-    <li>Il peut se tromper — je vérifie toujours dans mon cours.</li>
-    <li>Il n'est pas un ami, ni un confident : c'est un programme.</li>
-  </ul>
-
-  <h4>Mes engagements</h4>
-  <ul>
-    <li>Je l'utilise <strong>quand le professeur me dit de l'utiliser</strong>, pas en dehors.</li>
-    <li>Je <strong>vérifie</strong> les informations qu'il me donne avant de les recopier.</li>
-    <li>Je <strong>signale</strong> à mon professeur toute réponse qui me paraît bizarre ou fausse.</li>
-    <li>Je ne lui confie pas de <strong>données personnelles</strong> sur moi, ma famille ou mes camarades.</li>
-    <li>Je traite l'assistant avec <strong>respect</strong> — pas d'insulte, pas de provocation.</li>
-  </ul>
-
-  <h4>Conservation des échanges</h4>
-  <p>Mes conversations sont enregistrées sur l'ordinateur du professeur, sans jamais sortir de l'établissement. Elles sont conservées <strong>[X semaines / mois]</strong>, puis supprimées. Je peux demander à mon professeur de supprimer un échange à tout moment.</p>
-
-  <div class="sign">
-    <div>Date :<br>Élève — Nom et signature :</div>
-    <div>Date :<br>Responsable légal — Nom et signature (mineurs) :</div>
-  </div>
-</div>
-</section>
-
-<!-- 9 -->
-<section id="seance">
-<h2>9. Scénario d'une séance type — 55 minutes</h2>
-
-<p>Première utilisation d'un chatbot pédagogique en classe entière. Modèle générique transposable à toutes les matières. <strong>Objectif</strong> : que l'élève sorte avec une idée claire de ce que l'IA peut et ne peut pas faire <em>pour son apprentissage</em>.</p>
-
-<div class="seance"><div class="phase">0 – 10 min</div><div><strong>Phase 1 — Cadrage</strong>. Le prof rappelle la charte. Distribue les codes d'accès. Demande aux élèves de se connecter et de choisir le model dédié dans le menu. Aucun échange avec l'IA pour l'instant — la machine s'allume, c'est tout.</div></div>
-
-<div class="seance"><div class="phase">10 – 15 min</div><div><strong>Phase 2 — Démonstration au tableau</strong>. Le prof projette son écran et fait <strong>deux dialogues</strong> avec l'IA : un qui marche bien (l'élève simulé bloque, l'IA aide intelligemment), un qui dérape (l'IA dit une bêtise, on la corrige). On nomme ce qui s'est passé.</div></div>
-
-<div class="seance"><div class="phase">15 – 35 min</div><div><strong>Phase 3 — Travail individuel ou en binôme</strong>. Sur un exercice précis, l'élève peut consulter l'IA comme tuteur. Consigne : <em>« vous notez à chaque fois que l'IA vous a vraiment aidé, et à chaque fois qu'elle s'est trompée ou que vous avez douté »</em>. Le prof circule, observe, ne réintervient pas sauf cas bloquant.</div></div>
-
-<div class="seance"><div class="phase">35 – 50 min</div><div><strong>Phase 4 — Mise en commun et retour critique</strong>. Tour de table : <em>« qu'est-ce que l'IA a bien fait ? mal fait ? avez-vous vérifié une de ses réponses ? est-ce qu'elle vous a donné directement la solution malgré la consigne ? »</em>. On capitalise les bons et les mauvais usages sur un paperboard / au tableau.</div></div>
-
-<div class="seance"><div class="phase">50 – 55 min</div><div><strong>Phase 5 — Synthèse et règle de classe</strong>. À partir des observations des élèves, on co-construit une <strong>règle d'usage spécifique à la classe</strong> qui complète la charte (ex. : « on note dans le cahier les indices reçus de l'IA, comme on noterait l'aide d'un camarade »).</div></div>
-
-<div class="callout ok">
-  <p><strong class="tag">Effet attendu</strong> L'élève sort de la séance avec deux choses : <strong>une compétence d'usage</strong> (savoir solliciter l'IA utilement) et <strong>une compétence critique</strong> (savoir douter d'une réponse, vérifier, signaler). C'est la base de toutes les séances suivantes.</p>
-</div>
-</section>
-
-<div class="page-break"></div>
-
-<!-- 10 -->
-<section id="evaluation">
-<h2>10. Évaluation et progression de l'élève</h2>
-
-<p>L'usage de l'IA devient progressivement <strong>une compétence évaluable en soi</strong>, transversale aux disciplines. Une grille de progression à quatre niveaux fonctionne dans la durée :</p>
-
-<table class="cmp">
-<thead><tr><th>Niveau</th><th>Indicateur</th><th>Observable concret</th></tr></thead>
-<tbody>
-<tr><td class="crit">N1 — Utilisation cadrée</td><td>L'élève sait utiliser l'IA <em>quand le prof le demande</em>, sur une tâche prescrite</td><td>Sollicite l'IA uniquement dans le cadre de l'exercice, respecte la charte</td></tr>
-<tr><td class="crit">N2 — Utilisation autonome</td><td>L'élève sait <em>identifier</em> quand l'IA peut l'aider et quand elle ne peut pas</td><td>« Là c'est une question de cours, je vais voir l'IA. Là c'est une opinion à donner, l'IA ne sert pas. »</td></tr>
-<tr><td class="crit">N3 — Utilisation critique</td><td>L'élève sait <em>juger</em> une réponse de l'IA, la vérifier, la nuancer</td><td>« L'IA m'a dit X, j'ai vérifié dans le cours, ce n'est pas exact. »</td></tr>
-<tr><td class="crit">N4 — Utilisation experte</td><td>L'élève sait <em>cadrer</em> l'IA (reformuler la consigne) et <em>tirer profit</em> du dialogue itératif</td><td>« Je lui ai redemandé en précisant le niveau, j'ai obtenu une explication plus utile. »</td></tr>
-</tbody>
-</table>
-
-<p>Ces quatre niveaux peuvent être positionnés sur le bulletin (compétence transversale « usage du numérique éducatif »), ou faire l'objet d'une fiche autonome qu'on partage avec l'équipe pédagogique. <strong>La trace des échanges</strong> (que l'élève peut exporter depuis Open WebUI) sert d'élément d'évaluation : un dialogue où l'élève a su rebondir, vérifier, reformuler, c'est un indicateur clair de niveau N3-N4.</p>
-
-<div class="callout info">
-  <p><strong class="tag">Articulation avec les attendus officiels</strong> Cette grille s'articule avec le <strong>CRCN</strong> (Cadre de Référence des Compétences Numériques) sur les domaines « Information et données » et « Création de contenus », et avec les <strong>compétences transversales</strong> du socle commun. À documenter dans le projet pédagogique de la discipline ou du niveau.</p>
-</div>
-</section>
-
-<!-- 11 -->
-<section id="pieges">
-<h2>11. Pièges et garde-fous</h2>
-
-<table class="cmp">
-<thead><tr><th>Piège</th><th>Effet</th><th>Garde-fou</th></tr></thead>
-<tbody>
-<tr><td class="crit">L'IA donne la solution malgré la consigne</td><td>L'élève recopie sans apprendre</td><td>Renforcer la règle 2 du system prompt. Tester avec 5 prompts d'élèves avant déploiement.</td></tr>
-<tr><td class="crit">L'élève vit l'IA comme un confident</td><td>Confidences sensibles, dérive émotionnelle</td><td>Règle 7 du system prompt (sortie de rôle). Rappels en séance. Vigilance prof.</td></tr>
-<tr><td class="crit">L'élève harcèle l'IA</td><td>Provocations, insultes, jeu de défi</td><td>L'IA reste polie mais n'entre pas dans le jeu. Le system prompt précise « si on m'insulte, je rappelle la charte et je propose de revenir au sujet ».</td></tr>
-<tr><td class="crit">Inégalité d'accès</td><td>Certains élèves très à l'aise prennent l'IA pour faire le travail</td><td>Travail en binôme imposé sur les premières séances. Trace des échanges relue par le prof.</td></tr>
-<tr><td class="crit">Saturation du PC</td><td>Lenteur insupportable en multi-postes</td><td>Plafonner à 10 élèves simultanés. Modèle plus léger en cas de besoin. Plan B papier prêt.</td></tr>
-<tr><td class="crit">Le prof ne vérifie pas les logs</td><td>Dérives invisibles</td><td>Routine de fin de séance : 5 min pour scanner 3 conversations au hasard.</td></tr>
-<tr><td class="crit">Conservation indéfinie des logs</td><td>Risque RGPD différé</td><td>Effacement programmé toutes les [X semaines]. À écrire dans la charte de l'établissement.</td></tr>
-</tbody>
-</table>
-</section>
-
-<!-- 12 -->
+<!-- ========== 13 RESSOURCES ========== -->
 <section id="ressources">
-<h2>12. Ressources et liens</h2>
+<h2>13. Ressources et liens</h2>
 
-<h3>Documentation Open WebUI</h3>
+<h3>Skills — documentation</h3>
 <div class="links">
-  <a href="https://docs.openwebui.com/features/workspace/models">Open WebUI — créer un modèle personnalisé</a>
-  <a href="https://docs.openwebui.com/features/workspace/knowledge">Open WebUI — Knowledge (attacher des fichiers)</a>
-  <a href="https://docs.openwebui.com/getting-started/advanced-topics/network-diagram">Open WebUI — configuration réseau / multi-postes</a>
-  <a href="https://docs.openwebui.com/tutorials/text-to-speech">Open WebUI — synthèse et reconnaissance vocales</a>
+  <a href="https://docs.anthropic.com/en/docs/build-with-claude/skills">Anthropic — Skills documentation</a>
+  <a href="https://github.com/anthropics/skills">GitHub anthropics/skills — exemples</a>
+  <a href="https://docs.openwebui.com/features/workspace/models">Open WebUI — modèles personnalisés</a>
+  <a href="https://github.com/ollama/ollama/blob/main/docs/modelfile.md">Ollama — Modelfile (équivalent skill)</a>
 </div>
 
-<h3>Reconnaissance et synthèse vocale</h3>
+<h3>Markdown et YAML — pour écrire ses skills</h3>
 <div class="links">
-  <a href="https://github.com/openai/whisper">Whisper — reconnaissance vocale open source (OpenAI)</a>
-  <a href="https://github.com/rhasspy/piper">Piper — synthèse vocale légère et locale</a>
-</div>
-
-<h3>Cadre institutionnel et pédagogique</h3>
-<div class="links">
-  <a href="https://eduscol.education.fr/3776/le-crcn-cadre-de-reference-des-competences-numeriques">Eduscol — CRCN, cadre de référence des compétences numériques</a>
-  <a href="https://www.education.gouv.fr/cadre-d-usage-de-l-intelligence-artificielle-en-education-422171">MEN — cadre d'usage de l'IA en éducation</a>
-  <a href="https://www.cnil.fr/fr/intelligence-artificielle">CNIL — Intelligence artificielle</a>
-  <a href="https://www.education.gouv.fr/la-protection-des-donnees-personnelles-12598">MEN — protection des données personnelles</a>
-</div>
-
-<h3>Ressources pour profils spécifiques</h3>
-<div class="links">
-  <a href="https://www.education.gouv.fr/scolarisation-des-eleves-en-situation-de-handicap-1219">MEN — scolarisation handicap (AESH)</a>
-  <a href="https://www.3018.fr/">3018 — violences numériques (ressource élèves)</a>
-  <a href="https://www.3020.fr/">3020 — non au harcèlement</a>
+  <a href="https://www.markdownguide.org/cheat-sheet/">Markdown — antisèche</a>
+  <a href="https://yaml.org/spec/1.2.2/">YAML — spécification du frontmatter</a>
 </div>
 
 <div class="callout tip">
-  <p><strong class="tag">Suite du guide</strong> <a href="chapitre-3.html"><strong>Chapitre 3 — Optimiser son Obsidian</strong></a> : construire une mémoire long-terme, brancher l'IA dessus, transformer un référentiel en skill, gérer le suivi élève sans double saisie et piloter le pivot CSV avec Charlemagne Pro.</p>
+  <p><strong class="tag">Suite du guide</strong></p>
+  <ul style="margin:.3em 0 .2em 1.2em">
+    <li><a href="index.html"><strong>Chapitre 1 — Installer une IA native</strong></a> : le prérequis de ce chapitre.</li>
+    <li><a href="chapitre-3.html"><strong>Chapitre 3 — Transformer son IA native en assistant pédagogique</strong></a> : system prompt, couplage skill matière, multi-postes, charte d'usage, scénario de séance, évaluation.</li>
+    <li><a href="chapitre-4.html"><strong>Chapitre 4 — Optimiser son Obsidian</strong></a> : architecture du vault, branchement IA, conversion de l'existant, suivi élève sans double saisie.</li>
+    <li><a href="radio-guidage.html"><strong>Annexe — Radio-guidage</strong></a> : la méthode commune à tous les chapitres, expliquée une fois pour toutes.</li>
+  </ul>
 </div>
-
 </section>
 
 </main>
@@ -665,11 +633,12 @@ veut travailler. Ne commence pas tant qu'il n'a pas répondu.</pre>
 <footer>
   F. Henninot · mai 2026 · Chapitre 2 du guide IA native · Document de travail ·
   <a href="mailto:fr.henninot@gmail.com">fr.henninot@gmail.com</a> ·
-  <a href="index.html">← Chapitre 1</a> · <a href="chapitre-3.html">Chapitre 3 →</a> · <a href="glossaire.html">Glossaire</a>
+  <a href="index.html">← Chapitre 1</a> · <a href="chapitre-3.html">Chapitre 3 →</a> · <a href="chapitre-4.html">Chapitre 4</a> · <a href="radio-guidage.html">Radio-guidage</a> · <a href="glossaire.html">Glossaire</a>
 </footer>
 
 <script src="glossary-linker.js"></script>
 <script>
+  // Boutons "copier" sur les blocs de code
   document.querySelectorAll('pre .copy-btn').forEach(btn => {
     btn.addEventListener('click', e => {
       e.preventDefault();

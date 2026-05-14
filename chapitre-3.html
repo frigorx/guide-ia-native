@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Chapitre 3 — Optimiser son Obsidian, construire une mémoire long-terme et la brancher à l'IA</title>
+<title>Chapitre 2 — Transformer son IA native en assistant pédagogique pour les élèves</title>
 <meta name="author" content="F. Henninot — document de travail" />
-<meta name="description" content="Chapitre 3 du guide IA native : structurer son vault Obsidian par couches, brancher une IA locale sur ses notes, convertir l'existant en lot, organiser le suivi élève avec export CSV vers les outils institutionnels." />
+<meta name="description" content="Chapitre 2 du guide IA native : transformer son installation locale en chatbot pédagogique pour les élèves. Cadrage du system prompt, couplage avec un skill matière, déploiement multi-postes, charte d'usage, scénario de séance et modalités d'évaluation." />
 <style>
   :root{
     --bleu:#1b3a63;
@@ -22,7 +22,15 @@
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{margin:0;font-family:"Calibri","Carlito","Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.65;color:var(--gris-texte);background:#fff;text-align:left}
+  body{
+    margin:0;
+    font-family:"Calibri","Carlito","Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    color:var(--gris-texte);
+    background:#fff;
+    text-align:left;
+  }
   a{color:var(--bleu);text-decoration:underline;text-decoration-color:rgba(27,58,99,.35);text-underline-offset:2px}
   a:hover{color:var(--orange);text-decoration-color:var(--orange)}
   h1,h2,h3,h4{font-family:"Trebuchet MS","Segoe UI",sans-serif;color:var(--bleu);line-height:1.25;margin:0 0 .5em 0}
@@ -36,18 +44,29 @@
   .copy-btn{position:absolute;top:8px;right:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:.75em;padding:3px 8px;border-radius:4px;cursor:pointer;font-family:inherit}
   .copy-btn:hover{background:var(--orange);border-color:var(--orange)}
 
-  header.cover{background:linear-gradient(135deg,#0e2447 0%,var(--bleu) 55%,#2a5586 100%);color:#fff;padding:38px 48px 32px 48px;position:relative;overflow:hidden}
-  header.cover::after{content:"";position:absolute;right:-60px;top:-60px;width:340px;height:340px;background:radial-gradient(circle, rgba(255,107,53,.55) 0%, rgba(255,107,53,0) 70%)}
-  .school-band{font-size:.78em;letter-spacing:.18em;text-transform:uppercase;opacity:.85;font-weight:600}
+  header.cover{
+    background:linear-gradient(135deg,#0e2447 0%,var(--bleu) 55%,#2a5586 100%);
+    color:#fff;padding:38px 48px 32px 48px;position:relative;overflow:hidden;
+  }
+  header.cover::after{
+    content:"";position:absolute;right:-60px;top:-60px;width:340px;height:340px;
+    background:radial-gradient(circle, rgba(255,107,53,.55) 0%, rgba(255,107,53,0) 70%);
+  }
+  .school-band{
+    font-size:.78em;letter-spacing:.18em;text-transform:uppercase;opacity:.85;font-weight:600;
+  }
   .school-band .num{background:var(--orange);color:#fff;padding:2px 9px;border-radius:3px;margin-right:9px;letter-spacing:.05em}
-  .cover h1{color:#fff;font-size:2.4em;margin:.2em 0 .15em 0;max-width:820px;line-height:1.15}
-  .cover .sub{font-size:1.1em;max-width:820px;opacity:.95}
+  .cover h1{color:#fff;font-size:2.4em;margin:.2em 0 .15em 0;max-width:780px;line-height:1.15}
+  .cover .sub{font-size:1.1em;max-width:780px;opacity:.95}
   .meta{margin-top:18px;font-size:.85em;opacity:.85;display:flex;gap:24px;flex-wrap:wrap}
   .meta b{color:var(--orange)}
 
   main{max-width:980px;margin:0 auto;padding:24px 36px 60px 36px}
 
-  nav.toc{background:var(--gris-fond);border:1px solid var(--gris-bord);border-left:4px solid var(--orange);padding:16px 22px;border-radius:6px;margin:24px 0 12px 0}
+  nav.toc{
+    background:var(--gris-fond);border:1px solid var(--gris-bord);border-left:4px solid var(--orange);
+    padding:16px 22px;border-radius:6px;margin:24px 0 12px 0;
+  }
   nav.toc h3{margin:0 0 .4em 0;color:var(--bleu)}
   nav.toc ol{margin:0;padding-left:22px;columns:2;column-gap:30px}
   nav.toc li{margin:.25em 0;break-inside:avoid}
@@ -72,19 +91,34 @@
   ol.steps{counter-reset:step;list-style:none;padding-left:0;margin:14px 0}
   ol.steps>li{counter-increment:step;position:relative;padding:8px 0 8px 46px;margin:6px 0;border-bottom:1px dashed var(--gris-bord)}
   ol.steps>li:last-child{border-bottom:none}
-  ol.steps>li::before{content:counter(step);position:absolute;left:0;top:8px;width:32px;height:32px;border-radius:50%;background:var(--orange);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:"Trebuchet MS",sans-serif}
+  ol.steps>li::before{
+    content:counter(step);position:absolute;left:0;top:8px;
+    width:32px;height:32px;border-radius:50%;
+    background:var(--orange);color:#fff;font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+    font-family:"Trebuchet MS",sans-serif;
+  }
 
-  .vault-tree{font-family:"SF Mono",Consolas,monospace;font-size:.88em;background:#0f1f33;color:#e8eef7;padding:14px 18px;border-radius:8px;line-height:1.65}
-  .vault-tree .dir{color:#ffb38a}
-  .vault-tree .file{color:#d2e6ff}
-  .vault-tree .cmt{color:#7d92ad;font-style:italic}
-  .vault-tree .layer{color:#88d4a7;font-weight:700}
+  .schema-flow{display:flex;align-items:stretch;gap:8px;margin:14px 0;flex-wrap:wrap}
+  .schema-flow .node{flex:1;min-width:140px;background:#fff;border:1px solid var(--gris-bord);border-top:3px solid var(--bleu);padding:10px;border-radius:4px;font-size:.88em;text-align:center}
+  .schema-flow .node b{display:block;color:var(--bleu);font-family:"Trebuchet MS",sans-serif;margin-bottom:3px}
+  .schema-flow .arrow{display:flex;align-items:center;color:var(--orange);font-size:1.6em;font-weight:700}
 
-  .layers{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
-  .layer-card{background:#fff;border:1px solid var(--gris-bord);border-left:4px solid var(--orange);padding:12px 14px;border-radius:4px}
-  .layer-card h4{margin:0 0 4px 0;color:var(--bleu);font-size:.95em;text-transform:none;letter-spacing:0;font-family:"Trebuchet MS",sans-serif}
-  .layer-card .layer-num{display:inline-block;background:var(--bleu);color:#fff;font-family:"SF Mono",monospace;font-size:.78em;padding:1px 7px;border-radius:3px;margin-right:6px}
-  .layer-card .layer-desc{font-size:.88em;color:var(--gris-texte)}
+  .charte{
+    background:#fff;border:2px solid var(--bleu);border-radius:8px;padding:18px 22px;margin:16px 0;
+    position:relative;
+  }
+  .charte::before{
+    content:"CHARTE";position:absolute;top:-12px;left:18px;background:var(--bleu);color:#fff;
+    padding:3px 12px;font-family:"Trebuchet MS",sans-serif;font-size:.78em;letter-spacing:.15em;border-radius:2px;
+  }
+  .charte h4{margin-top:.6em;color:var(--bleu);text-transform:none;letter-spacing:0;font-size:1em;font-family:"Trebuchet MS",sans-serif}
+  .charte ul{margin:.3em 0;padding-left:22px}
+  .charte .sign{margin-top:14px;display:flex;gap:30px;font-size:.9em;color:var(--gris-texte)}
+  .charte .sign div{flex:1;border-top:1px solid var(--gris-bord);padding-top:6px}
+
+  .seance{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;margin:14px 0;background:var(--gris-fond);padding:14px 18px;border-radius:6px;border-left:4px solid var(--orange)}
+  .seance .phase{font-weight:700;color:var(--bleu);font-family:"Trebuchet MS",sans-serif;white-space:nowrap}
 
   .links{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;margin:10px 0}
   .links a{padding:6px 0;border-bottom:1px dotted var(--gris-bord);display:block}
@@ -112,7 +146,7 @@
     h2{font-size:1.3em;margin-top:1em}
     h3{font-size:1.1em}
     pre{font-size:9.5pt;page-break-inside:avoid}
-    .callout,table.cmp,.vault-tree,.layers,ol.steps>li{page-break-inside:avoid}
+    .callout,table.cmp,.charte,.seance,.schema-flow,ol.steps>li{page-break-inside:avoid}
     nav.toc ol{columns:2}
     .copy-btn{display:none}
     a{color:var(--bleu);text-decoration:underline}
@@ -126,13 +160,13 @@
 <button class="back-btn" onclick="if(history.length>1){history.back()}else{window.location.href='index.html'}" title="Revenir à la page précédente">← Retour</button>
 
 <header class="cover">
-  <div class="school-band"><span class="num">Chapitre 3</span>Document de travail — diffusion libre</div>
-  <h1>Optimiser son Obsidian</h1>
-  <div class="sub">Construire une mémoire long-terme structurée et la brancher à l'IA. Sortir des données dispersées, en finir avec la double saisie, retrouver une vraie continuité de travail.</div>
+  <div class="school-band"><span class="num">Chapitre 2</span>Document de travail — diffusion libre</div>
+  <h1>Transformer son IA native en assistant pédagogique</h1>
+  <div class="sub">Cadrer, coupler à un skill matière, déployer en classe, évaluer. Pour enseignants, CPE, AESH et formateurs.</div>
   <div class="meta">
     <span><b>Auteur·</b> F. Henninot</span>
-    <span><b>Public·</b> profs, acteurs éducatifs, particuliers organisés</span>
-    <span><b>Prérequis·</b> Chapitre 1 (IA native)</span>
+    <span><b>Public·</b> profs, CPE, AESH, formateurs</span>
+    <span><b>Prérequis·</b> avoir terminé le Chapitre 1</span>
     <span><b>Version·</b> mai 2026</span>
   </div>
 </header>
@@ -140,7 +174,7 @@
 <main>
 
 <div class="callout warn">
-  <p><strong class="tag">Statut</strong> Document de travail à caractère exploratoire, sans valeur officielle. Suite des <a href="index.html">Chapitre 1</a> et <a href="chapitre-2.html">Chapitre 2</a>. Obsidian doit être installé ; l'IA locale (Chapitre 1) doit être fonctionnelle. Aucune connaissance préalable d'Obsidian n'est requise — ce chapitre est aussi accessible à qui le découvre.</p>
+  <p><strong class="tag">Statut</strong> Document de travail à caractère exploratoire, sans valeur officielle. Ne se substitue ni aux préconisations académiques ni au cadre fixé par chaque établissement. Suite directe du <a href="index.html">Chapitre 1 — installation de l'IA native</a> : la maîtrise des notions de modèle, de skill et d'interface y est supposée acquise.</p>
 </div>
 
 <div class="callout tip">
@@ -247,643 +281,381 @@ Le document est ci-joint / ci-dessus. Commence par tes questions.</pre>
     <strong style="font-family:'Trebuchet MS','Segoe UI',sans-serif;font-size:1.05em;color:#1b3a63">Le document à joindre à votre IA</strong><br>
     <span style="font-size:.92em;color:#3a3f47">Téléchargez ce chapitre au format Markdown — un fichier texte léger, idéal à donner à une IA cloud : bien moins de « tokens » qu'un PDF, et mieux structuré pour elle. Joignez-le à votre conversation avec le prompt ci-dessus.</span>
   </span>
-  <a href="chapitre-3.md" download style="background:#1b3a63;color:#fff;font-family:'Trebuchet MS','Segoe UI',sans-serif;font-weight:700;padding:10px 22px;border-radius:6px;white-space:nowrap;text-decoration:none">Télécharger le chapitre (.md)</a>
+  <a href="chapitre-2.md" download style="background:#1b3a63;color:#fff;font-family:'Trebuchet MS','Segoe UI',sans-serif;font-weight:700;padding:10px 22px;border-radius:6px;white-space:nowrap;text-decoration:none">Télécharger le chapitre (.md)</a>
 </div>
 
 <nav class="toc" id="sommaire">
   <h3>Sommaire</h3>
   <ol>
-    <li><a href="#preambule">Pourquoi Obsidian, et pourquoi maintenant</a></li>
-    <li><a href="#diagnostic">Le diagnostic — Obsidian sous-exploité, 90 % des cas</a></li>
-    <li><a href="#regle-inverse">La règle inverse — partir des sorties, jamais des sources</a></li>
-    <li><a href="#architecture">Architecture en couches du vault</a></li>
-    <li><a href="#brancher-ia">Brancher l'IA locale sur Obsidian</a></li>
-    <li><a href="#conversion">Convertir l'existant — workflow IA en lot</a></li>
-    <li><a href="#referentiel-skill"><strong>Transformer un référentiel officiel en skill</strong></a></li>
-    <li><a href="#suivi-eleve">Le suivi élève sans double saisie — pivot CSV</a></li>
-    <li><a href="#methodologie">Méthodologie de mise en place</a></li>
-    <li><a href="#pieges">Pièges et anti-patterns</a></li>
+    <li><a href="#preambule">Changement de nature — du prof-utilisateur à l'élève-utilisateur</a></li>
+    <li><a href="#enjeux">Les enjeux propres au tutorat IA</a></li>
+    <li><a href="#architecture">Architecture d'un chatbot pédagogique</a></li>
+    <li><a href="#system-prompt">Le system prompt — l'art du cadrage</a></li>
+    <li><a href="#couplage-skill">Coupler avec un skill matière</a></li>
+    <li><a href="#voix">L'IA qui parle et qui écoute — la voix</a></li>
+    <li><a href="#multipostes">Configuration multi-postes — 1 PC pour toute la salle</a></li>
+    <li><a href="#charte">Charte d'usage élève — modèle prêt à imprimer</a></li>
+    <li><a href="#seance">Scénario d'une séance type</a></li>
+    <li><a href="#evaluation">Évaluation et progression</a></li>
+    <li><a href="#pieges">Pièges et garde-fous</a></li>
     <li><a href="#ressources">Ressources et liens</a></li>
   </ol>
 </nav>
 
 <!-- 1 -->
 <section id="preambule">
-<h2>1. Pourquoi Obsidian, et pourquoi maintenant</h2>
+<h2>1. Changement de nature — du prof-utilisateur à l'élève-utilisateur</h2>
 
-<p>Au Chapitre 1, l'IA locale a une mémoire <strong>de courte durée</strong> : à chaque conversation, elle redémarre à zéro. Les skills compensent cette amnésie en injectant un contexte permanent, mais leur place est limitée — on ne met pas dix années de cours dans un <code>SKILL.md</code>.</p>
+<p>Au Chapitre 1, l'IA est un assistant <em>du prof</em>. Le prof prompte, le prof contrôle, le prof valide. L'élève ne sait même pas que l'IA existe. C'est l'usage le plus simple, le plus sûr, et c'est celui qui rapporte le plus de gain de temps direct.</p>
 
-<p>Au Chapitre 2, on a déployé un chatbot pour les élèves, mais qui parle d'<em>une</em> matière, à un <em>moment</em> donné, sans souvenirs des séances précédentes. Le résultat est utile, mais structurellement <strong>sans profondeur historique</strong>.</p>
-
-<p>Obsidian comble exactement ce manque. C'est un <strong>logiciel de prise de notes en markdown</strong> (texte simple, fichiers lisibles partout, archivables à vie), qui stocke <strong>tout en local sur votre disque</strong>, et qui se laisse interroger par une IA via quelques plugins gratuits. En clair : un « second cerveau » qui accumule année après année, et que l'IA peut consulter à la demande.</p>
+<p>Le Chapitre 2 propose un saut : l'IA devient un assistant <em>de l'élève</em>. L'élève prompte, l'IA répond, le prof cadre. <strong>La nature de l'outil change radicalement</strong> : on passe d'un usage privé à un usage public, d'un acte productif à un acte éducatif, d'une responsabilité technique à une responsabilité pédagogique.</p>
 
 <div class="callout info">
-  <p><strong class="tag">Promesse concrète</strong> Une fois Obsidian bien structuré et l'IA branchée dessus, vous pourrez dire : <em>« Résume-moi tout ce que j'ai noté sur la classe de 1MFER cette année »</em>, ou <em>« Sur quels chapitres de mathématiques mes 3<sup>e</sup> ont le plus achoppé sur les 5 dernières années ? »</em>. La réponse vient de <strong>votre</strong> historique, pas d'un modèle générique.</p>
+  <p><strong class="tag">À qui s'adresse ce chapitre</strong> Enseignants toutes disciplines, mais aussi CPE (entretiens d'écoute, prévention), AESH (adaptation aux profils DYS/TDAH, médiation cognitive), formateurs (CFA, GRETA, formation continue), parents-coéducateurs. La mécanique est la même ; seuls le cadrage et les contenus varient.</p>
 </div>
+
+<p>Ce chapitre suppose acquis l'écosystème du Chapitre 1 : Ollama installé, Open WebUI accessible, au moins un modèle téléchargé, premiers skills créés. Tout ce qui suit se construit <strong>dans Open WebUI</strong>, sans installation supplémentaire.</p>
 </section>
 
 <!-- 2 -->
-<section id="diagnostic">
-<h2>2. Le diagnostic — Obsidian sous-exploité, 90 % des cas</h2>
+<section id="enjeux">
+<h2>2. Les enjeux propres au tutorat IA</h2>
 
-<p>La plupart des utilisateurs d'Obsidian — y compris des enseignants impliqués — n'utilisent qu'une <strong>fraction</strong> du potentiel de l'outil. Les symptômes typiques :</p>
+<p>Trois enjeux deviennent vitaux dès qu'un élève dialogue directement avec l'IA. Les nommer dès le départ, sinon le projet déraille en silence.</p>
 
-<table class="cmp">
-<thead><tr><th>Symptôme</th><th>Conséquence</th></tr></thead>
-<tbody>
-<tr><td class="crit">Le vault ne contient que des notes isolées, sans liens</td><td>Pas d'effet de réseau, l'IA branchée dessus voit des îlots</td></tr>
-<tr><td class="crit">Les fichiers vraiment précieux (TP, séances, fiches) sont ailleurs (Drive, OneDrive, disque dur)</td><td>L'IA ne peut pas s'en inspirer, on perd la valeur d'archive</td></tr>
-<tr><td class="crit">Aucune métadonnée (pas de frontmatter, pas de tags)</td><td>Impossible de filtrer, de trier, de générer des vues automatiques</td></tr>
-<tr><td class="crit">Tout est mis dans un seul gros dossier « Notes »</td><td>Bruit dominant, signal noyé, l'IA répond mal</td></tr>
-<tr><td class="crit">Les plugins installés ne sont pas utilisés (Dataview, Smart Connections…)</td><td>On reste à un niveau « bloc-notes numérique » qui ne justifie pas le détour</td></tr>
-</tbody>
-</table>
+<h3>2.1. L'hallucination devient un ennemi pédagogique</h3>
+<p>Quand l'IA invente une réponse pour le prof, le prof la repère et l'écarte. Quand l'IA invente une réponse pour l'élève, l'élève la prend pour argent comptant et l'apprend. <strong>C'est une dégradation de l'enseignement</strong>, pas un simple bug technique. La règle absolue à inscrire dans le system prompt : <em>en cas de doute, l'IA dit « je ne suis pas certain·e, vérifie avec ton professeur »</em>. Jamais d'invention plausible.</p>
+
+<h3>2.2. La posture pédagogique inverse l'instinct du modèle</h3>
+<p>Les IA conversationnelles sont entraînées à <strong>donner la réponse</strong>, vite et bien. C'est exactement le contraire de la posture d'un tuteur : un bon tuteur fait <em>chercher</em>, pose des questions, laisse l'élève achopper, ne sauve la situation qu'en dernier recours. Le system prompt doit <strong>contre-balancer l'instinct du modèle</strong> en explicitant la posture socratique. Si on ne le fait pas, l'IA balance la solution à la première question, et tout le travail cognitif de l'élève est court-circuité.</p>
+
+<h3>2.3. RGPD côté élève — la conservation des logs</h3>
+<p>Open WebUI enregistre par défaut <strong>toutes les conversations</strong> sur le disque du poste enseignant. Ces conversations contiennent des productions d'élèves, des hésitations, parfois des éléments personnels qu'ils ont confiés. Tant que tout reste local, il n'y a pas de transfert hors UE — donc pas de problème côté RGPD article 28. Mais <strong>la conservation et la durée de stockage deviennent votre responsabilité</strong>. À cadrer dans la charte numérique de l'établissement : qui peut accéder, combien de temps on conserve, comment l'élève peut demander l'effacement.</p>
 
 <div class="callout warn">
-  <p><strong class="tag">Cas typique vécu</strong> Un prof a un vault Obsidian de 200 notes (référentiels, lexique, idées) qui lui sert peu, et <strong>60 Go de TP, séances, examens, fiches</strong> stockés ailleurs (Drive, disques externes, cloud établissement). L'IA branchée à Obsidian voit 200 notes — soit moins de 0,5 % de son patrimoine pédagogique. <strong>L'optimisation ne consiste pas à mettre Obsidian partout, mais à choisir intelligemment ce qui mérite d'y entrer.</strong></p>
+  <p><strong class="tag">Trois questions à se poser avant de déployer</strong></p>
+  <ol style="margin:.3em 0 .2em 1.2em">
+    <li>Mon system prompt interdit-il <em>explicitement</em> l'invention et la réponse directe ?</li>
+    <li>Ai-je informé l'élève (et selon l'âge ses responsables légaux) que ses échanges sont conservés localement ?</li>
+    <li>Ai-je une durée de conservation et une procédure d'effacement écrites ?</li>
+  </ol>
 </div>
 </section>
 
 <!-- 3 -->
-<section id="regle-inverse">
-<h2>3. La règle inverse — partir des sorties, jamais des sources</h2>
+<section id="architecture">
+<h2>3. Architecture d'un chatbot pédagogique</h2>
 
-<p>Le réflexe naturel est : « je vais migrer mes 60 Go dans Obsidian, puis je verrai ». <strong>C'est exactement l'inverse qu'il faut faire.</strong> Cette approche, on l'a tous essayée, elle conduit à des semaines de travail pour un vault saturé que personne n'arrive plus à exploiter.</p>
+<p>Un chatbot pédagogique, c'est quatre briques empilées. Chacune se règle indépendamment, ce qui rend le résultat ajustable au cas par cas.</p>
 
-<p>La règle qui fonctionne : <strong>partir des sorties souhaitées, pas des sources existantes</strong>. On se pose une seule question : <em>« qu'est-ce que je voudrais que mon IA + Obsidian sache faire que mon IA seule ne sait pas faire ? »</em>. La réponse fait apparaître <strong>5 à 8 « produits »</strong>, pas plus. Pour chaque produit, on remonte aux sources qui le nourrissent : ce sont elles, et elles seules, qui méritent d'être structurées dans Obsidian.</p>
+<div class="schema-flow">
+  <div class="node"><b>Modèle</b>Gemma 3, Llama, Mistral…</div>
+  <div class="arrow">+</div>
+  <div class="node"><b>System prompt</b>La posture, les règles, le ton</div>
+  <div class="arrow">+</div>
+  <div class="node"><b>Skill matière</b>Référentiel, barème, exemples</div>
+  <div class="arrow">+</div>
+  <div class="node"><b>Interface</b>Texte, voix, multi-postes</div>
+</div>
 
-<h3>3.1. Exemples de produits prioritaires côté enseignant</h3>
-<ol style="margin:.4em 0 .4em 1.5em">
-  <li>Quand je prépare une séance, qu'elle s'inspire de mes <strong>meilleures séances passées</strong> sur le même thème.</li>
-  <li>Quand je rédige un TP, qu'elle respecte la <strong>trame de mes TP validés</strong>.</li>
-  <li>Quand j'écris une appréciation, qu'elle reprenne le <strong>registre que j'ai stabilisé</strong>.</li>
-  <li>Quand je positionne un élève, qu'elle ait son <strong>historique sous le coude</strong>.</li>
-  <li>Quand je dois écrire un mail délicat, qu'elle reprenne mes <strong>formulations habituelles</strong>.</li>
-  <li>Quand je dois remonter des notes dans l'outil institutionnel (Charlemagne Pro, École Directe), qu'elle me <strong>produise le CSV directement</strong>.</li>
-</ol>
-
-<p>Pour chacun, le sous-ensemble de sources réellement utile fait <strong>5 à 20 fichiers</strong>. Pas 6000. Le reste reste où il est — accessible, mais non indexé.</p>
+<p>Dans Open WebUI, ces quatre éléments se combinent dans un objet appelé <strong>« Model »</strong> (modèle personnalisé). Pour le créer : <em>Workspace → Models → + Create new model</em>. Vous donnez un nom (« M. Frigori — tuteur CAP IFCA », « La prof de français — relecture », « Tuteur de révision SEGPA »…), une icône, un modèle de base, un system prompt, et vous attachez un ou plusieurs skills. Les élèves sélectionnent ce model dans le menu déroulant. <strong>Aucune programmation</strong> : tout passe par des champs texte dans l'interface.</p>
 
 <div class="callout tip">
-  <p><strong class="tag">Règle pratique</strong> Une note qui sera <strong>lue 100 fois</strong> mérite la conversion soignée. Une note <strong>jamais rouverte depuis 2019</strong> ne la mérite pas. Le tri par usage est mille fois plus précieux que le tri exhaustif.</p>
+  <p><strong class="tag">Le levier essentiel</strong> 90 % de la qualité d'un chatbot pédagogique se joue dans le <strong>system prompt</strong>. Un excellent system prompt sur un modèle moyen bat largement un mauvais system prompt sur un modèle excellent. C'est l'endroit où l'enseignant injecte sa pédagogie.</p>
 </div>
 </section>
 
 <div class="page-break"></div>
 
 <!-- 4 -->
-<section id="architecture">
-<h2>4. Architecture en couches du vault</h2>
+<section id="system-prompt">
+<h2>4. Le system prompt — l'art du cadrage</h2>
 
-<p>Un vault qui tient dans la durée s'organise en <strong>couches</strong>, du plus permanent au plus jetable. Les couches sont numérotées pour s'afficher dans le bon ordre alphabétique, et leur granularité dit à l'IA <strong>où aller chercher</strong> en priorité.</p>
+<h3>4.1. Les sept règles d'or</h3>
+<p>Un system prompt pédagogique solide tient en sept règles. Elles sont à adapter à la matière, mais elles structurent tous les bons cadrages :</p>
 
-<div class="vault-tree">
-<span class="dir">vault/</span>
-├── <span class="layer">00-référentiels/</span>          <span class="cmt"># Le canon : programmes, référentiels, normes</span>
-├── <span class="layer">10-trames-types/</span>          <span class="cmt"># Les patterns à respecter : trame TP, trame séance, trame mail</span>
-├── <span class="layer">20-exemples-canoniques/</span>   <span class="cmt"># 5-10 productions modèles par catégorie</span>
-├── <span class="layer">30-année-en-cours/</span>        <span class="cmt"># Les séances vivantes du moment, par classe</span>
-│   ├── <span class="dir">1MFER/</span>
-│   ├── <span class="dir">2CAP/</span>
-│   └── <span class="dir">TBPMFER/</span>
-├── <span class="layer">40-élèves/</span>                <span class="cmt"># Suivi individuel — remplace les bases tierces</span>
-│   ├── <span class="file">_template-eleve.md</span>
-│   ├── <span class="file">dupont-lucas.md</span>
-│   └── <span class="file">martin-sarah.md</span>
-├── <span class="layer">50-journal/</span>               <span class="cmt"># Journal du prof — observations, retours, idées</span>
-└── <span class="layer">90-archive/</span>               <span class="cmt"># Le reste : accessible par lien, pas indexé en priorité</span>
+<ol style="margin:.4em 0 .4em 1.5em">
+  <li><strong>Identité claire.</strong> « Tu es [rôle] pour des [public] en [niveau]. »</li>
+  <li><strong>Posture socratique.</strong> « Tu ne donnes JAMAIS la réponse directement. Tu poses une question qui guide. »</li>
+  <li><strong>Tolérance à l'erreur.</strong> « Quand l'élève se trompe, tu valorises l'essai avant de réorienter. »</li>
+  <li><strong>Niveau de langue cadré.</strong> « Phrases courtes. Vocabulaire accessible. Tu vouvoies / tu tutoies. »</li>
+  <li><strong>Interdiction d'inventer.</strong> « Si tu n'es pas certain·e d'une valeur, d'une règle, d'une norme : tu dis « à vérifier avec votre professeur ». Jamais d'invention. »</li>
+  <li><strong>Cadre du sujet.</strong> « Tu réponds uniquement aux questions liées à [matière]. Pour le reste, tu rediriges. »</li>
+  <li><strong>Sortie de cadre.</strong> « Si l'élève évoque un mal-être, une situation personnelle préoccupante, tu sors du jeu de rôle, tu invites à en parler à un adulte de confiance, et tu rappelles que tu n'es pas un humain. »</li>
+</ol>
+
+<h3>4.2. Anatomie d'un system prompt commenté</h3>
+<p>Exemple complet pour un tuteur de révision transversal. À adapter par n'importe quel enseignant à sa discipline.</p>
+
+<pre><button class="copy-btn">copier</button>Tu es un tuteur de révision pour des élèves de 3e en mathématiques.
+
+POSTURE
+- Tu ne donnes JAMAIS la réponse directement à un exercice.
+- Tu poses une question qui aide l'élève à avancer d'UN pas.
+- Tu attends la réponse de l'élève avant de poursuivre.
+- Si l'élève se trompe : tu valorises ce qui est correct dans son
+  raisonnement avant de pointer ce qui ne va pas.
+- Si l'élève bloque vraiment après 2 tentatives : tu redonnes UN
+  indice supplémentaire, pas la solution complète.
+
+NIVEAU DE LANGUE
+- Tu vouvoies systématiquement.
+- Phrases courtes. Une idée par phrase.
+- Vocabulaire de 3e. Pas d'acronyme sans explication.
+- Tu peux écrire des formules mathématiques simples.
+
+INTERDICTION D'INVENTER
+- Si tu n'es pas certain·e d'un théorème, d'une formule, d'une règle :
+  tu écris "à vérifier dans votre manuel ou avec votre professeur".
+- Jamais une valeur, une date, une référence inventée.
+
+CADRE DU SUJET
+- Tu réponds uniquement aux questions de mathématiques niveau 3e.
+- Pour les autres matières : "ce n'est pas mon domaine, demande à
+  ton tuteur de [matière]".
+
+SORTIE DU JEU DE RÔLE
+- Si l'élève évoque un mal-être, une situation difficile, du
+  harcèlement : tu sors immédiatement du rôle de tuteur, tu dis
+  "ce que tu me dis est important, parles-en à un adulte en qui
+  tu as confiance (CPE, infirmière scolaire, parent)" et tu
+  rappelles que tu es un programme, pas un humain.
+
+DÉMARRAGE
+Quand l'élève arrive, salue-le. Demande-lui sur quel chapitre il
+veut travailler. Ne commence pas tant qu'il n'a pas répondu.</pre>
+
+<div class="callout info">
+  <p><strong class="tag">Adapter selon le rôle</strong> Pour un <strong>AESH</strong>, ajouter une consigne d'adaptation cognitive (« phrases de 12 mots maximum, une consigne à la fois, pas de double tâche »). Pour un <strong>CPE</strong> sur un module d'écoute, supprimer la posture socratique mathématique et la remplacer par une posture d'écoute active. Pour un <strong>formateur en CFA</strong>, raccrocher au métier et au geste professionnel plutôt qu'au seul savoir académique.</p>
 </div>
-
-<h3>4.1. À quoi sert chaque couche</h3>
-<div class="layers">
-  <div class="layer-card">
-    <h4><span class="layer-num">00</span>Référentiels</h4>
-    <div class="layer-desc">Programmes officiels, référentiels de diplômes, normes métier, lexique. Ce qui ne bouge pas (ou peu). L'IA y consulte le cadre quand vous lui demandez de respecter un référentiel.</div>
-  </div>
-  <div class="layer-card">
-    <h4><span class="layer-num">10</span>Trames-types</h4>
-    <div class="layer-desc">Vos patterns à vous : la trame de séance que vous suivez, la trame de TP, la structure d'un mail aux parents, le format d'une appréciation. L'IA s'en inspire pour produire du « à votre manière ».</div>
-  </div>
-  <div class="layer-card">
-    <h4><span class="layer-num">20</span>Exemples canoniques</h4>
-    <div class="layer-desc">5 à 10 produits réels que vous considérez comme <em>de bonne facture</em>, classés par thème. Ce sont les modèles que l'IA cherchera à imiter quand vous lui demandez une production similaire.</div>
-  </div>
-  <div class="layer-card">
-    <h4><span class="layer-num">30</span>Année en cours</h4>
-    <div class="layer-desc">Les séances vivantes, par classe. Une note par séance, avec date, classe, objectif, déroulement, observations. C'est <em>la</em> couche qui prend du volume sur l'année.</div>
-  </div>
-  <div class="layer-card">
-    <h4><span class="layer-num">40</span>Élèves</h4>
-    <div class="layer-desc">Une note par élève. Informations utiles (niveau, particularités, aménagements), historique des évaluations, observations en cours d'année. Source unique pour générer ensuite les CSV de remontée.</div>
-  </div>
-  <div class="layer-card">
-    <h4><span class="layer-num">50</span>Journal</h4>
-    <div class="layer-desc">Un fichier par jour (ou par semaine) où vous jetez observations, idées, retours d'élèves, alertes. Le terreau d'où sortent ensuite les vraies notes structurées.</div>
-  </div>
-</div>
-
-<p>La couche <strong>90-archive</strong> est volontairement plate. C'est là que va tout ce qui n'a pas vocation à être indexé en priorité par l'IA, mais qu'on veut garder à portée. On peut y jeter ses anciens dossiers en vrac, sans les retravailler. Le jour où une note de la couche 90 commence à servir, on la promeut vers la couche 20 ou 30.</p>
-
-<h3>4.2. Le frontmatter YAML — indispensable</h3>
-<p>Chaque note importante commence par un en-tête YAML, qui rend le vault filtrable et indexable. Sans ça, l'IA navigue à l'aveugle.</p>
-
-<pre><button class="copy-btn">copier</button>---
-type: seance
-classe: 1MFER
-date: 2026-03-14
-duree: 1h30
-objectif: Contrôle de la surchauffe à l'évaporateur
-competences: [C2.3, C3.1]
-support: banc DBK
-public-specifique: [TDAH, DYS]
-statut: validee
-tags: [cycle-frigo, TP, première]
----
-
-# Séance du 14 mars 2026 — surchauffe évaporateur
-
-## Objectif
-...
-
-## Déroulement
-...</pre>
 </section>
 
 <!-- 5 -->
-<section id="brancher-ia">
-<h2>5. Brancher l'IA locale sur Obsidian</h2>
+<section id="couplage-skill">
+<h2>5. Coupler avec un skill matière</h2>
 
-<p>Sans IA, Obsidian est un (excellent) gestionnaire de notes. Avec une IA locale branchée, c'est un <strong>assistant qui connaît votre travail</strong>. Trois plugins se complètent — installés depuis <em>Settings → Community plugins</em> dans Obsidian.</p>
+<p>Le system prompt fixe la <em>posture</em>. Le skill apporte le <em>contenu</em> : référentiel précis de la matière, barème de l'enseignant, exemples canoniques de productions attendues, lexique métier. C'est l'addition des deux qui rend le tuteur crédible.</p>
+
+<p>Concrètement, dans Open WebUI : créer un model personnalisé, coller le system prompt dans le champ « System », puis dans « Knowledge » attacher les documents qui constituent le skill (référentiel.md, barème.md, exemples.md). À chaque question de l'élève, l'IA consulte automatiquement ces documents avant de répondre. <strong>Les hallucinations chutent drastiquement</strong> dès qu'un skill bien fait est connecté.</p>
 
 <table class="cmp">
-<thead><tr><th>Plugin</th><th>Rôle</th><th>Mise en route</th></tr></thead>
+<thead><tr><th>Tuteur cible</th><th>Skill à attacher (exemple)</th></tr></thead>
 <tbody>
-<tr><td class="crit">Smart Connections</td><td>Indexation sémantique du vault : trouve les notes <em>similaires en sens</em>, pas juste en mots-clés. Permet la recherche « comme un humain »</td><td>Configurer un modèle d'embedding local (via Ollama). Première indexation longue (10-60 min selon la taille du vault), puis instantanée.</td></tr>
-<tr><td class="crit">Local GPT (ou Copilot for Obsidian)</td><td>Chatbot intégré à Obsidian, qui répond en s'appuyant sur les notes ouvertes ou sélectionnées</td><td>Pointer le plugin vers <code>http://localhost:11434</code> (Ollama), choisir le modèle (Gemma 3 12B, Llama 3.1 8B…). Prêt en 2 minutes.</td></tr>
-<tr><td class="crit">Text Generator</td><td>Génération de texte à la demande à partir de prompts personnalisés (vos propres modèles de prompts, stockés dans le vault)</td><td>Configurer le provider Ollama. Créer des templates de prompts (génération d'appréciation, de séance, etc.).</td></tr>
+<tr><td class="crit">Tuteur maths 3e</td><td>Programme officiel cycle 4, formulaire de référence, 10 exercices types corrigés avec commentaires</td></tr>
+<tr><td class="crit">Tuteur français 2de</td><td>Programme 2de, fiches méthode (commentaire, dissertation), 5 textes étudiés en classe</td></tr>
+<tr><td class="crit">Tuteur révision CAP IFCA</td><td>Référentiel CAP IFCA, lexique métier, schémas de cycle frigorifique annotés</td></tr>
+<tr><td class="crit">Module d'écoute CPE</td><td>Charte d'écoute active, protocole de signalement, ressources externes (3018, 3020…)</td></tr>
+<tr><td class="crit">Compagnon AESH</td><td>Adaptations cognitives par profil (TDAH, DYS, TSA), reformulations types, signaux d'alerte</td></tr>
 </tbody>
 </table>
+</section>
+
+<!-- 6 -->
+<section id="voix">
+<h2>6. L'IA qui parle et qui écoute — la voix</h2>
+
+<p>Open WebUI sait depuis 2024 transformer la voix de l'élève en texte (entrée micro) et lire ses réponses à voix haute (sortie audio). C'est un atout majeur pour les élèves <strong>DYS</strong> (qui parlent normalement mais peinent à l'écrit) et pour les <strong>jeunes élèves de CAP</strong> souvent plus à l'aise à l'oral.</p>
+
+<p>Pour activer, dans Open WebUI : <em>Settings → Audio</em>. Choisir un moteur de reconnaissance vocale (Whisper en local, gratuit) et un moteur de synthèse vocale (les voix natives du navigateur fonctionnent, ou Piper pour plus de qualité). Une icône micro apparaît dans la zone de saisie de chaque conversation.</p>
 
 <div class="callout info">
-  <p><strong class="tag">Le bon flux quotidien</strong> Vous ouvrez la note d'une séance à venir. Vous lancez Local GPT, vous lui demandez <em>« inspire-toi de mes séances passées sur ce thème pour me proposer un plan »</em>. Le plugin trouve les notes similaires via Smart Connections, les passe à l'IA, l'IA propose. Vous gardez, ajustez, validez. La séance suivante est créée en quelques minutes, avec votre style.</p>
+  <p><strong class="tag">À savoir</strong> Whisper en local demande un peu de puissance — sur un PC modeste, comptez 5 à 10 secondes pour transcrire une phrase. Sur Mac Apple Silicon ou PC avec carte graphique, c'est quasi instantané. Pour la sortie voix, les voix natives du navigateur sont gratuites et suffisantes pour démarrer. La qualité « professionnelle » (Piper et équivalents) demande quelques minutes de configuration supplémentaire — à voir avec votre référent numérique si besoin.</p>
 </div>
-
-<h3>5.1. Choisir le modèle pour Obsidian</h3>
-<p>Le modèle d'<strong>embedding</strong> (utilisé par Smart Connections) ne fait pas du texte, il fait des vecteurs. Modèles légers et rapides recommandés : <code>nomic-embed-text</code> ou <code>mxbai-embed-large</code> — à télécharger via <code>ollama pull</code>. Le modèle <strong>de génération</strong> (utilisé par Local GPT / Text Generator) reste celui du Chapitre 1 : Gemma 3 12B est un excellent défaut.</p>
 </section>
 
 <div class="page-break"></div>
 
-<!-- 6 -->
-<section id="conversion">
-<h2>6. Convertir l'existant — workflow IA en lot</h2>
-
-<p>La conversion massive est <strong>un chantier de fond, pas un week-end</strong>. On procède par lots de 10 à 20 fichiers, ciblés sur un seul cas d'usage à la fois. L'IA fait le sale boulot, vous validez en relisant.</p>
-
-<h3>6.1. Le prompt de conversion par lot — à coller dans Claude ou ChatGPT</h3>
-<p>Pourquoi cloud et pas local ? Parce que le cloud excelle à lire des PDF complexes, des DOCX avec mise en page, des PPTX. Pour cette tâche précise — convertir des documents en markdown structuré — c'est plus efficace. <strong>Aucune donnée d'élève dans cette conversion</strong> : seulement des supports pédagogiques (TP, séances, fiches).</p>
-
-<pre><button class="copy-btn">copier</button>Tu es mon assistant de conversion d'archive pédagogique vers Obsidian.
-
-Je vais te déposer un fichier (PDF, DOCX, PPTX, image). Pour chaque
-fichier, tu produis UNE note markdown structurée selon le modèle
-ci-dessous. Tu n'inventes rien : ce qui n'est pas dans le fichier
-source reste vide.
-
-MODÈLE DE NOTE
----
-type: [seance / TP / cours / fiche / examen — à choisir selon contenu]
-classe: [si visible — sinon vide]
-date: [AAAA-MM-JJ si visible — sinon vide]
-duree: [si visible]
-objectif: [phrase courte si visible — sinon vide]
-competences: [liste si visibles]
-tags: [3 à 5 mots-clés thématiques que tu déduis]
-statut: a-revoir
----
-
-# [Titre déduit du contenu]
-
-## Objectif
-[Si présent dans le source]
-
-## Prérequis
-[Si présents]
-
-## Déroulement
-[Structure principale du document, en sections H3 si besoin]
-
-## Productions attendues
-[Si présent]
-
-## Ressources / Annexes
-[Liste]
-
-## Notes de conversion
-[Tes propres remarques : "image illisible page 3",
- "barème manquant", "à compléter manuellement",
- pour me signaler ce qui mérite vérification]
-
-RÈGLES
-- Tu structures, tu ne paraphrases pas inutilement.
-- Tu mets en gras les notions-clés que tu identifies.
-- Tu listes en bullet-points les énumérations.
-- Si une formule mathématique est présente, tu la rends en LaTeX
-  ($...$ en ligne ou $$...$$ en bloc).
-- Tu réponds UNIQUEMENT avec le contenu markdown, sans préambule.
-
-Je te dépose le premier fichier maintenant.</pre>
-
-<h3>6.2. Le geste hebdomadaire — 30 minutes le dimanche soir</h3>
-<ol class="steps">
-  <li><strong>Choisir 5 fichiers</strong> dans l'archive (sur un même thème, idéalement).</li>
-  <li><strong>Déposer un à un</strong> dans la conversation cloud avec le prompt §6.1 collé.</li>
-  <li><strong>Copier la sortie markdown</strong>, créer un fichier <code>.md</code> dans la bonne couche du vault, coller.</li>
-  <li><strong>Relire en 2 minutes</strong> et corriger ce qui doit l'être.</li>
-  <li><strong>Repasser le statut</strong> du frontmatter de <code>a-revoir</code> à <code>validee</code>.</li>
-</ol>
-
-<p>À ce rythme : 20 notes par mois, 200 par an. En deux ans, <strong>votre patrimoine pédagogique utile est dans Obsidian</strong>, votre IA le voit, et vous travaillez infiniment mieux. La couche 90-archive ne disparaît jamais — elle reste votre filet de sécurité.</p>
+<!-- 7 -->
+<section id="multipostes">
+<h2>7. Configuration multi-postes — 1 PC pour toute la salle</h2>
 
 <div class="callout danger">
-  <p><strong class="tag">Rappel RGPD</strong> Cette procédure utilise Claude/ChatGPT en cloud. Elle est <strong>strictement réservée aux supports pédagogiques</strong> (TP, séances, fiches). <strong>Jamais de copies d'élèves, jamais de bulletins, jamais de listes nominatives dans cette conversation cloud.</strong> Pour le suivi élève, on utilise exclusivement l'IA locale (§7).</p>
-</div>
-</section>
-
-<!-- 7 NOUVEAU — RÉFÉRENTIEL → SKILL -->
-<section id="referentiel-skill">
-<h2>7. Transformer un référentiel officiel en skill</h2>
-
-<p>Les référentiels de diplômes (CAP, BAC PRO, BTS) sont des <strong>PDF officiels de 80 à 200 pages</strong>, denses, structurés, mais difficilement exploitables tels quels par une IA. Ils contiennent pourtant la matière la plus précieuse : codes de compétences, blocs, savoirs associés, situations professionnelles, modalités d'évaluation, coefficients. Les transformer en skill exploitable est <strong>le meilleur investissement temps qu'on puisse faire</strong> pour une discipline donnée — c'est trois heures qui économisent ensuite des dizaines d'heures de réexplications à l'IA.</p>
-
-<h3>7.1. La cible — anatomie du skill référentiel</h3>
-<p>Un skill « référentiel » bien fait, c'est un dossier de 5 à 7 fichiers markdown reliés, avec un <code>SKILL.md</code> qui sait quand mobiliser quoi :</p>
-
-<div class="vault-tree">
-<span class="dir">skills/referentiel-bac-pro-mfer/</span>
-├── <span class="file">SKILL.md</span>                   <span class="cmt"># Frontmatter + règles d'usage</span>
-└── <span class="dir">references/</span>
-    ├── <span class="file">competences.md</span>          <span class="cmt"># Toutes les compétences (C1.1 → CN.N)</span>
-    ├── <span class="file">savoirs-associes.md</span>     <span class="cmt"># Les savoirs S1, S2... avec niveau taxonomique</span>
-    ├── <span class="file">situations-pro.md</span>       <span class="cmt"># Situations professionnelles attendues</span>
-    ├── <span class="file">epreuves.md</span>             <span class="cmt"># Modalités d'évaluation, coefficients</span>
-    ├── <span class="file">lexique-metier.md</span>       <span class="cmt"># Vocabulaire incontournable</span>
-    └── <span class="file">pfmp.md</span>                 <span class="cmt"># Cadre des PFMP, attendus de stage</span>
+  <p><strong class="tag">Expérimentation encadrée — pas un déploiement ordinaire</strong></p>
+  <p>Cette configuration ne doit <strong>pas être mise en œuvre seul·e</strong> dans une salle de classe. Elle nécessite, dans cet ordre :</p>
+  <ol style="margin:.3em 0 .2em 1.2em">
+    <li>l'accord explicite du <strong>chef d'établissement</strong> ;</li>
+    <li>la validation du <strong>référent numérique d'établissement (RUPN)</strong> sur l'ouverture du port côté réseau pédagogique ;</li>
+    <li>l'avis du <strong>DPO académique</strong> si des données nominatives d'élèves transitent ;</li>
+    <li>une <strong>charte d'usage écrite</strong> intégrée au règlement intérieur ou aux pratiques de classe ;</li>
+    <li>l'<strong>information écrite des familles</strong> sur l'usage de l'outil et la conservation des traces.</li>
+  </ol>
+  <p>À défaut de ce cadre, l'usage doit rester <strong>strictement personnel à l'enseignant</strong>, sans connexion d'élèves. La section ci-après décrit la procédure technique uniquement à des fins d'expérimentation encadrée et de préparation pédagogique.</p>
 </div>
 
-<h3>7.2. Le prompt de conversion — un seul passage par référentiel</h3>
-<p>Cette conversion se fait dans <strong>Claude ou ChatGPT (cloud)</strong>, pas en local — les modèles cloud lisent mieux les PDF complexes avec tableaux, et le référentiel est un document <strong>public</strong>, donc aucun enjeu RGPD. À coller dans une nouvelle conversation, puis déposer le PDF du référentiel.</p>
+<p>L'IA est installée sur un seul poste (votre poste enseignant ou un PC dédié à la salle). Les postes élèves y accèdent <strong>par le navigateur</strong>, via le réseau pédagogique local. Aucun logiciel à installer côté élève.</p>
 
-<pre><button class="copy-btn">copier</button>Tu es mon assistant pour transformer un référentiel officiel de
-diplôme en base de connaissances structurée exploitable par une IA.
-
-Je vais te déposer le PDF du référentiel. Tu produis 6 fichiers
-markdown en sortie, dans l'ordre suivant.
-
-CONTRAINTE FONDAMENTALE
-- Tu n'inventes JAMAIS un code, une compétence, un coefficient.
-- Si une info manque ou est ambiguë, tu écris "à vérifier"
-  et tu cites la page du PDF où on devrait trouver l'info.
-- Tu cites systématiquement le numéro de page du PDF source
-  pour permettre la vérification.
-
-FICHIER 1 — competences.md
----
-type: referentiel-competences
-diplome: [intitulé exact]
-publication: [date BO]
-source: [pages du PDF où trouver les compétences]
----
-Table markdown avec colonnes : Code, Libellé, Bloc, Page-source.
-
-FICHIER 2 — savoirs-associes.md
-Table : Code, Libellé, Niveau taxonomique, Compétences liées, Page-source.
-
-FICHIER 3 — situations-pro.md
-Liste des situations professionnelles attendues, regroupées par bloc.
-
-FICHIER 4 — epreuves.md
-Pour chaque épreuve : Code, Intitulé, Coefficient, Forme, Durée,
-Compétences évaluées, Page-source.
-
-FICHIER 5 — lexique-metier.md
-30 à 50 termes essentiels du métier visé, avec définition courte.
-
-FICHIER 6 — SKILL.md
-Frontmatter YAML + instructions à l'IA :
-"Utiliser ce référentiel dès que l'utilisateur évoque le diplôme,
-un code de compétence, un savoir, une épreuve. Toujours citer
-le code officiel et le coefficient si disponible. Ne jamais
-inventer."
-
-Tu produis les 6 fichiers l'un après l'autre, séparés par
-"=== FICHIER N ===". Tu attends ma confirmation avant de
-passer au suivant si je le demande.
-
-Je dépose le PDF maintenant.</pre>
-
-<h3>7.3. Validation — l'étape qu'on ne saute jamais</h3>
-<p>Une fois les 6 fichiers générés, on les colle dans <code>skills/referentiel-XXX/references/</code> et on <strong>relit en une heure</strong> en parallèle du PDF officiel. On corrige les erreurs (il y en a). On valide chaque ligne d'épreuves / coefficients. C'est cette relecture qui transforme une sortie IA approximative en source de vérité utilisable.</p>
-
-<div class="callout warn">
-  <p><strong class="tag">À vérifier impérativement</strong> Les coefficients d'épreuves, les codes de compétences, les durées d'épreuves. Une erreur sur un coefficient propagée par l'IA pendant 6 mois fait beaucoup plus de dégâts qu'une erreur dans une simple note.</p>
-</div>
-
-<h3>7.4. Tester sur 3 cas concrets</h3>
-<p>Une fois validé, le skill se teste sur trois questions réelles :</p>
-<ol style="margin:.4em 0 .2em 1.5em">
-  <li>« Quelle compétence vise un TP sur le contrôle de la surchauffe ? » → l'IA doit citer le code exact (ex. C2.3) et son libellé.</li>
-  <li>« Quelle est la durée et le coefficient de l'épreuve E2 ? » → réponse précise, traçable.</li>
-  <li>« Donne-moi les savoirs associés mobilisés en première année. » → liste correcte.</li>
+<ol class="steps">
+  <li>
+    <strong>Identifier l'adresse IP du poste enseignant.</strong>
+    <p>Sur Windows : touche Windows + R, taper <code>cmd</code>, Entrée, puis <code>ipconfig</code>. Repérer l'adresse IPv4 (format <code>192.168.x.x</code> ou <code>10.x.x.x</code>). Sur Mac : Préférences Système → Réseau, l'adresse est visible sous le Wi-Fi ou Ethernet actif.</p>
+  </li>
+  <li>
+    <strong>Vérifier que Open WebUI écoute sur le réseau, pas seulement en local.</strong>
+    <p>Par défaut Docker ouvre le port sur toutes les interfaces (<code>0.0.0.0:3000</code>). C'est ce qu'on veut. Le pare-feu Windows peut demander une autorisation au premier accès : autoriser sur le profil « Réseau privé » uniquement.</p>
+  </li>
+  <li>
+    <strong>Tester depuis un poste élève.</strong>
+    <p>Ouvrir le navigateur du poste élève. Saisir <code>http://[adresse-IP-prof]:3000</code> (par exemple <code>http://192.168.1.42:3000</code>). L'interface Open WebUI s'affiche. L'élève se crée un compte local ou utilise un compte partagé que vous avez préparé.</p>
+  </li>
+  <li>
+    <strong>Cadrer avec le référent numérique de l'établissement.</strong>
+    <p>L'ouverture d'un port sur le réseau pédagogique nécessite l'accord du <strong>référent numérique d'établissement (RUPN)</strong>. Question à anticiper : le filtrage réseau de l'académie peut bloquer les connexions HTTP non chiffrées (port 3000). Solutions possibles : activer HTTPS via reverse proxy, utiliser un réseau Wi-Fi pédagogique dédié, ou installer une instance par salle.</p>
+  </li>
+  <li>
+    <strong>Estimer la charge.</strong>
+    <p>Un PC bien équipé (32 Go RAM + GPU NVIDIA RTX 3060 ou Mac M2/M3) tient sans problème <strong>10 à 15 élèves simultanés</strong> sur un modèle Gemma 3 12B. Au-delà, prévoir une seconde machine ou un modèle plus léger.</p>
+  </li>
 </ol>
-<p>Si les trois passent, le skill est productif. Sinon, retour au fichier source à corriger.</p>
+
+<div class="callout danger">
+  <p><strong class="tag">Point de vigilance RGPD</strong> Dans une configuration multi-postes, les conversations de <strong>tous les élèves</strong> sont enregistrées sur le PC enseignant. À cadrer obligatoirement dans la charte numérique de l'établissement. Privilégier des comptes nominatifs (et non un compte commun) pour la traçabilité.</p>
+</div>
 </section>
 
 <!-- 8 -->
-<section id="suivi-eleve">
-<h2>8. Interopérabilité avec les outils institutionnels — suivi élève sans double saisie</h2>
+<section id="charte">
+<h2>8. Charte d'usage élève — modèle prêt à imprimer</h2>
 
-<div class="callout danger">
-  <p><strong class="tag">Précaution — outils institutionnels et données d'élèves</strong></p>
-  <p>Ce chapitre n'a <strong>pas vocation à proposer une connexion automatique aux logiciels institutionnels de vie scolaire</strong> (Charlemagne Pro, École Directe, Pronote, ENT académique). Il ne s'agit pas non plus de contourner ces outils ou leurs procédures.</p>
-  <p>L'usage proposé est plus simple et plus prudent : <strong>l'IA locale aide à préparer, nettoyer ou convertir des fichiers d'échange au format CSV/XLSX</strong>, lorsque l'outil institutionnel propose officiellement une fonction d'import ou d'export.</p>
-  <p>Tout suivi nominatif d'élève — <em>a fortiori</em> avec des données sensibles (aménagements, santé, handicap, situations familiales) — engage votre responsabilité de traitant au sens RGPD et <strong>doit s'inscrire dans le cadre validé par votre établissement</strong> : information des familles, validation du chef d'établissement et du DPO académique, sécurité du poste, durée de conservation, procédure d'effacement. Les fichiers contenant des données élèves doivent être traités <strong>exclusivement en local</strong> ; ils ne doivent <strong>jamais</strong> être collés dans une IA cloud.</p>
-</div>
+<p>Document à distribuer à chaque élève avant la première utilisation. À adapter au niveau et à la matière. Le faire signer par l'élève et, pour les mineurs, par le responsable légal. Le conserver avec les pièces administratives de la classe.</p>
 
-<p>Le suivi des élèves est un endroit critique. Les outils institutionnels sont <strong>imposés en sortie</strong> mais souvent <strong>pénibles en saisie quotidienne</strong>. La stratégie : <strong>tenir le suivi dans Obsidian (ou un outil local équivalent), produire des CSV conformes au moment de la remontée</strong>.</p>
+<div class="charte">
+  <h4>Charte d'usage — assistant IA en classe</h4>
+  <p style="font-size:.9em"><em>Établissement / Classe / Année — à compléter</em></p>
 
-<h3>8.1. La note-élève — illustration de structure, cas sensible</h3>
-
-<div class="callout danger">
-  <p><strong class="tag">Cas sensible — usage non recommandé hors cadre établissement</strong></p>
-  <p>Le suivi nominatif d'élève dans un vault personnel <strong>n'est pas un usage standard</strong> proposé par ce guide. C'est un cas particulier qui suppose obligatoirement :</p>
-  <ul style="margin:.3em 0 .2em 1.2em">
-    <li>l'inscription explicite du dispositif dans le <strong>cadre de l'établissement</strong> (charte numérique, accord chef d'établissement) ;</li>
-    <li>la <strong>validation du DPO académique</strong> ;</li>
-    <li>l'<strong>information écrite des familles</strong> sur la nature, la finalité, la durée de conservation et la procédure d'effacement ;</li>
-    <li>une <strong>sécurité du poste</strong> à la hauteur (chiffrement disque, session protégée, sauvegardes chiffrées) ;</li>
-    <li>la <strong>limitation aux seules informations strictement nécessaires</strong> à la pratique pédagogique — pas de stockage de données médicales ou de diagnostics personnels sans cadre formel.</li>
+  <h4>Ce que l'assistant IA fait</h4>
+  <ul>
+    <li>Il m'aide à comprendre une notion en posant des questions.</li>
+    <li>Il me donne des indices pour avancer sur un exercice.</li>
+    <li>Il me dit quand je suis sur la bonne piste, quand je me trompe.</li>
+    <li>Il sait que je suis en classe de [niveau], en [matière].</li>
   </ul>
-  <p>Les champs liés à des aménagements ou à la santé sont des <strong>données de l'article 9 du RGPD</strong> (catégories particulières) ; leur traitement obéit à des règles strictes. <strong>En l'absence de ce cadre, ne pas mettre en œuvre.</strong> Le template ci-dessous est fourni comme <strong>illustration de structure</strong>, à des fins de discussion et de référence — pas comme modèle à reproduire en l'état.</p>
-</div>
 
-<pre><button class="copy-btn">copier</button>---
-type: eleve
-classe: [classe]
-nom: [nom]
-prenom: [prenom]
-identifiant-interne: [code école/établissement, pas la date de naissance]
-amenagements: [renseigner selon notification, ex. "tiers-temps" ; éviter les
-  diagnostics médicaux nominatifs sans cadre validé]
-projet-pro: [projet]
-statut: actif
----
+  <h4>Ce que l'assistant IA NE fait PAS</h4>
+  <ul>
+    <li>Il <strong>ne me donne pas les réponses</strong> directement.</li>
+    <li>Il ne remplace pas mon professeur.</li>
+    <li>Il peut se tromper — je vérifie toujours dans mon cours.</li>
+    <li>Il n'est pas un ami, ni un confident : c'est un programme.</li>
+  </ul>
 
-# [Prénom NOM] — [classe]
+  <h4>Mes engagements</h4>
+  <ul>
+    <li>Je l'utilise <strong>quand le professeur me dit de l'utiliser</strong>, pas en dehors.</li>
+    <li>Je <strong>vérifie</strong> les informations qu'il me donne avant de les recopier.</li>
+    <li>Je <strong>signale</strong> à mon professeur toute réponse qui me paraît bizarre ou fausse.</li>
+    <li>Je ne lui confie pas de <strong>données personnelles</strong> sur moi, ma famille ou mes camarades.</li>
+    <li>Je traite l'assistant avec <strong>respect</strong> — pas d'insulte, pas de provocation.</li>
+  </ul>
 
-## Profil professionnel et scolaire
-[Éléments factuels et utiles à votre pratique de classe.
- Éviter les jugements de valeur et les éléments médicaux non couverts
- par une notification formelle.]
+  <h4>Conservation des échanges</h4>
+  <p>Mes conversations sont enregistrées sur l'ordinateur du professeur, sans jamais sortir de l'établissement. Elles sont conservées <strong>[X semaines / mois]</strong>, puis supprimées. Je peux demander à mon professeur de supprimer un échange à tout moment.</p>
 
-## Aménagements pédagogiques actifs
-- [Lister uniquement les aménagements actés par PPS / PAP / notification.]
-- [Formulation orientée action : "consignes en phrases courtes",
-   "pause de 5 min toutes les 25 min en TP long"...]
-
-## Historique évaluations
-| Date       | Évaluation         | Note  | Compétences          | Statut   |
-|------------|--------------------|-------|----------------------|----------|
-| 2026-03-14 | TP n°4             | 14/20 | C2.3 acquis, C3.1 EC | validee  |
-| 2026-02-21 | Évaluation n°2     | 11/20 | C1.2 EC              | validee  |
-
-## Observations pédagogiques
-- 2026-03-10 — Difficultés sur [notion]. Prévoir remédiation.
-- 2026-02-15 — Bon retour de stage.
-
-## Plan de remédiation en cours
-- [Actions concrètes prévues.]</pre>
-
-<h3>8.2. L'export CSV vers l'outil imposé</h3>
-<p>Quand vient le moment de remonter les notes ou positionnements dans l'outil institutionnel, on demande à l'IA locale de produire <strong>le CSV exact attendu par cet outil</strong>. Pour ça, il faut un skill <code>export-charlemagne</code> (ou <code>export-ed</code>) qui contient les colonnes, l'ordre, le séparateur, les codes attendus.</p>
-
-<pre><button class="copy-btn">copier</button>---
-name: export-charlemagne
-description: Génère un fichier CSV pour import dans Charlemagne Pro
-  à partir des notes de la couche 40-élèves. Format strict :
-  encodage UTF-8, séparateur point-virgule, en-têtes fixes.
-  Utiliser dès que l'utilisateur évoque "export Charlemagne",
-  "CSV pour Charlemagne", "remonter les notes".
----
-
-# Export Charlemagne Pro
-
-## Format attendu
-- Encodage : UTF-8 (avec BOM)
-- Séparateur : ; (point-virgule)
-- Première ligne : en-têtes EXACTS suivants :
-  Nom;Prenom;Classe;DateEval;CodeEval;Note;Bareme;Commentaire
-
-## Règles
-- Une ligne par couple (élève × évaluation).
-- Dates au format JJ/MM/AAAA.
-- Notes en nombre décimal (12.5, pas 12,5).
-- Commentaire entre guillemets si virgule ou point-virgule à l'intérieur.
-- Pas de cellule vide pour les colonnes obligatoires.
-
-## Étapes
-1. Lire les fichiers de la couche 40-élèves.
-2. Extraire chaque ligne "Historique évaluations" de chaque élève
-   correspondant à la période demandée par l'utilisateur.
-3. Composer le CSV strictement au format ci-dessus.
-4. Vérifier qu'aucune cellule obligatoire n'est vide. Lister les
-   éventuels manques avant de produire le CSV.
-5. Sortie en bloc de code unique, sans préambule.</pre>
-
-<div class="callout tip">
-  <p><strong class="tag">Déterminer le format attendu</strong> La première fois, privilégier un <strong>fichier modèle fourni par l'outil institutionnel</strong>, un <strong>export officiel existant</strong> ou la <strong>documentation transmise par l'établissement</strong>. L'objectif est d'identifier les colonnes attendues, leur ordre, l'encodage et le séparateur. Une fois ces informations stabilisées dans le skill, la procédure devient permanente — sauf si l'éditeur change le format, auquel cas on ajuste le skill. Toute méthode d'inspection technique de l'interface est réservée à un usage personnel avancé et ne constitue pas une procédure recommandée par ce guide.</p>
-</div>
-
-<h3>8.3. Récupérer les données de l'outil institutionnel pour les ré-exploiter par l'IA</h3>
-<p>Le pivot dans l'autre sens — <strong>du logiciel vers Obsidian</strong> — est tout aussi important. Plutôt que ressaisir une liste de classe ou un historique de notes, on les extrait au format d'échange standard et on les structure pour que l'IA locale les exploite.</p>
-
-<p>Distinguer dès le départ <strong>deux familles d'outils</strong>, parce qu'ils ne contiennent pas la même chose et n'appellent pas les mêmes pratiques :</p>
-
-<table class="cmp">
-<thead><tr><th>Famille</th><th>Exemples</th><th>Données typiques</th><th>Angle IA prudent</th></tr></thead>
-<tbody>
-<tr><td class="crit">Vie scolaire</td><td>École Directe, Charlemagne Pro, Pronote, ENT académique</td><td>Notes, absences, cahier de textes, listes nominatives, communication familles</td><td>Préparation de CSV/XLSX d'import si l'établissement l'autorise. Pas d'automatisation directe.</td></tr>
-<tr><td class="crit">Suivi de compétences</td><td>CPRO / CEPRO compétences, livret scolaire compétences, outils de référentiel</td><td>Compétences, positionnements, scénarios d'évaluation, grilles</td><td>Conversion et harmonisation de grilles, vérification des correspondances tâches/compétences. Très utile pour l'ingénierie pédagogique.</td></tr>
-</tbody>
-</table>
-
-<div class="callout warn">
-  <p><strong class="tag">Sur École Directe et équivalents</strong> Les fonctions d'import/export ne sont pas systématiquement accessibles aux enseignants — cela dépend des droits attribués par l'établissement. À vérifier avec votre référent vie scolaire avant tout projet de pivot CSV. Le guide propose des outils techniques ; leur usage suppose que l'établissement les autorise.</p>
-</div>
-
-<p>La plupart de ces outils ne proposent pas d'API publique. Deux voies recommandables :</p>
-
-<ol class="steps">
-  <li>
-    <strong>L'export natif</strong> <em>— la bonne voie</em>
-    <p>La plupart des écrans proposent un bouton <em>Exporter</em> (CSV ou XLSX). À <strong>privilégier systématiquement</strong>. On exporte la classe, les notes, les évaluations ; le fichier obtenu est ensuite converti en markdown structuré par l'IA locale (skill <code>import-charlemagne</code> ci-après).</p>
-  </li>
-  <li>
-    <strong>Le copier-coller du tableau affiché</strong> <em>— acceptable pour petit volume</em>
-    <p>Quand l'export natif manque : sélectionner le tableau à l'écran, copier (<code>Ctrl+C</code>), coller dans une note Obsidian, demander à l'IA locale de restructurer en table markdown propre. Convient pour une classe, un trimestre — pas pour une base annuelle complète.</p>
-  </li>
-</ol>
-
-
-<p>Le skill <code>import-charlemagne</code> qui pilote la conversion :</p>
-
-<pre><button class="copy-btn">copier</button>---
-name: import-charlemagne
-description: Convertit un export Charlemagne Pro (CSV, XLSX, HTML
-  ou tableau collé) en notes Obsidian structurées dans la couche
-  40-élèves. Utiliser dès que l'utilisateur évoque "import
-  Charlemagne", "récupérer mes données de C-Pro", "mettre à jour
-  ma classe depuis Charlemagne".
----
-
-# Import Charlemagne Pro vers Obsidian
-
-## Quand utiliser
-Toute fois que l'utilisateur dépose un export Charlemagne et
-demande la mise à jour du vault.
-
-## Détection du format
-- Si CSV / XLSX : lire les en-têtes, identifier les colonnes.
-- Si HTML : extraire le tableau, identifier les en-têtes.
-- Si copier-coller brut : repérer la structure tabulaire.
-
-## Étapes
-1. Identifier la nature des données (liste de classe, notes,
-   absences, évaluations…).
-2. Pour chaque élève présent dans l'import :
-   - Si le fichier 40-élèves/[nom-prenom].md existe : METTRE À JOUR
-     les sections concernées sans écraser le reste.
-   - Sinon : CRÉER le fichier à partir du template
-     40-élèves/_template-eleve.md.
-3. Sortie : la liste des fichiers créés ou mis à jour, avec un
-   résumé des changements (X notes ajoutées, Y élèves nouveaux...).
-
-## Règles
-- Ne JAMAIS écraser une section "Observations" ou "Plan de
-  remédiation" existante sans y ajouter, jamais y substituer.
-- Préserver les aménagements et le profil — uniquement actualiser
-  ce qui vient de Charlemagne (notes, absences).
-- Marquer chaque ligne nouvelle avec la date d'import en commentaire.</pre>
-
-<div class="callout warn">
-  <p><strong class="tag">Précaution</strong> Les exports Charlemagne contiennent des données d'élèves identifiables. <strong>Cette conversion se fait exclusivement avec l'IA locale</strong> (Chapitre 1). Jamais coller un export d'élèves dans Claude cloud ou ChatGPT.</p>
-</div>
-
-<h3>8.4. Pivot inerWeb (ou autre outil personnel) → Charlemagne Pro</h3>
-<p>Pour qui a, comme moi, développé un outil de suivi personnel (inerWeb, base notion, fichiers Excel maison) et qui doit basculer vers l'outil institutionnel imposé, le pivot se fait <strong>une fois</strong>, proprement, via l'IA. Le principe : on exporte les données existantes dans un format intermédiaire (JSON ou CSV), on demande à l'IA de les remapper vers le format attendu par Charlemagne, on importe.</p>
-
-<table class="cmp">
-<thead><tr><th>Étape</th><th>Action</th><th>Outil</th></tr></thead>
-<tbody>
-<tr><td class="crit">1. Exporter</td><td>Sortir toutes les données de l'outil source en JSON / CSV</td><td>L'outil source (inerWeb, Excel, base notion)</td></tr>
-<tr><td class="crit">2. Cartographier</td><td>Établir la table de correspondance des champs : <em>« mon champ <code>note_brute</code> = colonne <code>Note</code> de Charlemagne »</em></td><td>Tableau papier ou Excel</td></tr>
-<tr><td class="crit">3. Remapper</td><td>Lancer un skill de migration qui prend l'export source et produit le CSV Charlemagne</td><td>IA locale (Gemma 3 12B suffit)</td></tr>
-<tr><td class="crit">4. Vérifier en échantillon</td><td>Importer dans Charlemagne 5 lignes seulement. Vérifier intégrité. Itérer si besoin sur le skill.</td><td>Charlemagne Pro (mode test si dispo)</td></tr>
-<tr><td class="crit">5. Importer en bloc</td><td>Quand l'échantillon valide, importer le CSV complet</td><td>Charlemagne Pro</td></tr>
-<tr><td class="crit">6. Archiver l'outil source</td><td>Geler l'outil source (lecture seule), conserver l'export complet en sauvegarde. Ne plus y saisir.</td><td>Disque local + sauvegarde</td></tr>
-</tbody>
-</table>
-
-<div class="callout ok">
-  <p><strong class="tag">Le bénéfice du pivot propre</strong> Le but n'est pas seulement de migrer techniquement, c'est de <strong>tourner la page</strong>. Tant qu'on saisit dans les deux outils en parallèle, on perd. Le pivot doit être <em>net</em> : avant la date X, on saisissait dans l'ancien ; à partir de X, on saisit dans le nouveau (ou dans Obsidian avec export CSV vers Charlemagne, méthode §8.2). Et on accepte que les données historiques restent consultables mais non vivantes.</p>
+  <div class="sign">
+    <div>Date :<br>Élève — Nom et signature :</div>
+    <div>Date :<br>Responsable légal — Nom et signature (mineurs) :</div>
+  </div>
 </div>
 </section>
 
 <!-- 9 -->
-<section id="methodologie">
-<h2>9. Méthodologie de mise en place — démarrer par une seule sortie</h2>
+<section id="seance">
+<h2>9. Scénario d'une séance type — 55 minutes</h2>
 
-<p>Construire un vault Obsidian utile prend des semaines, pas un week-end. La séquence qui réussit, en quatre paliers :</p>
+<p>Première utilisation d'un chatbot pédagogique en classe entière. Modèle générique transposable à toutes les matières. <strong>Objectif</strong> : que l'élève sorte avec une idée claire de ce que l'IA peut et ne peut pas faire <em>pour son apprentissage</em>.</p>
 
-<ol class="steps">
-  <li>
-    <strong>Semaine 1 — Une sortie, un test (3 h)</strong>
-    <p>Choisir <strong>une seule</strong> sortie prioritaire (§3.1). Convertir 3 à 5 fichiers sources en notes markdown structurées. Brancher l'IA locale (Smart Connections + Local GPT). Tester : l'IA inspirée de ces 3-5 notes produit-elle quelque chose d'utile ? Si oui, on continue. Si non, on ajuste l'architecture <em>avant</em> d'investir plus.</p>
-  </li>
-  <li>
-    <strong>Semaines 2-4 — Couches 00, 10, 20 (~10 h total)</strong>
-    <p>Stabiliser le canon : référentiels propres, trames-types, premiers exemples canoniques. C'est le socle qui ne bougera plus. On vise la qualité, pas la quantité.</p>
-  </li>
-  <li>
-    <strong>Semaines 5-12 — Couche 30 vivante (rythme courant)</strong>
-    <p>Chaque séance préparée et donnée s'écrit en note dans 30-année-en-cours. Pas de saisie supplémentaire : c'est <em>là</em> qu'on prépare la séance, et la note <em>est</em> la prépa. Le quotidien nourrit naturellement le vault.</p>
-  </li>
-  <li>
-    <strong>Trimestre 2 — Couche 40-élèves et pivot CSV (5 h initial puis routinier)</strong>
-    <p>Ouvrir une note par élève au début de la séquence. Saisir au fil de l'eau, sans double saisie. Au moment des remontées, lancer l'export CSV vers Charlemagne / ED. La routine s'installe en deux ou trois cycles.</p>
-  </li>
-</ol>
+<div class="seance"><div class="phase">0 – 10 min</div><div><strong>Phase 1 — Cadrage</strong>. Le prof rappelle la charte. Distribue les codes d'accès. Demande aux élèves de se connecter et de choisir le model dédié dans le menu. Aucun échange avec l'IA pour l'instant — la machine s'allume, c'est tout.</div></div>
+
+<div class="seance"><div class="phase">10 – 15 min</div><div><strong>Phase 2 — Démonstration au tableau</strong>. Le prof projette son écran et fait <strong>deux dialogues</strong> avec l'IA : un qui marche bien (l'élève simulé bloque, l'IA aide intelligemment), un qui dérape (l'IA dit une bêtise, on la corrige). On nomme ce qui s'est passé.</div></div>
+
+<div class="seance"><div class="phase">15 – 35 min</div><div><strong>Phase 3 — Travail individuel ou en binôme</strong>. Sur un exercice précis, l'élève peut consulter l'IA comme tuteur. Consigne : <em>« vous notez à chaque fois que l'IA vous a vraiment aidé, et à chaque fois qu'elle s'est trompée ou que vous avez douté »</em>. Le prof circule, observe, ne réintervient pas sauf cas bloquant.</div></div>
+
+<div class="seance"><div class="phase">35 – 50 min</div><div><strong>Phase 4 — Mise en commun et retour critique</strong>. Tour de table : <em>« qu'est-ce que l'IA a bien fait ? mal fait ? avez-vous vérifié une de ses réponses ? est-ce qu'elle vous a donné directement la solution malgré la consigne ? »</em>. On capitalise les bons et les mauvais usages sur un paperboard / au tableau.</div></div>
+
+<div class="seance"><div class="phase">50 – 55 min</div><div><strong>Phase 5 — Synthèse et règle de classe</strong>. À partir des observations des élèves, on co-construit une <strong>règle d'usage spécifique à la classe</strong> qui complète la charte (ex. : « on note dans le cahier les indices reçus de l'IA, comme on noterait l'aide d'un camarade »).</div></div>
 
 <div class="callout ok">
-  <p><strong class="tag">Indicateur de réussite</strong> Six mois après le démarrage, vous devez pouvoir préparer une séance type en <strong>moitié moins de temps</strong>, avec un rendu plus cohérent et plus proche de votre style. Si ce n'est pas le cas, l'architecture est probablement encore mal calibrée — revenir au §3 et resserrer les sorties.</p>
+  <p><strong class="tag">Effet attendu</strong> L'élève sort de la séance avec deux choses : <strong>une compétence d'usage</strong> (savoir solliciter l'IA utilement) et <strong>une compétence critique</strong> (savoir douter d'une réponse, vérifier, signaler). C'est la base de toutes les séances suivantes.</p>
 </div>
 </section>
 
-<!-- 9 -->
-<section id="pieges">
-<h2>10. Pièges et anti-patterns</h2>
-
-<table class="cmp">
-<thead><tr><th>Piège</th><th>Effet</th><th>Anti-pattern à éviter</th></tr></thead>
-<tbody>
-<tr><td class="crit">Vouloir tout migrer d'un bloc</td><td>Semaines de travail, vault saturé, abandon</td><td>« Le grand soir Obsidian » — ne jamais entreprendre.</td></tr>
-<tr><td class="crit">Pas de frontmatter YAML</td><td>Aucune capacité de filtrage, IA aveugle</td><td>Notes en texte libre, sans métadonnée structurée.</td></tr>
-<tr><td class="crit">Trop de tags, pas de hiérarchie</td><td>Le « tag soup » : 200 tags, aucun ne sert</td><td>Tagger à la volée sans plan. Maximum 5 tags par note, choisis dans une liste fermée.</td></tr>
-<tr><td class="crit">Une seule couche, tout au même niveau</td><td>L'IA ne sait pas qui prioriser quand elle cherche</td><td>Tout balancer à la racine du vault « pour faire simple ».</td></tr>
-<tr><td class="crit">Travailler dans Obsidian ET ailleurs</td><td>Double saisie, désync, démotivation</td><td>Garder Word ou Drive en parallèle. Choisir : c'est l'un OU l'autre, pas les deux.</td></tr>
-<tr><td class="crit">Mettre des données élèves en cloud</td><td>Infraction RGPD silencieuse</td><td>Convertir une note-élève via ChatGPT cloud. <strong>Jamais.</strong> Pour les élèves, IA locale uniquement.</td></tr>
-<tr><td class="crit">Pas de sauvegarde</td><td>Une corruption disque = tout perdu</td><td>Compter sur un seul disque. <strong>Toujours</strong> avoir un backup automatique (cloud chiffré ou disque externe).</td></tr>
-<tr><td class="crit">Couche 90-archive sans limite</td><td>Devient un dépotoir illisible</td><td>Vider la 90 tous les 6 mois : ce qui n'a jamais été promu est probablement à supprimer.</td></tr>
-</tbody>
-</table>
-</section>
+<div class="page-break"></div>
 
 <!-- 10 -->
-<section id="ressources">
-<h2>11. Ressources et liens</h2>
+<section id="evaluation">
+<h2>10. Évaluation et progression de l'élève</h2>
 
-<h3>Obsidian — base</h3>
-<div class="links">
-  <a href="https://obsidian.md">Obsidian — site officiel</a>
-  <a href="https://help.obsidian.md/Home">Obsidian — documentation</a>
-  <a href="https://help.obsidian.md/Editing+and+formatting/Properties">Obsidian — propriétés et frontmatter</a>
-  <a href="https://help.obsidian.md/Plugins/Community+plugins">Obsidian — plugins communautaires</a>
-</div>
+<p>L'usage de l'IA devient progressivement <strong>une compétence évaluable en soi</strong>, transversale aux disciplines. Une grille de progression à quatre niveaux fonctionne dans la durée :</p>
 
-<h3>Plugins clés</h3>
-<div class="links">
-  <a href="https://smartconnections.app/">Smart Connections — recherche sémantique</a>
-  <a href="https://github.com/pfrankov/obsidian-local-gpt">Local GPT — chatbot intégré Ollama</a>
-  <a href="https://github.com/logancyang/obsidian-copilot">Copilot for Obsidian</a>
-  <a href="https://github.com/nhaouari/obsidian-textgenerator-plugin">Text Generator</a>
-  <a href="https://github.com/blacksmithgu/obsidian-dataview">Dataview — requêtes sur frontmatter</a>
-  <a href="https://github.com/SilentVoid13/Templater">Templater — templates de notes</a>
-</div>
+<table class="cmp">
+<thead><tr><th>Niveau</th><th>Indicateur</th><th>Observable concret</th></tr></thead>
+<tbody>
+<tr><td class="crit">N1 — Utilisation cadrée</td><td>L'élève sait utiliser l'IA <em>quand le prof le demande</em>, sur une tâche prescrite</td><td>Sollicite l'IA uniquement dans le cadre de l'exercice, respecte la charte</td></tr>
+<tr><td class="crit">N2 — Utilisation autonome</td><td>L'élève sait <em>identifier</em> quand l'IA peut l'aider et quand elle ne peut pas</td><td>« Là c'est une question de cours, je vais voir l'IA. Là c'est une opinion à donner, l'IA ne sert pas. »</td></tr>
+<tr><td class="crit">N3 — Utilisation critique</td><td>L'élève sait <em>juger</em> une réponse de l'IA, la vérifier, la nuancer</td><td>« L'IA m'a dit X, j'ai vérifié dans le cours, ce n'est pas exact. »</td></tr>
+<tr><td class="crit">N4 — Utilisation experte</td><td>L'élève sait <em>cadrer</em> l'IA (reformuler la consigne) et <em>tirer profit</em> du dialogue itératif</td><td>« Je lui ai redemandé en précisant le niveau, j'ai obtenu une explication plus utile. »</td></tr>
+</tbody>
+</table>
 
-<h3>Modèles d'embedding pour Smart Connections</h3>
-<div class="links">
-  <a href="https://ollama.com/library/nomic-embed-text">nomic-embed-text (rapide, anglais et français)</a>
-  <a href="https://ollama.com/library/mxbai-embed-large">mxbai-embed-large (qualité supérieure, plus lent)</a>
-</div>
-
-<h3>Markdown et formats</h3>
-<div class="links">
-  <a href="https://www.markdownguide.org/cheat-sheet/">Markdown — antisèche</a>
-  <a href="https://yaml.org/spec/1.2.2/">YAML — spécification du frontmatter</a>
-</div>
+<p>Ces quatre niveaux peuvent être positionnés sur le bulletin (compétence transversale « usage du numérique éducatif »), ou faire l'objet d'une fiche autonome qu'on partage avec l'équipe pédagogique. <strong>La trace des échanges</strong> (que l'élève peut exporter depuis Open WebUI) sert d'élément d'évaluation : un dialogue où l'élève a su rebondir, vérifier, reformuler, c'est un indicateur clair de niveau N3-N4.</p>
 
 <div class="callout info">
-  <p><strong class="tag">Suite du guide</strong> Le Chapitre 4 (à venir) traitera de <strong>l'automatisation et de l'agentique avec n8n</strong> : faire faire à l'IA des tâches en arrière-plan (surveillance d'inbox, briefs matinaux, dépôt automatique dans l'ENT, transcription audio…). Saut technique conséquent — ce chapitre s'adressera aux volontaires.</p>
+  <p><strong class="tag">Articulation avec les attendus officiels</strong> Cette grille s'articule avec le <strong>CRCN</strong> (Cadre de Référence des Compétences Numériques) sur les domaines « Information et données » et « Création de contenus », et avec les <strong>compétences transversales</strong> du socle commun. À documenter dans le projet pédagogique de la discipline ou du niveau.</p>
+</div>
+</section>
+
+<!-- 11 -->
+<section id="pieges">
+<h2>11. Pièges et garde-fous</h2>
+
+<table class="cmp">
+<thead><tr><th>Piège</th><th>Effet</th><th>Garde-fou</th></tr></thead>
+<tbody>
+<tr><td class="crit">L'IA donne la solution malgré la consigne</td><td>L'élève recopie sans apprendre</td><td>Renforcer la règle 2 du system prompt. Tester avec 5 prompts d'élèves avant déploiement.</td></tr>
+<tr><td class="crit">L'élève vit l'IA comme un confident</td><td>Confidences sensibles, dérive émotionnelle</td><td>Règle 7 du system prompt (sortie de rôle). Rappels en séance. Vigilance prof.</td></tr>
+<tr><td class="crit">L'élève harcèle l'IA</td><td>Provocations, insultes, jeu de défi</td><td>L'IA reste polie mais n'entre pas dans le jeu. Le system prompt précise « si on m'insulte, je rappelle la charte et je propose de revenir au sujet ».</td></tr>
+<tr><td class="crit">Inégalité d'accès</td><td>Certains élèves très à l'aise prennent l'IA pour faire le travail</td><td>Travail en binôme imposé sur les premières séances. Trace des échanges relue par le prof.</td></tr>
+<tr><td class="crit">Saturation du PC</td><td>Lenteur insupportable en multi-postes</td><td>Plafonner à 10 élèves simultanés. Modèle plus léger en cas de besoin. Plan B papier prêt.</td></tr>
+<tr><td class="crit">Le prof ne vérifie pas les logs</td><td>Dérives invisibles</td><td>Routine de fin de séance : 5 min pour scanner 3 conversations au hasard.</td></tr>
+<tr><td class="crit">Conservation indéfinie des logs</td><td>Risque RGPD différé</td><td>Effacement programmé toutes les [X semaines]. À écrire dans la charte de l'établissement.</td></tr>
+</tbody>
+</table>
+</section>
+
+<!-- 12 -->
+<section id="ressources">
+<h2>12. Ressources et liens</h2>
+
+<h3>Documentation Open WebUI</h3>
+<div class="links">
+  <a href="https://docs.openwebui.com/features/workspace/models">Open WebUI — créer un modèle personnalisé</a>
+  <a href="https://docs.openwebui.com/features/workspace/knowledge">Open WebUI — Knowledge (attacher des fichiers)</a>
+  <a href="https://docs.openwebui.com/getting-started/advanced-topics/network-diagram">Open WebUI — configuration réseau / multi-postes</a>
+  <a href="https://docs.openwebui.com/tutorials/text-to-speech">Open WebUI — synthèse et reconnaissance vocales</a>
+</div>
+
+<h3>Reconnaissance et synthèse vocale</h3>
+<div class="links">
+  <a href="https://github.com/openai/whisper">Whisper — reconnaissance vocale open source (OpenAI)</a>
+  <a href="https://github.com/rhasspy/piper">Piper — synthèse vocale légère et locale</a>
+</div>
+
+<h3>Cadre institutionnel et pédagogique</h3>
+<div class="links">
+  <a href="https://eduscol.education.fr/3776/le-crcn-cadre-de-reference-des-competences-numeriques">Eduscol — CRCN, cadre de référence des compétences numériques</a>
+  <a href="https://www.education.gouv.fr/cadre-d-usage-de-l-intelligence-artificielle-en-education-422171">MEN — cadre d'usage de l'IA en éducation</a>
+  <a href="https://www.cnil.fr/fr/intelligence-artificielle">CNIL — Intelligence artificielle</a>
+  <a href="https://www.education.gouv.fr/la-protection-des-donnees-personnelles-12598">MEN — protection des données personnelles</a>
+</div>
+
+<h3>Ressources pour profils spécifiques</h3>
+<div class="links">
+  <a href="https://www.education.gouv.fr/scolarisation-des-eleves-en-situation-de-handicap-1219">MEN — scolarisation handicap (AESH)</a>
+  <a href="https://www.3018.fr/">3018 — violences numériques (ressource élèves)</a>
+  <a href="https://www.3020.fr/">3020 — non au harcèlement</a>
+</div>
+
+<div class="callout tip">
+  <p><strong class="tag">Suite du guide</strong> <a href="chapitre-3.html"><strong>Chapitre 3 — Optimiser son Obsidian</strong></a> : construire une mémoire long-terme, brancher l'IA dessus, transformer un référentiel en skill, gérer le suivi élève sans double saisie et piloter le pivot CSV avec Charlemagne Pro.</p>
 </div>
 
 </section>
@@ -891,9 +663,9 @@ demande la mise à jour du vault.
 </main>
 
 <footer>
-  F. Henninot · mai 2026 · Chapitre 3 du guide IA native · Document de travail ·
+  F. Henninot · mai 2026 · Chapitre 2 du guide IA native · Document de travail ·
   <a href="mailto:fr.henninot@gmail.com">fr.henninot@gmail.com</a> ·
-  <a href="index.html">← Chapitre 1</a> · <a href="chapitre-2.html">← Chapitre 2</a> · <a href="glossaire.html">Glossaire</a>
+  <a href="index.html">← Chapitre 1</a> · <a href="chapitre-3.html">Chapitre 3 →</a> · <a href="glossaire.html">Glossaire</a>
 </footer>
 
 <script src="glossary-linker.js"></script>
