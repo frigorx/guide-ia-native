@@ -26,6 +26,19 @@ Parcours · Chapitre 4 sur 4
 
 **Un mot vous bloque ?** Le [glossaire](glossaire.md) est en lien permanent en bas de page. **Le radio-guidage, c'est quoi au juste ?** La page [Radio-guidage](radio-guidage.html) l'explique une fois pour toutes.
 
+**Avant tout — Obsidian n'est pas l'IA**
+
+C'est la confusion la plus fréquente à l'arrivée sur ce chapitre. Pour éviter d'aller trop vite, posons les briques :
+
+- **Obsidian** est une *bibliothèque locale de notes* en texte (markdown). Stocke vos cours, fiches, référentiels, comptes-rendus. **Ne « comprend » rien tout seul.**
+- **L'IA locale** (Ollama + un modèle) est le *lecteur intelligent*. Elle sait comprendre, reformuler, synthétiser. **Mais elle ne lit pas vos notes automatiquement.**
+- **Les plugins Obsidian** (Smart Connections, Local GPT, Copilot…) sont le *pont* entre les deux. Sans plugin correctement configuré, l'IA locale ne touchera pas à vos notes Obsidian.
+- **Embeddings & RAG** sont les méthodes techniques qui permettent à l'IA de retrouver les bonnes notes dans votre vault avant de répondre. Voir glossaire pour les définitions.
+
+**Conséquence :** ce chapitre va vous faire installer Obsidian, structurer un vault, puis brancher dessus deux ou trois plugins pour que l'IA locale puisse vous aider à exploiter vos notes. Ce n'est pas « Obsidian = IA » — c'est « Obsidian + IA = mémoire long-terme de votre travail ».
+
+**⚠ Avertissement plugins.** Certains plugins Obsidian utilisent des API cloud externes (ChatGPT, Claude, etc.) plutôt que votre Ollama local. **Ne pas utiliser ces plugins avec des données élèves ou sensibles sans validation adaptée.** Le chapitre privilégie les plugins qui se branchent à Ollama local.
+
 **Boussole — quelle IA pour quel usage ?** Ce chapitre est le seul à mélanger deux régimes : on continue d'apprendre l'outil avec une IA cloud, mais le travail réel sur vos notes se fait **obligatoirement en local**. Avant de plonger, repérez quel usage correspond à quoi.
 
 | Usage | Quelle IA |

@@ -179,7 +179,7 @@ Qualifie un modèle capable de traiter plusieurs types de contenu — texte, ima
 ## O
 
 **Obsidian** *[Logiciel]*
-Logiciel de prise de notes en markdown, **100 % local**, avec un système de plugins très riche. Devient avec une IA branchée une « mémoire long-terme » du prof. Sujet du Chapitre 4. [obsidian.md](https://obsidian.md).
+Logiciel de prise de notes en markdown, **local par conception** (les notes restent dans un dossier sur votre disque), avec un système de plugins très riche. Devient, avec une IA branchée via plugins adaptés, une « mémoire long-terme » du prof. *Attention : certains plugins Obsidian font appel à des API cloud — à vérifier avant tout usage avec des données sensibles.* Sujet du Chapitre 4. [obsidian.md](https://obsidian.md).
 
 **Ollama** *[Logiciel]*
 Moteur open source qui fait tourner des modèles LLM en local. S'utilise en ligne de commande mais avec une syntaxe très simple. C'est le cœur de l'installation du Chapitre 1. [ollama.com](https://ollama.com).

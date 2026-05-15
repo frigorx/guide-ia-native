@@ -54,7 +54,20 @@ La grille de lecture en 4 briques du Chapitre 1 le disait : interface, moteur, m
 
 ## 2. Qu'est-ce qu'un skill, simplement ?
 
-**Précision de vocabulaire** Dans ce guide, le mot **« skill »** est utilisé au sens large : un ensemble d'instructions, de documents et de règles qui spécialisent l'IA pour un usage métier. Le terme vient à l'origine d'Anthropic (Claude), mais le concept est universel. Selon l'outil utilisé, on parlera aussi de *system prompt*, *modèle personnalisé*, *Modelfile* (Ollama), *workspace* ou *base documentaire (RAG)* — c'est la même idée.
+**Attention au mot « skill »**
+
+Dans ce guide, le mot **« skill »** est utilisé au **sens pédagogique large** : un dossier ou une fiche d'instructions métier qui aide l'IA à adopter une méthode, un rôle ou un cadre de travail. **Le principe est commun, mais l'implémentation technique varie selon l'outil.**
+
+| Concept / outil | Rôle |
+| --- | --- |
+| Skill au sens large | Dossier d'instructions et de références métier — la version pédagogique du concept utilisée dans ce guide. |
+| Skill Claude | Fonction structurée propre à Claude (Anthropic) — dossier avec `SKILL.md` et ressources annexes, mobilisé automatiquement selon une description déclencheur. |
+| System prompt Open WebUI | Instructions permanentes données à un **« modèle personnalisé »** dans Open WebUI. Le plus proche équivalent fonctionnel d'un skill, dans notre parcours. |
+| Modelfile Ollama | Fichier de configuration permettant de créer un modèle Ollama avec consignes intégrées. Plus technique, plus permanent. |
+| RAG / base documentaire | Méthode pour faire chercher l'IA dans des documents avant qu'elle réponde. Complémentaire d'un skill, pas équivalent. |
+| Preset LM Studio | Profil de conversation configuré dans LM Studio. Plus limité qu'un skill mais même esprit. |
+
+**Dans ce chapitre,** on parle du *concept* de skill (le dossier d'instructions métier). Le passage à la réalité technique se fait au [Chapitre 3](chapitre-3.md) avec les *modèles personnalisés Open WebUI*, qui sont l'implémentation la plus accessible pour notre parcours **Ollama + Open WebUI**.
 
 Un **skill** (« compétence », « savoir-faire ») est un **dossier** qui contient un fichier texte décrivant à l'IA : *quand* elle doit s'en servir, *comment* elle doit s'en servir, et *avec quoi*. Une fois ce dossier déposé au bon endroit, l'IA le mobilise automatiquement dès qu'elle reconnaît un déclencheur. Vous n'avez plus à tout réexpliquer à chaque conversation.
 

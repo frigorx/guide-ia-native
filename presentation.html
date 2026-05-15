@@ -92,8 +92,21 @@
   <p><strong class="tag">Statut</strong> Document de travail à caractère <strong>exploratoire</strong>, sans valeur officielle. Ni préconisation institutionnelle, ni solution clé en main, ni guide académique validé. Il propose une démarche progressive pour qu'un enseignant volontaire installe une IA locale sur son ordinateur, en comprenne les limites, puis envisage des usages pédagogiques prudents — en gardant la maîtrise des données traitées.</p>
 </div>
 
+<div class="callout danger" style="border-left-color:#1b3a63;background:#eef4fb">
+  <p><strong class="tag" style="background:#1b3a63;color:#fff">Positionnement du guide</strong></p>
+  <p>Ce guide est un <strong>document de travail exploratoire</strong>. Il vise à aider un enseignant à comprendre, installer et tester une IA locale sur son propre poste. Il a été produit dans le cadre d'un groupe de réflexion académique autour de l'IA, avec des collègues des filières froid/clim/énergétique et CIEL.</p>
+  <p><strong>Il ne constitue pas une prescription académique officielle</strong>, ni une autorisation automatique de traitement de données élèves. Il est mis en ligne pour être <em>testé, critiqué et amélioré collectivement</em>.</p>
+  <p>Tout usage avec des données nominatives ou en contexte d'établissement doit rester prudent et respecter le cadre local : établissement, référent numérique, DPO ou service compétent selon les cas.</p>
+  <p style="margin-top:.6em;padding-top:.6em;border-top:1px dashed rgba(0,0,0,.15)"><strong>La règle de prudence proposée est simple :</strong></p>
+  <ul style="margin:.3em 0">
+    <li><strong>IA cloud</strong> : utile pour apprendre, se faire guider, reformuler, structurer — <em>mais sans données personnelles sensibles</em>.</li>
+    <li><strong>IA locale</strong> : pertinente pour travailler sur des documents internes ou sensibles, <em>sous réserve d'une installation réellement locale et maîtrisée</em>.</li>
+  </ul>
+  <p style="margin-top:.6em"><strong>Ce guide décrit principalement le parcours réellement suivi par l'auteur :</strong> <strong>Ollama + Open WebUI</strong>, accompagné par une IA cloud comme tuteur d'installation. D'autres solutions existent (LM Studio notamment) ; elles sont mentionnées, mais ne sont pas le parcours détaillé ici.</p>
+</div>
+
 <div class="callout info">
-  <p><strong class="tag">Qu'est-ce qu'une « IA native » ?</strong> Une <strong>IA native</strong> (ou « IA locale ») est une IA installée directement sur votre ordinateur, qui fonctionne <strong>sans connexion à Internet</strong>. Vos données ne quittent pas votre poste. C'est l'équivalent, pour l'IA, de Word installé sur votre PC face à Google Docs en ligne.</p>
+  <p><strong class="tag">Qu'est-ce qu'une « IA native » ?</strong> Une <strong>IA native</strong> (ou « IA locale ») est une IA installée directement sur votre ordinateur. Une fois l'installation faite et un modèle téléchargé, elle peut fonctionner sans connexion permanente à Internet ; les prompts sont traités localement, sans transmission à un service cloud — <em>à condition de ne pas activer de connecteur externe et de bien vérifier la configuration des plugins éventuels</em>. C'est l'équivalent, pour l'IA, de Word installé sur votre PC face à Google Docs en ligne : la fonction est la même, mais l'emplacement du traitement change.</p>
 </div>
 
 <h2>Principe directeur — à lire avant tout le reste</h2>
@@ -159,19 +172,61 @@
   <p>Si elle prétend voir votre écran sans capture : <em>« Tu ne peux pas voir mon écran. Demande-moi une capture, ne devine pas. »</em></p>
 </div>
 
+<h2>Pourquoi ce guide ne commence pas par LM Studio ?</h2>
+
+<p><strong>LM Studio</strong> est une voie possible pour découvrir rapidement les modèles locaux. C'est une application graphique simple : on télécharge, on clique, on installe un modèle, on discute. Pour un premier essai sans engagement, c'est efficace.</p>
+
+<p>Mais <strong>ce guide ne développe pas ce parcours</strong>, car il ne correspond pas à la démarche réellement suivie par l'auteur. Le choix retenu ici est <strong>Ollama + Open WebUI</strong>, parce qu'il offre :</p>
+
+<ul>
+  <li>une <strong>interface plus proche d'un ChatGPT local</strong>, plus démonstrative et plus parlante pour des enseignants ;</li>
+  <li>une base <strong>plus évolutive</strong> pour des usages pédagogiques futurs (skills, modèles personnalisés, multi-postes, branchement à Obsidian) ;</li>
+  <li>un écosystème <strong>plus ouvert</strong>, mieux documenté, plus standard dans la communauté IA locale.</li>
+</ul>
+
+<table class="cmp">
+<thead><tr><th>Solution</th><th>Intérêt</th><th>Limite</th><th>Place dans ce guide</th></tr></thead>
+<tbody>
+<tr><td class="crit">LM Studio</td><td>Simple pour tester un modèle local — installation graphique, sans terminal.</td><td>Moins structurant pour le projet décrit ici ; écosystème plus fermé.</td><td><strong>Alternative possible, non détaillée.</strong></td></tr>
+<tr><td class="crit">Ollama</td><td>Moteur local léger et puissant, standard de la communauté IA locale.</td><td>Interface en ligne de commande seule.</td><td><strong>Base technique du guide.</strong></td></tr>
+<tr><td class="crit">Open WebUI</td><td>Interface graphique proche de ChatGPT, ajoute system prompts, modèles personnalisés, multi-postes.</td><td>Installation un cran plus technique (Docker).</td><td><strong>Parcours principal du guide.</strong></td></tr>
+<tr><td class="crit">Obsidian</td><td>Mémoire documentaire locale, sert à structurer la mémoire longue du professeur.</td><td>Nécessite plugins et configuration pour se brancher à l'IA.</td><td><strong>Extension méthodologique</strong> (Chapitre 4).</td></tr>
+</tbody>
+</table>
+
+<div class="callout info">
+  <p><strong class="tag">À retenir</strong> Pour un <strong>simple essai</strong>, LM Studio peut suffire. Pour <strong>reproduire la démarche documentée ici</strong>, suivre le parcours <strong>Ollama + Open WebUI</strong> radio-guidé par une IA cloud.</p>
+</div>
+
 <h2>Par où commencer ? — choisir son parcours</h2>
 
 <p>Le guide se compose de <strong>quatre chapitres</strong>, complétés par deux annexes (la page <a href="radio-guidage.html">Radio-guidage</a> et le <a href="glossaire.html">glossaire</a>). <strong>Le Chapitre 1 se suffit à lui-même</strong> : si vous voulez juste installer une IA et l'utiliser, arrêtez-vous là, c'est très bien.</p>
 
+<h3>Trois parcours-types selon votre objectif</h3>
+
 <table class="cmp">
-<thead><tr><th>Vous êtes…</th><th>Faites…</th></tr></thead>
+<thead><tr><th>Parcours</th><th>Public</th><th>Objectif</th><th>Outils & méthode</th></tr></thead>
 <tbody>
-<tr><td class="crit">Vraiment néophyte, jamais touché à l'IA</td><td><strong>Chapitre 1</strong>, voie LM Studio (la plus simple). Comptez 1 à 3 heures selon votre matériel.</td></tr>
-<tr><td class="crit">À l'aise utilisateur, pas développeur</td><td><strong>Chapitre 1 entier</strong> avec radio-guidage. Comptez une journée, étalée sur 1 ou 2 sessions.</td></tr>
-<tr><td class="crit">Personnaliser l'IA pour votre métier</td><td><strong>Chapitres 1 et 2</strong> (skills). Comptez 2 à 3 demi-journées supplémentaires.</td></tr>
+<tr><td class="crit">A — Découverte simple</td><td>Enseignant qui veut comprendre le principe, sans entrer dans l'architecture complète.</td><td>Voir tourner une IA locale, se faire une idée.</td><td>LM Studio ou démonstration par un collègue. <em>Statut : optionnel, non détaillé dans ce guide.</em></td></tr>
+<tr><td class="crit">B — Parcours principal du guide</td><td>Enseignant volontaire, même néophyte, mais accompagné.</td><td>Installer une IA locale utilisable avec une interface proche de ChatGPT, exploitable pour des usages pédagogiques.</td><td><strong>Ollama + Open WebUI</strong>, radio-guidage par IA cloud. <em>Parcours réellement suivi et documenté.</em></td></tr>
+<tr><td class="crit">C — Usage avancé / établissement</td><td>Référent numérique, équipe projet, formateur, établissement.</td><td>Réfléchir à l'usage collectif, aux données, aux droits, au réseau, au stockage, à la sécurité.</td><td>Lecture intégrale + section « Multi-postes » Chapitre 3. <em>Nécessite validation locale et cadrage adapté.</em></td></tr>
+</tbody>
+</table>
+
+<div class="callout warn">
+  <p>Le <strong>parcours B</strong> n'est pas le plus simple techniquement, mais c'est celui qui correspond le mieux à l'objectif du guide : obtenir une IA locale exploitable dans une logique pédagogique. C'est lui que documentent les Chapitres 1 à 4.</p>
+</div>
+
+<h3>Quel chapitre lire selon votre besoin</h3>
+
+<table class="cmp">
+<thead><tr><th>Vous voulez…</th><th>Lisez…</th></tr></thead>
+<tbody>
+<tr><td class="crit">Installer une IA locale (parcours principal)</td><td><strong>Chapitre 1</strong>. Comptez une journée, étalée sur 1 ou 2 sessions.</td></tr>
+<tr><td class="crit">Personnaliser l'IA pour votre métier</td><td><strong>Chapitres 1 et 2</strong> (skills). 2 à 3 demi-journées supplémentaires.</td></tr>
 <tr><td class="crit">Faire travailler vos élèves avec l'IA</td><td><strong>Chapitres 1 à 3</strong> (chatbot pédagogique). Nécessite un cadre établissement validé.</td></tr>
-<tr><td class="crit">Une mémoire long-terme de votre travail</td><td><strong>Chapitres 1, 2 et 4</strong> (Obsidian). Comptez 2 à 3 demi-journées supplémentaires.</td></tr>
-<tr><td class="crit">Référent numérique d'établissement / RUPN</td><td>Lire tout, avec un œil particulier sur la section « Multi-postes » du Chapitre 3.</td></tr>
+<tr><td class="crit">Une mémoire long-terme de votre travail</td><td><strong>Chapitres 1, 2 et 4</strong> (Obsidian). 2 à 3 demi-journées supplémentaires.</td></tr>
+<tr><td class="crit">Référent numérique d'établissement / RUPN</td><td>Lire tout, avec un œil sur la section « Multi-postes » du Chapitre 3.</td></tr>
 <tr><td class="crit">Comprendre la méthode du radio-guidage</td><td>La page <a href="radio-guidage.html">Radio-guidage</a> — commune aux quatre chapitres.</td></tr>
 <tr><td class="crit">Un mot vous bloque</td><td>Le <a href="glossaire.html">glossaire</a>. Ou demandez à votre IA cloud.</td></tr>
 </tbody>

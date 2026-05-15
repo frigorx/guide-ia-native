@@ -264,8 +264,21 @@
 <section id="quoi">
 <h2>2. Qu'est-ce qu'un skill, simplement ?</h2>
 
-<div class="callout info" style="font-size:.9em">
-  <p><strong class="tag">Précision de vocabulaire</strong> Dans ce guide, le mot <strong>« skill »</strong> est utilisé au sens large : un ensemble d'instructions, de documents et de règles qui spécialisent l'IA pour un usage métier. Le terme vient à l'origine d'Anthropic (Claude), mais le concept est universel. Selon l'outil utilisé, on parlera aussi de <em>system prompt</em>, <em>modèle personnalisé</em>, <em>Modelfile</em> (Ollama), <em>workspace</em> ou <em>base documentaire (RAG)</em> — c'est la même idée.</p>
+<div class="callout warn">
+  <p><strong class="tag">Attention au mot « skill »</strong></p>
+  <p>Dans ce guide, le mot <strong>« skill »</strong> est utilisé au <strong>sens pédagogique large</strong> : un dossier ou une fiche d'instructions métier qui aide l'IA à adopter une méthode, un rôle ou un cadre de travail. <strong>Le principe est commun, mais l'implémentation technique varie selon l'outil.</strong></p>
+  <table class="cmp" style="margin-top:.6em">
+    <thead><tr><th>Concept / outil</th><th>Rôle</th></tr></thead>
+    <tbody>
+      <tr><td class="crit">Skill au sens large</td><td>Dossier d'instructions et de références métier — la version pédagogique du concept utilisée dans ce guide.</td></tr>
+      <tr><td class="crit">Skill Claude</td><td>Fonction structurée propre à Claude (Anthropic) — dossier avec <code>SKILL.md</code> et ressources annexes, mobilisé automatiquement selon une description déclencheur.</td></tr>
+      <tr><td class="crit">System prompt Open WebUI</td><td>Instructions permanentes données à un <strong>« modèle personnalisé »</strong> dans Open WebUI. Le plus proche équivalent fonctionnel d'un skill, dans notre parcours.</td></tr>
+      <tr><td class="crit">Modelfile Ollama</td><td>Fichier de configuration permettant de créer un modèle Ollama avec consignes intégrées. Plus technique, plus permanent.</td></tr>
+      <tr><td class="crit">RAG / base documentaire</td><td>Méthode pour faire chercher l'IA dans des documents avant qu'elle réponde. Complémentaire d'un skill, pas équivalent.</td></tr>
+      <tr><td class="crit">Preset LM Studio</td><td>Profil de conversation configuré dans LM Studio. Plus limité qu'un skill mais même esprit.</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:.6em"><strong>Dans ce chapitre,</strong> on parle du <em>concept</em> de skill (le dossier d'instructions métier). Le passage à la réalité technique se fait au <a href="chapitre-3.html">Chapitre 3</a> avec les <em>modèles personnalisés Open WebUI</em>, qui sont l'implémentation la plus accessible pour notre parcours <strong>Ollama + Open WebUI</strong>.</p>
 </div>
 
 <p>Un <strong>skill</strong> (« compétence », « savoir-faire ») est un <strong>dossier</strong> qui contient un fichier texte décrivant à l'IA : <em>quand</em> elle doit s'en servir, <em>comment</em> elle doit s'en servir, et <em>avec quoi</em>. Une fois ce dossier déposé au bon endroit, l'IA le mobilise automatiquement dès qu'elle reconnaît un déclencheur. Vous n'avez plus à tout réexpliquer à chaque conversation.</p>

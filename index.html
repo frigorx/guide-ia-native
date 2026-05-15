@@ -239,6 +239,8 @@
     <li><a href="#premier">Premier prompt — se familiariser</a></li>
     <li><a href="#radio-guidage"><strong>Radio-guidage — faire installer cette IA par une IA cloud</strong></a></li>
     <li><a href="#et-maintenant">Vous avez installé votre IA. Et maintenant ?</a></li>
+    <li><a href="#precautions">Avant un usage professionnel ou en établissement</a></li>
+    <li><a href="#desinstaller">Revenir en arrière — désinstaller, faire le ménage</a></li>
     <li><a href="#ressources">Ressources et liens</a></li>
   </ol>
 </nav>
@@ -273,7 +275,7 @@
 <h2>2. Enjeux, usages, limites</h2>
 
 <h3>2.1. RGPD — ce qu'on transmet sans le voir</h3>
-<p><strong>Côté enseignant.</strong> Coller une copie d'élève dans ChatGPT, c'est transmettre à un sous-traitant non recensé par l'établissement : le nom de l'élève, son niveau, ses productions, parfois ses difficultés (« il est dyslexique, adapte… »). Données personnelles d'élèves mineurs, RGPD article 28. Aucun établissement n'a signé de contrat avec OpenAI ou Anthropic. <strong>Une infraction silencieuse.</strong></p>
+<p><strong>Côté enseignant.</strong> Coller une copie d'élève dans ChatGPT, c'est transmettre à un sous-traitant non recensé par l'établissement : le nom de l'élève, son niveau, ses productions, parfois ses difficultés (« il est dyslexique, adapte… »). Données personnelles d'élèves mineurs, RGPD article 28. À ma connaissance, aucun établissement n'a signé de contrat de sous-traitance spécifique avec OpenAI ou Anthropic pour cet usage. <strong>Cela peut rendre l'usage non conforme</strong> tant que le cadre n'est pas validé localement (chef d'établissement, RUPN, DPO selon le contexte).</p>
 <p><strong>Côté particulier.</strong> Demander à ChatGPT d'organiser un planning familial, de rédiger une lettre administrative, d'aider sur un problème médical, c'est lui confier des données personnelles — les siennes, celles de ses enfants, de ses proches. Ces données sont conservées, parfois utilisées pour entraîner les modèles. Là encore, le RGPD s'applique : il y a un sous-traitant, hors UE, sans contrat avec l'utilisateur final autre que des CGU qu'on n'a pas lues.</p>
 
 <h3>2.2. Souveraineté</h3>
@@ -352,8 +354,8 @@
     </tr>
     <tr>
       <td class="crit">Données chez moi</td>
-      <td><span class="badge b-ok">Oui — 100% local</span></td>
-      <td><span class="badge b-ok">Oui — 100% local</span></td>
+      <td><span class="badge b-ok">Traitement local</span> à cadrer selon plugins</td>
+      <td><span class="badge b-ok">Traitement local</span> à cadrer selon plugins</td>
       <td><span class="badge b-no">Non — serveurs Anthropic (US/UE)</span></td>
     </tr>
     <tr>
@@ -487,7 +489,8 @@
 <pre><button class="copy-btn">copier</button>docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway \
   -v open-webui:/app/backend/data --name open-webui --restart always \
   ghcr.io/open-webui/open-webui:main</pre>
-    <p>Ouvrir <a href="http://localhost:3000">http://localhost:3000</a> dans le navigateur. Créer un compte local (rien ne sort de la machine). L'interface détecte automatiquement les modèles Ollama installés.</p>
+    <p>Ouvrir <a href="http://localhost:3000">http://localhost:3000</a> dans le navigateur. Créer un compte local (le compte est stocké sur votre poste, pas chez Open WebUI). L'interface détecte automatiquement les modèles Ollama installés.</p>
+<p>À ce stade, la chaîne <strong>Ollama + Open WebUI</strong> fonctionne sur votre machine. Les prompts sont traités localement, sans transmission à un service cloud — <em>sous réserve de ne pas activer ultérieurement de plugin externe ou de connecteur qui appellerait une API distante</em>.</p>
   </li>
   <li>
     <strong>Partager l'IA avec d'autres postes (optionnel).</strong>
@@ -568,7 +571,13 @@
 <section id="radio-guidage">
 <h2>8. Radio-guidage — faire installer cette IA par une IA cloud</h2>
 
-<p>Vous avez lu le chapitre, vous savez où vous allez. Voici l'outil pour <strong>exécuter</strong> : un prompt à coller dans une IA cloud, qui devient votre assistant patient et vous accompagne étape par étape. <strong>Aucune donnée personnelle n'est échangée</strong> — la conversation porte uniquement sur l'installation logicielle de votre poste, donc aucun problème RGPD.</p>
+<p>Vous avez lu le chapitre, vous savez où vous allez. Voici l'outil pour <strong>exécuter</strong> : un prompt à coller dans une IA cloud, qui devient votre assistant patient et vous accompagne étape par étape.</p>
+
+<div class="callout warn">
+  <p><strong class="tag">Ce que vous échangez avec l'IA cloud — et ce que vous n'échangez pas</strong></p>
+  <p>La conversation porte uniquement sur l'<strong>installation logicielle de votre poste</strong> : fichiers, commandes, messages d'erreur, configuration. <strong>Le risque RGPD est ici minimal</strong>, car aucune donnée personnelle identifiable n'est en jeu.</p>
+  <p><strong>Ne collez jamais</strong> dans cette conversation : copies d'élèves, listes nominatives, données de santé, fichiers internes sensibles. La règle est simple — <em>tant que la conversation parle de l'ordinateur et pas de personnes, l'usage cloud est défendable</em>.</p>
+</div>
 
 <h3>8.1. Marche à suivre</h3>
 <ol class="steps">
@@ -699,9 +708,85 @@ Le document est ci-joint / ci-dessus. Commence par tes questions.</pre>
 </div>
 </section>
 
-<!-- ========== 10 RESSOURCES ========== -->
+<!-- ========== 10 PRECAUTIONS USAGE PRO ========== -->
+<section id="precautions">
+<h2>10. Avant un usage professionnel ou en établissement</h2>
+
+<p>L'installation décrite dans ce chapitre est conçue d'abord pour un <strong>usage personnel d'enseignant</strong> : vous installez sur votre poste, vous apprenez l'outil, vous l'utilisez sur des contenus sans donnée personnelle identifiable. Tant que vous restez dans ce périmètre, le risque est minimal.</p>
+
+<p>Dès que l'on franchit ce périmètre — usage avec des élèves, en classe, sur un poste d'établissement, avec des documents internes —, <strong>une checklist préalable s'impose</strong>. Pas pour vous décourager, pour vous protéger.</p>
+
+<div class="callout warn">
+  <p><strong class="tag">Checklist avant tout usage professionnel</strong></p>
+  <ul style="margin:.3em 0">
+    <li>Ai-je le <strong>droit d'installer ces logiciels</strong> sur ce poste ? (Poste personnel ou poste d'établissement ?)</li>
+    <li>Les données que je vais traiter sont-elles <strong>nominatives</strong> ? Un élève est-il identifiable ?</li>
+    <li>L'outil utilise-t-il <strong>uniquement un modèle local</strong> ? Des plugins ou connecteurs cloud sont-ils activés ?</li>
+    <li>Les fichiers résultats sont-ils <strong>stockés localement</strong>, sauvegardés, accessibles à qui de droit ?</li>
+    <li>Existe-t-il une <strong>validation du chef d'établissement, du RUPN, du DPO</strong> ou du service informatique selon le contexte ?</li>
+    <li>Ai-je prévu une <strong>procédure de sauvegarde et de suppression</strong> des données traitées ?</li>
+    <li>Les <strong>familles ont-elles été informées</strong> si des données d'élèves sont concernées ?</li>
+  </ul>
+</div>
+
+<div class="callout danger">
+  <p><strong class="tag">Règle simple à retenir</strong> <strong>Pas de données élèves dans une IA cloud sans cadre validé.</strong> Et <strong>l'IA locale réduit certains risques, mais ne supprime pas la responsabilité de l'utilisateur</strong> : si vous traitez des données personnelles, vous restez responsable du traitement au sens RGPD, quelle que soit la couche technique.</p>
+</div>
+
+<p>Le <a href="chapitre-3.html">Chapitre 3</a> détaille la procédure spécifique pour un usage classe (multi-postes, charte d'usage élève, scénario de séance, évaluation) avec les garde-fous correspondants. Le <a href="chapitre-4.html">Chapitre 4</a> traite des cas sensibles autour du suivi élève dans Obsidian.</p>
+</section>
+
+<!-- ========== 11 REVENIR EN ARRIERE ========== -->
+<section id="desinstaller">
+<h2>11. Revenir en arrière — désinstaller, faire le ménage</h2>
+
+<p>Un mot rassurant : vous pouvez <strong>arrêter l'expérimentation à tout moment</strong>. Rien n'est définitif. Cette section décrit les étapes pour revenir à un état propre, dans l'ordre, sans rien casser d'important.</p>
+
+<div class="callout warn">
+  <p><strong class="tag">Avant de supprimer quoi que ce soit</strong> Ne supprimez jamais un dossier sans savoir ce qu'il contient. Si vous avez créé des skills, des notes ou des conversations importantes, <strong>sauvegardez-les d'abord</strong> (copie vers un autre dossier, clé USB, cloud chiffré). En cas de doute, demandez à votre IA cloud (ou à un collègue référent) de vérifier avec vous le contenu avant suppression.</p>
+</div>
+
+<h3>11.1. Arrêter sans désinstaller</h3>
+<p>Si vous voulez juste <strong>arrêter temporairement</strong> sans désinstaller :</p>
+<ol>
+  <li>Fermer l'onglet du navigateur sur <code>localhost:3000</code>.</li>
+  <li>Ouvrir <strong>Docker Desktop</strong> et arrêter le conteneur <code>open-webui</code> (clic droit → <em>Stop</em>).</li>
+  <li>Optionnel : fermer Docker Desktop lui-même (icône système, clic droit, <em>Quit Docker Desktop</em>).</li>
+  <li>Ollama tourne en arrière-plan. Pour l'arrêter : icône système (côté horloge), clic droit sur l'icône Ollama, <em>Quit</em>.</li>
+</ol>
+<p>À ce stade, plus rien ne consomme de ressources. Vous pouvez relancer en quelques clics.</p>
+
+<h3>11.2. Faire de la place — supprimer un modèle inutilisé</h3>
+<p>Les modèles pèsent de 2 à 40 Go selon leur taille. Si vous en avez essayé plusieurs et voulez en garder un seul :</p>
+<pre><button class="copy-btn">copier</button>ollama list
+ollama rm llama3.1:8b</pre>
+<p>La première commande liste les modèles installés. La seconde supprime celui dont vous donnez le nom. Vous pouvez toujours le retélécharger plus tard avec <code>ollama pull</code>.</p>
+
+<h3>11.3. Désinstaller complètement Open WebUI</h3>
+<p>Dans <strong>Docker Desktop</strong> :</p>
+<ol>
+  <li>Onglet <em>Containers</em> → arrêter <code>open-webui</code> (s'il tourne).</li>
+  <li>Clic droit sur <code>open-webui</code> → <em>Remove</em> (supprime le conteneur).</li>
+  <li>Onglet <em>Images</em> → trouver <code>open-webui</code> → clic droit → <em>Remove</em>.</li>
+  <li>Onglet <em>Volumes</em> → trouver le volume <code>open-webui</code> → clic droit → <em>Remove</em>. <strong>⚠ Cette dernière étape efface vos conversations et comptes Open WebUI.</strong></li>
+</ol>
+
+<h3>11.4. Désinstaller Ollama</h3>
+<p>Sur <strong>Windows</strong> : Paramètres → Applications → Applications installées → chercher <em>Ollama</em> → Désinstaller. Les modèles téléchargés restent dans <code>%USERPROFILE%\.ollama</code> ; supprimez ce dossier à la main si vous voulez tout effacer.</p>
+<p>Sur <strong>macOS</strong> : déplacer <em>Ollama.app</em> dans la corbeille. Modèles dans <code>~/.ollama</code>.</p>
+<p>Sur <strong>Linux</strong> : selon votre méthode d'install (script officiel, paquet…), suivre la procédure de désinstallation correspondante. Modèles dans <code>~/.ollama</code>.</p>
+
+<h3>11.5. Désinstaller Docker Desktop</h3>
+<p>Si vous ne comptez plus utiliser Docker pour autre chose : désinstallation classique (Paramètres → Applications → Docker Desktop → Désinstaller, sous Windows). Docker peut servir à d'autres outils — vérifiez avant de désinstaller si vous l'utilisez ailleurs.</p>
+
+<div class="callout tip">
+  <p><strong class="tag">Bon réflexe</strong> Avant un <em>« grand nettoyage »</em>, faites simplement <em>« arrêter sans désinstaller »</em> (§11.1) pendant une semaine. Si vous ne ressentez rien, désinstallez sereinement. Si l'outil vous manque, vous le relancerez en trois clics. Pas la peine de tout supprimer pour libérer 8 Go alors qu'on n'est pas sûr.</p>
+</div>
+</section>
+
+<!-- ========== 12 RESSOURCES ========== -->
 <section id="ressources">
-<h2>10. Ressources et liens</h2>
+<h2>12. Ressources et liens</h2>
 
 <h3>Outils — installation</h3>
 <div class="links">

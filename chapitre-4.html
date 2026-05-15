@@ -180,6 +180,19 @@
   <p style="margin-top:.6em;padding-top:.6em;border-top:1px dashed rgba(0,0,0,.15)"><strong>Un mot vous bloque ?</strong> Le <a href="glossaire.html">glossaire</a> est en lien permanent en bas de page. <strong>Le radio-guidage, c'est quoi au juste ?</strong> La page <a href="radio-guidage.html">Radio-guidage</a> l'explique une fois pour toutes.</p>
 </div>
 
+<div class="callout tip">
+  <p><strong class="tag">Avant tout — Obsidian n'est pas l'IA</strong></p>
+  <p>C'est la confusion la plus fréquente à l'arrivée sur ce chapitre. Pour éviter d'aller trop vite, posons les briques :</p>
+  <ul style="margin:.4em 0">
+    <li><strong>Obsidian</strong> est une <em>bibliothèque locale de notes</em> en texte (markdown). Stocke vos cours, fiches, référentiels, comptes-rendus. <strong>Ne « comprend » rien tout seul.</strong></li>
+    <li><strong>L'IA locale</strong> (Ollama + un modèle) est le <em>lecteur intelligent</em>. Elle sait comprendre, reformuler, synthétiser. <strong>Mais elle ne lit pas vos notes automatiquement.</strong></li>
+    <li><strong>Les plugins Obsidian</strong> (Smart Connections, Local GPT, Copilot…) sont le <em>pont</em> entre les deux. Sans plugin correctement configuré, l'IA locale ne touchera pas à vos notes Obsidian.</li>
+    <li><strong>Embeddings & RAG</strong> sont les méthodes techniques qui permettent à l'IA de retrouver les bonnes notes dans votre vault avant de répondre. Voir glossaire pour les définitions.</li>
+  </ul>
+  <p style="margin-top:.4em"><strong>Conséquence :</strong> ce chapitre va vous faire installer Obsidian, structurer un vault, puis brancher dessus deux ou trois plugins pour que l'IA locale puisse vous aider à exploiter vos notes. Ce n'est pas « Obsidian = IA » — c'est « Obsidian + IA = mémoire long-terme de votre travail ».</p>
+  <p style="margin-top:.4em"><strong>⚠ Avertissement plugins.</strong> Certains plugins Obsidian utilisent des API cloud externes (ChatGPT, Claude, etc.) plutôt que votre Ollama local. <strong>Ne pas utiliser ces plugins avec des données élèves ou sensibles sans validation adaptée.</strong> Le chapitre privilégie les plugins qui se branchent à Ollama local.</p>
+</div>
+
 <div class="callout info">
   <p><strong class="tag">Boussole — quelle IA pour quel usage ?</strong> Ce chapitre est le seul à mélanger deux régimes : on continue d'apprendre l'outil avec une IA cloud, mais le travail réel sur vos notes se fait <strong>obligatoirement en local</strong>. Avant de plonger, repérez quel usage correspond à quoi.</p>
   <table class="cmp" style="margin-top:.8em">
