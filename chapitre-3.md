@@ -386,9 +386,11 @@ Le document est ci-joint / ci-dessus. Commence par tes questions.
 
 Vous savez maintenant transformer votre IA en assistant pour vos élèves, avec les garde-fous qu'il faut.
 
-Le **Chapitre 4** s'attaque à un autre besoin : la **mémoire long-terme**. Aujourd'hui votre IA recommence à zéro à chaque conversation. Avec Obsidian branché à votre IA locale, elle gagne accès à votre patrimoine pédagogique — vos cours, vos fiches, vos références, accumulés au fil des années. Et vous sortez de la double saisie avec Charlemagne Pro et autres outils institutionnels.
+Le **Chapitre 4** s'attaque à un autre besoin : la **mémoire long-terme**. Aujourd'hui votre IA recommence à zéro à chaque conversation. Avec Obsidian branché à votre IA locale, elle gagne accès à votre patrimoine pédagogique — vos cours, vos fiches, vos références, accumulés au fil des années. Et vous sortez de la double saisie avec le logiciel de gestion de classe et les autres outils institutionnels.
 
 ## 14. Ressources et liens
+
+**⚠ Liens fournis à titre indicatif** Ne téléchargez pas tout en autonomie depuis cette liste. Le [radio-guidage par IA cloud (§12)](#radio-guidage) vous indiquera exactement quels outils installer et configurer, dans quel ordre, et adaptés à votre contexte d'établissement. Cette liste sert de référence pour qui veut voir d'où viennent les outils mentionnés — pas de check-list à exécuter.
 
 ### Documentation Open WebUI
 
@@ -418,5 +420,5 @@ Le **Chapitre 4** s'attaque à un autre besoin : la **mémoire long-terme**. Auj
 **Suite du guide**
 
 - [**Chapitre 1 — Installer une IA native**](chapitre-1.md) · [**Chapitre 2 — Personnaliser votre IA avec des skills**](chapitre-2.md) : les prérequis de ce chapitre.
-- [**Chapitre 4 — Optimiser son Obsidian**](chapitre-4.md) : construire une mémoire long-terme, brancher l'IA dessus, transformer un référentiel en skill, gérer le suivi élève sans double saisie et piloter le pivot CSV avec Charlemagne Pro.
+- [**Chapitre 4 — Optimiser son Obsidian**](chapitre-4.md) : construire une mémoire long-terme, brancher l'IA dessus, transformer un référentiel en skill, gérer le suivi élève sans double saisie et préparer des exports CSV vers le logiciel de gestion de classe imposé par l'établissement.
 - [**Annexe — Radio-guidage**](radio-guidage.html) : la méthode commune à tous les chapitres, expliquée une fois pour toutes.

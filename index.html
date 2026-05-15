@@ -191,7 +191,7 @@
     <span><b>Format·</b> HTML interactif + Markdown</span>
   </div>
   <div id="note-ia-native" style="margin-top:14px;padding-top:10px;border-top:1px solid rgba(255,255,255,.18);font-size:.82em;font-style:italic;opacity:.88;max-width:780px">
-    <strong style="color:var(--orange);font-style:normal">*</strong> Une <strong style="font-style:normal">IA native</strong> (ou « IA locale ») est une IA installée sur votre propre ordinateur, qui fonctionne <strong style="font-style:normal">sans connexion à Internet</strong>. Vos données ne quittent pas votre poste. C'est l'équivalent, pour l'IA, de Word installé sur votre PC face à Google Docs en ligne.
+    <strong style="color:var(--orange);font-style:normal">*</strong> Une <strong style="font-style:normal">IA native</strong> (ou « IA locale ») est une IA installée sur votre propre ordinateur. Une fois le modèle téléchargé, les prompts y sont traités localement, <strong style="font-style:normal">sans transmission à un service cloud</strong> — sous réserve qu'aucun connecteur externe, plugin cloud ou synchronisation non maîtrisée ne soit activé. C'est l'équivalent, pour l'IA, de Word installé sur votre PC face à Google Docs en ligne.
   </div>
 </header>
 
@@ -259,7 +259,7 @@
   <p><strong class="tag">Ce que vous saurez faire en sortie</strong> Installer une IA locale fonctionnelle sur votre ordinateur — Ollama + Open WebUI, ou LM Studio selon votre profil —, choisir le modèle adapté à votre matériel (Llama 3.1 8B par défaut, Gemma 3 12B si GPU dédié ou Mac Apple Silicon), faire un premier dialogue qui répond, et comprendre les forces et limites concrètes d'une IA en local : ce qu'elle fait bien, ce qu'elle ne sait pas faire, et pourquoi c'est exactement ce qu'il faut pour un usage sensible. Tout ça sans qu'aucune de vos données ne quitte votre poste.</p>
 </div>
 
-<p>L'IA conversationnelle est entrée dans le quotidien — des enseignants, mais aussi des particuliers — <strong>sans cadre clair</strong>. ChatGPT, Claude, Gemini sont utilisés pour corriger des copies, organiser une vie de famille, gérer des données de santé, sans que personne n'ait vraiment vérifié où partent ces informations. Ce guide propose une alternative : installer une <strong>IA native</strong>, qui tourne directement sur votre ordinateur, <strong>sans envoi de données à un serveur tiers</strong>.</p>
+<p>L'IA conversationnelle est entrée dans le quotidien — des enseignants, mais aussi des particuliers — <strong>sans cadre clair</strong>. ChatGPT, Claude, Gemini sont utilisés pour corriger des copies, organiser une vie de famille, gérer des données de santé, sans que personne n'ait vraiment vérifié où partent ces informations. Ce guide propose une alternative : installer une <strong>IA native</strong>, qui tourne directement sur votre ordinateur — les prompts peuvent y être traités <strong>sans transmission à un service cloud</strong>, sous réserve de ne pas activer de connecteur externe, plugin cloud ou synchronisation non maîtrisée.</p>
 
 <div class="callout info">
   <p><strong class="tag">Pour qui</strong> Ce guide a été pensé d'abord pour <strong>les enseignants — toutes filières et tous niveaux</strong> — afin de leur permettre d'utiliser une IA tout en respectant le cadre RGPD applicable aux données d'élèves. Il fonctionne aussi tel quel pour <strong>tout particulier</strong> qui souhaite installer une IA sur son PC personnel. Aucun prérequis de développeur. Si vous savez installer un logiciel et copier une commande, vous pouvez aller au bout.</p>
@@ -398,7 +398,7 @@
 </table>
 
 <div class="callout ok">
-  <p><strong class="tag">Recommandation</strong> Pour un débutant complet : démarrer avec <strong>LM Studio</strong> (installateur graphique, double-clic, prêt en 10 min) pour se familiariser. Pour qui veut le vrai système de skills et un usage classe : <strong>Ollama + Open WebUI</strong>, en se faisant guider par le <a href="#radio-guidage">radio-guidage (§8)</a> plutôt qu'en lisant la procédure manuelle (§6) en autonomie. <strong>Claude</strong> reste pertinent en complément pour les tâches longues <em>sans données élèves</em>.</p>
+  <p><strong class="tag">Recommandation</strong> Pour un <strong>simple essai rapide</strong>, <strong>LM Studio</strong> est la voie la plus simple (installateur graphique, sans terminal). Pour <strong>suivre la démarche documentée dans ce guide</strong>, le parcours principal reste <strong>Ollama + Open WebUI</strong>, accompagné par le <a href="#radio-guidage">radio-guidage (§8)</a> plutôt qu'en lisant la procédure manuelle (§6) en autonomie. <strong>Claude</strong> reste pertinent en complément pour les tâches longues <em>sans donnée personnelle identifiable</em>.</p>
 </div>
 </section>
 
@@ -468,25 +468,25 @@
   <li>
     <strong>Vérifier l'installation.</strong>
     <p>Ouvrir un terminal (PowerShell sous Windows, Terminal sur Mac) et taper :</p>
-<pre><button class="copy-btn">copier</button>ollama --version</pre>
+<pre>ollama --version</pre>
     <p>Si une version s'affiche, c'est bon.</p>
   </li>
   <li>
     <strong>Télécharger un premier modèle.</strong>
     <p>Pour un démarrage équilibré sur 16 Go de RAM <strong>sans GPU dédié</strong>, partir sur <strong>Llama 3.1 8B</strong> ou <strong>Mistral 7B</strong> :</p>
-<pre><button class="copy-btn">copier</button>ollama pull llama3.1:8b</pre>
+<pre>ollama pull llama3.1:8b</pre>
     <p>Si vous avez un GPU 8 Go VRAM ou un Mac Apple Silicon, <code>ollama pull gemma3:12b</code> est excellent. Le téléchargement prend 5 à 20 minutes selon le débit. Le modèle est ensuite réutilisable sans connexion.</p>
   </li>
   <li>
     <strong>Premier dialogue en terminal.</strong>
-<pre><button class="copy-btn">copier</button>ollama run llama3.1:8b
+<pre>ollama run llama3.1:8b
 &gt;&gt;&gt; Bonjour. Présente-toi en deux phrases et dis-moi ce que tu sais faire.</pre>
     <p>L'IA répond. Si oui, le moteur fonctionne. Pour quitter : <code>/bye</code>.</p>
   </li>
   <li>
     <strong>Installer Open WebUI pour avoir une interface type ChatGPT.</strong>
     <p>La méthode la plus simple passe par Docker Desktop (à installer depuis <a href="https://docker.com">docker.com</a> si absent), puis :</p>
-<pre><button class="copy-btn">copier</button>docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway \
+<pre>docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway \
   -v open-webui:/app/backend/data --name open-webui --restart always \
   ghcr.io/open-webui/open-webui:main</pre>
     <p>Ouvrir <a href="http://localhost:3000">http://localhost:3000</a> dans le navigateur. Créer un compte local (le compte est stocké sur votre poste, pas chez Open WebUI). L'interface détecte automatiquement les modèles Ollama installés.</p>
@@ -597,7 +597,7 @@
 </div>
 
 <h3>8.2. Le prompt à copier</h3>
-<pre><button class="copy-btn">copier</button>Tu es mon assistant de mise en œuvre pour le document que je viens
+<pre>Tu es mon assistant de mise en œuvre pour le document que je viens
 de te transmettre. Je l'ai parcouru mais je ne suis PAS développeur
 ni informaticien. J'ai besoin que tu deviennes mon radio-guide.
 
@@ -758,7 +758,7 @@ Le document est ci-joint / ci-dessus. Commence par tes questions.</pre>
 
 <h3>11.2. Faire de la place — supprimer un modèle inutilisé</h3>
 <p>Les modèles pèsent de 2 à 40 Go selon leur taille. Si vous en avez essayé plusieurs et voulez en garder un seul :</p>
-<pre><button class="copy-btn">copier</button>ollama list
+<pre>ollama list
 ollama rm llama3.1:8b</pre>
 <p>La première commande liste les modèles installés. La seconde supprime celui dont vous donnez le nom. Vous pouvez toujours le retélécharger plus tard avec <code>ollama pull</code>.</p>
 
@@ -787,6 +787,10 @@ ollama rm llama3.1:8b</pre>
 <!-- ========== 12 RESSOURCES ========== -->
 <section id="ressources">
 <h2>12. Ressources et liens</h2>
+
+<div class="callout warn">
+  <p><strong class="tag">⚠ Liens fournis à titre indicatif</strong> Ne téléchargez pas tout en autonomie depuis cette liste. Le <a href="#radio-guidage">radio-guidage par IA cloud (§8)</a> vous indiquera exactement quels outils installer, dans quel ordre, et adaptés à votre matériel. Cette liste sert de référence pour qui veut voir d'où viennent les outils mentionnés — pas de check-list à exécuter.</p>
+</div>
 
 <h3>Outils — installation</h3>
 <div class="links">
@@ -825,7 +829,7 @@ ollama rm llama3.1:8b</pre>
   <ul style="margin:.3em 0 .2em 1.2em">
     <li><a href="chapitre-2.html"><strong>Chapitre 2 — Personnaliser votre IA avec des skills</strong></a> : le concept de skill, anatomie, exemples enseignant et particulier, écosystème, bibliothèque de prompts, radioguidage à une autre personne.</li>
     <li><a href="chapitre-3.html"><strong>Chapitre 3 — Transformer son IA native en assistant pédagogique</strong></a> : system prompt, couplage skill matière, multi-postes, charte d'usage, scénario de séance, évaluation.</li>
-    <li><a href="chapitre-4.html"><strong>Chapitre 4 — Optimiser son Obsidian</strong></a> : architecture du vault, branchement IA, conversion de l'existant, suivi élève sans double saisie, pivot CSV avec Charlemagne Pro.</li>
+    <li><a href="chapitre-4.html"><strong>Chapitre 4 — Optimiser son Obsidian</strong></a> : architecture du vault, branchement IA, conversion de l'existant, suivi élève sans double saisie, préparation d'exports CSV vers le logiciel de gestion de classe imposé par l'établissement.</li>
     <li><a href="radio-guidage.html"><strong>Annexe — Radio-guidage</strong></a> : la méthode commune à tous les chapitres, expliquée une fois pour toutes.</li>
   </ul>
 </div>
@@ -845,18 +849,25 @@ ollama rm llama3.1:8b</pre>
 
 <script src="glossary-linker.js"></script>
 <script>
-  // Boutons "copier" sur les blocs de code
-  document.querySelectorAll('pre .copy-btn').forEach(btn => {
+  // Boutons "copier" injectés au chargement, à l'extérieur du <pre> pour ne pas polluer la sélection manuelle du code.
+  document.querySelectorAll('main pre').forEach(pre => {
+    const wrap = document.createElement('div');
+    wrap.className = 'code-wrap';
+    wrap.style.position = 'relative';
+    pre.parentNode.insertBefore(wrap, pre);
+    wrap.appendChild(pre);
+    const btn = document.createElement('button');
+    btn.className = 'copy-btn';
+    btn.type = 'button';
+    btn.textContent = 'copier';
     btn.addEventListener('click', e => {
       e.preventDefault();
-      const pre = btn.parentElement;
-      const text = pre.innerText.replace(/^copier\n?/, '').trim();
-      navigator.clipboard.writeText(text).then(() => {
-        const orig = btn.textContent;
+      navigator.clipboard.writeText(pre.innerText.trim()).then(() => {
         btn.textContent = 'copié ✓';
-        setTimeout(() => btn.textContent = orig, 1400);
+        setTimeout(() => btn.textContent = 'copier', 1400);
       });
     });
+    wrap.appendChild(btn);
   });
 </script>
 

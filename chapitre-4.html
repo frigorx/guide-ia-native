@@ -200,7 +200,7 @@
     <tbody>
       <tr><td class="crit">Radio-guidage de ce chapitre (installation des plugins, première mise en place du vault)</td><td><span style="display:inline-block;background:#2c5a8f;color:#fff;font-family:'Trebuchet MS','Segoe UI',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;padding:3px 9px;border-radius:3px;text-transform:uppercase">IA CLOUD</span> &nbsp; comme aux Chapitres 1 à 3.</td></tr>
       <tr><td class="crit">Conversion d'archives pédagogiques (anciens TP, séances, fiches au format PDF/DOCX/PPTX)</td><td><span style="display:inline-block;background:#2c5a8f;color:#fff;font-family:'Trebuchet MS','Segoe UI',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;padding:3px 9px;border-radius:3px;text-transform:uppercase">IA CLOUD</span> &nbsp; autorisée — supports pédagogiques non personnels uniquement.</td></tr>
-      <tr><td class="crit">Travail quotidien dans Obsidian (Smart Connections, Local GPT, suivi élève, exports Charlemagne)</td><td><span style="display:inline-block;background:#ff6b35;color:#fff;font-family:'Trebuchet MS','Segoe UI',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;padding:3px 9px;border-radius:3px;text-transform:uppercase">IA LOCALE</span> &nbsp; obligatoire — données nominatives en jeu.</td></tr>
+      <tr><td class="crit">Travail quotidien dans Obsidian (Smart Connections, Local GPT, suivi élève, préparation d'exports CSV vers le logiciel de gestion de classe)</td><td><span style="display:inline-block;background:#ff6b35;color:#fff;font-family:'Trebuchet MS','Segoe UI',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;padding:3px 9px;border-radius:3px;text-transform:uppercase">IA LOCALE</span> &nbsp; obligatoire — données nominatives en jeu.</td></tr>
     </tbody>
   </table>
   <p style="margin-top:.8em"><strong>Règle pratique :</strong> dès qu'il y a une <strong>donnée d'élève ou personnelle</strong> en jeu, c'est <strong>IA locale</strong>. Pour le reste — ancien matériel pédagogique, apprentissage de l'outil — le <strong>cloud</strong> est OK.</p>
@@ -236,7 +236,7 @@
 <p>Obsidian comble exactement ce manque. C'est un <strong>logiciel de prise de notes en markdown</strong> (texte simple, fichiers lisibles partout, archivables à vie), qui stocke <strong>tout en local sur votre disque</strong>, et qui se laisse interroger par une IA via quelques plugins gratuits. En clair : un « second cerveau » qui accumule année après année, et que l'IA peut consulter à la demande.</p>
 
 <div class="callout tip">
-  <p><strong class="tag">Ce que vous saurez faire en sortie</strong> Structurer un vault Obsidian en couches numérotées (00 référentiels → 90 archive), brancher votre IA locale dessus via Smart Connections et Local GPT, convertir l'existant par lots d'une vingtaine de fichiers par mois, transformer un référentiel de diplôme en skill exploitable, et piloter le suivi élève en évitant la double saisie avec Charlemagne Pro grâce à des CSV générés à la demande — tout en respectant le cadre établissement pour les données nominatives.</p>
+  <p><strong class="tag">Ce que vous saurez faire en sortie</strong> Structurer un vault Obsidian en couches numérotées (00 référentiels → 90 archive), brancher votre IA locale dessus via Smart Connections et Local GPT, convertir l'existant par lots d'une vingtaine de fichiers par mois, transformer un référentiel de diplôme en skill exploitable, et aider à <strong>préparer</strong> des CSV d'export vers le logiciel de gestion de classe imposé par l'établissement — fichiers à <strong>vérifier par l'enseignant·e</strong> avant tout import, dans le respect du cadre établissement pour les données nominatives.</p>
 </div>
 
 <div class="callout info">
@@ -281,7 +281,7 @@
   <li>Quand j'écris une appréciation, qu'elle reprenne le <strong>registre que j'ai stabilisé</strong>.</li>
   <li>Quand je positionne un élève, qu'elle ait son <strong>historique sous le coude</strong>.</li>
   <li>Quand je dois écrire un mail délicat, qu'elle reprenne mes <strong>formulations habituelles</strong>.</li>
-  <li>Quand je dois remonter des notes dans l'outil institutionnel (Charlemagne Pro, École Directe), qu'elle me <strong>produise le CSV directement</strong>.</li>
+  <li>Quand je dois remonter des notes dans l'outil institutionnel (logiciel de gestion de classe imposé par l'établissement), qu'elle m'<strong>aide à préparer le CSV d'export</strong>, à vérifier avant import manuel.</li>
 </ol>
 
 <p>Pour chacun, le sous-ensemble de sources réellement utile fait <strong>5 à 20 fichiers</strong>. Pas 6000. Le reste reste où il est — accessible, mais non indexé.</p>
@@ -349,7 +349,7 @@
 <h3>4.2. Le frontmatter YAML — indispensable</h3>
 <p>Chaque note importante commence par un en-tête YAML, qui rend le vault filtrable et indexable. Sans ça, l'IA navigue à l'aveugle.</p>
 
-<pre><button class="copy-btn">copier</button>---
+<pre>---
 type: seance
 classe: 1MFER
 date: 2026-03-14
@@ -405,7 +405,7 @@ tags: [cycle-frigo, TP, première]
 <h3>6.1. Le prompt de conversion par lot — à coller dans Claude ou ChatGPT</h3>
 <p>Pourquoi cloud et pas local ? Parce que le cloud excelle à lire des PDF complexes, des DOCX avec mise en page, des PPTX. Pour cette tâche précise — convertir des documents en markdown structuré — c'est plus efficace. <strong>Aucune donnée d'élève dans cette conversion</strong> : seulement des supports pédagogiques (TP, séances, fiches).</p>
 
-<pre><button class="copy-btn">copier</button>Tu es mon assistant de conversion d'archive pédagogique vers Obsidian.
+<pre>Tu es mon assistant de conversion d'archive pédagogique vers Obsidian.
 
 Je vais te déposer un fichier (PDF, DOCX, PPTX, image). Pour chaque
 fichier, tu produis UNE note markdown structurée selon le modèle
@@ -496,7 +496,7 @@ Je te dépose le premier fichier maintenant.</pre>
 <h3>7.2. Le prompt de conversion — un seul passage par référentiel</h3>
 <p>Cette conversion se fait dans <strong>Claude ou ChatGPT (cloud)</strong>, pas en local — les modèles cloud lisent mieux les PDF complexes avec tableaux, et le référentiel est un document <strong>public</strong>, donc aucun enjeu RGPD. À coller dans une nouvelle conversation, puis déposer le PDF du référentiel.</p>
 
-<pre><button class="copy-btn">copier</button>Tu es mon assistant pour transformer un référentiel officiel de
+<pre>Tu es mon assistant pour transformer un référentiel officiel de
 diplôme en base de connaissances structurée exploitable par une IA.
 
 Je vais te déposer le PDF du référentiel. Tu produis 6 fichiers
@@ -565,6 +565,10 @@ Je dépose le PDF maintenant.</pre>
 <section id="suivi-eleve">
 <h2>8. Interopérabilité avec les outils institutionnels — suivi élève sans double saisie <span style="display:inline-block;background:#ff6b35;color:#fff;font-family:'Trebuchet MS','Segoe UI',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;padding:3px 9px;border-radius:3px;text-transform:uppercase;vertical-align:middle;margin-left:10px">IA LOCALE · données nominatives</span></h2>
 
+<div class="callout warn">
+  <p><strong class="tag">À retenir avant toute lecture de cette section</strong> L'IA locale peut aider à <strong>structurer</strong> des notes pédagogiques et <strong>préparer</strong> un fichier d'export, mais elle <strong>n'automatise pas la saisie institutionnelle</strong>. Toute utilisation de données nominatives doit rester locale, prudente, <strong>vérifiée par l'enseignant·e</strong>, et cadrée selon le contexte d'établissement.</p>
+</div>
+
 <div class="callout danger">
   <p><strong class="tag">Précaution — outils institutionnels et données d'élèves</strong></p>
   <p>Ce chapitre n'a <strong>pas vocation à proposer une connexion automatique aux logiciels institutionnels de vie scolaire</strong> (Charlemagne Pro, École Directe, Pronote, ENT académique). Il ne s'agit pas non plus de contourner ces outils ou leurs procédures.</p>
@@ -589,7 +593,7 @@ Je dépose le PDF maintenant.</pre>
   <p>Les champs liés à des aménagements ou à la santé sont des <strong>données de l'article 9 du RGPD</strong> (catégories particulières) ; leur traitement obéit à des règles strictes. <strong>En l'absence de ce cadre, ne pas mettre en œuvre.</strong> Le template ci-dessous est fourni comme <strong>illustration de structure</strong>, à des fins de discussion et de référence — pas comme modèle à reproduire en l'état.</p>
 </div>
 
-<pre><button class="copy-btn">copier</button>---
+<pre>---
 type: eleve
 classe: [classe]
 nom: [nom]
@@ -627,18 +631,19 @@ statut: actif
 - [Actions concrètes prévues.]</pre>
 
 <h3>8.2. L'export CSV vers l'outil imposé</h3>
-<p>Quand vient le moment de remonter les notes ou positionnements dans l'outil institutionnel, on demande à l'IA locale de produire <strong>le CSV exact attendu par cet outil</strong>. Pour ça, il faut un skill <code>export-charlemagne</code> (ou <code>export-ed</code>) qui contient les colonnes, l'ordre, le séparateur, les codes attendus.</p>
+<p>Quand vient le moment de remonter les notes ou positionnements dans l'outil institutionnel, on demande à l'IA locale d'<strong>aider à préparer</strong> un CSV au format attendu par cet outil — fichier qui sera <strong>vérifié puis importé manuellement</strong> par l'enseignant·e. Pour ça, il faut un skill <code>export-vie-scolaire</code> qui contient les colonnes, l'ordre, le séparateur, les codes attendus par le logiciel de votre établissement.</p>
 
-<pre><button class="copy-btn">copier</button>---
-name: export-charlemagne
-description: Génère un fichier CSV pour import dans Charlemagne Pro
-  à partir des notes de la couche 40-élèves. Format strict :
-  encodage UTF-8, séparateur point-virgule, en-têtes fixes.
-  Utiliser dès que l'utilisateur évoque "export Charlemagne",
-  "CSV pour Charlemagne", "remonter les notes".
+<pre>---
+name: export-vie-scolaire
+description: Prépare un fichier CSV pour import dans le logiciel de
+  gestion de classe de l'établissement, à partir des notes de la
+  couche 40-élèves. Format strict : encodage UTF-8, séparateur
+  point-virgule, en-têtes fixes définis par l'établissement.
+  Utiliser dès que l'utilisateur évoque "export vie scolaire",
+  "CSV pour le logiciel de classe", "remonter les notes".
 ---
 
-# Export Charlemagne Pro
+# Export vers le logiciel de gestion de classe
 
 ## Format attendu
 - Encodage : UTF-8 (avec BOM)
@@ -688,7 +693,7 @@ description: Génère un fichier CSV pour import dans Charlemagne Pro
 <ol class="steps">
   <li>
     <strong>L'export natif</strong> <em>— la bonne voie</em>
-    <p>La plupart des écrans proposent un bouton <em>Exporter</em> (CSV ou XLSX). À <strong>privilégier systématiquement</strong>. On exporte la classe, les notes, les évaluations ; le fichier obtenu est ensuite converti en markdown structuré par l'IA locale (skill <code>import-charlemagne</code> ci-après).</p>
+    <p>La plupart des écrans proposent un bouton <em>Exporter</em> (CSV ou XLSX). À <strong>privilégier systématiquement</strong>. On exporte la classe, les notes, les évaluations ; le fichier obtenu est ensuite converti en markdown structuré par l'IA locale (skill <code>import-vie-scolaire</code> ci-après).</p>
   </li>
   <li>
     <strong>Le copier-coller du tableau affiché</strong> <em>— acceptable pour petit volume</em>
@@ -697,22 +702,22 @@ description: Génère un fichier CSV pour import dans Charlemagne Pro
 </ol>
 
 
-<p>Le skill <code>import-charlemagne</code> qui pilote la conversion :</p>
+<p>Le skill <code>import-vie-scolaire</code> qui pilote la conversion :</p>
 
-<pre><button class="copy-btn">copier</button>---
-name: import-charlemagne
-description: Convertit un export Charlemagne Pro (CSV, XLSX, HTML
-  ou tableau collé) en notes Obsidian structurées dans la couche
-  40-élèves. Utiliser dès que l'utilisateur évoque "import
-  Charlemagne", "récupérer mes données de C-Pro", "mettre à jour
-  ma classe depuis Charlemagne".
+<pre>---
+name: import-vie-scolaire
+description: Convertit un export issu du logiciel de gestion de
+  classe (CSV, XLSX, HTML ou tableau collé) en notes Obsidian
+  structurées dans la couche 40-élèves. Utiliser dès que
+  l'utilisateur évoque "import vie scolaire", "récupérer mes
+  données du logiciel de classe", "mettre à jour ma classe".
 ---
 
-# Import Charlemagne Pro vers Obsidian
+# Import du logiciel de gestion de classe vers Obsidian
 
 ## Quand utiliser
-Toute fois que l'utilisateur dépose un export Charlemagne et
-demande la mise à jour du vault.
+Toute fois que l'utilisateur dépose un export du logiciel de
+gestion de classe et demande la mise à jour du vault.
 
 ## Détection du format
 - Si CSV / XLSX : lire les en-têtes, identifier les colonnes.
@@ -734,30 +739,30 @@ demande la mise à jour du vault.
 - Ne JAMAIS écraser une section "Observations" ou "Plan de
   remédiation" existante sans y ajouter, jamais y substituer.
 - Préserver les aménagements et le profil — uniquement actualiser
-  ce qui vient de Charlemagne (notes, absences).
+  ce qui vient du logiciel de gestion (notes, absences).
 - Marquer chaque ligne nouvelle avec la date d'import en commentaire.</pre>
 
 <div class="callout warn">
-  <p><strong class="tag">Précaution</strong> Les exports Charlemagne contiennent des données d'élèves identifiables. <strong>Cette conversion se fait exclusivement avec l'IA locale</strong> (Chapitre 1). Jamais coller un export d'élèves dans Claude cloud ou ChatGPT.</p>
+  <p><strong class="tag">Précaution</strong> Les exports d'un logiciel de gestion de classe contiennent des données d'élèves identifiables. <strong>Cette conversion se fait exclusivement avec l'IA locale</strong> (Chapitre 1). Jamais coller un export d'élèves dans Claude cloud ou ChatGPT.</p>
 </div>
 
-<h3>8.4. Pivot inerWeb (ou autre outil personnel) → Charlemagne Pro</h3>
-<p>Pour qui a, comme moi, développé un outil de suivi personnel (inerWeb, base notion, fichiers Excel maison) et qui doit basculer vers l'outil institutionnel imposé, le pivot se fait <strong>une fois</strong>, proprement, via l'IA. Le principe : on exporte les données existantes dans un format intermédiaire (JSON ou CSV), on demande à l'IA de les remapper vers le format attendu par Charlemagne, on importe.</p>
+<h3>8.4. Pivot d'un outil personnel vers le logiciel de gestion de classe imposé</h3>
+<p>Pour qui a, comme moi, développé un outil de suivi personnel (base de notes, fichiers Excel maison) et qui doit basculer vers l'outil institutionnel imposé par l'établissement, le pivot se fait <strong>une fois</strong>, proprement, via l'IA. Le principe : on exporte les données existantes dans un format intermédiaire (JSON ou CSV), on demande à l'IA de les remapper vers le format attendu par le logiciel cible, on vérifie, on importe manuellement.</p>
 
 <table class="cmp">
 <thead><tr><th>Étape</th><th>Action</th><th>Outil</th></tr></thead>
 <tbody>
-<tr><td class="crit">1. Exporter</td><td>Sortir toutes les données de l'outil source en JSON / CSV</td><td>L'outil source (inerWeb, Excel, base notion)</td></tr>
-<tr><td class="crit">2. Cartographier</td><td>Établir la table de correspondance des champs : <em>« mon champ <code>note_brute</code> = colonne <code>Note</code> de Charlemagne »</em></td><td>Tableau papier ou Excel</td></tr>
-<tr><td class="crit">3. Remapper</td><td>Lancer un skill de migration qui prend l'export source et produit le CSV Charlemagne</td><td>IA locale (Gemma 3 12B suffit)</td></tr>
-<tr><td class="crit">4. Vérifier en échantillon</td><td>Importer dans Charlemagne 5 lignes seulement. Vérifier intégrité. Itérer si besoin sur le skill.</td><td>Charlemagne Pro (mode test si dispo)</td></tr>
-<tr><td class="crit">5. Importer en bloc</td><td>Quand l'échantillon valide, importer le CSV complet</td><td>Charlemagne Pro</td></tr>
+<tr><td class="crit">1. Exporter</td><td>Sortir toutes les données de l'outil source en JSON / CSV</td><td>L'outil source (base personnelle, Excel)</td></tr>
+<tr><td class="crit">2. Cartographier</td><td>Établir la table de correspondance des champs : <em>« mon champ <code>note_brute</code> = colonne <code>Note</code> attendue par le logiciel »</em></td><td>Tableau papier ou Excel</td></tr>
+<tr><td class="crit">3. Remapper</td><td>Lancer un skill de migration qui prend l'export source et produit le CSV au format attendu par le logiciel cible</td><td>IA locale (Gemma 3 12B suffit)</td></tr>
+<tr><td class="crit">4. Vérifier en échantillon</td><td>Importer 5 lignes seulement dans le logiciel cible. Vérifier intégrité. Itérer si besoin sur le skill.</td><td>Logiciel cible (mode test si disponible)</td></tr>
+<tr><td class="crit">5. Importer en bloc</td><td>Quand l'échantillon est validé par l'enseignant·e, importer manuellement le CSV complet</td><td>Logiciel cible</td></tr>
 <tr><td class="crit">6. Archiver l'outil source</td><td>Geler l'outil source (lecture seule), conserver l'export complet en sauvegarde. Ne plus y saisir.</td><td>Disque local + sauvegarde</td></tr>
 </tbody>
 </table>
 
 <div class="callout ok">
-  <p><strong class="tag">Le bénéfice du pivot propre</strong> Le but n'est pas seulement de migrer techniquement, c'est de <strong>tourner la page</strong>. Tant qu'on saisit dans les deux outils en parallèle, on perd. Le pivot doit être <em>net</em> : avant la date X, on saisissait dans l'ancien ; à partir de X, on saisit dans le nouveau (ou dans Obsidian avec export CSV vers Charlemagne, méthode §8.2). Et on accepte que les données historiques restent consultables mais non vivantes.</p>
+  <p><strong class="tag">Le bénéfice du pivot propre</strong> Le but n'est pas seulement de migrer techniquement, c'est de <strong>tourner la page</strong>. Tant qu'on saisit dans les deux outils en parallèle, on perd. Le pivot doit être <em>net</em> : avant la date X, on saisissait dans l'ancien ; à partir de X, on saisit dans le nouveau (ou dans Obsidian avec export CSV vers le logiciel de gestion, méthode §8.2). Et on accepte que les données historiques restent consultables mais non vivantes.</p>
 </div>
 </section>
 
@@ -782,7 +787,7 @@ demande la mise à jour du vault.
   </li>
   <li>
     <strong>Trimestre 2 — Couche 40-élèves et pivot CSV (5 h initial puis routinier)</strong>
-    <p>Ouvrir une note par élève au début de la séquence. Saisir au fil de l'eau, sans double saisie. Au moment des remontées, lancer l'export CSV vers Charlemagne / ED. La routine s'installe en deux ou trois cycles.</p>
+    <p>Ouvrir une note par élève au début de la séquence. Saisir au fil de l'eau, sans double saisie. Au moment des remontées, l'IA aide à préparer le CSV au format attendu par le logiciel de gestion de classe ; vérification et import restent à votre main. La routine s'installe en deux ou trois cycles.</p>
   </li>
 </ol>
 
@@ -836,7 +841,7 @@ demande la mise à jour du vault.
 </div>
 
 <h3>11.2. Le prompt à copier</h3>
-<pre><button class="copy-btn">copier</button>Tu es mon assistant de mise en œuvre pour le document que je viens
+<pre>Tu es mon assistant de mise en œuvre pour le document que je viens
 de te transmettre. Je l'ai parcouru mais je ne suis PAS développeur
 ni informaticien. J'ai besoin que tu deviennes mon radio-guide.
 
@@ -930,6 +935,10 @@ Le document est ci-joint / ci-dessus. Commence par tes questions.</pre>
 <section id="ressources">
 <h2>13. Ressources et liens</h2>
 
+<div class="callout warn">
+  <p><strong class="tag">⚠ Liens fournis à titre indicatif</strong> Ne téléchargez pas tout en autonomie depuis cette liste. Le <a href="#radio-guidage">radio-guidage par IA cloud (§11)</a> vous indiquera exactement quels plugins et modèles installer, dans quel ordre, et adaptés à vos usages prioritaires. Cette liste sert de référence pour qui veut voir d'où viennent les outils mentionnés — pas de check-list à exécuter.</p>
+</div>
+
 <h3>Obsidian — base</h3>
 <div class="links">
   <a href="https://obsidian.md">Obsidian — site officiel</a>
@@ -982,17 +991,25 @@ Le document est ci-joint / ci-dessus. Commence par tes questions.</pre>
 
 <script src="glossary-linker.js"></script>
 <script>
-  document.querySelectorAll('pre .copy-btn').forEach(btn => {
+  // Boutons "copier" injectés au chargement, à l'extérieur du <pre> pour ne pas polluer la sélection manuelle du code.
+  document.querySelectorAll('main pre').forEach(pre => {
+    const wrap = document.createElement('div');
+    wrap.className = 'code-wrap';
+    wrap.style.position = 'relative';
+    pre.parentNode.insertBefore(wrap, pre);
+    wrap.appendChild(pre);
+    const btn = document.createElement('button');
+    btn.className = 'copy-btn';
+    btn.type = 'button';
+    btn.textContent = 'copier';
     btn.addEventListener('click', e => {
       e.preventDefault();
-      const pre = btn.parentElement;
-      const text = pre.innerText.replace(/^copier\n?/, '').trim();
-      navigator.clipboard.writeText(text).then(() => {
-        const orig = btn.textContent;
+      navigator.clipboard.writeText(pre.innerText.trim()).then(() => {
         btn.textContent = 'copié ✓';
-        setTimeout(() => btn.textContent = orig, 1400);
+        setTimeout(() => btn.textContent = 'copier', 1400);
       });
     });
+    wrap.appendChild(btn);
   });
 </script>
 

@@ -45,7 +45,7 @@ C'est la confusion la plus fréquente à l'arrivée sur ce chapitre. Pour évite
 | --- | --- |
 | Radio-guidage de ce chapitre (installation des plugins, première mise en place du vault) | IA CLOUD   comme aux Chapitres 1 à 3. |
 | Conversion d'archives pédagogiques (anciens TP, séances, fiches au format PDF/DOCX/PPTX) | IA CLOUD   autorisée — supports pédagogiques non personnels uniquement. |
-| Travail quotidien dans Obsidian (Smart Connections, Local GPT, suivi élève, exports Charlemagne) | IA LOCALE   obligatoire — données nominatives en jeu. |
+| Travail quotidien dans Obsidian (Smart Connections, Local GPT, suivi élève, préparation d'exports CSV vers le logiciel de gestion de classe) | IA LOCALE   obligatoire — données nominatives en jeu. |
 
 **Règle pratique :** dès qu'il y a une **donnée d'élève ou personnelle** en jeu, c'est **IA locale**. Pour le reste — ancien matériel pédagogique, apprentissage de l'outil — le **cloud** est OK.
 
@@ -73,7 +73,7 @@ Au Chapitre 3, on a déployé un chatbot pour les élèves, mais qui parle d'*un
 
 Obsidian comble exactement ce manque. C'est un **logiciel de prise de notes en markdown** (texte simple, fichiers lisibles partout, archivables à vie), qui stocke **tout en local sur votre disque**, et qui se laisse interroger par une IA via quelques plugins gratuits. En clair : un « second cerveau » qui accumule année après année, et que l'IA peut consulter à la demande.
 
-**Ce que vous saurez faire en sortie** Structurer un vault Obsidian en couches numérotées (00 référentiels → 90 archive), brancher votre IA locale dessus via Smart Connections et Local GPT, convertir l'existant par lots d'une vingtaine de fichiers par mois, transformer un référentiel de diplôme en skill exploitable, et piloter le suivi élève en évitant la double saisie avec Charlemagne Pro grâce à des CSV générés à la demande — tout en respectant le cadre établissement pour les données nominatives.
+**Ce que vous saurez faire en sortie** Structurer un vault Obsidian en couches numérotées (00 référentiels → 90 archive), brancher votre IA locale dessus via Smart Connections et Local GPT, convertir l'existant par lots d'une vingtaine de fichiers par mois, transformer un référentiel de diplôme en skill exploitable, et aider à **préparer** des CSV d'export vers le logiciel de gestion de classe imposé par l'établissement — fichiers à **vérifier par l'enseignant·e** avant tout import, dans le respect du cadre établissement pour les données nominatives.
 
 **Promesse concrète** Une fois Obsidian bien structuré et l'IA branchée dessus, vous pourrez dire : *« Résume-moi tout ce que j'ai noté sur la classe de 1MFER cette année »*, ou *« Sur quels chapitres de mathématiques mes 3e ont le plus achoppé sur les 5 dernières années ? »*. La réponse vient de **votre** historique, pas d'un modèle générique.
 
@@ -104,7 +104,7 @@ La règle qui fonctionne : **partir des sorties souhaitées, pas des sources exi
 3. Quand j'écris une appréciation, qu'elle reprenne le **registre que j'ai stabilisé**.
 4. Quand je positionne un élève, qu'elle ait son **historique sous le coude**.
 5. Quand je dois écrire un mail délicat, qu'elle reprenne mes **formulations habituelles**.
-6. Quand je dois remonter des notes dans l'outil institutionnel (Charlemagne Pro, École Directe), qu'elle me **produise le CSV directement**.
+6. Quand je dois remonter des notes dans l'outil institutionnel (logiciel de gestion de classe imposé par l'établissement), qu'elle m'**aide à préparer le CSV d'export**, à vérifier avant import manuel.
 
 Pour chacun, le sous-ensemble de sources réellement utile fait **5 à 20 fichiers**. Pas 6000. Le reste reste où il est — accessible, mais non indexé.
 
@@ -367,6 +367,8 @@ Si les trois passent, le skill est productif. Sinon, retour au fichier source à
 
 ## 8. Interopérabilité avec les outils institutionnels — suivi élève sans double saisie IA LOCALE · données nominatives
 
+**À retenir avant toute lecture de cette section** L'IA locale peut aider à **structurer** des notes pédagogiques et **préparer** un fichier d'export, mais elle **n'automatise pas la saisie institutionnelle**. Toute utilisation de données nominatives doit rester locale, prudente, **vérifiée par l'enseignant·e**, et cadrée selon le contexte d'établissement.
+
 **Précaution — outils institutionnels et données d'élèves**
 
 Ce chapitre n'a **pas vocation à proposer une connexion automatique aux logiciels institutionnels de vie scolaire** (Charlemagne Pro, École Directe, Pronote, ENT académique). Il ne s'agit pas non plus de contourner ces outils ou leurs procédures.
@@ -432,19 +434,20 @@ statut: actif
 
 ### 8.2. L'export CSV vers l'outil imposé
 
-Quand vient le moment de remonter les notes ou positionnements dans l'outil institutionnel, on demande à l'IA locale de produire **le CSV exact attendu par cet outil**. Pour ça, il faut un skill `export-charlemagne` (ou `export-ed`) qui contient les colonnes, l'ordre, le séparateur, les codes attendus.
+Quand vient le moment de remonter les notes ou positionnements dans l'outil institutionnel, on demande à l'IA locale d'**aider à préparer** un CSV au format attendu par cet outil — fichier qui sera **vérifié puis importé manuellement** par l'enseignant·e. Pour ça, il faut un skill `export-vie-scolaire` qui contient les colonnes, l'ordre, le séparateur, les codes attendus par le logiciel de votre établissement.
 
 ```
 ---
-name: export-charlemagne
-description: Génère un fichier CSV pour import dans Charlemagne Pro
-  à partir des notes de la couche 40-élèves. Format strict :
-  encodage UTF-8, séparateur point-virgule, en-têtes fixes.
-  Utiliser dès que l'utilisateur évoque "export Charlemagne",
-  "CSV pour Charlemagne", "remonter les notes".
+name: export-vie-scolaire
+description: Prépare un fichier CSV pour import dans le logiciel de
+  gestion de classe de l'établissement, à partir des notes de la
+  couche 40-élèves. Format strict : encodage UTF-8, séparateur
+  point-virgule, en-têtes fixes définis par l'établissement.
+  Utiliser dès que l'utilisateur évoque "export vie scolaire",
+  "CSV pour le logiciel de classe", "remonter les notes".
 ---
 
-# Export Charlemagne Pro
+# Export vers le logiciel de gestion de classe
 
 ## Format attendu
 - Encodage : UTF-8 (avec BOM)
@@ -488,28 +491,28 @@ La plupart de ces outils ne proposent pas d'API publique. Deux voies recommandab
 
 1. **L'export natif** *— la bonne voie*
 
-   La plupart des écrans proposent un bouton *Exporter* (CSV ou XLSX). À **privilégier systématiquement**. On exporte la classe, les notes, les évaluations ; le fichier obtenu est ensuite converti en markdown structuré par l'IA locale (skill `import-charlemagne` ci-après).
+   La plupart des écrans proposent un bouton *Exporter* (CSV ou XLSX). À **privilégier systématiquement**. On exporte la classe, les notes, les évaluations ; le fichier obtenu est ensuite converti en markdown structuré par l'IA locale (skill `import-vie-scolaire` ci-après).
 2. **Le copier-coller du tableau affiché** *— acceptable pour petit volume*
 
    Quand l'export natif manque : sélectionner le tableau à l'écran, copier (`Ctrl+C`), coller dans une note Obsidian, demander à l'IA locale de restructurer en table markdown propre. Convient pour une classe, un trimestre — pas pour une base annuelle complète.
 
-Le skill `import-charlemagne` qui pilote la conversion :
+Le skill `import-vie-scolaire` qui pilote la conversion :
 
 ```
 ---
-name: import-charlemagne
-description: Convertit un export Charlemagne Pro (CSV, XLSX, HTML
-  ou tableau collé) en notes Obsidian structurées dans la couche
-  40-élèves. Utiliser dès que l'utilisateur évoque "import
-  Charlemagne", "récupérer mes données de C-Pro", "mettre à jour
-  ma classe depuis Charlemagne".
+name: import-vie-scolaire
+description: Convertit un export issu du logiciel de gestion de
+  classe (CSV, XLSX, HTML ou tableau collé) en notes Obsidian
+  structurées dans la couche 40-élèves. Utiliser dès que
+  l'utilisateur évoque "import vie scolaire", "récupérer mes
+  données du logiciel de classe", "mettre à jour ma classe".
 ---
 
-# Import Charlemagne Pro vers Obsidian
+# Import du logiciel de gestion de classe vers Obsidian
 
 ## Quand utiliser
-Toute fois que l'utilisateur dépose un export Charlemagne et
-demande la mise à jour du vault.
+Toute fois que l'utilisateur dépose un export du logiciel de
+gestion de classe et demande la mise à jour du vault.
 
 ## Détection du format
 - Si CSV / XLSX : lire les en-têtes, identifier les colonnes.
@@ -531,26 +534,26 @@ demande la mise à jour du vault.
 - Ne JAMAIS écraser une section "Observations" ou "Plan de
   remédiation" existante sans y ajouter, jamais y substituer.
 - Préserver les aménagements et le profil — uniquement actualiser
-  ce qui vient de Charlemagne (notes, absences).
+  ce qui vient du logiciel de gestion (notes, absences).
 - Marquer chaque ligne nouvelle avec la date d'import en commentaire.
 ```
 
-**Précaution** Les exports Charlemagne contiennent des données d'élèves identifiables. **Cette conversion se fait exclusivement avec l'IA locale** (Chapitre 1). Jamais coller un export d'élèves dans Claude cloud ou ChatGPT.
+**Précaution** Les exports d'un logiciel de gestion de classe contiennent des données d'élèves identifiables. **Cette conversion se fait exclusivement avec l'IA locale** (Chapitre 1). Jamais coller un export d'élèves dans Claude cloud ou ChatGPT.
 
-### 8.4. Pivot inerWeb (ou autre outil personnel) → Charlemagne Pro
+### 8.4. Pivot d'un outil personnel vers le logiciel de gestion de classe imposé
 
-Pour qui a, comme moi, développé un outil de suivi personnel (inerWeb, base notion, fichiers Excel maison) et qui doit basculer vers l'outil institutionnel imposé, le pivot se fait **une fois**, proprement, via l'IA. Le principe : on exporte les données existantes dans un format intermédiaire (JSON ou CSV), on demande à l'IA de les remapper vers le format attendu par Charlemagne, on importe.
+Pour qui a, comme moi, développé un outil de suivi personnel (base de notes, fichiers Excel maison) et qui doit basculer vers l'outil institutionnel imposé par l'établissement, le pivot se fait **une fois**, proprement, via l'IA. Le principe : on exporte les données existantes dans un format intermédiaire (JSON ou CSV), on demande à l'IA de les remapper vers le format attendu par le logiciel cible, on vérifie, on importe manuellement.
 
 | Étape | Action | Outil |
 | --- | --- | --- |
-| 1. Exporter | Sortir toutes les données de l'outil source en JSON / CSV | L'outil source (inerWeb, Excel, base notion) |
-| 2. Cartographier | Établir la table de correspondance des champs : *« mon champ `note_brute` = colonne `Note` de Charlemagne »* | Tableau papier ou Excel |
-| 3. Remapper | Lancer un skill de migration qui prend l'export source et produit le CSV Charlemagne | IA locale (Gemma 3 12B suffit) |
-| 4. Vérifier en échantillon | Importer dans Charlemagne 5 lignes seulement. Vérifier intégrité. Itérer si besoin sur le skill. | Charlemagne Pro (mode test si dispo) |
-| 5. Importer en bloc | Quand l'échantillon valide, importer le CSV complet | Charlemagne Pro |
+| 1. Exporter | Sortir toutes les données de l'outil source en JSON / CSV | L'outil source (base personnelle, Excel) |
+| 2. Cartographier | Établir la table de correspondance des champs : *« mon champ `note_brute` = colonne `Note` attendue par le logiciel »* | Tableau papier ou Excel |
+| 3. Remapper | Lancer un skill de migration qui prend l'export source et produit le CSV au format attendu par le logiciel cible | IA locale (Gemma 3 12B suffit) |
+| 4. Vérifier en échantillon | Importer 5 lignes seulement dans le logiciel cible. Vérifier intégrité. Itérer si besoin sur le skill. | Logiciel cible (mode test si disponible) |
+| 5. Importer en bloc | Quand l'échantillon est validé par l'enseignant·e, importer manuellement le CSV complet | Logiciel cible |
 | 6. Archiver l'outil source | Geler l'outil source (lecture seule), conserver l'export complet en sauvegarde. Ne plus y saisir. | Disque local + sauvegarde |
 
-**Le bénéfice du pivot propre** Le but n'est pas seulement de migrer techniquement, c'est de **tourner la page**. Tant qu'on saisit dans les deux outils en parallèle, on perd. Le pivot doit être *net* : avant la date X, on saisissait dans l'ancien ; à partir de X, on saisit dans le nouveau (ou dans Obsidian avec export CSV vers Charlemagne, méthode §8.2). Et on accepte que les données historiques restent consultables mais non vivantes.
+**Le bénéfice du pivot propre** Le but n'est pas seulement de migrer techniquement, c'est de **tourner la page**. Tant qu'on saisit dans les deux outils en parallèle, on perd. Le pivot doit être *net* : avant la date X, on saisissait dans l'ancien ; à partir de X, on saisit dans le nouveau (ou dans Obsidian avec export CSV vers le logiciel de gestion, méthode §8.2). Et on accepte que les données historiques restent consultables mais non vivantes.
 
 ## 9. Méthodologie de mise en place — démarrer par une seule sortie
 
@@ -567,7 +570,7 @@ Construire un vault Obsidian utile prend des semaines, pas un week-end. La séqu
    Chaque séance préparée et donnée s'écrit en note dans 30-année-en-cours. Pas de saisie supplémentaire : c'est *là* qu'on prépare la séance, et la note *est* la prépa. Le quotidien nourrit naturellement le vault.
 4. **Trimestre 2 — Couche 40-élèves et pivot CSV (5 h initial puis routinier)**
 
-   Ouvrir une note par élève au début de la séquence. Saisir au fil de l'eau, sans double saisie. Au moment des remontées, lancer l'export CSV vers Charlemagne / ED. La routine s'installe en deux ou trois cycles.
+   Ouvrir une note par élève au début de la séquence. Saisir au fil de l'eau, sans double saisie. Au moment des remontées, l'IA aide à préparer le CSV au format attendu par le logiciel de gestion de classe ; vérification et import restent à votre main. La routine s'installe en deux ou trois cycles.
 
 **Indicateur de réussite** Six mois après le démarrage, vous devez pouvoir préparer une séance type en **moitié moins de temps**, avec un rendu plus cohérent et plus proche de votre style. Si ce n'est pas le cas, l'architecture est probablement encore mal calibrée — revenir au §3 et resserrer les sorties.
 
@@ -681,6 +684,8 @@ Des prolongements techniques existent en brouillon dans mes notes personnelles �
 Vous pouvez maintenant **transmettre ce que vous avez appris**. La méthodologie de radioguidage à une autre personne — collègue, conjoint, parent — est décrite au [Chapitre 2, §10](chapitre-2.md).
 
 ## 13. Ressources et liens
+
+**⚠ Liens fournis à titre indicatif** Ne téléchargez pas tout en autonomie depuis cette liste. Le [radio-guidage par IA cloud (§11)](#radio-guidage) vous indiquera exactement quels plugins et modèles installer, dans quel ordre, et adaptés à vos usages prioritaires. Cette liste sert de référence pour qui veut voir d'où viennent les outils mentionnés — pas de check-list à exécuter.
 
 ### Obsidian — base
 

@@ -364,6 +364,8 @@ Le **Chapitre 3** explore une autre dimension : utiliser cette IA non plus seule
 
 ## 13. Ressources et liens
 
+**⚠ Liens fournis à titre indicatif** Ne téléchargez pas tout en autonomie depuis cette liste. Le [radio-guidage par IA cloud (§11)](#radio-guidage) vous indiquera exactement quelles ressources consulter et adapter à votre cas. Cette liste sert de référence pour qui veut voir d'où viennent les outils mentionnés — pas de check-list à exécuter.
+
 ### Skills — documentation
 
 [Anthropic — Skills documentation](https://docs.anthropic.com/en/docs/build-with-claude/skills)

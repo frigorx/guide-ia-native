@@ -307,7 +307,7 @@
 <section id="exemple-a">
 <h2>4. Exemple A — skill enseignant</h2>
 <p><em>Rédiger automatiquement une appréciation de bulletin trimestriel à partir de quelques notes et observations.</em></p>
-<pre><button class="copy-btn">copier</button>---
+<pre>---
 name: appreciation-bulletin
 description: À partir de notes brutes, observations et postures observées en
   classe, rédige une appréciation de bulletin équilibrée, formulée à la
@@ -341,7 +341,7 @@ observations, et demande une appréciation à coller dans un bulletin.
 <section id="exemple-b">
 <h2>5. Exemple B — skill particulier</h2>
 <p><em>Proposer chaque dimanche des menus de la semaine adaptés aux contraintes de la famille.</em></p>
-<pre><button class="copy-btn">copier</button>---
+<pre>---
 name: menus-famille-semaine
 description: Propose 7 dîners équilibrés pour la semaine, adaptés aux
   contraintes alimentaires de la famille (allergies, goûts, budget),
@@ -541,7 +541,7 @@ de courses regroupée par rayon (frais, sec, légumes, boucherie).</pre>
 </div>
 
 <h3>11.2. Le prompt à copier</h3>
-<pre><button class="copy-btn">copier</button>Tu es mon assistant de mise en œuvre pour le document que je viens
+<pre>Tu es mon assistant de mise en œuvre pour le document que je viens
 de te transmettre. Je l'ai parcouru mais je ne suis PAS développeur
 ni informaticien. J'ai besoin que tu deviennes mon radio-guide.
 
@@ -627,6 +627,10 @@ Le document est ci-joint / ci-dessus. Commence par tes questions.</pre>
 <section id="ressources">
 <h2>13. Ressources et liens</h2>
 
+<div class="callout warn">
+  <p><strong class="tag">⚠ Liens fournis à titre indicatif</strong> Ne téléchargez pas tout en autonomie depuis cette liste. Le <a href="#radio-guidage">radio-guidage par IA cloud (§11)</a> vous indiquera exactement quelles ressources consulter et adapter à votre cas. Cette liste sert de référence pour qui veut voir d'où viennent les outils mentionnés — pas de check-list à exécuter.</p>
+</div>
+
 <h3>Skills — documentation</h3>
 <div class="links">
   <a href="https://docs.anthropic.com/en/docs/build-with-claude/skills">Anthropic — Skills documentation</a>
@@ -662,18 +666,25 @@ Le document est ci-joint / ci-dessus. Commence par tes questions.</pre>
 
 <script src="glossary-linker.js"></script>
 <script>
-  // Boutons "copier" sur les blocs de code
-  document.querySelectorAll('pre .copy-btn').forEach(btn => {
+  // Boutons "copier" injectés au chargement, à l'extérieur du <pre> pour ne pas polluer la sélection manuelle du code.
+  document.querySelectorAll('main pre').forEach(pre => {
+    const wrap = document.createElement('div');
+    wrap.className = 'code-wrap';
+    wrap.style.position = 'relative';
+    pre.parentNode.insertBefore(wrap, pre);
+    wrap.appendChild(pre);
+    const btn = document.createElement('button');
+    btn.className = 'copy-btn';
+    btn.type = 'button';
+    btn.textContent = 'copier';
     btn.addEventListener('click', e => {
       e.preventDefault();
-      const pre = btn.parentElement;
-      const text = pre.innerText.replace(/^copier\n?/, '').trim();
-      navigator.clipboard.writeText(text).then(() => {
-        const orig = btn.textContent;
+      navigator.clipboard.writeText(pre.innerText.trim()).then(() => {
         btn.textContent = 'copié ✓';
-        setTimeout(() => btn.textContent = orig, 1400);
+        setTimeout(() => btn.textContent = 'copier', 1400);
       });
     });
+    wrap.appendChild(btn);
   });
 </script>
 

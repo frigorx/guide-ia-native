@@ -9,7 +9,7 @@ Guide pratique d'installation, de paramétrage et d'usage — pour enseignants d
 **Version·** mai 2026
 **Format·** HTML interactif + Markdown
 
-**\*** Une **IA native** (ou « IA locale ») est une IA installée sur votre propre ordinateur, qui fonctionne **sans connexion à Internet**. Vos données ne quittent pas votre poste. C'est l'équivalent, pour l'IA, de Word installé sur votre PC face à Google Docs en ligne.
+**\*** Une **IA native** (ou « IA locale ») est une IA installée sur votre propre ordinateur. Une fois le modèle téléchargé, les prompts y sont traités localement, **sans transmission à un service cloud** — sous réserve qu'aucun connecteur externe, plugin cloud ou synchronisation non maîtrisée ne soit activé. C'est l'équivalent, pour l'IA, de Word installé sur votre PC face à Google Docs en ligne.
 
 Parcours · Chapitre 1 sur 4
 1 · Installation
@@ -53,7 +53,7 @@ J'ai mis **une journée complète** pour boucler mon propre Chapitre 1, avec que
 
 **Ce que vous saurez faire en sortie** Installer une IA locale fonctionnelle sur votre ordinateur — Ollama + Open WebUI, ou LM Studio selon votre profil —, choisir le modèle adapté à votre matériel (Llama 3.1 8B par défaut, Gemma 3 12B si GPU dédié ou Mac Apple Silicon), faire un premier dialogue qui répond, et comprendre les forces et limites concrètes d'une IA en local : ce qu'elle fait bien, ce qu'elle ne sait pas faire, et pourquoi c'est exactement ce qu'il faut pour un usage sensible. Tout ça sans qu'aucune de vos données ne quitte votre poste.
 
-L'IA conversationnelle est entrée dans le quotidien — des enseignants, mais aussi des particuliers — **sans cadre clair**. ChatGPT, Claude, Gemini sont utilisés pour corriger des copies, organiser une vie de famille, gérer des données de santé, sans que personne n'ait vraiment vérifié où partent ces informations. Ce guide propose une alternative : installer une **IA native**, qui tourne directement sur votre ordinateur, **sans envoi de données à un serveur tiers**.
+L'IA conversationnelle est entrée dans le quotidien — des enseignants, mais aussi des particuliers — **sans cadre clair**. ChatGPT, Claude, Gemini sont utilisés pour corriger des copies, organiser une vie de famille, gérer des données de santé, sans que personne n'ait vraiment vérifié où partent ces informations. Ce guide propose une alternative : installer une **IA native**, qui tourne directement sur votre ordinateur — les prompts peuvent y être traités **sans transmission à un service cloud**, sous réserve de ne pas activer de connecteur externe, plugin cloud ou synchronisation non maîtrisée.
 
 **Pour qui** Ce guide a été pensé d'abord pour **les enseignants — toutes filières et tous niveaux** — afin de leur permettre d'utiliser une IA tout en respectant le cadre RGPD applicable aux données d'élèves. Il fonctionne aussi tel quel pour **tout particulier** qui souhaite installer une IA sur son PC personnel. Aucun prérequis de développeur. Si vous savez installer un logiciel et copier une commande, vous pouvez aller au bout.
 
@@ -116,7 +116,7 @@ Trois cheminements sont possibles. Le choix dépend du profil technique, du mat�
 | Système de skills | Personnalisé via `Modelfile` et fichiers contextuels | Personnalisé via prompts système et presets | Natif et mature dossier `skills/` |
 | Recommandation | **Cible principale** pour qui veut maîtriser l'outil | **Cible débutant** pour démarrer sans douleur | **Complément** pour les tâches lourdes sans données élèves |
 
-**Recommandation** Pour un débutant complet : démarrer avec **LM Studio** (installateur graphique, double-clic, prêt en 10 min) pour se familiariser. Pour qui veut le vrai système de skills et un usage classe : **Ollama + Open WebUI**, en se faisant guider par le [radio-guidage (§8)](#radio-guidage) plutôt qu'en lisant la procédure manuelle (§6) en autonomie. **Claude** reste pertinent en complément pour les tâches longues *sans données élèves*.
+**Recommandation** Pour un **simple essai rapide**, **LM Studio** est la voie la plus simple (installateur graphique, sans terminal). Pour **suivre la démarche documentée dans ce guide**, le parcours principal reste **Ollama + Open WebUI**, accompagné par le [radio-guidage (§8)](#radio-guidage) plutôt qu'en lisant la procédure manuelle (§6) en autonomie. **Claude** reste pertinent en complément pour les tâches longues *sans donnée personnelle identifiable*.
 
 ## 5. Prérequis matériels et choix du modèle
 
@@ -462,6 +462,8 @@ Si vous ne comptez plus utiliser Docker pour autre chose : désinstallation clas
 
 ## 12. Ressources et liens
 
+**⚠ Liens fournis à titre indicatif** Ne téléchargez pas tout en autonomie depuis cette liste. Le [radio-guidage par IA cloud (§8)](#radio-guidage) vous indiquera exactement quels outils installer, dans quel ordre, et adaptés à votre matériel. Cette liste sert de référence pour qui veut voir d'où viennent les outils mentionnés — pas de check-list à exécuter.
+
 ### Outils — installation
 
 [Ollama — moteur local — ollama.com](https://ollama.com)
@@ -494,7 +496,7 @@ Si vous ne comptez plus utiliser Docker pour autre chose : désinstallation clas
 
 - [**Chapitre 2 — Personnaliser votre IA avec des skills**](chapitre-2.md) : le concept de skill, anatomie, exemples enseignant et particulier, écosystème, bibliothèque de prompts, radioguidage à une autre personne.
 - [**Chapitre 3 — Transformer son IA native en assistant pédagogique**](chapitre-3.md) : system prompt, couplage skill matière, multi-postes, charte d'usage, scénario de séance, évaluation.
-- [**Chapitre 4 — Optimiser son Obsidian**](chapitre-4.md) : architecture du vault, branchement IA, conversion de l'existant, suivi élève sans double saisie, pivot CSV avec Charlemagne Pro.
+- [**Chapitre 4 — Optimiser son Obsidian**](chapitre-4.md) : architecture du vault, branchement IA, conversion de l'existant, suivi élève sans double saisie, préparation d'exports CSV vers le logiciel de gestion de classe imposé par l'établissement.
 - [**Annexe — Radio-guidage**](radio-guidage.html) : la méthode commune à tous les chapitres, expliquée une fois pour toutes.
 
 **Version vivante** Ce guide est versionné. La version HTML interactive est publiée sur GitHub Pages. Les retours, corrections et ajouts sont les bienvenus : [fr.henninot@gmail.com](mailto:fr.henninot@gmail.com).

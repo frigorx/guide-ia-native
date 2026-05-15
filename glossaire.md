@@ -135,7 +135,7 @@ Protocoles de transport web. **HTTPS** est chiffré (le « S » pour Secure) ; *
 Terme générique pour les programmes qui imitent certaines fonctions cognitives humaines. Aujourd'hui, le sujet du moment est l'**IA générative**, capable de produire texte, image, son.
 
 **IA native (ou IA locale)** *[IA]*
-Au sens de ce guide : IA qui s'exécute sur la machine de l'utilisateur, sans envoi de données à un serveur tiers. Synonymes : IA locale, IA on-device, IA en local. Tout l'objet du Chapitre 1.
+Au sens de ce guide : IA qui s'exécute sur la machine de l'utilisateur. Les prompts y sont traités localement, sans transmission à un service cloud — sous réserve de ne pas activer de connecteur externe, plugin cloud ou synchronisation non maîtrisée. Synonymes : IA locale, IA on-device, IA en local. Tout l'objet du Chapitre 1.
 
 **IP / IPv4** — Internet Protocol *[Technique]*
 Adresse numérique unique d'un appareil sur un réseau. Format `192.168.1.42` typique d'un réseau local. Permet à un poste élève de joindre l'IA installée sur le poste enseignant (Chapitre 3 §7).
