@@ -77,18 +77,36 @@ Une IA native n'est pas un *clone moins bon* de Claude ou ChatGPT. Elle excelle 
 
 ### 2.4. Les limites — à dire d'emblée, sans détour
 
-Un guide qui ne nomme pas les limites de l'outil qu'il promeut perd sa crédibilité. Voici ce qu'une IA native **ne fait pas (encore) bien** en 2026 :
+Un guide qui ne nomme pas les limites de l'outil qu'il promeut perd sa crédibilité. Voici ce qu'une IA native **ne fait pas (encore) bien** en 2026.
+
+#### Les trois limites qui pèsent le plus en pratique
+
+**1. Qualité du raisonnement**
+
+Un Llama 3.1 8B local n'égale pas Claude Sonnet ou GPT-4 sur le raisonnement long et nuancé. L'écart se réduit chaque trimestre mais reste réel.
+
+***Impact réel** — ok pour reformuler un énoncé ou rédiger une appréciation, trop faible pour analyser un dossier de 200 pages.*
+
+**2. Vitesse sur PC sans GPU**
+
+La réponse arrive mot à mot ; quelques secondes pour un prompt court, parfois 30 secondes pour un texte long.
+
+***Impact réel** — pas d'usage live en classe ou en réunion. Parfait pour une préparation de séance ou un travail asynchrone.*
+
+**3. Pas d'actualité ni de recherche web**
+
+Le modèle s'arrête à sa date d'entraînement. Aucune recherche web par défaut, aucune lecture d'URL fraîche.
+
+***Impact réel** — n'utilisez pas une IA locale pour vérifier un chiffre récent, citer une norme à jour, ou résumer un article en ligne.*
+
+#### Et les autres limites, en bref
 
 | Limite | Détail | Quand ça bloque |
 | --- | --- | --- |
-| Qualité brute | Un Llama 3.1 8B local n'égale pas Claude Sonnet ou GPT-4 sur le raisonnement long et nuancé. L'écart se réduit chaque trimestre mais reste réel. | Synthèse d'un dossier complexe, raisonnement juridique fin. |
-| Vitesse | Sur un PC sans GPU dédié, la réponse arrive mot à mot, parfois lentement. Plusieurs secondes voire dizaines de secondes pour un texte long. | Démonstration en classe, usage rapide en réunion. |
-| Connaissances datées | Le modèle ne connaît pas l'actualité postérieure à sa date d'entraînement. Aucune recherche web par défaut. | Questions sur l'actualité, données chiffrées récentes. |
-| Pas d'accès internet | Le modèle ne lit pas une page web, ne consulte pas un PDF en ligne, sauf à ajouter des extensions complexes. | « Résume-moi cet article » sur une URL fraîche. |
-| Hallucinations possibles | Comme tout LLM, l'IA peut inventer une référence, une date, une norme. **Sur les données chiffrées ou réglementaires, toujours vérifier.** | Citations, articles de loi, valeurs techniques. |
-| Multimodalité limitée | L'analyse d'images est possible mais moins fine que sur le cloud. La parole, la vidéo restent rares en local. | Lecture d'un schéma, transcription audio. |
-| Stockage et maintenance | Chaque modèle pèse de 2 à 40 Go. Les mises à jour ne se font pas seules. C'est à vous de les gérer. | Disque dur peu spacieux, peu d'envie de maintenance. |
-| Pas de mémoire persistante | Sans skill, chaque conversation repart de zéro. L'IA ne se souvient pas de la précédente. | Suivi long terme d'un projet sans organisation côté utilisateur. |
+| Hallucinations | L'IA peut inventer une référence, une date, une norme. **Toujours vérifier les chiffrés et le réglementaire.** | Citations, articles de loi, valeurs techniques. |
+| Multimodalité limitée | L'analyse d'images existe mais reste moins fine que sur le cloud. Voix et vidéo : rares en local. | Lecture d'un schéma, transcription audio. |
+| Stockage et maintenance | Chaque modèle pèse de 2 à 40 Go. Mises à jour à votre charge. | Disque peu spacieux, peu d'envie de maintenance. |
+| Pas de mémoire persistante | Sans skill, chaque conversation repart de zéro. | Suivi long terme sans organisation côté utilisateur. |
 
 **Conséquence pratique** Une IA native est un excellent outil pour les **tâches récurrentes, sensibles, et raisonnablement complexes**. Pour le reste — recherche sur l'actualité, analyse fine d'un dossier de 200 pages, dialogue ultra-naturel — le cloud (sans données personnelles dedans) garde l'avantage. **Avoir les deux est plus malin que choisir.**
 
@@ -103,6 +121,14 @@ Interface (La fenêtre de chat) → Moteur (Le logiciel qui exécute le modèle 
 ## 4. Comparatif des trois solutions retenues
 
 Trois cheminements sont possibles. Le choix dépend du profil technique, du matériel disponible et du niveau d'exigence RGPD.
+
+**Comment choisir entre les trois ?**
+
+- **LM Studio** — le plus simple. Installateur graphique, double-clic, prêt en 10 min. *Démarrer ici en cas de doute.*
+- **Ollama + Open WebUI** — plus puissant, demande d'accepter le terminal. *Voie principale documentée dans ce guide.*
+- **Claude (cloud) cadré** — complément pour les tâches longues, *sans donnée personnelle identifiable*.
+
+Le tableau ci-dessous détaille les nuances pour qui veut comprendre les écarts critère par critère :
 
 | Critère | Ollama + Open WebUI | LM Studio | Claude (cloud) cadré |
 | --- | --- | --- | --- |
@@ -128,33 +154,31 @@ Trois cheminements sont possibles. Le choix dépend du profil technique, du mat�
 | Usage quotidien polyvalent | 16 Go | 30 Go | Optionnel (GPU intégré OK) | **Llama 3.1 8B** ou **Mistral 7B** (par défaut, légers) — *Gemma 3 12B si GPU disponible ou Mac Apple Silicon* |
 | Usage avancé, skills complexes | 32 Go | 80 Go | Recommandé (NVIDIA 8+ Go VRAM) | Gemma 3 27B / Llama 3.1 70B (quantifié) / Qwen 2.5 32B |
 
-**Note matériel** Un Mac Apple Silicon (M1 et au-delà) est **excellent** pour l'IA locale grâce à sa mémoire unifiée. Un PC Windows avec carte graphique NVIDIA récente (RTX 3060+) est l'autre cible idéale. Un PC sans GPU dédié fonctionnera, en plus lent, sur des modèles 3 à 8 milliards de paramètres.
+**Note matériel — réalité 2026** **16 Go de RAM = point de confort**. En dessous, on rencontre des problèmes systémiques (swap, lenteur générale, modèle qui rame). Si vous êtes à 8 Go, vous pouvez tester un modèle 3B (Llama 3.2 3B, Gemma 3 4B) — ça marche, c'est très basique. Vous atteindrez vite les limites ; mieux vaut alors continuer en cloud (Claude, ChatGPT) avec cadre RGPD, le temps d'un renouvellement de matériel.
+
+Un **Mac Apple Silicon** (M1 et au-delà) est excellent grâce à sa mémoire unifiée. Un **PC Windows avec NVIDIA RTX 3060+** est l'autre cible idéale. **Sans GPU dédié**, un modèle 7-8B tourne correctement à partir de 16 Go, en plus lent qu'avec GPU mais utilisable au quotidien.
 
 ### 5.2. Choisir son modèle
 
-L'écosystème open source évolue vite. Quelques familles à connaître, leurs forces et limites :
+L'écosystème open source évolue vite. Pour démarrer, **trois familles couvrent l'essentiel des besoins francophones début 2026** :
 
-| Famille | Éditeur | Forces | Faiblesses / nuances |
-| --- | --- | --- | --- |
-| Llama 3.x | Meta (US) | Très polyvalent, excellent en français, bonne taille 8B accessible | Licence Meta avec restrictions d'usage commercial à très grande échelle |
-| Mistral / Mixtral | Mistral AI (FR) | Choix souverain européen, très bon en français, léger, rapide | Sur le raisonnement complexe, derrière Llama 70B et Qwen 72B |
-| Qwen 2.5 | Alibaba (CN) | Excellent en raisonnement structuré et en code, très bon en français | Provenance chinoise — point de vigilance institutionnel, à examiner selon contexte |
-| Gemma 3 | Google DeepMind (US) | **Très performant en 2026** — Gemma 3 12B rivalise avec Llama 3.1 8B et le dépasse souvent ; Gemma 3 27B joue dans la cour des 70B. Multilingue solide, contexte 128K, version multimodale (vision). | Sorti récemment (printemps 2025), moins de retours communautaires français qu'avec Llama/Mistral, à éprouver soi-même. |
-| Phi-3 | Microsoft (US) | Très petit (3,8B), tourne sur presque n'importe quel PC | Faible sur les tâches longues ou nuancées |
-| DeepSeek | DeepSeek (CN) | Très performant en raisonnement et mathématiques | Même réserve que Qwen sur la provenance |
+**1. Llama 3.1** — Meta (US)
 
-**Le plus performant — réponse honnête** Il n'existe pas *un* modèle le plus performant : ça dépend du matériel et de la tâche. À **matériel équivalent** et pour un **usage francophone polyvalent** début 2026 :
+Meilleur premier choix dans la plupart des cas. Très polyvalent, excellent en français. **Démarrer par Llama 3.1 8B** (16 Go RAM, sans GPU dédié).
 
-- **Ultra-léger** (8 Go RAM, pas de GPU) : Llama 3.2 3B ou Gemma 3 4B.
-- **Milieu de gamme** (16 Go RAM, sans GPU dédié) : **commencer par Llama 3.1 8B ou Mistral 7B**. Fluides à l'inférence sur CPU, retour à votre prompt en quelques secondes. Excellent rapport qualité/temps de réponse.
-- **Milieu de gamme avec GPU** (16 Go RAM + GPU 8 Go VRAM, ou Mac Apple Silicon) : **Gemma 3 12B** devient confortable et tient la comparaison avec des modèles plus gros sur la plupart des tâches.
-- **Haut de gamme** (32+ Go, GPU 16+ Go VRAM) : Gemma 3 27B, Llama 3.1 70B ou Qwen 2.5 32B+, selon affinités.
+**2. Mistral 7B** — Mistral AI (France)
 
-**Recommandation honnête de premier choix :** testez d'abord un **modèle 7-8B** sur votre machine. Vous verrez très vite si la vitesse vous convient. Si oui, restez-y un mois — vous en saurez assez pour décider en connaissance de cause si un modèle plus gros vous apporterait quelque chose. Si non, descendre au 3B-4B et oublier le marketing des « gros modèles » qui ne tournent pas chez vous.
+Souveraineté européenne, léger, performant. Alternative crédible à Llama 3.1 8B sur le même matériel — à essayer en parallèle pour comparer.
 
-Le paysage évolue vite — un classement à jour se trouve sur [lmarena.ai](https://lmarena.ai) (Chatbot Arena, comparaison à l'aveugle). **Le meilleur test reste le vôtre** : téléchargez-en deux ou trois, posez-leur la même série de questions sur VOS tâches habituelles, gardez celui qui vous parle.
+**3. Gemma 3 12B** — Google DeepMind (US, 2025)
 
-**Liberté de choix** Vous pouvez installer **autant de modèles que votre disque le permet** et basculer de l'un à l'autre selon la tâche. Aucun engagement, aucun verrou. La recommandation *Llama 3.1 8B / Mistral 7B* n'est qu'un point de départ : testez, comparez, gardez ce qui vous parle.
+**Uniquement avec GPU dédié ou Mac Apple Silicon.** Dans ce cas, un des meilleurs compromis qualité/poids du moment. Sans GPU, rester sur 7-8B.
+
+D'autres familles existent — **Qwen 2.5** (Alibaba, excellent en code et raisonnement), **Phi-3** (Microsoft, ultra-léger), **DeepSeek** (CN, maths et raisonnement). Elles peuvent compléter votre comparaison après un premier mois d'usage. Pour les modèles d'origine chinoise (Qwen, DeepSeek), point de vigilance institutionnel à examiner selon le contexte. Classement comparatif à jour : [lmarena.ai](https://lmarena.ai) (Chatbot Arena, comparaison à l'aveugle).
+
+**Recommandation honnête** Testez d'abord **Llama 3.1 8B** ou **Mistral 7B** sur votre machine. Vous verrez très vite si la vitesse vous convient. Si oui, restez-y un mois — vous en saurez assez pour décider en connaissance de cause si un modèle plus gros vous apporterait quelque chose.
+
+Vous pouvez installer **autant de modèles que votre disque le permet** et basculer selon la tâche. Aucun engagement, aucun verrou. **Le meilleur test reste le vôtre** : posez-leur la même série de questions sur VOS tâches habituelles, gardez celui qui vous parle.
 
 ## 6. Voie manuelle — Installation Ollama + Open WebUI
 
@@ -391,19 +415,16 @@ Le **Chapitre 2** vous apprend à la personnaliser avec des **skills** — des f
 
 ## 10. Avant un usage professionnel ou en établissement
 
-L'installation décrite dans ce chapitre est conçue d'abord pour un **usage personnel d'enseignant** : vous installez sur votre poste, vous apprenez l'outil, vous l'utilisez sur des contenus sans donnée personnelle identifiable. Tant que vous restez dans ce périmètre, le risque est minimal.
-
-Dès que l'on franchit ce périmètre — usage avec des élèves, en classe, sur un poste d'établissement, avec des documents internes —, **une checklist préalable s'impose**. Pas pour vous décourager, pour vous protéger.
+L'installation décrite dans ce chapitre est conçue d'abord pour un **usage personnel d'enseignant**. Dès que l'on franchit ce périmètre — usage avec des élèves, poste d'établissement, documents internes sensibles —, **une vérification préalable s'impose**. Pas pour décourager, pour protéger. Pour le cadre RGPD de fond, relire [§2.1](#enjeu).
 
 **Checklist avant tout usage professionnel**
 
-- Ai-je le **droit d'installer ces logiciels** sur ce poste ? (Poste personnel ou poste d'établissement ?)
+- Ai-je le **droit d'installer ces logiciels** sur ce poste ? (Personnel ou établissement ?)
 - Les données que je vais traiter sont-elles **nominatives** ? Un élève est-il identifiable ?
-- L'outil utilise-t-il **uniquement un modèle local** ? Des plugins ou connecteurs cloud sont-ils activés ?
-- Les fichiers résultats sont-ils **stockés localement**, sauvegardés, accessibles à qui de droit ?
+- L'outil utilise-t-il **uniquement un modèle local** ? Pas de plugins ni connecteurs cloud activés ?
 - Existe-t-il une **validation du chef d'établissement, du RUPN, du DPO** ou du service informatique selon le contexte ?
-- Ai-je prévu une **procédure de sauvegarde et de suppression** des données traitées ?
 - Les **familles ont-elles été informées** si des données d'élèves sont concernées ?
+- Ai-je une **procédure de conservation et de suppression** écrite ?
 
 **Règle simple à retenir** **Pas de données élèves dans une IA cloud sans cadre validé.** Et **l'IA locale réduit certains risques, mais ne supprime pas la responsabilité de l'utilisateur** : si vous traitez des données personnelles, vous restez responsable du traitement au sens RGPD, quelle que soit la couche technique.
 
