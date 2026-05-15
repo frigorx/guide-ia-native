@@ -9,6 +9,15 @@ Le concept qui transforme une IA générique en collègue de discipline. Un savo
 **Prérequis·** Chapitre 1 (IA native installée)
 **Version·** mai 2026
 
+Parcours · Chapitre 2 sur 4
+[1 · Installation](chapitre-1.md)
+→
+2 · Skills
+→
+[3 · Chatbot](chapitre-3.md)
+→
+[4 · Obsidian](chapitre-4.md)
+
 **Statut** Document de travail à caractère exploratoire, sans valeur officielle. Suite du [Chapitre 1](chapitre-1.md) : l'IA locale doit être installée et fonctionnelle pour exécuter ce chapitre.
 
 **Mode d'emploi de ce chapitre** Ce document est conçu pour être **lu d'abord**, puis **exécuté avec l'aide d'une IA cloud** (Claude, ChatGPT, Gemini, Mistral Le Chat). Lisez le chapitre en entier pour comprendre l'esprit. À la fin ([section 11](#radio-guidage)), vous trouverez le **radio-guidage** : un prompt à coller dans votre IA cloud habituelle, et un fichier à joindre. L'IA prend alors le relais et vous accompagne pas à pas dans l'exécution.

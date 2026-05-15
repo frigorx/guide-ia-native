@@ -150,6 +150,17 @@
 
 <main>
 
+<nav class="parcours" aria-label="Parcours du guide" style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin:4px 0 18px 0;font-size:.88em;font-family:'Trebuchet MS','Segoe UI',sans-serif">
+  <span style="color:#3a3f47;margin-right:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;font-size:.82em">Parcours · Chapitre 4 sur 4</span>
+  <a href="index.html" style="background:#f6f7f9;color:#1b3a63;padding:5px 12px;border-radius:14px;text-decoration:none;border:1px solid #e3e7ec">1 · Installation</a>
+  <span style="color:#bbb;margin:0 4px">→</span>
+  <a href="chapitre-2.html" style="background:#f6f7f9;color:#1b3a63;padding:5px 12px;border-radius:14px;text-decoration:none;border:1px solid #e3e7ec">2 · Skills</a>
+  <span style="color:#bbb;margin:0 4px">→</span>
+  <a href="chapitre-3.html" style="background:#f6f7f9;color:#1b3a63;padding:5px 12px;border-radius:14px;text-decoration:none;border:1px solid #e3e7ec">3 · Chatbot</a>
+  <span style="color:#bbb;margin:0 4px">→</span>
+  <span style="background:#ff6b35;color:#fff;padding:5px 12px;border-radius:14px;font-weight:700">4 · Obsidian</span>
+</nav>
+
 <a href="presentation.html" class="cta-presentation" style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:#fff1ea;border:1px solid #ff6b35;border-radius:8px;padding:14px 20px;margin:6px 0 20px 0;text-decoration:none;color:#1b3a63">
   <span style="font-size:1.7em;line-height:1">📖</span>
   <span style="flex:1;min-width:220px">
@@ -167,6 +178,19 @@
   <p><strong class="tag">Mode d'emploi de ce chapitre</strong> Ce document est conçu pour être <strong>lu d'abord</strong>, puis <strong>exécuté avec l'aide d'une IA cloud</strong> (Claude, ChatGPT, Gemini, Mistral Le Chat). Lisez le chapitre en entier pour comprendre l'esprit. À la fin (<a href="#radio-guidage">section 11</a>), vous trouverez le <strong>radio-guidage</strong> : un prompt à coller dans votre IA cloud habituelle, et un fichier à joindre. L'IA prend alors le relais et vous accompagne pas à pas dans l'exécution.</p>
   <p style="margin-top:.6em;padding-top:.6em;border-top:1px dashed rgba(0,0,0,.15)"><strong>⚠ N'allez pas directement à l'action.</strong> Lisez le chapitre d'abord — la règle qui fait réussir un vault Obsidian (« partir des sorties, jamais des sources ») se comprend <em>avant</em> de construire, pas après. Le téléchargement du fichier <code>.md</code> et le prompt à coller sont rassemblés à la fin, dans la <a href="#radio-guidage">section 11</a>.</p>
   <p style="margin-top:.6em;padding-top:.6em;border-top:1px dashed rgba(0,0,0,.15)"><strong>Un mot vous bloque ?</strong> Le <a href="glossaire.html">glossaire</a> est en lien permanent en bas de page. <strong>Le radio-guidage, c'est quoi au juste ?</strong> La page <a href="radio-guidage.html">Radio-guidage</a> l'explique une fois pour toutes.</p>
+</div>
+
+<div class="callout info">
+  <p><strong class="tag">Boussole — quelle IA pour quel usage ?</strong> Ce chapitre est le seul à mélanger deux régimes : on continue d'apprendre l'outil avec une IA cloud, mais le travail réel sur vos notes se fait <strong>obligatoirement en local</strong>. Avant de plonger, repérez quel usage correspond à quoi.</p>
+  <table class="cmp" style="margin-top:.8em">
+    <thead><tr><th>Usage</th><th>Quelle IA</th></tr></thead>
+    <tbody>
+      <tr><td class="crit">Radio-guidage de ce chapitre (installation des plugins, première mise en place du vault)</td><td><span style="display:inline-block;background:#2c5a8f;color:#fff;font-family:'Trebuchet MS','Segoe UI',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;padding:3px 9px;border-radius:3px;text-transform:uppercase">IA CLOUD</span> &nbsp; comme aux Chapitres 1 à 3.</td></tr>
+      <tr><td class="crit">Conversion d'archives pédagogiques (anciens TP, séances, fiches au format PDF/DOCX/PPTX)</td><td><span style="display:inline-block;background:#2c5a8f;color:#fff;font-family:'Trebuchet MS','Segoe UI',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;padding:3px 9px;border-radius:3px;text-transform:uppercase">IA CLOUD</span> &nbsp; autorisée — supports pédagogiques non personnels uniquement.</td></tr>
+      <tr><td class="crit">Travail quotidien dans Obsidian (Smart Connections, Local GPT, suivi élève, exports Charlemagne)</td><td><span style="display:inline-block;background:#ff6b35;color:#fff;font-family:'Trebuchet MS','Segoe UI',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;padding:3px 9px;border-radius:3px;text-transform:uppercase">IA LOCALE</span> &nbsp; obligatoire — données nominatives en jeu.</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:.8em"><strong>Règle pratique :</strong> dès qu'il y a une <strong>donnée d'élève ou personnelle</strong> en jeu, c'est <strong>IA locale</strong>. Pour le reste — ancien matériel pédagogique, apprentissage de l'outil — le <strong>cloud</strong> est OK.</p>
 </div>
 
 <nav class="toc" id="sommaire">
@@ -197,6 +221,10 @@
 <p>Au Chapitre 3, on a déployé un chatbot pour les élèves, mais qui parle d'<em>une</em> matière, à un <em>moment</em> donné, sans souvenirs des séances précédentes. Le résultat est utile, mais structurellement <strong>sans profondeur historique</strong>.</p>
 
 <p>Obsidian comble exactement ce manque. C'est un <strong>logiciel de prise de notes en markdown</strong> (texte simple, fichiers lisibles partout, archivables à vie), qui stocke <strong>tout en local sur votre disque</strong>, et qui se laisse interroger par une IA via quelques plugins gratuits. En clair : un « second cerveau » qui accumule année après année, et que l'IA peut consulter à la demande.</p>
+
+<div class="callout tip">
+  <p><strong class="tag">Ce que vous saurez faire en sortie</strong> Structurer un vault Obsidian en couches numérotées (00 référentiels → 90 archive), brancher votre IA locale dessus via Smart Connections et Local GPT, convertir l'existant par lots d'une vingtaine de fichiers par mois, transformer un référentiel de diplôme en skill exploitable, et piloter le suivi élève en évitant la double saisie avec Charlemagne Pro grâce à des CSV générés à la demande — tout en respectant le cadre établissement pour les données nominatives.</p>
+</div>
 
 <div class="callout info">
   <p><strong class="tag">Promesse concrète</strong> Une fois Obsidian bien structuré et l'IA branchée dessus, vous pourrez dire : <em>« Résume-moi tout ce que j'ai noté sur la classe de 1MFER cette année »</em>, ou <em>« Sur quels chapitres de mathématiques mes 3<sup>e</sup> ont le plus achoppé sur les 5 dernières années ? »</em>. La réponse vient de <strong>votre</strong> historique, pas d'un modèle générique.</p>
@@ -332,7 +360,7 @@ tags: [cycle-frigo, TP, première]
 
 <!-- 5 -->
 <section id="brancher-ia">
-<h2>5. Brancher l'IA locale sur Obsidian</h2>
+<h2>5. Brancher l'IA locale sur Obsidian <span style="display:inline-block;background:#ff6b35;color:#fff;font-family:'Trebuchet MS','Segoe UI',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;padding:3px 9px;border-radius:3px;text-transform:uppercase;vertical-align:middle;margin-left:10px">IA LOCALE</span></h2>
 
 <p>Sans IA, Obsidian est un (excellent) gestionnaire de notes. Avec une IA locale branchée, c'est un <strong>assistant qui connaît votre travail</strong>. Trois plugins se complètent — installés depuis <em>Settings → Community plugins</em> dans Obsidian.</p>
 
@@ -357,7 +385,7 @@ tags: [cycle-frigo, TP, première]
 
 <!-- 6 -->
 <section id="conversion">
-<h2>6. Convertir l'existant — workflow IA en lot</h2>
+<h2>6. Convertir l'existant — workflow IA en lot <span style="display:inline-block;background:#2c5a8f;color:#fff;font-family:'Trebuchet MS','Segoe UI',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;padding:3px 9px;border-radius:3px;text-transform:uppercase;vertical-align:middle;margin-left:10px">IA CLOUD · supports pédagogiques</span></h2>
 
 <p>La conversion massive est <strong>un chantier de fond, pas un week-end</strong>. On procède par lots de 10 à 20 fichiers, ciblés sur un seul cas d'usage à la fois. L'IA fait le sale boulot, vous validez en relisant.</p>
 
@@ -433,7 +461,7 @@ Je te dépose le premier fichier maintenant.</pre>
 
 <!-- 7 RÉFÉRENTIEL → SKILL -->
 <section id="referentiel-skill">
-<h2>7. Transformer un référentiel officiel en skill</h2>
+<h2>7. Transformer un référentiel officiel en skill <span style="display:inline-block;background:#2c5a8f;color:#fff;font-family:'Trebuchet MS','Segoe UI',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;padding:3px 9px;border-radius:3px;text-transform:uppercase;vertical-align:middle;margin-left:10px">IA CLOUD · documents officiels publics</span></h2>
 
 <p>Les référentiels de diplômes (CAP, BAC PRO, BTS) sont des <strong>PDF officiels de 80 à 200 pages</strong>, denses, structurés, mais difficilement exploitables tels quels par une IA. Ils contiennent pourtant la matière la plus précieuse : codes de compétences, blocs, savoirs associés, situations professionnelles, modalités d'évaluation, coefficients. Les transformer en skill exploitable (la notion de skill est posée au <a href="chapitre-2.html">Chapitre 2</a>) est <strong>le meilleur investissement temps qu'on puisse faire</strong> pour une discipline donnée — c'est trois heures qui économisent ensuite des dizaines d'heures de réexplications à l'IA.</p>
 
@@ -522,7 +550,7 @@ Je dépose le PDF maintenant.</pre>
 
 <!-- 8 -->
 <section id="suivi-eleve">
-<h2>8. Interopérabilité avec les outils institutionnels — suivi élève sans double saisie</h2>
+<h2>8. Interopérabilité avec les outils institutionnels — suivi élève sans double saisie <span style="display:inline-block;background:#ff6b35;color:#fff;font-family:'Trebuchet MS','Segoe UI',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;padding:3px 9px;border-radius:3px;text-transform:uppercase;vertical-align:middle;margin-left:10px">IA LOCALE · données nominatives</span></h2>
 
 <div class="callout danger">
   <p><strong class="tag">Précaution — outils institutionnels et données d'élèves</strong></p>

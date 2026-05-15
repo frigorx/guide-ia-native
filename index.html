@@ -197,6 +197,17 @@
 
 <main>
 
+<nav class="parcours" aria-label="Parcours du guide" style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin:4px 0 18px 0;font-size:.88em;font-family:'Trebuchet MS','Segoe UI',sans-serif">
+  <span style="color:#3a3f47;margin-right:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;font-size:.82em">Parcours · Chapitre 1 sur 4</span>
+  <span style="background:#ff6b35;color:#fff;padding:5px 12px;border-radius:14px;font-weight:700">1 · Installation</span>
+  <span style="color:#bbb;margin:0 4px">→</span>
+  <a href="chapitre-2.html" style="background:#f6f7f9;color:#1b3a63;padding:5px 12px;border-radius:14px;text-decoration:none;border:1px solid #e3e7ec">2 · Skills</a>
+  <span style="color:#bbb;margin:0 4px">→</span>
+  <a href="chapitre-3.html" style="background:#f6f7f9;color:#1b3a63;padding:5px 12px;border-radius:14px;text-decoration:none;border:1px solid #e3e7ec">3 · Chatbot</a>
+  <span style="color:#bbb;margin:0 4px">→</span>
+  <a href="chapitre-4.html" style="background:#f6f7f9;color:#1b3a63;padding:5px 12px;border-radius:14px;text-decoration:none;border:1px solid #e3e7ec">4 · Obsidian</a>
+</nav>
+
 <a href="presentation.html" class="cta-presentation" style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:#fff1ea;border:1px solid #ff6b35;border-radius:8px;padding:14px 20px;margin:6px 0 20px 0;text-decoration:none;color:#1b3a63">
   <span style="font-size:1.7em;line-height:1">📖</span>
   <span style="flex:1;min-width:220px">
@@ -240,6 +251,10 @@
   <p><strong class="tag">Un mot d'honnêteté avant de commencer</strong> Cette installation <strong>n'est pas magique</strong>. C'est un travail accessible à qui sait utiliser une souris, un clavier, copier-coller et lire un message d'erreur — pas besoin d'être informaticien. <strong>Mais il faut accepter que ça prenne du temps.</strong></p>
   <p>J'ai mis <strong>une journée complète</strong> pour boucler mon propre Chapitre 1, avec quelques moments d'arrachage de cheveux. Marie-Laure, première testeuse du guide qui n'avait jamais touché à un terminal, y est arrivée sur <strong>une grosse après-midi</strong>. <strong>Personne ne le fait en claquant des doigts.</strong> Mais tout le monde y arrive avec un peu de patience et un bon radio-guidage par IA cloud.</p>
   <p style="margin-top:.6em;border-top:1px dashed rgba(0,0,0,.15);padding-top:.6em"><strong>Conseil pratique.</strong> Ne tentez pas de tout enchaîner en une après-midi. Mieux vaut <strong>une heure par jour pendant une semaine</strong>. Les utilisateurs qui ont voulu tout faire d'un bloc ont parfois abandonné. Ceux qui ont pris le temps sont allés au bout.</p>
+</div>
+
+<div class="callout tip">
+  <p><strong class="tag">Ce que vous saurez faire en sortie</strong> Installer une IA locale fonctionnelle sur votre ordinateur — Ollama + Open WebUI, ou LM Studio selon votre profil —, choisir le modèle adapté à votre matériel (Llama 3.1 8B par défaut, Gemma 3 12B si GPU dédié ou Mac Apple Silicon), faire un premier dialogue qui répond, et comprendre les forces et limites concrètes d'une IA en local : ce qu'elle fait bien, ce qu'elle ne sait pas faire, et pourquoi c'est exactement ce qu'il faut pour un usage sensible. Tout ça sans qu'aucune de vos données ne quitte votre poste.</p>
 </div>
 
 <p>L'IA conversationnelle est entrée dans le quotidien — des enseignants, mais aussi des particuliers — <strong>sans cadre clair</strong>. ChatGPT, Claude, Gemini sont utilisés pour corriger des copies, organiser une vie de famille, gérer des données de santé, sans que personne n'ait vraiment vérifié où partent ces informations. Ce guide propose une alternative : installer une <strong>IA native</strong>, qui tourne directement sur votre ordinateur, <strong>sans envoi de données à un serveur tiers</strong>.</p>
@@ -507,6 +522,43 @@
   <p><strong class="tag">Test 3 — production utile</strong></p>
   <p><em>« Rédige un mail poli pour annuler un rendez-vous prévu demain, en invoquant un imprévu professionnel, sans donner de détails. »</em></p>
   <p>Tâche utile et neutre côté données. On observe le ton, la longueur, la justesse du français.</p>
+</div>
+
+<h3>7.4. Cinq dialogues types — un par profil</h3>
+<p>Pour finir, cinq dialogues réalistes qui montrent <strong>ce qu'on obtient concrètement</strong> dans les usages du quotidien, post-installation. Un prompt court par profil, et l'esprit de la réponse à attendre.</p>
+
+<div class="callout info">
+  <p><strong class="tag">Enseignant·e de maths — 3ᵉ</strong></p>
+  <p><em>« Reformule cet énoncé d'exercice sur le théorème de Thalès pour qu'il soit accessible à un élève DYS : phrases courtes, vocabulaire simple, un seul attendu par question. Énoncé original : [coller]. »</em></p>
+  <p>L'IA propose une version épurée — phrases de 10-12 mots, sans double négation, chaque sous-question isolée. Vous corrigez en 30 secondes. Gain net : 10 à 15 minutes d'effort de reformulation par énoncé.</p>
+</div>
+
+<div class="callout info">
+  <p><strong class="tag">Enseignant·e de lettres — 2ᵈᵉ</strong></p>
+  <p><em>« Voici un paragraphe d'élève sur Rousseau : [coller]. Identifie trois forces et deux maladresses de raisonnement, sans proposer de réécriture. Je veux que l'élève corrige lui-même. »</em></p>
+  <p>L'IA repère les forces (références précises, articulation des idées) et les maladresses (généralisation hâtive, transition manquante), sans prendre la place de l'élève. Vous utilisez ce diagnostic en entretien individuel, sans avoir à tout relire dans le détail.</p>
+</div>
+
+<div class="callout info">
+  <p><strong class="tag">AESH — accompagnement individuel</strong></p>
+  <p><em>« Cette consigne de SVT est trop dense pour Léo (TDAH, attention 5-7 min) : [coller]. Découpe-la en sous-étapes de 2 phrases maximum chacune, avec une pause-check après chaque sous-étape. »</em></p>
+  <p>L'IA produit 4 à 5 sous-étapes courtes, chacune assortie d'une question-vérification (« Léo, peux-tu me dire ce que tu dois faire d'abord ? »). Vous adaptez le rythme en direct, à côté de l'élève.</p>
+</div>
+
+<div class="callout info">
+  <p><strong class="tag">Particulier — vie courante</strong></p>
+  <p><em>« Rédige une lettre de réclamation à mon assurance habitation, ton ferme mais courtois, 15 lignes maximum. Fait : dégât des eaux signalé le 12 mars, toujours pas d'expertise programmée. J'exige une date sous 10 jours. »</em></p>
+  <p>L'IA produit une lettre prête à imprimer — bloc adresse, formule de politesse, ton mesuré, exigence claire. Vous vérifiez les dates et signez. Aucun de vos documents personnels n'a quitté votre poste.</p>
+</div>
+
+<div class="callout info">
+  <p><strong class="tag">Formateur·trice CFA — geste métier</strong></p>
+  <p><em>« Mes apprentis frigoristes confondent surchauffe et sous-refroidissement. Explique la différence en 4 phrases, avec une analogie concrète tirée du quotidien — pas de mathématiques. »</em></p>
+  <p>L'IA propose une analogie (le café trop chaud / le café tiédi au frigo), définit chaque notion sans formule, et termine par une question de vérification. Vous l'utilisez en début de séance pour ancrer le concept avant la démonstration au banc.</p>
+</div>
+
+<div class="callout ok">
+  <p><strong class="tag">Le point commun</strong> Cinq profils, cinq tâches différentes, <strong>aucune donnée personnelle dans aucun prompt</strong> — les énoncés à coller sont anonymisés ou neutralisés (Léo, pas Léo Dupont ; le paragraphe d'élève sans son nom). C'est la posture à internaliser dès le premier dialogue : l'IA locale est une <em>extension cognitive</em>, pas une base de données nominative.</p>
 </div>
 </section>
 

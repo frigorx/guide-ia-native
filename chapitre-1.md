@@ -11,6 +11,15 @@ Guide pratique d'installation, de paramétrage et d'usage — pour enseignants d
 
 **\*** Une **IA native** (ou « IA locale ») est une IA installée sur votre propre ordinateur, qui fonctionne **sans connexion à Internet**. Vos données ne quittent pas votre poste. C'est l'équivalent, pour l'IA, de Word installé sur votre PC face à Google Docs en ligne.
 
+Parcours · Chapitre 1 sur 4
+1 · Installation
+→
+[2 · Skills](chapitre-2.md)
+→
+[3 · Chatbot](chapitre-3.md)
+→
+[4 · Obsidian](chapitre-4.md)
+
 **Statut** Document de travail à caractère exploratoire, sans valeur officielle. Ne se substitue ni aux préconisations académiques ni au cadre fixé par chaque établissement.
 
 **Mode d'emploi de ce chapitre** Ce document est conçu pour être **lu d'abord**, puis **exécuté avec l'aide d'une IA cloud** (Claude, ChatGPT, Gemini, Mistral Le Chat). Lisez le chapitre en entier pour comprendre l'esprit. À la fin ([section 8](#radio-guidage)), vous trouverez le **radio-guidage** : un prompt à coller dans votre IA cloud habituelle, et un fichier à joindre. L'IA prend alors le relais et vous accompagne pas à pas dans l'exécution.
@@ -39,6 +48,8 @@ Guide pratique d'installation, de paramétrage et d'usage — pour enseignants d
 J'ai mis **une journée complète** pour boucler mon propre Chapitre 1, avec quelques moments d'arrachage de cheveux. Marie-Laure, première testeuse du guide qui n'avait jamais touché à un terminal, y est arrivée sur **une grosse après-midi**. **Personne ne le fait en claquant des doigts.** Mais tout le monde y arrive avec un peu de patience et un bon radio-guidage par IA cloud.
 
 **Conseil pratique.** Ne tentez pas de tout enchaîner en une après-midi. Mieux vaut **une heure par jour pendant une semaine**. Les utilisateurs qui ont voulu tout faire d'un bloc ont parfois abandonné. Ceux qui ont pris le temps sont allés au bout.
+
+**Ce que vous saurez faire en sortie** Installer une IA locale fonctionnelle sur votre ordinateur — Ollama + Open WebUI, ou LM Studio selon votre profil —, choisir le modèle adapté à votre matériel (Llama 3.1 8B par défaut, Gemma 3 12B si GPU dédié ou Mac Apple Silicon), faire un premier dialogue qui répond, et comprendre les forces et limites concrètes d'une IA en local : ce qu'elle fait bien, ce qu'elle ne sait pas faire, et pourquoi c'est exactement ce qu'il faut pour un usage sensible. Tout ça sans qu'aucune de vos données ne quitte votre poste.
 
 L'IA conversationnelle est entrée dans le quotidien — des enseignants, mais aussi des particuliers — **sans cadre clair**. ChatGPT, Claude, Gemini sont utilisés pour corriger des copies, organiser une vie de famille, gérer des données de santé, sans que personne n'ait vraiment vérifié où partent ces informations. Ce guide propose une alternative : installer une **IA native**, qui tourne directement sur votre ordinateur, **sans envoi de données à un serveur tiers**.
 
@@ -214,6 +225,42 @@ On évalue la capacité du modèle à **tenir un niveau de langue**. Sans contex
 *« Rédige un mail poli pour annuler un rendez-vous prévu demain, en invoquant un imprévu professionnel, sans donner de détails. »*
 
 Tâche utile et neutre côté données. On observe le ton, la longueur, la justesse du français.
+
+### 7.4. Cinq dialogues types — un par profil
+
+Pour finir, cinq dialogues réalistes qui montrent **ce qu'on obtient concrètement** dans les usages du quotidien, post-installation. Un prompt court par profil, et l'esprit de la réponse à attendre.
+
+**Enseignant·e de maths — 3ᵉ**
+
+*« Reformule cet énoncé d'exercice sur le théorème de Thalès pour qu'il soit accessible à un élève DYS : phrases courtes, vocabulaire simple, un seul attendu par question. Énoncé original : [coller]. »*
+
+L'IA propose une version épurée — phrases de 10-12 mots, sans double négation, chaque sous-question isolée. Vous corrigez en 30 secondes. Gain net : 10 à 15 minutes d'effort de reformulation par énoncé.
+
+**Enseignant·e de lettres — 2ᵈᵉ**
+
+*« Voici un paragraphe d'élève sur Rousseau : [coller]. Identifie trois forces et deux maladresses de raisonnement, sans proposer de réécriture. Je veux que l'élève corrige lui-même. »*
+
+L'IA repère les forces (références précises, articulation des idées) et les maladresses (généralisation hâtive, transition manquante), sans prendre la place de l'élève. Vous utilisez ce diagnostic en entretien individuel, sans avoir à tout relire dans le détail.
+
+**AESH — accompagnement individuel**
+
+*« Cette consigne de SVT est trop dense pour Léo (TDAH, attention 5-7 min) : [coller]. Découpe-la en sous-étapes de 2 phrases maximum chacune, avec une pause-check après chaque sous-étape. »*
+
+L'IA produit 4 à 5 sous-étapes courtes, chacune assortie d'une question-vérification (« Léo, peux-tu me dire ce que tu dois faire d'abord ? »). Vous adaptez le rythme en direct, à côté de l'élève.
+
+**Particulier — vie courante**
+
+*« Rédige une lettre de réclamation à mon assurance habitation, ton ferme mais courtois, 15 lignes maximum. Fait : dégât des eaux signalé le 12 mars, toujours pas d'expertise programmée. J'exige une date sous 10 jours. »*
+
+L'IA produit une lettre prête à imprimer — bloc adresse, formule de politesse, ton mesuré, exigence claire. Vous vérifiez les dates et signez. Aucun de vos documents personnels n'a quitté votre poste.
+
+**Formateur·trice CFA — geste métier**
+
+*« Mes apprentis frigoristes confondent surchauffe et sous-refroidissement. Explique la différence en 4 phrases, avec une analogie concrète tirée du quotidien — pas de mathématiques. »*
+
+L'IA propose une analogie (le café trop chaud / le café tiédi au frigo), définit chaque notion sans formule, et termine par une question de vérification. Vous l'utilisez en début de séance pour ancrer le concept avant la démonstration au banc.
+
+**Le point commun** Cinq profils, cinq tâches différentes, **aucune donnée personnelle dans aucun prompt** — les énoncés à coller sont anonymisés ou neutralisés (Léo, pas Léo Dupont ; le paragraphe d'élève sans son nom). C'est la posture à internaliser dès le premier dialogue : l'IA locale est une *extension cognitive*, pas une base de données nominative.
 
 ## 8. Radio-guidage — faire installer cette IA par une IA cloud
 

@@ -9,6 +9,15 @@ Construire une mémoire long-terme structurée et la brancher à l'IA. Sortir de
 **Prérequis·** Chapitres 1 à 3
 **Version·** mai 2026
 
+Parcours · Chapitre 4 sur 4
+[1 · Installation](chapitre-1.md)
+→
+[2 · Skills](chapitre-2.md)
+→
+[3 · Chatbot](chapitre-3.md)
+→
+4 · Obsidian
+
 **Statut** Document de travail à caractère exploratoire, sans valeur officielle. Suite des [Chapitres 1 à 3](chapitre-1.md). Obsidian doit être installé ; l'IA locale (Chapitre 1) doit être fonctionnelle. Aucune connaissance préalable d'Obsidian n'est requise — ce chapitre est aussi accessible à qui le découvre.
 
 **Mode d'emploi de ce chapitre** Ce document est conçu pour être **lu d'abord**, puis **exécuté avec l'aide d'une IA cloud** (Claude, ChatGPT, Gemini, Mistral Le Chat). Lisez le chapitre en entier pour comprendre l'esprit. À la fin ([section 11](#radio-guidage)), vous trouverez le **radio-guidage** : un prompt à coller dans votre IA cloud habituelle, et un fichier à joindre. L'IA prend alors le relais et vous accompagne pas à pas dans l'exécution.
@@ -16,6 +25,16 @@ Construire une mémoire long-terme structurée et la brancher à l'IA. Sortir de
 **⚠ N'allez pas directement à l'action.** Lisez le chapitre d'abord — la règle qui fait réussir un vault Obsidian (« partir des sorties, jamais des sources ») se comprend *avant* de construire, pas après. Le téléchargement du fichier `.md` et le prompt à coller sont rassemblés à la fin, dans la [section 11](#radio-guidage).
 
 **Un mot vous bloque ?** Le [glossaire](glossaire.md) est en lien permanent en bas de page. **Le radio-guidage, c'est quoi au juste ?** La page [Radio-guidage](radio-guidage.html) l'explique une fois pour toutes.
+
+**Boussole — quelle IA pour quel usage ?** Ce chapitre est le seul à mélanger deux régimes : on continue d'apprendre l'outil avec une IA cloud, mais le travail réel sur vos notes se fait **obligatoirement en local**. Avant de plonger, repérez quel usage correspond à quoi.
+
+| Usage | Quelle IA |
+| --- | --- |
+| Radio-guidage de ce chapitre (installation des plugins, première mise en place du vault) | IA CLOUD   comme aux Chapitres 1 à 3. |
+| Conversion d'archives pédagogiques (anciens TP, séances, fiches au format PDF/DOCX/PPTX) | IA CLOUD   autorisée — supports pédagogiques non personnels uniquement. |
+| Travail quotidien dans Obsidian (Smart Connections, Local GPT, suivi élève, exports Charlemagne) | IA LOCALE   obligatoire — données nominatives en jeu. |
+
+**Règle pratique :** dès qu'il y a une **donnée d'élève ou personnelle** en jeu, c'est **IA locale**. Pour le reste — ancien matériel pédagogique, apprentissage de l'outil — le **cloud** est OK.
 
 ### Sommaire
 
@@ -40,6 +59,8 @@ Au Chapitre 1, l'IA locale a une mémoire **de courte durée** : à chaque conve
 Au Chapitre 3, on a déployé un chatbot pour les élèves, mais qui parle d'*une* matière, à un *moment* donné, sans souvenirs des séances précédentes. Le résultat est utile, mais structurellement **sans profondeur historique**.
 
 Obsidian comble exactement ce manque. C'est un **logiciel de prise de notes en markdown** (texte simple, fichiers lisibles partout, archivables à vie), qui stocke **tout en local sur votre disque**, et qui se laisse interroger par une IA via quelques plugins gratuits. En clair : un « second cerveau » qui accumule année après année, et que l'IA peut consulter à la demande.
+
+**Ce que vous saurez faire en sortie** Structurer un vault Obsidian en couches numérotées (00 référentiels → 90 archive), brancher votre IA locale dessus via Smart Connections et Local GPT, convertir l'existant par lots d'une vingtaine de fichiers par mois, transformer un référentiel de diplôme en skill exploitable, et piloter le suivi élève en évitant la double saisie avec Charlemagne Pro grâce à des CSV générés à la demande — tout en respectant le cadre établissement pour les données nominatives.
 
 **Promesse concrète** Une fois Obsidian bien structuré et l'IA branchée dessus, vous pourrez dire : *« Résume-moi tout ce que j'ai noté sur la classe de 1MFER cette année »*, ou *« Sur quels chapitres de mathématiques mes 3e ont le plus achoppé sur les 5 dernières années ? »*. La réponse vient de **votre** historique, pas d'un modèle générique.
 
@@ -152,7 +173,7 @@ tags: [cycle-frigo, TP, première]
 ...
 ```
 
-## 5. Brancher l'IA locale sur Obsidian
+## 5. Brancher l'IA locale sur Obsidian IA LOCALE
 
 Sans IA, Obsidian est un (excellent) gestionnaire de notes. Avec une IA locale branchée, c'est un **assistant qui connaît votre travail**. Trois plugins se complètent — installés depuis *Settings → Community plugins* dans Obsidian.
 
@@ -168,7 +189,7 @@ Sans IA, Obsidian est un (excellent) gestionnaire de notes. Avec une IA locale b
 
 Le modèle d'**embedding** (utilisé par Smart Connections) ne fait pas du texte, il fait des vecteurs. Modèles légers et rapides recommandés : `nomic-embed-text` ou `mxbai-embed-large` — à télécharger via `ollama pull`. Le modèle **de génération** (utilisé par Local GPT / Text Generator) reste celui du Chapitre 1 : Gemma 3 12B est un excellent défaut.
 
-## 6. Convertir l'existant — workflow IA en lot
+## 6. Convertir l'existant — workflow IA en lot IA CLOUD · supports pédagogiques
 
 La conversion massive est **un chantier de fond, pas un week-end**. On procède par lots de 10 à 20 fichiers, ciblés sur un seul cas d'usage à la fois. L'IA fait le sale boulot, vous validez en relisant.
 
@@ -241,7 +262,7 @@ Je te dépose le premier fichier maintenant.
 
 **Rappel RGPD** Cette procédure utilise Claude/ChatGPT en cloud. Elle est **strictement réservée aux supports pédagogiques** (TP, séances, fiches). **Jamais de copies d'élèves, jamais de bulletins, jamais de listes nominatives dans cette conversation cloud.** Pour le suivi élève, on utilise exclusivement l'IA locale (§8).
 
-## 7. Transformer un référentiel officiel en skill
+## 7. Transformer un référentiel officiel en skill IA CLOUD · documents officiels publics
 
 Les référentiels de diplômes (CAP, BAC PRO, BTS) sont des **PDF officiels de 80 à 200 pages**, denses, structurés, mais difficilement exploitables tels quels par une IA. Ils contiennent pourtant la matière la plus précieuse : codes de compétences, blocs, savoirs associés, situations professionnelles, modalités d'évaluation, coefficients. Les transformer en skill exploitable (la notion de skill est posée au [Chapitre 2](chapitre-2.md)) est **le meilleur investissement temps qu'on puisse faire** pour une discipline donnée — c'est trois heures qui économisent ensuite des dizaines d'heures de réexplications à l'IA.
 
@@ -331,7 +352,7 @@ Une fois validé, le skill se teste sur trois questions réelles :
 
 Si les trois passent, le skill est productif. Sinon, retour au fichier source à corriger.
 
-## 8. Interopérabilité avec les outils institutionnels — suivi élève sans double saisie
+## 8. Interopérabilité avec les outils institutionnels — suivi élève sans double saisie IA LOCALE · données nominatives
 
 **Précaution — outils institutionnels et données d'élèves**
 

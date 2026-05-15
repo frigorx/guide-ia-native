@@ -9,6 +9,15 @@ Cadrer, coupler à un skill matière, déployer en classe, évaluer. Pour enseig
 **Prérequis·** Chapitres 1 et 2
 **Version·** mai 2026
 
+Parcours · Chapitre 3 sur 4
+[1 · Installation](chapitre-1.md)
+→
+[2 · Skills](chapitre-2.md)
+→
+3 · Chatbot
+→
+[4 · Obsidian](chapitre-4.md)
+
 **Statut** Document de travail à caractère exploratoire, sans valeur officielle. Ne se substitue ni aux préconisations académiques ni au cadre fixé par chaque établissement. Suite des [Chapitre 1](chapitre-1.md) (installation) et [Chapitre 2](chapitre-2.md) (skills) : la maîtrise des notions de modèle, de skill et d'interface y est supposée acquise.
 
 **Mode d'emploi de ce chapitre** Ce document est conçu pour être **lu d'abord**, puis **exécuté avec l'aide d'une IA cloud** (Claude, ChatGPT, Gemini, Mistral Le Chat). Lisez le chapitre en entier pour comprendre l'esprit. À la fin ([section 12](#radio-guidage)), vous trouverez le **radio-guidage** : un prompt à coller dans votre IA cloud habituelle, et un fichier à joindre. L'IA prend alors le relais et vous accompagne pas à pas dans l'exécution.
@@ -39,6 +48,8 @@ Cadrer, coupler à un skill matière, déployer en classe, évaluer. Pour enseig
 Aux Chapitres 1 et 2, l'IA est un assistant *du prof*. Le prof prompte, le prof contrôle, le prof valide. L'élève ne sait même pas que l'IA existe. C'est l'usage le plus simple, le plus sûr, et c'est celui qui rapporte le plus de gain de temps direct.
 
 Le Chapitre 3 propose un saut : l'IA devient un assistant *de l'élève*. L'élève prompte, l'IA répond, le prof cadre. **La nature de l'outil change radicalement** : on passe d'un usage privé à un usage public, d'un acte productif à un acte éducatif, d'une responsabilité technique à une responsabilité pédagogique.
+
+**Ce que vous saurez faire en sortie** Créer dans Open WebUI un chatbot pédagogique dédié à vos élèves — modèle personnalisé, system prompt qui cadre la posture socratique, skill matière couplé, sortie de rôle en cas d'évocation de mal-être —, le déployer en multi-postes dans le cadre validé par votre établissement (RUPN, DPO, charte, information des familles), animer une séance type de 55 minutes, et évaluer la compétence d'usage critique de l'IA chez vos élèves sur une grille à quatre niveaux.
 
 **À qui s'adresse ce chapitre** Enseignants toutes disciplines, mais aussi CPE (entretiens d'écoute, prévention), AESH (adaptation aux profils DYS/TDAH, médiation cognitive), formateurs (CFA, GRETA, formation continue), parents-coéducateurs. La mécanique est la même ; seuls le cadrage et les contenus varient.
 
