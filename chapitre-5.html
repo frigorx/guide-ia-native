@@ -294,7 +294,7 @@
 </ul>
 
 <h3>3.2. Hermès-local — l'agent à cerveau souverain</h3>
-<p>Le raccourci <code>Hermes-local</code> lance <code>C:\Hermes\Lancer-Hermes.cmd</code> : un agent piloté par un <strong>modèle local</strong> (votre HAL / un modèle Ollama). Ici, <strong>exécutant ET cerveau sont sur le poste</strong> — rien ne part dans le cloud.</p>
+<p>Le raccourci <code>Hermes-local</code> lance <code>C:\Hermes\Lancer-Hermes.cmd</code> : un agent piloté par un <strong>modèle local</strong> — concrètement, <strong>le même moteur Ollama (port 11434) qui fait déjà tourner votre IA native HAL</strong>. Ici, <strong>exécutant ET cerveau sont sur le poste</strong> : rien ne part dans le cloud, et l'agent réutilise un modèle déjà installé (pas de second téléchargement à prévoir).</p>
 <ul>
   <li><strong>Pour quoi</strong> — exactement ce qui était jusqu'ici impossible en agentique : agir sur des fichiers <em>qui peuvent contenir des données sensibles</em>, puisque le traitement reste local. Réorganiser un dossier de classe, préparer un export, mettre en forme des documents internes.</li>
   <li><strong>Contrepartie</strong> — le cerveau local est moins fort que Claude (raisonnement plus court, plus lent sans GPU), et la chaîne agent + modèle local est plus jeune, plus technique à fiabiliser.</li>
