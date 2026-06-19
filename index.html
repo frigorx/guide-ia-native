@@ -198,7 +198,7 @@
 <main>
 
 <nav class="parcours" aria-label="Parcours du guide" style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin:4px 0 18px 0;font-size:.88em;font-family:'Trebuchet MS','Segoe UI',sans-serif">
-  <span style="color:#3a3f47;margin-right:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;font-size:.82em">Parcours · Chapitre 1 sur 4</span>
+  <span style="color:#3a3f47;margin-right:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;font-size:.82em">Parcours · Chapitre 1 sur 5</span>
   <span style="background:#ff6b35;color:#fff;padding:5px 12px;border-radius:14px;font-weight:700">1 · Installation</span>
   <span style="color:#bbb;margin:0 4px">→</span>
   <a href="chapitre-2.html" style="background:#f6f7f9;color:#1b3a63;padding:5px 12px;border-radius:14px;text-decoration:none;border:1px solid #e3e7ec">2 · Skills</a>
@@ -206,6 +206,8 @@
   <a href="chapitre-3.html" style="background:#f6f7f9;color:#1b3a63;padding:5px 12px;border-radius:14px;text-decoration:none;border:1px solid #e3e7ec">3 · Chatbot</a>
   <span style="color:#bbb;margin:0 4px">→</span>
   <a href="chapitre-4.html" style="background:#f6f7f9;color:#1b3a63;padding:5px 12px;border-radius:14px;text-decoration:none;border:1px solid #e3e7ec">4 · Obsidian</a>
+  <span style="color:#bbb;margin:0 4px">→</span>
+  <a href="chapitre-5.html" style="background:#f6f7f9;color:#1b3a63;padding:5px 12px;border-radius:14px;text-decoration:none;border:1px solid #e3e7ec">5 · Agentique</a>
 </nav>
 
 <a href="presentation.html" class="cta-presentation" style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:#fff1ea;border:1px solid #ff6b35;border-radius:8px;padding:14px 20px;margin:6px 0 20px 0;text-decoration:none;color:#1b3a63">
@@ -278,13 +280,45 @@
 <p><strong>Côté enseignant.</strong> Coller une copie d'élève dans ChatGPT, c'est transmettre à un sous-traitant non recensé par l'établissement : le nom de l'élève, son niveau, ses productions, parfois ses difficultés (« il est dyslexique, adapte… »). Données personnelles d'élèves mineurs, RGPD article 28. À ma connaissance, aucun établissement n'a signé de contrat de sous-traitance spécifique avec OpenAI ou Anthropic pour cet usage. <strong>Cela peut rendre l'usage non conforme</strong> tant que le cadre n'est pas validé localement (chef d'établissement, RUPN, DPO selon le contexte).</p>
 <p><strong>Côté particulier.</strong> Demander à ChatGPT d'organiser un planning familial, de rédiger une lettre administrative, d'aider sur un problème médical, c'est lui confier des données personnelles — les siennes, celles de ses enfants, de ses proches. Ces données sont conservées, parfois utilisées pour entraîner les modèles. Là encore, le RGPD s'applique : il y a un sous-traitant, hors UE, sans contrat avec l'utilisateur final autre que des CGU qu'on n'a pas lues.</p>
 
-<h3>2.2. Souveraineté</h3>
+<h3>2.2. L'IA Act — pas seulement <em>quelles données</em>, mais <em>quels usages</em></h3>
+<p>Le RGPD encadre <strong>les données</strong> que l'on confie à une IA. L'<strong>IA Act</strong> — le règlement européen sur l'intelligence artificielle (<strong>règlement UE 2024/1689</strong>) — encadre, lui, <strong>l'usage que l'on fait de l'IA elle-même</strong>. Les deux textes se superposent : respecter le RGPD ne suffit pas à être en règle avec l'IA Act, et inversement. C'est un texte <strong>déjà en vigueur</strong>, qui s'applique par paliers.</p>
+
+<table class="cmp">
+<thead><tr><th>Date</th><th>Ce qui s'applique</th><th>Concerne l'enseignant ?</th></tr></thead>
+<tbody>
+<tr><td class="crit">1ᵉʳ août 2024</td><td>Entrée en vigueur du règlement</td><td>—</td></tr>
+<tr><td class="crit">2 février 2025</td><td><strong>Pratiques interdites</strong> + <strong>obligation de « littératie IA »</strong></td><td><strong>Oui, directement</strong></td></tr>
+<tr><td class="crit">2 août 2025</td><td>Règles sur les IA à usage général (GPT, Llama, Claude…)</td><td>Indirectement (vise les fournisseurs)</td></tr>
+<tr><td class="crit">2 août 2026</td><td><strong>Systèmes à « haut risque »</strong> (Annexe III) — dont l'éducation</td><td><strong>Oui, dès qu'on évalue/oriente</strong></td></tr>
+<tr><td class="crit">2 août 2027</td><td>Haut risque intégré à des produits déjà réglementés</td><td>Marginal</td></tr>
+</tbody>
+</table>
+
+<p><strong>Les quatre niveaux de risque.</strong> L'IA Act classe les systèmes selon leur <strong>dangerosité d'usage</strong>, pas selon leur technologie :</p>
+<ul>
+  <li><strong>Risque inacceptable → interdit.</strong> Notation sociale, manipulation comportementale, et — point qui nous concerne directement — <strong>la reconnaissance des émotions en établissement d'enseignement</strong>, interdite dans l'UE depuis le 2 février 2025.</li>
+  <li><strong>Haut risque → autorisé mais très encadré.</strong> L'éducation y est explicitement listée (Annexe III) : IA utilisées pour déterminer <strong>l'accès ou l'affectation</strong> à une formation, <strong>évaluer les résultats d'apprentissage</strong>, orienter vers un <strong>niveau d'enseignement</strong>, ou <strong>surveiller les comportements interdits pendant les examens</strong>.</li>
+  <li><strong>Risque limité → transparence.</strong> Signaler à l'usager qu'il interagit avec une IA, identifier les contenus générés.</li>
+  <li><strong>Risque minimal → libre.</strong> L'immense majorité des usages quotidiens : reformuler un énoncé, rédiger un mail, préparer une séance.</li>
+</ul>
+
+<div class="callout warn">
+  <p><strong class="tag">⚠ Le seuil à connaître</strong> Installer une IA native pour <strong>préparer vos cours</strong> ne fait pas de vous l'exploitant d'un système à haut risque : ça reste du <strong>risque minimal</strong>. Mais dès qu'une IA sert à <strong>noter, classer, orienter ou surveiller</strong> un élève — et plus seulement à vous aider à réfléchir —, vous entrez dans le périmètre <strong>haut risque</strong>, qui s'ajoute au RGPD : ce n'est plus une décision individuelle (information des familles, supervision humaine réelle, traçabilité, niveau établissement). Et la <strong>reconnaissance d'émotions en classe est, elle, purement interdite</strong>.</p>
+</div>
+
+<p><strong>Deux réflexes simples.</strong> D'abord, <strong>la décision finale reste humaine</strong> : une note, une orientation, une sanction d'examen ne se délèguent jamais à l'IA — l'IA propose, l'enseignant décide et doit pouvoir le justifier. Ensuite, l'<strong>obligation de littératie IA</strong> (depuis février 2025) joue <em>pour</em> vous : le règlement demande que les utilisateurs soient formés aux possibilités et limites de l'IA — <strong>ce guide est précisément un outil de littératie IA</strong>.</p>
+
+<div class="callout info">
+  <p><strong class="tag">IA native et IA Act — un atout, pas une dispense</strong> Faire tourner l'IA <strong>en local</strong> réduit fortement le risque <em>RGPD</em> (les données ne quittent pas le poste). Mais l'IA Act, lui, <strong>ne disparaît pas avec le local</strong> : utiliser une IA — locale ou cloud — pour évaluer ou orienter des élèves reste « haut risque ». <em>Le local protège la donnée ; il ne dispense pas de cadrer l'usage.</em> Le détail en contexte classe est traité aux <a href="chapitre-3.html">Chapitre 3</a> et <a href="chapitre-4.html">Chapitre 4</a>.</p>
+</div>
+
+<h3>2.3. Souveraineté</h3>
 <p>Un service cloud peut changer ses tarifs, ses conditions, sa disponibilité, fermer un compte. Une IA native reste <strong>disponible, gratuite, reproductible</strong> tant que l'on conserve les fichiers du modèle. Comme conserver ses cours, ses photos ou sa comptabilité en local plutôt qu'exclusivement chez un fournisseur cloud.</p>
 
-<h3>2.3. Différence d'usage</h3>
+<h3>2.4. Différence d'usage</h3>
 <p>Une IA native n'est pas un <em>clone moins bon</em> de Claude ou ChatGPT. Elle excelle sur le <strong>fréquent, simple, sensible, hors-ligne</strong>. Le cloud reste pertinent pour les tâches lourdes (analyse de longs documents, raisonnement complexe) <strong>à condition de n'y mettre aucune donnée personnelle identifiable</strong>. Les deux outils sont complémentaires, pas concurrents.</p>
 
-<h3>2.4. Les limites — à dire d'emblée, sans détour</h3>
+<h3>2.5. Les limites — à dire d'emblée, sans détour</h3>
 <p>Un guide qui ne nomme pas les limites de l'outil qu'il promeut perd sa crédibilité. Voici ce qu'une IA native <strong>ne fait pas (encore) bien</strong> en 2026.</p>
 
 <h4 style="margin-top:1.2em">Les trois limites qui pèsent le plus en pratique</h4>
@@ -343,6 +377,11 @@
 <div class="callout tip">
   <p><strong class="tag">Le point clé</strong> Les trois premières briques sont standard. La quatrième — les <strong>skills</strong> — fait toute la différence. Un modèle moyen avec d'excellents skills bat un modèle excellent sans contexte. Ce Chapitre 1 installe les trois premières briques ; le <a href="chapitre-2.html">Chapitre 2</a> est entièrement consacré à la quatrième.</p>
 </div>
+
+<div class="callout info">
+  <p><strong class="tag">Une IA qui répond, une IA qui agit</strong> Ces quatre briques décrivent une IA qui <em>répond</em> : on lui parle, elle propose un texte, et c'est vous qui agissez ensuite. Il existe une autre famille d'outils — les <strong>agents</strong> — où l'IA ne se contente plus de répondre mais <em>agit</em> sur vos fichiers et votre ordinateur. C'est une seconde dimension, parallèle à l'opposition local/cloud, et c'est l'objet du <a href="chapitre-5.html">Chapitre 5</a>. Pour l'instant, restons sur l'IA qui répond : c'est la fondation de tout le reste.</p>
+</div>
+
 </section>
 
 <div class="page-break"></div>
@@ -747,6 +786,7 @@ Le document est ci-joint / ci-dessus. Commence par tes questions.</pre>
     <li>Existe-t-il une <strong>validation du chef d'établissement, du RUPN, du DPO</strong> ou du service informatique selon le contexte ?</li>
     <li>Les <strong>familles ont-elles été informées</strong> si des données d'élèves sont concernées ?</li>
     <li>Ai-je une <strong>procédure de conservation et de suppression</strong> écrite ?</li>
+    <li>L'usage que je prévois relève-t-il du <strong>« haut risque » au sens de l'IA Act</strong> (évaluation, orientation, surveillance d'examen) ? Si oui, l'a-t-on cadré au niveau de l'établissement, et pas seulement à mon niveau ?</li>
   </ul>
 </div>
 
@@ -843,6 +883,8 @@ ollama rm llama3.1:8b</pre>
   <a href="https://eduscol.education.fr/2900/cadre-juridique">Eduscol — cadre juridique du numérique</a>
   <a href="https://www.education.gouv.fr/cadre-d-usage-de-l-intelligence-artificielle-en-education-422171">MEN — cadre d'usage de l'IA en éducation</a>
   <a href="https://gdpr-info.eu/art-28-gdpr/">RGPD article 28 — sous-traitance</a>
+  <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32024R1689">Règlement (UE) 2024/1689 — texte de l'IA Act (EUR-Lex)</a>
+  <a href="https://digital-strategy.ec.europa.eu/fr/policies/regulatory-framework-ai">Commission européenne — AI Act</a>
 </div>
 
 <div class="callout tip">
@@ -851,6 +893,7 @@ ollama rm llama3.1:8b</pre>
     <li><a href="chapitre-2.html"><strong>Chapitre 2 — Personnaliser votre IA avec des skills</strong></a> : le concept de skill, anatomie, exemples enseignant et particulier, écosystème, bibliothèque de prompts, radioguidage à une autre personne.</li>
     <li><a href="chapitre-3.html"><strong>Chapitre 3 — Transformer son IA native en assistant pédagogique</strong></a> : system prompt, couplage skill matière, multi-postes, charte d'usage, scénario de séance, évaluation.</li>
     <li><a href="chapitre-4.html"><strong>Chapitre 4 — Optimiser son Obsidian</strong></a> : architecture du vault, branchement IA, conversion de l'existant, suivi élève sans double saisie, préparation d'exports CSV vers le logiciel de gestion de classe imposé par l'établissement.</li>
+    <li><a href="chapitre-5.html"><strong>Chapitre 5 — Passer à l'agentique : Hermès, une IA qui agit</strong></a> : la grille à deux axes (local/cloud × passif/agentique), ce qu'est Hermès (Claude Code cadré), les sept garde-fous, RGPD et IA Act en mode agentique, et la méthode de travail avec Claude au quotidien.</li>
     <li><a href="radio-guidage.html"><strong>Annexe — Radio-guidage</strong></a> : la méthode commune à tous les chapitres, expliquée une fois pour toutes.</li>
   </ul>
 </div>
@@ -865,7 +908,7 @@ ollama rm llama3.1:8b</pre>
 <footer>
   F. Henninot · mai 2026 · Chapitre 1 du guide IA native · Document de travail ·
   <a href="mailto:fr.henninot@gmail.com">fr.henninot@gmail.com</a> ·
-  <a href="chapitre-2.html">Chapitre 2 →</a> · <a href="chapitre-3.html">Chapitre 3</a> · <a href="chapitre-4.html">Chapitre 4</a> · <a href="radio-guidage.html">Radio-guidage</a> · <a href="glossaire.html">Glossaire</a>
+  <a href="chapitre-2.html">Chapitre 2 →</a> · <a href="chapitre-3.html">Chapitre 3</a> · <a href="chapitre-4.html">Chapitre 4</a> · <a href="chapitre-5.html">Chapitre 5</a> · <a href="radio-guidage.html">Radio-guidage</a> · <a href="glossaire.html">Glossaire</a>
 </footer>
 
 <script src="glossary-linker.js"></script>
