@@ -183,7 +183,7 @@
 <header class="cover">
   <div class="school-band"><span style="background:var(--orange);color:#fff;padding:2px 9px;border-radius:3px;margin-right:9px;letter-spacing:.05em">Chapitre 5</span>Document de travail — diffusion libre</div>
   <h1>Passer à l'agentique : Hermès, une IA qui agit</h1>
-  <div class="sub">De l'IA qui <em>répond</em> à l'IA qui <em>agit</em>. Comprendre, installer et — surtout — cadrer une IA agentique sur son ordinateur, sans se mettre en danger ni perdre la main.</div>
+  <div class="sub">De l'IA qui <em>répond</em> à l'IA qui <em>agit</em>. Comprendre, installer et — surtout — cadrer une IA agentique sur son ordinateur, sans se mettre en danger ni perdre la main. Deux variantes : <strong>Hermès</strong> (cerveau cloud) et <strong>Hermès-local</strong> (cerveau souverain).</div>
   <div class="meta">
     <span><b>Auteur·</b> F. Henninot</span>
     <span><b>Public·</b> lecteurs ayant déjà fait les Chapitres 1 à 4</span>
@@ -212,246 +212,245 @@
 </div>
 
 <div class="callout info">
-  <p><strong class="tag">Prérequis de lecture</strong> Ce chapitre suppose que vous avez déjà une IA native fonctionnelle (<a href="index.html">Chapitre 1</a>) et que vous avez compris les enjeux RGPD <strong>et IA Act</strong> (<a href="index.html#enjeu">Chapitre 1, §2</a>). L'agentique relève les enjeux d'un cran : on ne parle plus d'une IA qui <em>propose un texte</em>, mais d'une IA qui <em>manipule vos fichiers, lance des commandes et modifie votre ordinateur</em>. Le bénéfice est réel ; la prudence aussi.</p>
+  <p><strong class="tag">Prérequis de lecture</strong> Ce chapitre suppose que vous avez déjà une IA native fonctionnelle (<a href="index.html">Chapitre 1</a>) et compris les enjeux RGPD <strong>et IA Act</strong> (<a href="index.html#enjeu">Chapitre 1, §2</a>). L'agentique relève les enjeux d'un cran : on ne parle plus d'une IA qui <em>propose un texte</em>, mais d'une IA qui <em>manipule vos fichiers, lance des commandes et modifie votre ordinateur</em>.</p>
 </div>
 
 <nav class="toc" id="sommaire">
   <h3>Sommaire</h3>
   <ol>
-    <li><a href="#preambule">Préambule — pourquoi un cinquième chapitre</a></li>
-    <li><a href="#grille">La grille à deux axes — situer HAL, Claude cadré et Hermès</a></li>
-    <li><a href="#hermes">Qu'est-ce qu'Hermès, concrètement</a></li>
-    <li><a href="#capacites">Ce qu'Hermès fait bien — et ce qu'il ne fait pas</a></li>
-    <li><a href="#cadre">RGPD et IA Act en mode agentique — la vigilance monte d'un cran</a></li>
-    <li><a href="#gardefous"><strong>Les sept garde-fous de l'agentique</strong></a></li>
-    <li><a href="#install">Mise en route — installer et lancer Hermès</a></li>
-    <li><a href="#usages">Premiers chantiers — un usage par profil</a></li>
-    <li><a href="#methode"><strong>La méthode — travailler avec Claude au quotidien</strong></a></li>
+    <li><a href="#preambule">Préambule — l'agent, c'est un exécutant + un cerveau</a></li>
+    <li><a href="#grille">La grille à deux axes — où se placent HAL, Claude cadré, Hermès et Hermès-local</a></li>
+    <li><a href="#deux-hermes"><strong>Les deux Hermès — cloud (Claude Code) et local (souverain)</strong></a></li>
+    <li><a href="#capacites">Ce que l'agentique fait bien — et ses limites</a></li>
+    <li><a href="#cadre"><strong>RGPD et IA Act — pourquoi le choix cloud/local change tout</strong></a></li>
+    <li><a href="#gardefous">Les sept garde-fous de l'agentique</a></li>
+    <li><a href="#install">Mise en route — installer et lancer les deux Hermès</a></li>
+    <li><a href="#usages">Premiers chantiers — quel Hermès pour quelle tâche</a></li>
+    <li><a href="#methode"><strong>La méthode — travailler avec un agent au quotidien</strong></a></li>
     <li><a href="#arret">Arrêter, nettoyer, revenir en arrière</a></li>
     <li><a href="#ressources">Ressources et liens</a></li>
   </ol>
 </nav>
 
-<!-- ========== 1 PREAMBULE ========== -->
+<!-- 1 -->
 <section id="preambule">
-<h2>1. Préambule — pourquoi un cinquième chapitre</h2>
+<h2>1. Préambule — l'agent, c'est un exécutant + un cerveau</h2>
 
-<p>Les quatre premiers chapitres ont construit une IA qui <strong>répond</strong>. On lui pose une question, elle propose un texte ; on garde la main sur tout le reste — c'est nous qui ouvrons les fichiers, qui copions-collons, qui rangeons. L'IA est un <strong>conseiller assis à côté de vous</strong>.</p>
+<p>Les quatre premiers chapitres ont construit une IA qui <strong>répond</strong> : on lui parle, elle propose un texte, et c'est vous qui agissez ensuite (ouvrir, copier-coller, ranger). L'IA est un <strong>conseiller assis à côté de vous</strong>.</p>
 
-<p>Hermès change de catégorie. C'est une IA <strong>agentique</strong> : elle ne se contente plus de répondre, elle <strong>agit</strong>. Elle lit vos fichiers, en crée de nouveaux, les renomme, lance des programmes, exécute des commandes — à votre demande et, idéalement, sous votre validation à chaque étape. L'IA n'est plus le conseiller assis à côté : c'est <strong>un collaborateur à qui vous confiez le clavier</strong>.</p>
-
-<div class="callout warn">
-  <p><strong class="tag">Un mot d'honnêteté, comme au Chapitre 1</strong> Ce surcroît de puissance a un prix : une IA qui peut créer un fichier peut aussi en écraser un. Une IA qui peut ranger un dossier peut aussi le ranger <em>de travers</em>. Ce chapitre passe donc autant de temps sur les <strong>garde-fous</strong> que sur les capacités — c'est volontaire. L'agentique mal cadrée, c'est l'abandon assuré (ou pire, un fichier perdu). L'agentique bien cadrée, c'est l'outil le plus utile de tout ce guide.</p>
-</div>
+<p>Une IA <strong>agentique</strong> change de catégorie : elle ne se contente plus de répondre, elle <strong>agit</strong>. Elle lit vos fichiers, en crée, les renomme, lance des commandes — sous votre validation. L'IA n'est plus le conseiller à côté : c'est <strong>un collaborateur à qui vous confiez le clavier</strong>.</p>
 
 <div class="callout tip">
-  <p><strong class="tag">Ce que vous saurez faire en sortie</strong> Comprendre la différence entre une IA passive et une IA agentique ; installer Hermès sur votre poste ; lui confier des tâches concrètes (réorganiser des fichiers, générer un document à partir de plusieurs sources, automatiser une corvée répétitive) en gardant le contrôle ; et reconnaître les situations où il ne faut <strong>pas</strong> lâcher la bride — notamment dès qu'une donnée d'élève entre en jeu.</p>
+  <p><strong class="tag">La distinction qui évite toutes les confusions</strong> Un agent, ce sont <strong>deux parties</strong> : <strong>(1) l'exécutant</strong> — le programme qui tourne sur VOTRE PC et touche réellement vos fichiers ; et <strong>(2) le cerveau</strong> — le modèle d'IA qui réfléchit et décide des actions. <strong>L'exécutant est toujours local</strong> (il est sur votre machine). <strong>Le cerveau, lui, peut être cloud ou local</strong> — et c'est ce choix qui décide de tout le reste, en particulier du RGPD.</p>
 </div>
 
-<p><strong>Pourquoi « Hermès ».</strong> Dans la mythologie, Hermès est le messager, celui qui circule, transporte, exécute — par opposition à une présence statique. Le nom dit le rôle : une IA qui se déplace dans votre système et fait des choses, là où HAL (votre IA native locale) reste un interlocuteur posé. Les deux sont complémentaires. Ce chapitre explique quand appeler l'un, quand appeler l'autre.</p>
+<p>D'où les <strong>deux Hermès</strong> de ce chapitre, qui correspondent à vos deux raccourcis :</p>
+<ul>
+  <li><strong>Hermès</strong> (raccourci <code>Hermes</code> → Claude Code) : exécutant local, <strong>cerveau dans le cloud</strong> (Claude). Très puissant, mais ce qu'il lit part chez Anthropic.</li>
+  <li><strong>Hermès-local</strong> (raccourci <code>Hermes-local</code> → <code>Lancer-Hermes.cmd</code>) : exécutant local, <strong>cerveau local</strong> (votre modèle Ollama / HAL). Souverain — rien ne quitte le poste.</li>
+</ul>
+
+<div class="callout warn">
+  <p><strong class="tag">Un mot d'honnêteté</strong> Ce surcroît de puissance a un prix : une IA qui peut créer un fichier peut aussi en écraser un. Ce chapitre passe donc autant de temps sur les <strong>garde-fous</strong> que sur les capacités. L'agentique mal cadrée, c'est l'abandon assuré (ou un fichier perdu) ; bien cadrée, c'est l'outil le plus utile du guide.</p>
+</div>
+
+<p><strong>Pourquoi « Hermès ».</strong> Le messager de la mythologie : celui qui circule, transporte, exécute — par opposition à une présence statique. Le nom dit le rôle : une IA qui se déplace dans votre système et fait des choses, là où HAL reste un interlocuteur posé.</p>
 </section>
 
-<!-- ========== 2 GRILLE 2 AXES ========== -->
+<!-- 2 -->
 <section id="grille">
-<h2>2. La grille à deux axes — situer HAL, Claude cadré et Hermès</h2>
+<h2>2. La grille à deux axes — où se placent HAL, Claude cadré, Hermès et Hermès-local</h2>
 
-<p>Jusqu'ici, le guide raisonnait sur <strong>un seul axe</strong> : <em>local</em> (chez moi) contre <em>cloud</em> (chez un fournisseur). C'était suffisant tant qu'on parlait d'IA qui répondent. L'arrivée d'Hermès oblige à ajouter un <strong>second axe</strong> : <em>passif</em> (l'IA répond) contre <em>agentique</em> (l'IA agit).</p>
-
-<p>Croisez les deux, et tout le paysage se range dans une grille simple :</p>
+<p>Jusqu'ici, le guide raisonnait sur <strong>un seul axe</strong> : <em>local</em> contre <em>cloud</em> (selon où est le cerveau). L'agentique ajoute un <strong>second axe</strong> : <em>passif</em> (l'IA répond) contre <em>agentique</em> (l'IA agit). Croisez les deux :</p>
 
 <table class="cmp">
-<thead><tr><th></th><th>Passif — l'IA répond</th><th>Agentique — l'IA agit</th></tr></thead>
+<thead><tr><th>Cerveau \ Rôle</th><th>Passif — l'IA répond</th><th>Agentique — l'IA agit</th></tr></thead>
 <tbody>
-<tr><td class="crit">Local — chez moi</td><td><strong>HAL</strong> (Ollama / LM Studio, Ch.1)<br>Souverain, pour les données sensibles.</td><td><em>Émergent en 2026</em> — agents locaux encore jeunes, peu accessibles aux néophytes.</td></tr>
-<tr><td class="crit">Cloud — chez un fournisseur</td><td><strong>Claude cadré</strong> (Ch.1, §4)<br>Pour les tâches lourdes, <em>sans donnée personnelle</em>.</td><td><strong>Hermès</strong> (Claude Code)<br>Puissance maximale, vigilance maximale.</td></tr>
+<tr><td class="crit">Local — chez moi</td><td><strong>HAL</strong> (Ollama / LM Studio, Ch.1)<br>Souverain, pour les données sensibles.</td><td><strong>Hermès-local</strong><br>Agent + modèle local. Souverain <em>et</em> capable d'agir : peut traiter du sensible (avec garde-fous). Plus jeune à mettre en place, cerveau moins puissant que Claude.</td></tr>
+<tr><td class="crit">Cloud — chez un fournisseur</td><td><strong>Claude cadré</strong> (Ch.1, §4)<br>Tâches lourdes, <em>sans donnée personnelle</em>.</td><td><strong>Hermès</strong> (Claude Code)<br>Cerveau cloud : puissance maximale, mais ce qu'il lit part dans le cloud. Pour la matière non personnelle uniquement.</td></tr>
 </tbody>
 </table>
 
-<p><strong>Comment lire la grille.</strong></p>
+<div class="callout tip">
+  <p><strong class="tag">La règle de choix, en une phrase</strong> <em>Donnée sensible → HAL (réflexion) ou Hermès-local (action). Réflexion lourde sans donnée perso → Claude cadré. Action puissante sur des fichiers non personnels → Hermès (Claude Code).</em></p>
+</div>
+
+<div class="callout info">
+  <p><strong class="tag">La nouveauté par rapport à la 1ʳᵉ version de ce chapitre</strong> La case « local + agentique » n'est plus vide : c'est <strong>Hermès-local</strong>. C'est même la case la plus intéressante pour un enseignant, parce qu'elle réconcilie deux exigences longtemps opposées : <strong>agir sur ses fichiers</strong> et <strong>garder la souveraineté sur ses données</strong>. La contrepartie : la mise en place est plus technique et le cerveau local reste en deçà de Claude sur les tâches complexes.</p>
+</div>
+</section>
+
+<!-- 3 -->
+<section id="deux-hermes">
+<h2>3. Les deux Hermès — cloud (Claude Code) et local (souverain)</h2>
+
+<p>Les deux partagent la même idée — un agent qui agit dans un dossier dédié (<code>C:\Hermes</code>) — mais diffèrent par leur cerveau, et donc par leurs usages permis.</p>
+
+<h3>3.1. Hermès — l'agent à cerveau cloud (Claude Code)</h3>
+<p>Le raccourci <code>Hermes</code> pointe sur <strong>Claude Code</strong>, l'outil agentique d'Anthropic. L'exécutant tourne sur votre PC ; le cerveau est <strong>Claude, hébergé dans le cloud</strong>. C'est l'option la plus capable (raisonnement, code, synthèses fines), mais <strong>tout fichier qu'il lit est transmis à un service distant</strong>.</p>
 <ul>
-  <li><strong>HAL = local + passif.</strong> Le réflexe par défaut dès qu'il y a une donnée personnelle (élève, santé, famille). Les prompts restent sur le poste.</li>
-  <li><strong>Claude cadré = cloud + passif.</strong> Le complément pour les raisonnements longs ou les textes exigeants, à condition de n'y mettre <strong>aucune donnée identifiable</strong>.</li>
-  <li><strong>Hermès = cloud + agentique.</strong> L'outil le plus capable — il lit et écrit réellement sur votre machine — mais aussi celui qui cumule deux sources de vigilance : c'est du cloud (donc enjeu RGPD sur ce qu'on lui transmet) <strong>et</strong> c'est agentique (donc enjeu sur ce qu'on le laisse faire).</li>
+  <li><strong>Pour quoi</strong> — corvées puissantes sur de la matière <em>non personnelle</em> : réorganiser des supports, fabriquer un livrable propre, automatiser une tâche technique.</li>
+  <li><strong>Interdit</strong> — toute donnée d'élève, de santé, nominative. C'est du cloud : la règle d'or s'applique sans exception.</li>
 </ul>
 
-<div class="callout tip">
-  <p><strong class="tag">La règle de choix, en une phrase</strong> <em>Donnée sensible → HAL. Réflexion lourde sans donnée perso → Claude cadré. Tâche concrète sur des fichiers non personnels → Hermès.</em> Le reste de ce chapitre détaille la troisième branche.</p>
-</div>
+<h3>3.2. Hermès-local — l'agent à cerveau souverain</h3>
+<p>Le raccourci <code>Hermes-local</code> lance <code>C:\Hermes\Lancer-Hermes.cmd</code> : un agent piloté par un <strong>modèle local</strong> (votre HAL / un modèle Ollama). Ici, <strong>exécutant ET cerveau sont sur le poste</strong> — rien ne part dans le cloud.</p>
+<ul>
+  <li><strong>Pour quoi</strong> — exactement ce qui était jusqu'ici impossible en agentique : agir sur des fichiers <em>qui peuvent contenir des données sensibles</em>, puisque le traitement reste local. Réorganiser un dossier de classe, préparer un export, mettre en forme des documents internes.</li>
+  <li><strong>Contrepartie</strong> — le cerveau local est moins fort que Claude (raisonnement plus court, plus lent sans GPU), et la chaîne agent + modèle local est plus jeune, plus technique à fiabiliser.</li>
+</ul>
 
 <div class="callout warn">
-  <p><strong class="tag">⚠ La case manquante n'est pas un oubli</strong> « Local + agentique » existe techniquement en 2026 (des agents tournant sur un modèle local), mais reste réservé aux utilisateurs avancés. Pour un néophyte, l'agentique passe aujourd'hui par le cloud — d'où l'importance redoublée du cadrage. C'est une frontière qui bougera : on y reviendra dans une version future du guide.</p>
+  <p><strong class="tag">⚠ « Souverain » ne veut pas dire « sans risque »</strong> Hermès-local supprime le risque de <em>transfert</em> (RGPD), mais <strong>pas</strong> les risques propres à l'agentique : un fichier mal renommé reste mal renommé, un fichier supprimé reste supprimé. Les sept garde-fous du <a href="#gardefous">§6</a> s'appliquent intégralement aux deux Hermès.</p>
+</div>
+
+<div class="callout info">
+  <p><strong class="tag">Hermès, Hermès-local et HAL</strong> Les trois sont volontairement <strong>séparés</strong>, avec des raccourcis distincts. Choisir lequel lancer, c'est déjà choisir son niveau de souveraineté : la frontière physique entre les outils matérialise la frontière des usages. HAL pour réfléchir sur du sensible ; Hermès-local pour agir sur du sensible ; Hermès (cloud) pour la puissance sur du non-sensible.</p>
 </div>
 </section>
 
-<!-- ========== 3 HERMES ========== -->
-<section id="hermes">
-<h2>3. Qu'est-ce qu'Hermès, concrètement</h2>
-
-<p>Hermès n'est pas un nouveau logiciel mystérieux : c'est <strong>Claude Code</strong>, l'outil agentique d'Anthropic, installé et configuré pour travailler dans un dossier dédié de votre ordinateur. Le nom « Hermès » est simplement l'étiquette qu'on lui donne dans ce guide pour le distinguer clairement d'HAL.</p>
-
-<p><strong>Trois caractéristiques le définissent.</strong></p>
-
-<div style="margin:12px 0;padding:12px 16px;border-left:3px solid #ff6b35;background:#fff8f3;border-radius:0 4px 4px 0">
-  <p style="margin:0 0 .35em 0;font-family:'Trebuchet MS',sans-serif;color:#1b3a63"><strong>1. Il agit dans un terminal, pas dans une fenêtre de chat classique</strong></p>
-  <p style="margin:0;font-size:.95em">On lui parle en langage courant (« range ce dossier par date », « fabrique-moi un tableau à partir de ces trois fichiers »), et il répond <em>en faisant</em>, pas seulement <em>en disant</em>.</p>
-</div>
-
-<div style="margin:12px 0;padding:12px 16px;border-left:3px solid #ff6b35;background:#fff8f3;border-radius:0 4px 4px 0">
-  <p style="margin:0 0 .35em 0;font-family:'Trebuchet MS',sans-serif;color:#1b3a63"><strong>2. Il a accès à vos fichiers et peut exécuter des commandes</strong></p>
-  <p style="margin:0;font-size:.95em">C'est tout l'intérêt — et tout le risque. Il lit le contenu d'un dossier, crée des fichiers, en modifie, lance des programmes. Toujours, par défaut, <strong>en vous demandant validation</strong> avant une action qui modifie quelque chose.</p>
-</div>
-
-<div style="margin:12px 0;padding:12px 16px;border-left:3px solid #ff6b35;background:#fff8f3;border-radius:0 4px 4px 0">
-  <p style="margin:0 0 .35em 0;font-family:'Trebuchet MS',sans-serif;color:#1b3a63"><strong>3. Il est cadré dans un périmètre</strong></p>
-  <p style="margin:0;font-size:.95em">Dans cette installation, Hermès vit dans le dossier <code>C:\Hermes</code> et se lance par un raccourci dédié (<code>Lancer-Hermes.cmd</code>). Ce périmètre n'est pas décoratif : c'est le premier des garde-fous (voir <a href="#gardefous">§6</a>).</p>
-</div>
-
-<p><strong>Hermès et HAL : « hors HAL », et pourquoi.</strong> Hermès est volontairement <strong>séparé</strong> d'HAL. HAL est votre espace souverain pour les données sensibles ; Hermès est votre atelier d'automatisation pour les fichiers de travail non personnels. Les mélanger reviendrait à perdre le bénéfice du premier. Garder deux outils distincts, avec deux noms et deux lanceurs, n'est pas une complication : <strong>c'est une protection.</strong> Quand vous lancez Hermès, vous savez que vous entrez dans l'espace « cloud + agentique », avec les règles qui vont avec.</p>
-
-<div class="callout warn">
-  <p><strong class="tag">Le moteur d'Hermès tourne dans le cloud</strong> Contrairement à HAL, Hermès s'appuie sur les modèles Claude hébergés par Anthropic : ce que vous lui transmettez (le contenu des fichiers qu'il lit) <strong>transite par un service cloud</strong>. C'est la contrepartie de sa puissance, et la raison numéro un de ne jamais lui confier de données d'élèves identifiables. On y revient au <a href="#cadre">§5</a>.</p>
-</div>
-</section>
-
-<!-- ========== 4 CAPACITES ========== -->
+<!-- 4 -->
 <section id="capacites">
-<h2>4. Ce qu'Hermès fait bien — et ce qu'il ne fait pas</h2>
+<h2>4. Ce que l'agentique fait bien — et ses limites</h2>
 
 <p>Comme pour HAL au Chapitre 1, nommer les limites d'emblée est une question de crédibilité.</p>
 
-<p><strong>Ce qu'Hermès fait remarquablement bien.</strong></p>
+<p><strong>Ce qu'un agent fait remarquablement bien (les deux Hermès).</strong></p>
 <ul>
-  <li><strong>Les corvées de fichiers en série.</strong> Renommer 200 photos selon un schéma, trier un dossier de téléchargements par type, convertir un lot de fichiers, fusionner plusieurs documents : ce qui vous prendrait une heure de clics répétitifs, il le fait en une commande validée.</li>
-  <li><strong>Fabriquer un livrable à partir de sources éparses.</strong> « Voici trois comptes rendus et un tableau, fais-m'en une synthèse en document propre » : il lit, croise, rédige et produit le fichier final.</li>
-  <li><strong>Le travail technique répétitif.</strong> Mettre en forme un export, nettoyer un tableau mal structuré, générer un modèle de document réutilisable, automatiser une tâche que vous refaites chaque mois.</li>
-  <li><strong>Expliquer en faisant.</strong> Vous pouvez lui demander de commenter chaque étape : c'est un excellent moyen d'apprendre comment votre propre ordinateur est organisé.</li>
+  <li><strong>Les corvées de fichiers en série</strong> — renommer 200 fichiers selon un schéma, trier un dossier par type, convertir un lot, fusionner des documents.</li>
+  <li><strong>Fabriquer un livrable à partir de sources éparses</strong> — « voici trois fiches et une grille, fais-m'en une synthèse propre ».</li>
+  <li><strong>Le travail technique répétitif</strong> — nettoyer un tableau, générer un modèle réutilisable, automatiser une tâche mensuelle.</li>
 </ul>
 
-<p><strong>Ce qu'il ne fait pas — ou pas sans danger.</strong></p>
+<p><strong>Les limites — selon la variante.</strong></p>
 
 <table class="cmp">
-<thead><tr><th>Limite</th><th>Détail</th><th>Conséquence pratique</th></tr></thead>
+<thead><tr><th>Limite</th><th>Hermès (cloud)</th><th>Hermès-local</th></tr></thead>
 <tbody>
-<tr><td class="crit">Aucune donnée personnelle</td><td>C'est du cloud : tout fichier qu'il lit est transmis à un service distant.</td><td><strong>Jamais</strong> de copies, listes nominatives, données de santé, suivi élève. C'est non négociable.</td></tr>
-<tr><td class="crit">Il peut se tromper avec aplomb</td><td>Une action mal comprise s'exécute quand même si vous validez sans lire.</td><td>Lisez chaque action proposée avant de l'autoriser. La validation n'est pas une formalité.</td></tr>
-<tr><td class="crit">Pas de « annuler » universel</td><td>Un fichier écrasé ou supprimé ne revient pas tout seul.</td><td><strong>Sauvegardez avant</strong> toute opération de masse. Travaillez sur des copies.</td></tr>
-<tr><td class="crit">Il ne connaît pas votre intention</td><td>« Range ce dossier » peut être interprété autrement que vous ne le pensiez.</td><td>Soyez explicite ; commencez petit ; vérifiez le résultat.</td></tr>
-<tr><td class="crit">Coût et dépendance</td><td>Service cloud propriétaire, potentiellement payant, soumis aux conditions du fournisseur.</td><td>À réserver aux tâches où il apporte vraiment ; HAL reste gratuit et souverain pour le reste.</td></tr>
+<tr><td class="crit">Données personnelles</td><td><strong>Interdit</strong> — tout part dans le cloud.</td><td><strong>Possible</strong> — traitement local, avec garde-fous et responsabilité RGPD maintenue.</td></tr>
+<tr><td class="crit">Qualité du raisonnement</td><td>Excellente (Claude).</td><td>Correcte à bonne, en deçà de Claude ; dépend du modèle et du matériel.</td></tr>
+<tr><td class="crit">Vitesse</td><td>Rapide, indépendante du PC.</td><td>Dépend du poste ; lent sans GPU.</td></tr>
+<tr><td class="crit">Coût / dépendance</td><td>Service cloud, potentiellement payant.</td><td>Gratuit, reproductible, hors-ligne.</td></tr>
+<tr><td class="crit">Maturité / facilité</td><td>Mûr, clé-en-main.</td><td>Plus jeune, mise en place plus technique.</td></tr>
 </tbody>
 </table>
 
 <div class="callout warn">
-  <p><strong class="tag">Conséquence pratique</strong> Hermès est imbattable sur les <strong>tâches concrètes, répétitives, portant sur des fichiers non sensibles</strong>. Dès qu'une donnée personnelle apparaît, on bascule sur HAL. Dès qu'on hésite, on sauvegarde. <em>La puissance de l'agentique se mérite par la discipline du cadrage.</em></p>
+  <p><strong class="tag">Risques communs aux deux</strong> Un agent peut se tromper avec aplomb : une action mal comprise s'exécute si vous validez sans lire. Et il n'y a <strong>pas de « annuler » universel</strong> : un fichier écrasé ou supprimé ne revient pas seul. <strong>Sauvegardez avant</strong> toute opération de masse, et lisez chaque action proposée avant de l'autoriser.</p>
 </div>
 </section>
 
-<!-- ========== 5 CADRE RGPD / IA ACT ========== -->
+<!-- 5 -->
 <section id="cadre">
-<h2>5. RGPD et IA Act en mode agentique — la vigilance monte d'un cran</h2>
+<h2>5. RGPD et IA Act — pourquoi le choix cloud/local change tout</h2>
 
-<p>Le Chapitre 1 a posé les deux cadres : le <strong>RGPD</strong> (les données) et l'<strong>IA Act</strong> (les usages). En mode agentique, les deux se durcissent — non parce que les textes changent, mais parce qu'Hermès <em>touche réellement à vos fichiers</em>.</p>
+<p>Le Chapitre 1 a posé les deux cadres : le <strong>RGPD</strong> (les données) et l'<strong>IA Act</strong> (les usages). En agentique, le RGPD se joue entièrement sur <strong>le cerveau</strong>.</p>
 
-<p><strong>Côté RGPD.</strong> Avec un chatbot, le risque tient à ce que vous <em>tapez</em>. Avec un agent, le risque tient à ce qu'il <em>lit</em>. Si vous lui demandez de « ranger le dossier <code>Classe 2nde</code> » et que ce dossier contient des copies nominatives, <strong>leur contenu part dans le cloud</strong> — même si vous n'avez rien collé vous-même. La règle devient donc : <em>avant de lâcher Hermès sur un dossier, vérifiez ce qu'il contient.</em> Un agent ne distingue pas seul une donnée sensible d'un fichier anodin.</p>
-
-<p><strong>Côté IA Act.</strong> Le règlement vise la <strong>finalité</strong>, pas l'outil. Utiliser Hermès pour réorganiser vos supports de cours, fabriquer un modèle de document ou automatiser une corvée administrative : <strong>risque minimal</strong>, aucune obligation particulière. En revanche, dès qu'un usage agentique servirait à <strong>évaluer, orienter ou surveiller des élèves</strong>, on entre dans le périmètre <strong>haut risque</strong> de l'IA Act (voir <a href="index.html#enjeu">Ch.1, §2.2</a>), qui s'ajoute au RGPD — et la reconnaissance d'émotions reste, elle, purement interdite. Autrement dit : <em>un agent qui automatise vos corvées est libre ; un agent qui déciderait à la place du professeur ne l'est pas.</em></p>
+<p><strong>Côté RGPD — le point décisif.</strong> Avec un chatbot, le risque tient à ce que vous <em>tapez</em>. Avec un agent, il tient à ce qu'il <em>lit</em>. Demandez de « ranger le dossier <code>Classe 2nde</code> » :</p>
+<ul>
+  <li>avec <strong>Hermès (cloud)</strong>, le contenu des copies <strong>part dans le cloud</strong>, même sans rien coller : non conforme. → on s'arrête.</li>
+  <li>avec <strong>Hermès-local</strong>, le contenu <strong>reste sur le poste</strong> : le risque de transfert disparaît. → l'usage devient défendable, sous réserve des garde-fous et de votre responsabilité de traitement.</li>
+</ul>
 
 <div class="callout warn">
-  <p><strong class="tag">⚠ La règle d'or, version agentique</strong> <em>Hermès travaille sur des fichiers de l'ordinateur, jamais sur des personnes.</em> Tant que ses tâches portent sur de la matière non nominative — supports, modèles, exports anonymisés, fichiers techniques —, l'usage est défendable. Dès qu'un élève est identifiable dans ce qu'il manipule, on arrête et on bascule sur HAL en local.</p>
+  <p><strong class="tag">⚠ La règle d'or, version agentique</strong> <em>Donnée sensible et agent : seulement avec Hermès-local.</em> Pour Hermès (cloud), la règle reste absolue — jamais de données identifiables. Et même en local, le RGPD ne s'évapore pas : vous restez responsable du traitement (finalité, conservation, sécurité du poste, information des personnes si requis).</p>
 </div>
 
-<p><strong>Le local ne dispense toujours pas de cadrer l'usage.</strong> Et le cloud agentique, lui, cumule les deux vigilances. C'est pourquoi Hermès et HAL restent séparés : la frontière physique entre les deux outils matérialise la frontière juridique entre les deux usages.</p>
+<p><strong>Côté IA Act — identique pour les deux.</strong> Le règlement vise la <strong>finalité</strong>, pas l'outil ni le lieu de calcul. Automatiser des corvées sur vos supports = <strong>risque minimal</strong>. Mais dès qu'un agent — cloud <em>ou</em> local — sert à <strong>évaluer, orienter ou surveiller</strong> des élèves, on entre dans le <strong>haut risque</strong> (voir <a href="index.html#enjeu">Ch.1, §2.2</a>), qui s'ajoute au RGPD ; la reconnaissance d'émotions reste interdite. <em>Hermès-local lève la barrière de la donnée, pas celle de l'usage.</em></p>
+
+<div class="callout info">
+  <p><strong class="tag">Le résumé à retenir</strong> <strong>Le cerveau décide du RGPD</strong> (cloud = transfert, local = souverain). <strong>La finalité décide de l'IA Act</strong> (corvée = libre, décision sur l'élève = haut risque). Les deux questions sont indépendantes : posez-vous toujours les deux.</p>
+</div>
 </section>
 
-<!-- ========== 6 GARDE-FOUS ========== -->
+<!-- 6 -->
 <section id="gardefous">
 <h2>6. Les sept garde-fous de l'agentique</h2>
 
-<p>Ces règles ne sont pas des précautions facultatives : ce sont les conditions pour qu'Hermès soit un atout et non un risque. Elles s'apprennent une fois, puis deviennent des réflexes.</p>
+<p>Valables pour <strong>les deux Hermès</strong> — ce sont les conditions pour qu'un agent soit un atout et non un risque.</p>
 
 <ol>
-  <li><strong>Le dossier dédié.</strong> Hermès travaille dans <code>C:\Hermes</code> (ou un périmètre que vous fixez). On ne le lance pas « à la racine » de tout l'ordinateur. Ranger l'atelier, c'est limiter la casse possible.</li>
-  <li><strong>La sauvegarde avant action de masse.</strong> Avant toute opération qui touche beaucoup de fichiers (renommer, déplacer, supprimer en lot), faites une copie du dossier. C'est trente secondes qui évitent des heures de regret.</li>
-  <li><strong>La validation lue, pas cliquée.</strong> Hermès demande l'autorisation avant de modifier quelque chose. Lisez <em>ce qu'il propose</em> avant de dire oui. La validation est une relecture, pas un bouton à enchaîner.</li>
-  <li><strong>Commencer petit.</strong> Premier contact : une tâche simple, réversible, sur des fichiers de test. On apprend le comportement de l'outil sur du sans-enjeu avant de lui confier du sérieux.</li>
-  <li><strong>Zéro donnée personnelle.</strong> Répété parce que c'est le plus important : aucune donnée d'élève, de santé, de famille ne doit se trouver dans ce qu'Hermès lit. En cas de doute sur le contenu d'un dossier, on vérifie <em>avant</em>.</li>
-  <li><strong>Une tâche claire à la fois.</strong> Les consignes vagues (« optimise mon ordinateur ») sont dangereuses parce qu'interprétables. Les consignes précises (« renomme les fichiers de ce dossier au format <code>AAAA-MM-JJ-titre</code> ») sont sûres et vérifiables.</li>
-  <li><strong>Garder HAL pour le sensible.</strong> Hermès n'est pas un remplaçant universel. Le bon réflexe reste : sensible → HAL ; corvée de fichiers non personnels → Hermès.</li>
+  <li><strong>Le dossier dédié.</strong> L'agent travaille dans <code>C:\Hermes</code> (ou un périmètre que vous fixez), jamais « à la racine » de tout l'ordinateur.</li>
+  <li><strong>La sauvegarde avant action de masse.</strong> Avant de renommer, déplacer ou supprimer en lot, faites une copie. Trente secondes contre des heures de regret.</li>
+  <li><strong>La validation lue, pas cliquée.</strong> Lisez ce que l'agent propose avant de dire oui. La validation est une relecture.</li>
+  <li><strong>Commencer petit.</strong> Premier contact : une tâche simple, réversible, sur des fichiers de test.</li>
+  <li><strong>La bonne variante selon la donnée.</strong> Donnée personnelle → <strong>Hermès-local uniquement</strong>. Matière non sensible où l'on veut de la puissance → Hermès (cloud).</li>
+  <li><strong>Une tâche claire à la fois.</strong> Les consignes vagues (« optimise mon PC ») sont dangereuses ; les consignes précises (« renomme au format <code>AAAA-MM-JJ-titre</code> ») sont vérifiables.</li>
+  <li><strong>Garder HAL pour réfléchir sur du sensible.</strong> L'agent agit ; quand vous voulez juste réfléchir sur des données personnelles, HAL (passif, local) reste le plus simple.</li>
 </ol>
 
 <div class="callout tip">
-  <p><strong class="tag">Le test mental avant chaque tâche</strong> Posez-vous trois questions : <em>Ce dossier contient-il une donnée personnelle ?</em> <em>Ai-je une sauvegarde si ça tourne mal ?</em> <em>Ma consigne est-elle assez précise pour être vérifiable ?</em> Trois « oui rassurants » → on y va. Un doute → on s'arrête.</p>
+  <p><strong class="tag">Le test mental avant chaque tâche</strong> Quatre questions : <em>Y a-t-il une donnée personnelle ?</em> (si oui → Hermès-local) · <em>Ai-je une sauvegarde ?</em> · <em>Ma consigne est-elle vérifiable ?</em> · <em>Cet usage décide-t-il quelque chose sur un élève ?</em> (si oui → IA Act, niveau établissement).</p>
 </div>
 </section>
 
-<!-- ========== 7 INSTALL ========== -->
+<!-- 7 -->
 <section id="install">
-<h2>7. Mise en route — installer et lancer Hermès</h2>
+<h2>7. Mise en route — installer et lancer les deux Hermès</h2>
 
-<p>Comme au Chapitre 1, le détail pas-à-pas se fait au mieux <strong>en radio-guidage</strong> (<a href="#methode">§9</a>) plutôt qu'en autonomie. Voici la vue d'ensemble pour comprendre où l'on va.</p>
+<p>Comme au Chapitre 1, le détail pas-à-pas se fait au mieux <strong>en radio-guidage</strong> (<a href="#methode">§9</a>). Vue d'ensemble :</p>
 
+<h3>7.1. Hermès (Claude Code)</h3>
 <ol>
-  <li><strong>Vérifier les prérequis.</strong> Hermès (Claude Code) suppose un compte chez Anthropic et l'outil installé sur le poste. Contrairement à HAL, le matériel importe peu (le calcul se fait dans le cloud) ; ce qui compte, c'est d'avoir les <strong>droits d'installation</strong> sur la machine et une connexion internet.</li>
-  <li><strong>Installer Claude Code.</strong> L'outil s'installe depuis le site d'Anthropic. Sur un poste académique verrouillé, en parler au RUPN / référent informatique en amont, comme pour Docker au Ch.1.</li>
-  <li><strong>Créer le dossier d'atelier.</strong> On crée <code>C:\Hermes</code> : c'est le périmètre de travail d'Hermès, et le premier garde-fou (§6.1).</li>
-  <li><strong>Mettre en place le lanceur.</strong> Un raccourci <code>Lancer-Hermes.cmd</code> ouvre Hermès directement dans son dossier dédié, avec son identité visuelle (l'icône casque). Double-clic, et l'atelier est prêt — sans avoir à retaper de commande.</li>
-  <li><strong>Premier contact sur des fichiers de test.</strong> On crée quelques fichiers bidons dans <code>C:\Hermes</code> et on demande une tâche réversible (« liste-moi ce que contient ce dossier », puis « renomme ces fichiers de test au format date »). On observe comment Hermès demande validation. On apprend le réflexe avant le sérieux.</li>
+  <li><strong>Prérequis</strong> — un compte Anthropic et Claude Code installé. Le matériel importe peu (calcul dans le cloud) ; il faut les droits d'installation et une connexion.</li>
+  <li><strong>Installer</strong> Claude Code depuis le site d'Anthropic. Sur poste académique verrouillé, voir le RUPN en amont.</li>
+  <li><strong>Dossier d'atelier</strong> — créer <code>C:\Hermes</code> (le périmètre, premier garde-fou).</li>
+  <li><strong>Lanceur</strong> — le raccourci <code>Hermes</code> ouvre Claude Code dans ce dossier.</li>
+</ol>
+
+<h3>7.2. Hermès-local</h3>
+<ol>
+  <li><strong>Prérequis</strong> — un modèle local fonctionnel (votre HAL / Ollama, Ch.1) et, idéalement, un GPU pour la fluidité.</li>
+  <li><strong>Brancher l'agent sur le modèle local</strong> — c'est ce que prépare <code>Lancer-Hermes.cmd</code> : il démarre l'agent en le pointant sur votre modèle Ollama au lieu du cloud.</li>
+  <li><strong>Lanceur</strong> — le raccourci <code>Hermes-local</code> exécute ce <code>.cmd</code> ; double-clic, l'atelier souverain est prêt.</li>
+  <li><strong>Premier test sur des fichiers bidon</strong> — vérifier que l'agent répond et demande validation, avant tout fichier réel.</li>
 </ol>
 
 <div class="callout warn">
-  <p><strong class="tag">Point de vigilance — droits administrateur</strong> Comme pour Docker au Chapitre 1, l'installation peut requérir des droits étendus. Sur un poste d'établissement, anticipez avec le service informatique. Sur votre poste personnel, vous êtes maître chez vous — mais les garde-fous du §6 s'appliquent quand même.</p>
+  <p><strong class="tag">Point de vigilance — droits administrateur</strong> Comme pour Docker au Chapitre 1, l'installation peut requérir des droits étendus. Sur poste d'établissement, anticipez avec le service informatique.</p>
 </div>
 </section>
 
-<!-- ========== 8 USAGES ========== -->
+<!-- 8 -->
 <section id="usages">
-<h2>8. Premiers chantiers — un usage par profil</h2>
+<h2>8. Premiers chantiers — quel Hermès pour quelle tâche</h2>
 
-<p>Cinq tâches réalistes, <strong>toutes sur des fichiers non personnels</strong>, pour montrer ce qu'Hermès apporte concrètement.</p>
+<p>La question à se poser à chaque fois : <strong>y a-t-il une donnée personnelle ?</strong></p>
 
-<p><strong>Enseignant·e — organiser ses supports</strong></p>
-<p><em>« Dans ce dossier de supports de cours, renomme tous les fichiers au format <code>AAAA-MM-JJ-niveau-titre</code>, et range-les dans des sous-dossiers par niveau. Montre-moi ton plan avant d'agir. »</em></p>
-<p>Hermès propose un plan de renommage, vous le relisez, vous validez. Ce qui vous prendrait une soirée de glisser-déposer se fait en quelques minutes — et le dossier devient enfin navigable.</p>
+<p><strong>Hermès-local (souverain) — quand il y a du sensible</strong></p>
+<p><em>« Range ce dossier de classe : renomme les copies au format <code>nom-devoir-date</code> et trie-les par devoir. Montre-moi ton plan avant d'agir. »</em> — Des noms d'élèves apparaissent : le traitement doit rester local. Hermès-local le fait sans rien envoyer au cloud.</p>
 
-<p><strong>Enseignant·e — fabriquer un livrable</strong></p>
-<p><em>« À partir de ces trois fiches de séance et de cette grille, génère un document de synthèse propre : une page de garde, un sommaire, et les séances mises en forme de façon homogène. »</em></p>
-<p>Hermès lit les sources, harmonise la mise en forme et produit le document final. Vous relisez et ajustez, au lieu de tout remettre en page à la main.</p>
+<p><strong>Hermès (cloud) — quand c'est non personnel et qu'on veut de la puissance</strong></p>
+<p><em>« À partir de ces trois fiches de séance et de cette grille, génère un document de synthèse propre, mis en forme de façon homogène. »</em> — Aucune donnée d'élève : on profite de la finesse de Claude.</p>
 
-<p><strong>Co-gérant de SCI — corvée administrative récurrente</strong></p>
-<p><em>« Chaque trimestre, je reçois ces relevés. Fabrique-moi un tableau récapitulatif qui reprend date, libellé et montant, et garde ce format pour les prochains. »</em></p>
-<p>Hermès met en place le tableau et la méthode. Le trimestre suivant, vous relancez la même consigne : la corvée devient une formalité. <em>(Aucune donnée personnelle de tiers ici : on travaille sur des libellés et des montants, pas sur des personnes identifiables — sinon, on cadre comme au §5.)</em></p>
+<p><strong>Co-gérant de SCI — corvée récurrente</strong></p>
+<p><em>« Chaque trimestre, fabrique un tableau récap reprenant date, libellé, montant à partir de ces relevés. »</em> — Sur des libellés/montants non nominatifs : Hermès (cloud) convient ; si des noms de tiers figurent, on bascule sur Hermès-local.</p>
 
-<p><strong>Passionné de jeu de rôle — créer du matériel</strong></p>
-<p><em>« À partir de mes notes de campagne, génère une fiche de PNJ par personnage cité, avec un format identique pour tous, et une table de rencontres aléatoires. »</em></p>
-<p>Hermès transforme des notes en vrac en matériel de jeu prêt à l'emploi, homogène et réutilisable. L'agentique brille sur ce genre de production en série.</p>
+<p><strong>Passionné de jeu de rôle — création en série</strong></p>
+<p><em>« À partir de mes notes de campagne, génère une fiche de PNJ par personnage, format identique, plus une table de rencontres. »</em> — Pas de donnée perso : Hermès (cloud) brille sur ce genre de production.</p>
 
 <p><strong>Particulier — le grand rangement</strong></p>
-<p><em>« Mon dossier Téléchargements est un chaos. Trie son contenu par type (images, PDF, archives) dans des sous-dossiers, mais demande-moi confirmation avant de déplacer quoi que ce soit, et ne supprime rien. »</em></p>
-<p>Hermès propose le tri, vous validez déplacement par déplacement. La consigne « ne supprime rien » et la sauvegarde préalable (§6.2) font de cette opération un risque nul.</p>
+<p><em>« Trie mon dossier Téléchargements par type, demande confirmation avant chaque déplacement, ne supprime rien. »</em> — Selon le contenu (factures nominatives ?), choisir la variante ; la consigne « ne supprime rien » + sauvegarde rendent l'opération sûre.</p>
 
 <div class="callout tip">
-  <p><strong class="tag">Le point commun</strong> Cinq chantiers, cinq gains de temps réels, <strong>aucune donnée personnelle dans aucun dossier confié</strong>. C'est la posture agentique à internaliser : Hermès est un <strong>exécutant de corvées sur de la matière non sensible</strong>, pas un dépositaire d'informations sur des personnes.</p>
+  <p><strong class="tag">Le réflexe</strong> Avant de lancer un chantier, on choisit d'abord <em>la variante</em> (sensible → local ; non-sensible + besoin de puissance → cloud), puis on applique les sept garde-fous. Le choix du bon Hermès <em>est</em> la première décision de sécurité.</p>
 </div>
 </section>
 
-<!-- ========== 9 METHODE ========== -->
+<!-- 9 -->
 <section id="methode">
-<h2>9. La méthode — travailler avec Claude au quotidien</h2>
+<h2>9. La méthode — travailler avec un agent au quotidien</h2>
 
-<p>Le radio-guidage du Chapitre 1 servait à <em>installer</em>. Ici, la méthode sert à <em>collaborer</em> dans la durée. Travailler avec une IA agentique, c'est un savoir-faire qui s'affine. Voici les principes qui font la différence entre un agent subi et un agent maîtrisé.</p>
+<p>Travailler avec un agent (cloud ou local) est un savoir-faire qui s'affine. Les principes qui font la différence :</p>
 
-<p><strong>1. Décrire l'intention, pas seulement la tâche.</strong> Plutôt que « renomme ces fichiers », dites « renomme ces fichiers <em>pour que je puisse les retrouver par date</em> ». L'intention permet à Hermès de proposer mieux — et de signaler si votre idée a un défaut.</p>
+<p><strong>1. Décrire l'intention, pas seulement la tâche.</strong> « Renomme ces fichiers <em>pour les retrouver par date</em> » plutôt que « renomme ces fichiers ».</p>
+<p><strong>2. Demander le plan avant l'action.</strong> « Montre-moi ce que tu comptes faire avant de le faire. » Vous relisez, corrigez, puis lâchez l'exécution.</p>
+<p><strong>3. Travailler par petites boucles.</strong> Une tâche, une vérification, la suivante.</p>
+<p><strong>4. Garder l'agent dans son périmètre.</strong> S'il propose de toucher hors <code>C:\Hermes</code>, c'est un signal d'arrêt.</p>
+<p><strong>5. Lui faire expliquer.</strong> « Explique ce que cette commande va faire, en français simple. » Si vous ne comprenez pas, vous ne validez pas.</p>
+<p><strong>6. Capitaliser.</strong> Notez vos bonnes consignes, réutilisez-les — l'équivalent agentique des <em>skills</em> du Chapitre 2.</p>
 
-<p><strong>2. Demander le plan avant l'action.</strong> Le réflexe le plus rentable : « montre-moi ce que tu comptes faire avant de le faire ». Vous relisez un plan en clair, vous corrigez le tir, <em>puis</em> vous lâchez l'exécution. C'est la version agentique du « une étape à la fois » du Chapitre 1.</p>
-
-<p><strong>3. Travailler par petites boucles.</strong> Une tâche, une vérification, la suivante. Les grands enchaînements non vérifiés sont précisément là où les choses dérapent. Petites boucles = correction facile.</p>
-
-<p><strong>4. Garder Hermès dans son rôle.</strong> Comme le radio-guide du Ch.1 ne devait pas se défausser, Hermès ne doit pas déborder de son périmètre. S'il propose de toucher à un dossier hors <code>C:\Hermes</code>, c'est un signal d'arrêt : on recadre.</p>
-
-<p><strong>5. Lui faire expliquer.</strong> « Explique-moi ce que cette commande va faire, en français simple. » Un bon agent rend ses actions lisibles. Si vous ne comprenez pas ce qu'il s'apprête à faire, <strong>vous ne validez pas</strong> — vous demandez d'abord.</p>
-
-<p><strong>6. Capitaliser.</strong> Ce qui marche une fois peut devenir une routine : notez vos bonnes consignes, réutilisez-les. C'est l'équivalent agentique des <em>skills</em> du Chapitre 2 — votre méthode personnelle qui s'accumule.</p>
-
-<p style="margin-top:1.2em"><strong>Le prompt-cadre à coller en début de session Hermès :</strong></p>
+<p style="margin-top:1.2em"><strong>Le prompt-cadre à coller en début de session (les deux Hermès) :</strong></p>
 
 <pre>Tu es Hermès, mon assistant agentique. Tu travailles UNIQUEMENT
 dans le dossier C:\Hermes (ou celui que je t'indique explicitement).
@@ -460,51 +459,50 @@ RÈGLES NON NÉGOCIABLES
 1. Tu me montres TON PLAN en français clair AVANT toute action
    qui crée, modifie, déplace ou supprime un fichier. Tu attends
    ma validation.
-2. Tu n'agis JAMAIS hors du dossier autorisé sans me le signaler
-   et obtenir mon accord explicite.
+2. Tu n'agis JAMAIS hors du dossier autorisé sans mon accord explicite.
 3. Tu ne supprimes rien sans confirmation séparée et explicite.
-4. Si une tâche touche un fichier qui pourrait contenir une donnée
-   personnelle (nom d'élève, donnée de santé, liste nominative),
-   tu t'ARRÊTES et tu me préviens : ce type de donnée ne doit pas
-   passer par toi.
+4. RAPPEL DE SOUVERAINETÉ : si je te lance en version CLOUD
+   (Claude Code) et qu'une tâche touche un fichier pouvant contenir
+   une donnée personnelle (nom d'élève, santé, liste nominative),
+   tu t'ARRÊTES et tu me préviens — ce type de donnée passe par
+   Hermès-local, jamais par le cloud.
 5. Tu expliques chaque action en langage courant. Si je ne
    comprends pas, je ne valide pas — tu reformules.
 6. On avance par petites étapes vérifiables, pas par grands blocs.
 
-Commence par me demander quelle est la première tâche, et sur
-quel dossier exactement.</pre>
+Commence par me demander la première tâche et sur quel dossier.</pre>
 </section>
 
-<!-- ========== 10 ARRET ========== -->
+<!-- 10 -->
 <section id="arret">
 <h2>10. Arrêter, nettoyer, revenir en arrière</h2>
 
-<p>Comme au Chapitre 1, rien n'est définitif.</p>
-
-<p><strong>Arrêter une session.</strong> Fermez simplement la fenêtre d'Hermès. Il ne tourne pas en arrière-plan : pas de processus à surveiller entre deux usages.</p>
-
-<p><strong>Faire le ménage dans l'atelier.</strong> Le dossier <code>C:\Hermes</code> vous appartient : vous pouvez en supprimer les fichiers de travail à tout moment. Pensez à sauvegarder ce que vous voulez garder <em>avant</em> (clé USB, dossier séparé).</p>
-
-<p><strong>Désinstaller complètement.</strong> Désinstallez Claude Code comme un logiciel classique (Paramètres → Applications, sous Windows), puis supprimez le dossier <code>C:\Hermes</code> et le raccourci <code>Lancer-Hermes.cmd</code> si vous ne comptez plus l'utiliser. HAL, lui, reste intact : les deux outils sont indépendants.</p>
+<p>Rien n'est définitif.</p>
+<p><strong>Arrêter une session.</strong> Fermez la fenêtre d'Hermès (ou d'Hermès-local). Aucun des deux ne tourne en arrière-plan entre deux usages — pour Hermès-local, pensez aussi à arrêter le modèle Ollama si vous ne l'utilisez plus (voir Ch.1, §11.1).</p>
+<p><strong>Faire le ménage.</strong> Le dossier <code>C:\Hermes</code> vous appartient : supprimez les fichiers de travail quand vous voulez, après sauvegarde de ce qui compte.</p>
+<p><strong>Désinstaller.</strong> Claude Code se désinstalle comme un logiciel classique ; pour Hermès-local, il suffit de ne plus lancer le <code>.cmd</code> (le modèle local relève du Ch.1). Supprimez ensuite <code>C:\Hermes</code> et les raccourcis si vous arrêtez. HAL reste intact : tout est indépendant.</p>
 
 <div class="callout tip">
-  <p><strong class="tag">Bon réflexe</strong> Avant de désinstaller, mettez Hermès de côté une ou deux semaines (il suffit de ne pas le lancer). Si l'automatisation des corvées ne vous manque pas, désinstallez sereinement. Si elle vous manque, vous savez maintenant à quoi il sert vraiment.</p>
+  <p><strong class="tag">Bon réflexe</strong> Avant de désinstaller, mettez Hermès de côté une ou deux semaines. S'il ne vous manque pas, désinstallez sereinement ; sinon, vous savez à quoi il sert vraiment.</p>
 </div>
 </section>
 
-<!-- ========== 11 RESSOURCES ========== -->
+<!-- 11 -->
 <section id="ressources">
 <h2>11. Ressources et liens</h2>
 
 <div class="callout warn">
-  <p><strong class="tag">⚠ Liens fournis à titre indicatif</strong> Comme au Chapitre 1, ne téléchargez pas tout en autonomie : le radio-guidage (<a href="#methode">§9</a>) vous indiquera quoi installer et dans quel ordre.</p>
+  <p><strong class="tag">⚠ Liens fournis à titre indicatif</strong> Comme au Chapitre 1, le radio-guidage (<a href="#methode">§9</a>) vous indiquera quoi installer et dans quel ordre.</p>
 </div>
 
-<h3>Outils</h3>
+<h3>Outils — agent à cerveau cloud</h3>
 <p><a href="https://www.anthropic.com/claude-code">Claude Code (Anthropic) — le moteur d'Hermès</a> · <a href="https://docs.claude.com/en/docs/claude-code/overview">Documentation Claude Code</a></p>
 
+<h3>Outils — agent à cerveau local (Hermès-local)</h3>
+<p><a href="https://ollama.com">Ollama — moteur de modèle local (Ch.1)</a> · <a href="https://github.com/cline/cline">Cline — agent open source pilotable sur modèle local</a> · <a href="https://github.com/OpenInterpreter/open-interpreter">Open Interpreter — agent local</a></p>
+
 <h3>Cadre RGPD et IA Act</h3>
-<p><a href="https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32024R1689">Règlement (UE) 2024/1689 — texte de l'IA Act (EUR-Lex)</a> · <a href="https://digital-strategy.ec.europa.eu/fr/policies/regulatory-framework-ai">Commission européenne — AI Act</a> · <a href="https://www.cnil.fr/fr/intelligence-artificielle">CNIL — Intelligence artificielle</a> · <a href="https://gdpr-info.eu/art-28-gdpr/">RGPD article 28 — sous-traitance</a></p>
+<p><a href="https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32024R1689">Règlement (UE) 2024/1689 — texte de l'IA Act (EUR-Lex)</a> · <a href="https://digital-strategy.ec.europa.eu/fr/policies/regulatory-framework-ai">Commission européenne — AI Act</a> · <a href="https://www.cnil.fr/fr/intelligence-artificielle">CNIL — Intelligence artificielle</a> · <a href="https://gdpr-info.eu/art-28-gdpr/">RGPD article 28</a></p>
 
 <h3>Le guide complet</h3>
 <p><a href="index.html">Chapitre 1 — Installer une IA native</a> · <a href="chapitre-2.html">Chapitre 2 — Skills</a> · <a href="chapitre-3.html">Chapitre 3 — Chatbot pédagogique</a> · <a href="chapitre-4.html">Chapitre 4 — Obsidian</a> · <a href="radio-guidage.html">Radio-guidage</a> · <a href="glossaire.html">Glossaire</a></p>
@@ -524,7 +522,6 @@ quel dossier exactement.</pre>
 
 <script src="glossary-linker.js"></script>
 <script>
-  // Boutons "copier" injectés au chargement, à l'extérieur du <pre> pour ne pas polluer la sélection manuelle du code.
   document.querySelectorAll('main pre').forEach(pre => {
     const wrap = document.createElement('div');
     wrap.className = 'code-wrap';
