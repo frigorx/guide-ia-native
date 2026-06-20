@@ -175,33 +175,26 @@
     .page-break{page-break-before:always}
   }
 </style>
-
 <style>
-  .book-cover{background:linear-gradient(135deg,#0e2447 0%,#1b3a63 55%,#2a5586 100%);color:#fff;padding:60px 48px;text-align:center;border-radius:0}
-  .book-cover h1{color:#fff;font-size:2.6em;max-width:820px;margin:0 auto .3em auto;line-height:1.12}
-  .book-cover .sub{font-size:1.15em;opacity:.95;max-width:720px;margin:0 auto}
-  .book-cover .meta2{margin-top:22px;font-size:.9em;opacity:.85}
-  .book-toc{background:var(--gris-fond);border:1px solid var(--gris-bord);border-left:4px solid var(--orange);padding:18px 26px;border-radius:6px;margin:26px 0}
-  .book-toc h2{border:none;margin-top:0}
-  .book-toc ol{font-size:1.02em;line-height:1.9}
-  .chapter-divider{margin:0 0 18px 0;padding-bottom:10px;border-bottom:3px solid var(--orange)}
-  .chapter-divider .kicker{display:inline-block;background:var(--orange);color:#fff;font-family:'Trebuchet MS',sans-serif;font-weight:700;font-size:.7em;letter-spacing:.08em;text-transform:uppercase;padding:3px 12px;border-radius:3px}
-  .chapter-h1{font-size:1.9em;margin:.3em 0 0 0}
-  @media screen{.book-chapter{margin-top:48px;padding-top:8px;border-top:1px dashed var(--gris-bord)}}
-  @media print{
-    .book-chapter{page-break-before:always}
-    #pres-top, .book-cover{page-break-before:avoid}
-    .chapter-divider{page-break-after:avoid}
-  }
-</style>
-</head>
+.book-cover{background:linear-gradient(135deg,#0e2447 0%,#1b3a63 55%,#2a5586 100%);color:#fff;padding:60px 48px;text-align:center}
+.book-cover h1{color:#fff;font-size:2.6em;max-width:820px;margin:0 auto .3em auto;line-height:1.12}
+.book-cover .sub{font-size:1.15em;opacity:.95;max-width:720px;margin:0 auto}
+.book-cover .meta2{margin-top:22px;font-size:.9em;opacity:.85}
+.book-toc{background:var(--gris-fond);border:1px solid var(--gris-bord);border-left:4px solid var(--orange);padding:18px 26px;border-radius:6px;margin:26px 0}
+.book-toc h2{border:none;margin-top:0}.book-toc ol{font-size:1.02em;line-height:1.9}
+.chapter-divider{margin:0 0 18px 0;padding-bottom:10px;border-bottom:3px solid var(--orange)}
+.chapter-divider .kicker{display:inline-block;background:var(--orange);color:#fff;font-family:'Trebuchet MS',sans-serif;font-weight:700;font-size:.7em;letter-spacing:.08em;text-transform:uppercase;padding:3px 12px;border-radius:3px}
+.chapter-h1{font-size:1.9em;margin:.3em 0 0 0}
+@media screen{.book-chapter{margin-top:48px;padding-top:8px;border-top:1px dashed var(--gris-bord)}}
+@media print{.book-chapter{page-break-before:always}#pres-top,.book-cover{page-break-before:avoid}.chapter-divider{page-break-after:avoid}}
+</style></head>
 
 <body>
-<header class="book-cover"><div style="font-size:.78em;letter-spacing:.18em;text-transform:uppercase;opacity:.85;font-weight:600;margin-bottom:10px">Édition complète — document de travail, diffusion libre</div><h1>Installer une IA native sur son ordinateur</h1><div class="sub">Le guide complet — de l'installation locale aux usages pédagogiques, jusqu'à l'IA agentique. Cinq chapitres et deux annexes, réunis en un seul document.</div><div class="meta2">F. Henninot · 2025-2026 · pour enseignants de toutes filières et particuliers soucieux de leurs données</div></header>
+<header class="book-cover"><div style="font-size:.78em;letter-spacing:.18em;text-transform:uppercase;opacity:.85;font-weight:600;margin-bottom:10px">Édition complète — document de travail, diffusion libre</div><h1>Installer une IA native sur son ordinateur</h1><div class="sub">Le guide complet — de l'installation locale aux usages pédagogiques, jusqu'à l'IA agentique. Cinq chapitres et deux annexes, réunis en un seul document.</div><div class="meta2">F. Henninot · 2025-2026</div></header>
 <main>
 <nav class="book-toc"><h2>Sommaire général</h2><ol><li><a href="#pres-top"><strong>Avant-propos</strong> — Présentation du guide — à lire avant de commencer</a></li><li><a href="#ch1-top"><strong>Chapitre 1</strong> — Installer une IA native sur son ordinateur</a></li><li><a href="#ch2-top"><strong>Chapitre 2</strong> — Personnaliser votre IA avec des skills</a></li><li><a href="#ch3-top"><strong>Chapitre 3</strong> — Transformer son IA native en assistant pédagogique</a></li><li><a href="#ch4-top"><strong>Chapitre 4</strong> — Optimiser son Obsidian</a></li><li><a href="#ch5-top"><strong>Chapitre 5</strong> — Passer à l'agentique : Hermès</a></li><li><a href="#rg-top"><strong>Annexe A</strong> — Le radio-guidage par IA cloud</a></li><li><a href="#glo-top"><strong>Annexe B</strong> — Glossaire du guide</a></li></ol></nav>
-<section class="book-chapter" id="pres-top">
-<div class="chapter-divider"><span class="kicker">Avant-propos</span><h1 class="chapter-h1">Présentation du guide — à lire avant de commencer</h1></div>
+<section class="book-chapter" id="pres-top"><div class="chapter-divider"><span class="kicker">Avant-propos</span><h1 class="chapter-h1">Présentation du guide — à lire avant de commencer</h1></div>
+
 
 <div class="callout warn">
   <p><strong class="tag">Statut</strong> Document de travail à caractère <strong>exploratoire</strong>, sans valeur officielle. Ni préconisation institutionnelle, ni solution clé en main, ni guide académique validé. Il propose une démarche progressive pour qu'un enseignant volontaire installe une IA locale sur son ordinateur, en comprenne les limites, puis envisage des usages pédagogiques prudents — en gardant la maîtrise des données traitées.</p>
@@ -225,28 +218,39 @@
 </div>
 
 <h2>Principe directeur — à lire avant tout le reste</h2>
+
 <p><strong>Ce guide n'est pas un manuel à exécuter seul.</strong> Il est conçu pour être <strong>donné à une IA cloud</strong> (Claude, ChatGPT, Gemini, Mistral Le Chat) qui devient <strong>votre radio-guide d'installation et de mise en œuvre</strong>.</p>
+
 <p>Le geste type :</p>
+
 <ol class="steps">
   <li>Ouvrir une nouvelle conversation avec votre IA cloud habituelle.</li>
   <li>Lui joindre le fichier Markdown du chapitre concerné — un bouton de téléchargement est présent sur chaque chapitre — ou, à défaut, coller le texte.</li>
   <li>Coller le <strong>prompt de radio-guidage</strong> présent dans la section finale « Radio-guidage » de chaque chapitre.</li>
   <li>Suivre les questions de l'IA. Une étape à la fois. Envoyer une capture d'écran si vous bloquez. Coller un message d'erreur pour qu'elle vous explique.</li>
 </ol>
+
 <p><strong>Pourquoi cette approche.</strong> Installer Ollama, écrire un skill, structurer un vault Obsidian — ce sont des chantiers où l'on bute toujours sur un détail imprévu. Une procédure papier ne peut pas anticiper ces cas. Une IA, oui : elle s'adapte à VOUS, à votre machine, à votre niveau. <strong>L'objectif n'est pas que vous deveniez expert·e, c'est que vous arriviez au bout.</strong></p>
 
 <div class="callout tip">
   <p><strong class="tag">La contradiction assumée</strong> Oui, on utilise une IA cloud pour installer une IA locale. C'est un échafaudage temporaire : le cloud sert le temps de comprendre et d'installer, sur des contenus techniques <strong>sans donnée personnelle</strong>. Une fois l'installation faite, l'IA locale prend le relais pour les usages sensibles. Cette contradiction apparente est en réalité le bon ordre des choses.</p>
 </div>
 
+<div class="callout info">
+  <p><strong class="tag">Le radio-guidage, en détail</strong> La méthode commune aux quatre chapitres — création d'un compte IA cloud, choix du modèle, les neuf règles du radio-guide, bonnes pratiques et limites — est décrite une fois pour toutes dans une page dédiée : <a href="#rg-top">Radio-guidage</a>. Chaque chapitre se concentre ensuite sur son contenu propre.</p>
+</div>
+
 <h2>Pas encore de compte IA cloud ? Créer un compte en 2 minutes</h2>
+
 <p>Une simple adresse mail suffit, aucune carte bancaire pour la version gratuite. Quatre services possibles (par ordre alphabétique) :</p>
+
 <ul>
   <li><strong>ChatGPT</strong> — <a href="https://chat.openai.com">chat.openai.com</a> — éditeur OpenAI (États-Unis).</li>
   <li><strong>Claude</strong> — <a href="https://claude.ai">claude.ai</a> — éditeur Anthropic (États-Unis).</li>
   <li><strong>Gemini</strong> — <a href="https://gemini.google.com">gemini.google.com</a> — éditeur Google, connexion via compte Google.</li>
   <li><strong>Mistral Le Chat</strong> — <a href="https://chat.mistral.ai">chat.mistral.ai</a> — éditeur français, à privilégier pour qui souhaite un acteur européen.</li>
 </ul>
+
 <p>Le choix dépendra de vos habitudes, des accès disponibles et du cadre fixé par votre établissement. <em>À titre personnel, j'ai obtenu de bons résultats avec Claude pour le radio-guidage technique, mais cela reste une préférence d'usage à éprouver soi-même.</em></p>
 
 <div class="callout danger">
@@ -254,16 +258,22 @@
 </div>
 
 <h2>Quel modèle d'IA cloud choisir pour le radio-guidage ?</h2>
+
 <p>Tous les modèles ne se valent pas pour ce rôle exigeant. Privilégier les modèles capables :</p>
+
 <ul>
   <li><strong>Claude Sonnet ou Opus</strong> (pas Haiku seul)</li>
   <li><strong>ChatGPT GPT-4o ou GPT-5</strong> (pas GPT-mini)</li>
   <li><strong>Gemini Pro</strong> (pas Flash)</li>
   <li><strong>Mistral Large</strong></li>
 </ul>
-<p>Les modèles ultra-légers (Haiku, mini, Flash, Small) sont parfaits pour la conversation courante mais peuvent décrocher sur un radio-guidage technique long avec un utilisateur néophyte. Si vous démarrez avec un modèle léger et que ça déraille, basculez sur un modèle plus puissant.</p>
+
+<p>Les modèles ultra-légers (Haiku, mini, Flash, Small) sont parfaits pour la conversation courante mais peuvent décrocher sur un radio-guidage technique long avec un utilisateur néophyte — ils ont tendance à se défausser, à halluciner du contexte, ou à supposer ce qu'ils ne savent pas. Si vous démarrez avec un modèle léger et que ça déraille, basculez sur un modèle plus puissant.</p>
 
 <h2>Trois phrases pour recadrer une IA qui dérape</h2>
+
+<p>À garder sous la main, à utiliser dès que l'IA semble s'égarer :</p>
+
 <div class="callout tip">
   <p>Si elle vous renvoie vers une autre IA : <em>« Non, c'est toi mon radio-guide. Reprends ton rôle, une étape à la fois. »</em></p>
   <p>Si elle parle d'un contexte que vous n'avez pas mentionné : <em>« Tu inventes un contexte qui n'est pas le mien. Recommence sans supposer. »</em></p>
@@ -271,52 +281,125 @@
 </div>
 
 <h2>Pourquoi ce guide ne commence pas par LM Studio ?</h2>
-<p><strong>LM Studio</strong> est une voie possible pour découvrir rapidement les modèles locaux : application graphique simple, on télécharge, on clique, on discute. Pour un premier essai sans engagement, c'est efficace. Mais <strong>ce guide ne développe pas ce parcours</strong>, car il ne correspond pas à la démarche réellement suivie par l'auteur. Le choix retenu est <strong>Ollama + Open WebUI</strong>, parce qu'il offre une interface plus proche d'un ChatGPT local, une base plus évolutive (skills, modèles personnalisés, multi-postes, Obsidian) et un écosystème plus ouvert et mieux documenté.</p>
+
+<p><strong>LM Studio</strong> est une voie possible pour découvrir rapidement les modèles locaux. C'est une application graphique simple : on télécharge, on clique, on installe un modèle, on discute. Pour un premier essai sans engagement, c'est efficace.</p>
+
+<p>Mais <strong>ce guide ne développe pas ce parcours</strong>, car il ne correspond pas à la démarche réellement suivie par l'auteur. Le choix retenu ici est <strong>Ollama + Open WebUI</strong>, parce qu'il offre :</p>
+
+<ul>
+  <li>une <strong>interface plus proche d'un ChatGPT local</strong>, plus démonstrative et plus parlante pour des enseignants ;</li>
+  <li>une base <strong>plus évolutive</strong> pour des usages pédagogiques futurs (skills, modèles personnalisés, multi-postes, branchement à Obsidian) ;</li>
+  <li>un écosystème <strong>plus ouvert</strong>, mieux documenté, plus standard dans la communauté IA locale.</li>
+</ul>
 
 <table class="cmp">
 <thead><tr><th>Solution</th><th>Intérêt</th><th>Limite</th><th>Place dans ce guide</th></tr></thead>
 <tbody>
 <tr><td class="crit">LM Studio</td><td>Simple pour tester un modèle local — installation graphique, sans terminal.</td><td>Moins structurant pour le projet décrit ici ; écosystème plus fermé.</td><td><strong>Alternative possible, non détaillée.</strong></td></tr>
 <tr><td class="crit">Ollama</td><td>Moteur local léger et puissant, standard de la communauté IA locale.</td><td>Interface en ligne de commande seule.</td><td><strong>Base technique du guide.</strong></td></tr>
-<tr><td class="crit">Open WebUI</td><td>Interface graphique proche de ChatGPT ; ajoute system prompts, modèles personnalisés, multi-postes.</td><td>Installation un cran plus technique (Docker).</td><td><strong>Parcours principal du guide.</strong></td></tr>
-<tr><td class="crit">Obsidian</td><td>Mémoire documentaire locale, structure la mémoire longue du professeur.</td><td>Nécessite plugins et configuration pour se brancher à l'IA.</td><td><strong>Extension méthodologique</strong> (Chapitre 4).</td></tr>
+<tr><td class="crit">Open WebUI</td><td>Interface graphique proche de ChatGPT, ajoute system prompts, modèles personnalisés, multi-postes.</td><td>Installation un cran plus technique (Docker).</td><td><strong>Parcours principal du guide.</strong></td></tr>
+<tr><td class="crit">Obsidian</td><td>Mémoire documentaire locale, sert à structurer la mémoire longue du professeur.</td><td>Nécessite plugins et configuration pour se brancher à l'IA.</td><td><strong>Extension méthodologique</strong> (Chapitre 4).</td></tr>
 </tbody>
 </table>
 
+<div class="callout info">
+  <p><strong class="tag">À retenir</strong> Pour un <strong>simple essai</strong>, LM Studio peut suffire. Pour <strong>reproduire la démarche documentée ici</strong>, suivre le parcours <strong>Ollama + Open WebUI</strong> radio-guidé par une IA cloud.</p>
+</div>
+
 <h2>Par où commencer ? — choisir son parcours</h2>
-<p>Le guide se compose de <strong>cinq chapitres</strong>, complétés par deux annexes (la page Radio-guidage et le glossaire). <strong>Le Chapitre 1 se suffit à lui-même</strong> : si vous voulez juste installer une IA et l'utiliser, arrêtez-vous là, c'est très bien.</p>
+
+<p>Le guide se compose de <strong>quatre chapitres</strong>, complétés par deux annexes (la page <a href="#rg-top">Radio-guidage</a> et le <a href="#glo-top">glossaire</a>). <strong>Le Chapitre 1 se suffit à lui-même</strong> : si vous voulez juste installer une IA et l'utiliser, arrêtez-vous là, c'est très bien.</p>
+
+<h3>Trois parcours-types selon votre objectif</h3>
 
 <table class="cmp">
-<thead><tr><th>Parcours</th><th>Public</th><th>Objectif</th><th>Outils &amp; méthode</th></tr></thead>
+<thead><tr><th>Parcours</th><th>Public</th><th>Objectif</th><th>Outils & méthode</th></tr></thead>
 <tbody>
-<tr><td class="crit">A — Découverte simple</td><td>Enseignant qui veut comprendre le principe.</td><td>Voir tourner une IA locale, se faire une idée.</td><td>LM Studio ou démonstration. <em>Optionnel, non détaillé.</em></td></tr>
-<tr><td class="crit">B — Parcours principal</td><td>Enseignant volontaire, même néophyte, accompagné.</td><td>Installer une IA locale utilisable, interface proche de ChatGPT.</td><td><strong>Ollama + Open WebUI</strong>, radio-guidage par IA cloud.</td></tr>
-<tr><td class="crit">C — Usage avancé / établissement</td><td>Référent numérique, équipe projet, formateur.</td><td>Usage collectif, données, droits, réseau, sécurité.</td><td>Lecture intégrale + section « Multi-postes » Ch.3. <em>Validation locale requise.</em></td></tr>
+<tr><td class="crit">A — Découverte simple</td><td>Enseignant qui veut comprendre le principe, sans entrer dans l'architecture complète.</td><td>Voir tourner une IA locale, se faire une idée.</td><td>LM Studio ou démonstration par un collègue. <em>Statut : optionnel, non détaillé dans ce guide.</em></td></tr>
+<tr><td class="crit">B — Parcours principal du guide</td><td>Enseignant volontaire, même néophyte, mais accompagné.</td><td>Installer une IA locale utilisable avec une interface proche de ChatGPT, exploitable pour des usages pédagogiques.</td><td><strong>Ollama + Open WebUI</strong>, radio-guidage par IA cloud. <em>Parcours réellement suivi et documenté.</em></td></tr>
+<tr><td class="crit">C — Usage avancé / établissement</td><td>Référent numérique, équipe projet, formateur, établissement.</td><td>Réfléchir à l'usage collectif, aux données, aux droits, au réseau, au stockage, à la sécurité.</td><td>Lecture intégrale + section « Multi-postes » Chapitre 3. <em>Nécessite validation locale et cadrage adapté.</em></td></tr>
+</tbody>
+</table>
+
+<div class="callout warn">
+  <p>Le <strong>parcours B</strong> n'est pas le plus simple techniquement, mais c'est celui qui correspond le mieux à l'objectif du guide : obtenir une IA locale exploitable dans une logique pédagogique. C'est lui que documentent les Chapitres 1 à 4.</p>
+</div>
+
+<h3>Quel chapitre lire selon votre besoin</h3>
+
+<table class="cmp">
+<thead><tr><th>Vous voulez…</th><th>Lisez…</th></tr></thead>
+<tbody>
+<tr><td class="crit">Installer une IA locale (parcours principal)</td><td><strong>Chapitre 1</strong>. Comptez une journée, étalée sur 1 ou 2 sessions.</td></tr>
+<tr><td class="crit">Personnaliser l'IA pour votre métier</td><td><strong>Chapitres 1 et 2</strong> (skills). 2 à 3 demi-journées supplémentaires.</td></tr>
+<tr><td class="crit">Faire travailler vos élèves avec l'IA</td><td><strong>Chapitres 1 à 3</strong> (chatbot pédagogique). Nécessite un cadre établissement validé.</td></tr>
+<tr><td class="crit">Une mémoire long-terme de votre travail</td><td><strong>Chapitres 1, 2 et 4</strong> (Obsidian). 2 à 3 demi-journées supplémentaires.</td></tr>
+<tr><td class="crit">Référent numérique d'établissement / RUPN</td><td>Lire tout, avec un œil sur la section « Multi-postes » du Chapitre 3.</td></tr>
+<tr><td class="crit">Comprendre la méthode du radio-guidage</td><td>La page <a href="#rg-top">Radio-guidage</a> — commune aux quatre chapitres.</td></tr>
+<tr><td class="crit">Un mot vous bloque</td><td>Le <a href="#glo-top">glossaire</a>. Ou demandez à votre IA cloud.</td></tr>
 </tbody>
 </table>
 
 <h3>Un mot d'honnêteté sur le temps</h3>
-<p>Cette installation <strong>n'est pas magique</strong>. C'est un travail accessible à qui sait utiliser une souris, un clavier, copier-coller et lire un message d'erreur — pas besoin d'être informaticien. <strong>Mais il faut accepter que ça prenne du temps.</strong> L'auteur a mis une journée complète pour boucler son propre Chapitre 1. Une première testeuse, qui n'avait jamais touché à un terminal, y est arrivée sur une grosse après-midi. Personne ne le fait en claquant des doigts ; mais tout le monde y arrive avec de la patience et un bon radio-guidage.</p>
+<p>Cette installation <strong>n'est pas magique</strong>. C'est un travail accessible à qui sait utiliser une souris, un clavier, copier-coller et lire un message d'erreur — pas besoin d'être informaticien. <strong>Mais il faut accepter que ça prenne du temps.</strong> J'ai mis <strong>une journée complète</strong> pour boucler mon propre Chapitre 1, avec quelques moments d'arrachage de cheveux. Marie-Laure, première testeuse du guide, qui n'avait jamais touché à un terminal, y est arrivée sur <strong>une grosse après-midi</strong>. Personne ne le fait en claquant des doigts. Mais tout le monde y arrive avec un peu de patience et un bon radio-guidage par IA cloud.</p>
 
 <div class="callout ok">
-  <p><strong class="tag">Conseil pratique</strong> Ne tentez pas de tout enchaîner en une après-midi. Mieux vaut une heure par jour pendant une semaine. Ceux qui ont pris le temps sont allés au bout.</p>
+  <p><strong class="tag">Conseil pratique</strong> Ne tentez pas de tout enchaîner en une après-midi. Mieux vaut une heure par jour pendant une semaine. Les utilisateurs qui ont voulu tout faire d'un bloc ont parfois abandonné ; ceux qui ont pris le temps sont allés au bout.</p>
 </div>
 
 <div class="callout warn">
   <p><strong class="tag">Important — cadre établissement</strong> Tout ce qui touche aux <strong>élèves</strong> (Chapitre 3 multi-postes, Chapitre 4 suivi nominatif) nécessite un cadre établissement : validation du référent numérique (RUPN), charte numérique, accord du chef d'établissement, information des familles. Ce guide propose des outils, pas une autorisation de déploiement.</p>
 </div>
 
+<h2>Contenu du dépôt</h2>
+
+<table class="cmp">
+<thead><tr><th>Fichier</th><th>Rôle</th></tr></thead>
+<tbody>
+<tr><td class="crit">presentation.html</td><td><strong>Avant-propos</strong> — cette page : cadre, posture, mode d'emploi. À lire avant de commencer.</td></tr>
+<tr><td class="crit">index.html</td><td><strong>Chapitre 1</strong> — installation de l'IA native (Ollama / LM Studio / Claude cadré), choix du modèle selon le matériel, premiers prompts.</td></tr>
+<tr><td class="crit">chapitre-2.html</td><td><strong>Chapitre 2</strong> — personnaliser votre IA avec des <em>skills</em> : concept, anatomie, exemples enseignant et particulier, écosystème, bibliothèque de prompts, radioguidage d'une autre personne.</td></tr>
+<tr><td class="crit">chapitre-3.html</td><td><strong>Chapitre 3</strong> — transformation en assistant pédagogique encadré : <em>system prompt</em>, couplage référentiel matière, multi-postes (expérimentation encadrée), charte d'usage, scénario de séance, évaluation.</td></tr>
+<tr><td class="crit">chapitre-4.html</td><td><strong>Chapitre 4</strong> — organisation d'une mémoire de travail : architecture en couches du vault Obsidian, transformation d'un référentiel en skill, interopérabilité prudente avec les outils institutionnels par fichiers CSV/XLSX.</td></tr>
+<tr><td class="crit">radio-guidage.html</td><td><strong>Annexe — radio-guidage</strong> : la méthode commune aux quatre chapitres, expliquée une fois pour toutes (compte IA cloud, choix du modèle, neuf règles, bonnes pratiques, limites).</td></tr>
+<tr><td class="crit">glossaire.html</td><td><strong>Annexe — glossaire</strong> d'environ 80 entrées, accessible aux non-techniciens. À donner aussi à l'IA cloud comme document de référence.</td></tr>
+<tr><td class="crit">glossary-linker.js</td><td>Script raccordé à chaque chapitre, qui transforme les termes techniques en liens cliquables vers le glossaire.</td></tr>
+<tr><td class="crit">chapitre-1.md · chapitre-2.md · chapitre-3.md · chapitre-4.md · glossaire.md</td><td><strong>Versions Markdown</strong> — les fichiers à joindre à votre IA cloud : texte léger, économe en tokens, mieux structuré pour elle qu'un PDF. Téléchargeables depuis chaque chapitre et le glossaire.</td></tr>
+</tbody>
+</table>
+
+<div class="callout info">
+  <p><strong class="tag">Pour info</strong> Des prolongements techniques existent en brouillon personnel — accès distant via VPN privé, orchestration agentique sous supervision humaine — mais <strong>ne font pas partie du périmètre de diffusion</strong> à ce stade. Ils seront proposés à la discussion lorsqu'ils auront été éprouvés sur la durée.</p>
+</div>
+
+<h2>Lire ou imprimer</h2>
+<ul>
+  <li><strong>En ligne</strong> — naviguez directement entre les chapitres via les liens en bas de chaque page.</li>
+  <li><strong>À donner à une IA cloud</strong> — chaque chapitre et le glossaire proposent un bouton de téléchargement au format <code>Markdown (.md)</code> : un fichier texte léger et économe en tokens, à joindre à votre conversation avec l'IA.</li>
+  <li><strong>Hors ligne</strong> — téléchargez les fichiers <code>.html</code> et ouvrez-les dans un navigateur ; tout fonctionne sans connexion.</li>
+  <li><strong>En PDF</strong> — ouvrez un chapitre dans Edge, Chrome ou Firefox, puis <code>Ctrl + P</code> → destination « Enregistrer au format PDF » → format A4. La feuille de style d'impression est calibrée pour ce mode.</li>
+</ul>
+
+
+  <a class="go" href="#ch1-top">Commencer — Chapitre 1 →</a>
+</div>
+
 <h2>Contact</h2>
-<p>Adresse : <a href="mailto:fr.henninot@gmail.com">fr.henninot@gmail.com</a>. Tout retour, signalement de coquille, suggestion ou désaccord argumenté est bienvenu — l'objectif est de faire évoluer le document à partir des usages réels. Diffusion libre dans le périmètre de la communauté éducative, sous réserve de la mention du statut exploratoire du document.</p>
+<p>Adresse : <a href="mailto:fr.henninot@gmail.com">fr.henninot@gmail.com</a></p>
+<p>Tout retour, signalement de coquille, suggestion d'amélioration ou désaccord argumenté est bienvenu — l'objectif est de faire évoluer le document à partir des usages réels. Diffusion libre dans le périmètre de la communauté éducative, sous réserve de la mention du statut exploratoire du document.</p>
+
 
 </section>
-<section class="book-chapter" id="ch1-top">
-<div class="chapter-divider"><span class="kicker">Chapitre 1</span><h1 class="chapter-h1">Installer une IA native sur son ordinateur</h1></div>
+<section class="book-chapter" id="ch1-top"><div class="chapter-divider"><span class="kicker">Chapitre 1</span><h1 class="chapter-h1">Installer une IA native sur son ordinateur</h1></div>
 
 
 
 
 
+
+<div class="callout info" style="border-left-color:#ff6b35">
+  <p><strong class="tag" style="background:#ff6b35;color:#fff">Édition complète</strong> Tout le guide réuni en un seul document — les 5 chapitres et les 2 annexes. <a href="guide-complet.html">Lire l'édition complète en ligne (tout-en-un)</a> · <a href="guide-complet.pdf">Télécharger le livre (PDF, 99 p.)</a>.</p>
+</div>
 
 <div class="callout warn">
   <p><strong class="tag">Statut</strong> Document de travail à caractère exploratoire, sans valeur officielle. Ne se substitue ni aux préconisations académiques ni au cadre fixé par chaque établissement.</p>
@@ -980,56 +1063,86 @@ ollama rm llama3.1:8b</pre>
 
 
 </section>
-<section class="book-chapter" id="ch2-top">
-<div class="chapter-divider"><span class="kicker">Chapitre 2</span><h1 class="chapter-h1">Personnaliser votre IA avec des skills</h1></div>
+<section class="book-chapter" id="ch2-top"><div class="chapter-divider"><span class="kicker">Chapitre 2</span><h1 class="chapter-h1">Personnaliser votre IA avec des skills</h1></div>
 
+
+
+
+
+
+<div class="callout warn">
+  <p><strong class="tag">Statut</strong> Document de travail à caractère exploratoire, sans valeur officielle. Suite du <a href="#ch1-top">Chapitre 1</a> : l'IA locale doit être installée et fonctionnelle pour exécuter ce chapitre.</p>
+</div>
+
+<div class="callout info">
+  <p><strong class="tag">Mode d'emploi de ce chapitre</strong> Ce document est conçu pour être <strong>lu d'abord</strong>, puis <strong>exécuté avec l'aide d'une IA cloud</strong> (Claude, ChatGPT, Gemini, Mistral Le Chat). Lisez le chapitre en entier pour comprendre l'esprit. À la fin (<a href="#ch2-radio-guidage">section 11</a>), vous trouverez le <strong>radio-guidage</strong> : un prompt à coller dans votre IA cloud habituelle, et un fichier à joindre. L'IA prend alors le relais et vous accompagne pas à pas dans l'exécution.</p>
+  <p style="margin-top:.6em;padding-top:.6em;border-top:1px dashed rgba(0,0,0,.15)"><strong>⚠ N'allez pas directement à l'action.</strong> Lisez le chapitre d'abord — c'est en comprenant <em>ce qu'est</em> un skill et <em>pourquoi</em> il change tout que vous écrirez le vôtre correctement. Le téléchargement du fichier <code>.md</code> et le prompt à coller sont rassemblés à la fin, dans la <a href="#ch2-radio-guidage">section 11</a>.</p>
+  <p style="margin-top:.6em;padding-top:.6em;border-top:1px dashed rgba(0,0,0,.15)"><strong>Un mot vous bloque ?</strong> Le <a href="#glo-top">glossaire</a> est en lien permanent en bas de page. <strong>Le radio-guidage, c'est quoi au juste ?</strong> La page <a href="#rg-top">Radio-guidage</a> l'explique une fois pour toutes.</p>
+</div>
+
+
+
+<!-- ========== 1 PREAMBULE ========== -->
 <section id="ch2-preambule">
 <h2>1. Préambule — pourquoi un chapitre dédié aux skills</h2>
-<p>Au Chapitre 1, vous avez installé une IA locale. Elle fonctionne, elle parle, elle raisonne. Mais elle est encore <strong>générique</strong> : elle ne connaît rien de vous, de votre métier, de vos contraintes. Vous lui réexpliquez tout à chaque conversation.</p>
-<p>La grille de lecture en 4 briques du Chapitre 1 le disait : interface, moteur, modèle… et <strong>skills</strong>. Les trois premières briques sont standard, identiques pour tout le monde. La quatrième fait toute la différence. <strong>Un modèle moyen avec d'excellents skills bat un modèle excellent sans contexte.</strong></p>
+
+<p>Au <a href="#ch1-top">Chapitre 1</a>, vous avez installé une IA locale. Elle fonctionne, elle parle, elle raisonne. Mais elle est encore <strong>générique</strong> : elle ne connaît rien de vous, de votre métier, de vos contraintes. Vous lui réexpliquez tout à chaque conversation.</p>
+
+<p>La grille de lecture en 4 briques du Chapitre 1 le disait : interface, moteur, modèle… et <strong>skills</strong>. Les trois premières briques sont standard, identiques pour tout le monde. La quatrième fait toute la différence. <strong>Un modèle moyen avec d'excellents skills bat un modèle excellent sans contexte.</strong> Ce chapitre est entièrement consacré à cette quatrième brique.</p>
+
 <div class="callout tip">
-  <p><strong class="tag">Ce que vous saurez faire en sortie</strong> Écrire un skill à partir d'une tâche que vous faites chaque semaine, le faire mobiliser automatiquement par votre IA locale, le tester et l'ajuster — puis construire, par accumulation, un véritable écosystème de skills. Le tout transférable à un collègue par simple copie de dossier.</p>
+  <p><strong class="tag">Ce que vous saurez faire en sortie</strong> Écrire un skill à partir d'une tâche que vous faites chaque semaine, le faire mobiliser automatiquement par votre IA locale, le tester et l'ajuster — puis construire, par accumulation, un véritable écosystème de skills qui couvre vos tâches récurrentes. Le tout transférable à un collègue par simple copie de dossier.</p>
 </div>
+
 <div class="callout info">
   <p><strong class="tag">Aucun prérequis technique nouveau</strong> Un skill, c'est un fichier texte. Si vous savez écrire dans un traitement de texte et copier un dossier, vous savez écrire un skill. La seule exigence : avoir une IA locale fonctionnelle (Chapitre 1).</p>
 </div>
 </section>
 
+<!-- ========== 2 QUOI ========== -->
 <section id="ch2-quoi">
 <h2>2. Qu'est-ce qu'un skill, simplement ?</h2>
+
 <div class="callout warn">
   <p><strong class="tag">Attention au mot « skill »</strong></p>
   <p>Dans ce guide, le mot <strong>« skill »</strong> est utilisé au <strong>sens pédagogique large</strong> : un dossier ou une fiche d'instructions métier qui aide l'IA à adopter une méthode, un rôle ou un cadre de travail. <strong>Le principe est commun, mais l'implémentation technique varie selon l'outil.</strong></p>
   <table class="cmp" style="margin-top:.6em">
     <thead><tr><th>Concept / outil</th><th>Rôle</th></tr></thead>
     <tbody>
-      <tr><td class="crit">Skill au sens large</td><td>Dossier d'instructions et de références métier — la version pédagogique du concept.</td></tr>
-      <tr><td class="crit">Skill Claude</td><td>Fonction structurée propre à Claude — dossier avec <code>SKILL.md</code>, mobilisé automatiquement selon une description déclencheur.</td></tr>
-      <tr><td class="crit">System prompt Open WebUI</td><td>Instructions permanentes données à un « modèle personnalisé ». Le plus proche équivalent fonctionnel d'un skill dans notre parcours.</td></tr>
-      <tr><td class="crit">Modelfile Ollama</td><td>Fichier de configuration créant un modèle Ollama avec consignes intégrées. Plus technique.</td></tr>
-      <tr><td class="crit">RAG / base documentaire</td><td>Méthode pour faire chercher l'IA dans des documents avant de répondre. Complémentaire d'un skill.</td></tr>
-      <tr><td class="crit">Preset LM Studio</td><td>Profil de conversation configuré dans LM Studio. Même esprit, plus limité.</td></tr>
+      <tr><td class="crit">Skill au sens large</td><td>Dossier d'instructions et de références métier — la version pédagogique du concept utilisée dans ce guide.</td></tr>
+      <tr><td class="crit">Skill Claude</td><td>Fonction structurée propre à Claude (Anthropic) — dossier avec <code>SKILL.md</code> et ressources annexes, mobilisé automatiquement selon une description déclencheur.</td></tr>
+      <tr><td class="crit">System prompt Open WebUI</td><td>Instructions permanentes données à un <strong>« modèle personnalisé »</strong> dans Open WebUI. Le plus proche équivalent fonctionnel d'un skill, dans notre parcours.</td></tr>
+      <tr><td class="crit">Modelfile Ollama</td><td>Fichier de configuration permettant de créer un modèle Ollama avec consignes intégrées. Plus technique, plus permanent.</td></tr>
+      <tr><td class="crit">RAG / base documentaire</td><td>Méthode pour faire chercher l'IA dans des documents avant qu'elle réponde. Complémentaire d'un skill, pas équivalent.</td></tr>
+      <tr><td class="crit">Preset LM Studio</td><td>Profil de conversation configuré dans LM Studio. Plus limité qu'un skill mais même esprit.</td></tr>
     </tbody>
   </table>
-  <p style="margin-top:.6em"><strong>Dans ce chapitre,</strong> on parle du <em>concept</em> de skill (le dossier d'instructions métier). Le passage à la réalité technique se fait au Chapitre 3 avec les <em>modèles personnalisés Open WebUI</em>.</p>
+  <p style="margin-top:.6em"><strong>Dans ce chapitre,</strong> on parle du <em>concept</em> de skill (le dossier d'instructions métier). Le passage à la réalité technique se fait au <a href="#ch3-top">Chapitre 3</a> avec les <em>modèles personnalisés Open WebUI</em>, qui sont l'implémentation la plus accessible pour notre parcours <strong>Ollama + Open WebUI</strong>.</p>
 </div>
-<p>Un <strong>skill</strong> est un <strong>dossier</strong> qui contient un fichier texte décrivant à l'IA : <em>quand</em> elle doit s'en servir, <em>comment</em>, et <em>avec quoi</em>. Une fois ce dossier déposé au bon endroit, l'IA le mobilise automatiquement dès qu'elle reconnaît un déclencheur.</p>
+
+<p>Un <strong>skill</strong> (« compétence », « savoir-faire ») est un <strong>dossier</strong> qui contient un fichier texte décrivant à l'IA : <em>quand</em> elle doit s'en servir, <em>comment</em> elle doit s'en servir, et <em>avec quoi</em>. Une fois ce dossier déposé au bon endroit, l'IA le mobilise automatiquement dès qu'elle reconnaît un déclencheur. Vous n'avez plus à tout réexpliquer à chaque conversation.</p>
+
 <div class="callout tip">
-  <p><strong class="tag">Analogie</strong> Un skill, c'est <strong>la fiche de poste</strong> qu'on remet à un nouveau collaborateur. Ce collaborateur, ici, c'est l'IA. Vous l'écrivez une fois, elle s'en sert mille fois, et vous pouvez la transmettre par simple copie du dossier.</p>
+  <p><strong class="tag">Analogie</strong> Un skill, c'est <strong>la fiche de poste</strong> qu'on remet à un nouveau collaborateur. Ce nouveau collaborateur, ici, c'est l'IA. Vous l'écrivez une fois, elle s'en sert mille fois, et vous pouvez la transmettre à quelqu'un d'autre par simple copie du dossier.</p>
 </div>
 </section>
 
+<!-- ========== 3 ANATOMIE ========== -->
 <section id="ch2-anatomie">
 <h2>3. Anatomie d'un skill</h2>
-<pre>mon-skill/
-├── SKILL.md           # Le fichier principal — instructions à l'IA
-├── references/        # (optionnel) docs que l'IA peut consulter
-│   └── bareme.md
-└── assets/            # (optionnel) modèles, gabarits
-    └── modele.docx</pre>
-<p>Le fichier <code>SKILL.md</code> commence par un en-tête (« frontmatter ») YAML, puis des instructions en français courant. Deux exemples concrets — un côté enseignant, un côté particulier — montrent que <strong>le format est exactement le même</strong>, seul le contenu change.</p>
+<div class="skill-tree">
+<span class="dir">mon-skill/</span>
+├── <span class="file">SKILL.md</span>           <span class="cmt"># Le fichier principal — instructions à l'IA</span>
+├── <span class="dir">references/</span>      <span class="cmt"># (optionnel) docs que l'IA peut consulter</span>
+│   └── <span class="file">bareme.md</span>
+└── <span class="dir">assets/</span>          <span class="cmt"># (optionnel) modèles, gabarits</span>
+    └── <span class="file">modele.docx</span>
+</div>
+
+<p>Le fichier <code>SKILL.md</code> commence par un en-tête (« frontmatter ») YAML, puis des instructions en français courant. Voici deux exemples concrets — un côté enseignant, un côté particulier — pour montrer que <strong>le format est exactement le même</strong>, seul le contenu change.</p>
 </section>
 
+<!-- ========== 4 EXEMPLE A ========== -->
 <section id="ch2-exemple-a">
 <h2>4. Exemple A — skill enseignant</h2>
 <p><em>Rédiger automatiquement une appréciation de bulletin trimestriel à partir de quelques notes et observations.</em></p>
@@ -1052,7 +1165,9 @@ observations, et demande une appréciation à coller dans un bulletin.
 - 2 à 4 phrases maximum.
 - Toujours commencer par un constat factuel (jamais un jugement).
 - Citer un point d'effort observé, puis un axe de progrès concret.
-- Vocabulaire bienveillant mais honnête.
+- Aucun nom propre dans la formulation (sauf prénom si demandé).
+- Vocabulaire bienveillant mais honnête. Pas de "doit faire plus
+  d'efforts" sec — préférer "gagnerait à mobiliser davantage...".
 
 ## Étapes
 1. Lire les notes et observations fournies.
@@ -1061,6 +1176,7 @@ observations, et demande une appréciation à coller dans un bulletin.
 4. Relire pour bannir tout jugement de valeur sur la personne.</pre>
 </section>
 
+<!-- ========== 5 EXEMPLE B ========== -->
 <section id="ch2-exemple-b">
 <h2>5. Exemple B — skill particulier</h2>
 <p><em>Proposer chaque dimanche des menus de la semaine adaptés aux contraintes de la famille.</em></p>
@@ -1069,161 +1185,311 @@ name: menus-famille-semaine
 description: Propose 7 dîners équilibrés pour la semaine, adaptés aux
   contraintes alimentaires de la famille (allergies, goûts, budget),
   avec liste de courses regroupée par rayon. Utiliser dès que l'utilisateur
-  évoque "menus de la semaine", "que cuisiner", "liste de courses".
+  évoque "menus de la semaine", "que cuisiner", "liste de courses",
+  "planning repas".
 ---
 
 # Menus de la semaine — protocole famille
 
 ## Profil famille (à adapter)
 - 2 adultes, 2 enfants (8 et 11 ans).
-- Allergie aux fruits à coque. Pas de porc.
+- Allergie aux fruits à coque.
+- Pas de porc.
 - Budget course raisonnable (autour de 100 €/semaine).
+- Le mercredi midi, repas plus simple (enfants à la maison).
+
+## Quand utiliser ce skill
+Toute demande de planification des repas de la semaine ou de
+préparation de liste de courses.
 
 ## Règles de proposition
 - Toujours 7 dîners (lundi à dimanche).
 - Au moins 2 repas végétariens dans la semaine.
+- 1 plat "facile" le vendredi soir (jour fatigué).
 - Privilégier les légumes de saison.
 - Aucun ingrédient interdit ne doit apparaître.
 
 ## Format de sortie
 Un tableau Jour / Plat / Temps de préparation, puis une liste
-de courses regroupée par rayon.</pre>
+de courses regroupée par rayon (frais, sec, légumes, boucherie).</pre>
 </section>
 
+<!-- ========== 6 POURQUOI ========== -->
 <section id="ch2-pourquoi">
 <h2>6. Pourquoi ça change tout</h2>
-<p>Sans skill, à chaque session je dois <strong>tout réexpliquer</strong> au modèle : qui je suis, quel format je veux, quelles sont mes contraintes. C'est fatigant et un détail oublié donne un résultat à côté.</p>
-<p>Avec un skill correctement écrit, l'IA <strong>se déclenche d'elle-même</strong> dès qu'elle reconnaît un déclencheur. Le skill devient une <em>extension cognitive</em> : un savoir-faire capturé une fois, exploitable mille fois, partageable par simple copie de dossier.</p>
+<p>Sans skill, à chaque session je dois <strong>tout réexpliquer</strong> au modèle : qui je suis, quel format je veux, quelles sont mes contraintes. C'est fatigant, la qualité dépend de ma vigilance, et un détail oublié donne un résultat à côté.</p>
+
+<p>Avec un skill correctement écrit, l'IA <strong>se déclenche d'elle-même</strong> dès qu'elle reconnaît un déclencheur dans ma demande. Le skill devient une <em>extension cognitive</em> : un savoir-faire capturé une fois, exploitable mille fois, partageable par simple copie de dossier.</p>
 </section>
 
+<!-- ========== 7 DESCRIPTION ========== -->
 <section id="ch2-description">
 <h2>7. Anatomie de la description — le bon déclenchement</h2>
-<p>Le champ <code>description</code> du frontmatter est <strong>capital</strong> : c'est lui qui décide si l'IA mobilise le skill. Il doit énumérer explicitement les formulations qui doivent le déclencher.</p>
+<p>Le champ <code>description</code> du frontmatter est <strong>capital</strong>. C'est lui qui décide si l'IA mobilise le skill ou non. Il doit énumérer explicitement les formulations utilisateur qui doivent déclencher le skill. Exemple :</p>
 <pre>description: Rédige un support de cours complet au format établissement
   (template 9 sections, 1500 mots min). Utiliser dès que l'utilisateur
   évoque "rédiger un cours", "préparer une fiche d'exercice", "construire
   une séance", "préparer un TP", même sans mentionner explicitement le skill.</pre>
 </section>
 
+<div class="page-break"></div>
+
+<!-- ========== 8 ECOSYSTEME ========== -->
 <section id="ch2-ecosysteme">
 <h2>8. Construire son écosystème de skills</h2>
-<p>On n'a pas <em>un</em> skill, on en a une demi-douzaine qui couvrent les tâches récurrentes.</p>
+
+<p>On n'a pas <em>un</em> skill, on en a une demi-douzaine qui couvrent les tâches récurrentes. Voici deux écosystèmes types — un côté enseignant, un côté particulier — qui servent de modèles.</p>
+
 <h3>8.1. Écosystème type enseignant</h3>
 <table class="cmp">
   <thead><tr><th>Skill</th><th>Rôle</th><th>Déclencheurs typiques</th></tr></thead>
   <tbody>
-    <tr><td class="crit">contexte-classe</td><td>Cadre permanent : niveaux, public, contraintes pédagogiques</td><td>chargé en arrière-plan</td></tr>
-    <tr><td class="crit">appreciation-bulletin</td><td>Appréciations équilibrées à partir de notes</td><td>« appréciation », « bulletin »</td></tr>
-    <tr><td class="crit">redaction-cours</td><td>Support de cours au format établissement</td><td>« rédige une fiche », « prépare une séance »</td></tr>
-    <tr><td class="crit">differenciation</td><td>3 versions calibrées d'un exercice</td><td>« différencier », « 3 niveaux »</td></tr>
-    <tr><td class="crit">mail-parents</td><td>Reformulation d'un mail dans un ton mesuré</td><td>« mail aux parents »</td></tr>
-    <tr><td class="crit">cahier-de-texte</td><td>Récit de séance → fiche prête à coller dans l'ENT</td><td>« cahier de texte »</td></tr>
+    <tr><td class="crit">contexte-classe</td><td>Cadre permanent : niveaux enseignés, public, charte graphique, contraintes pédagogiques</td><td>chargé en arrière-plan</td></tr>
+    <tr><td class="crit">appreciation-bulletin</td><td>Rédaction d'appréciations équilibrées à partir de notes et observations</td><td>« appréciation », « bulletin », « synthèse trimestrielle »</td></tr>
+    <tr><td class="crit">redaction-cours</td><td>Production d'un support de cours au format établissement</td><td>« rédige une fiche », « prépare une séance »</td></tr>
+    <tr><td class="crit">differenciation</td><td>3 versions calibrées d'un exercice (consolidation / standard / approfondissement)</td><td>« différencier », « 3 niveaux »</td></tr>
+    <tr><td class="crit">mail-parents</td><td>Reformulation d'un mail à un parent dans un ton mesuré, professionnel</td><td>« mail aux parents », « répondre poliment »</td></tr>
+    <tr><td class="crit">cahier-de-texte</td><td>Récit de séance → fiche prête à coller dans l'ENT</td><td>« cahier de texte », « ce que j'ai fait en classe »</td></tr>
   </tbody>
 </table>
+
 <h3>8.2. Écosystème type particulier</h3>
 <table class="cmp">
   <thead><tr><th>Skill</th><th>Rôle</th><th>Déclencheurs typiques</th></tr></thead>
   <tbody>
-    <tr><td class="crit">contexte-famille</td><td>Profil famille permanent : composition, allergies, budget</td><td>chargé en arrière-plan</td></tr>
-    <tr><td class="crit">menus-semaine</td><td>7 dîners + liste de courses par rayon</td><td>« menus », « liste de courses »</td></tr>
-    <tr><td class="crit">courriers-admin</td><td>Lettres administratives normalisées</td><td>« écris une lettre à »</td></tr>
-    <tr><td class="crit">budget-mensuel</td><td>Catégorisation d'un relevé bancaire (en local, jamais cloud)</td><td>« mes dépenses »</td></tr>
-    <tr><td class="crit">recettes-de-saison</td><td>Recettes adaptées aux légumes de saison</td><td>« quoi cuisiner »</td></tr>
-    <tr><td class="crit">vacances-organisation</td><td>Checklist, itinéraire, valise</td><td>« préparer un voyage »</td></tr>
+    <tr><td class="crit">contexte-famille</td><td>Profil famille permanent : composition, allergies, contraintes, budget</td><td>chargé en arrière-plan</td></tr>
+    <tr><td class="crit">menus-semaine</td><td>7 dîners équilibrés + liste de courses regroupée par rayon</td><td>« menus », « liste de courses », « planning repas »</td></tr>
+    <tr><td class="crit">courriers-admin</td><td>Lettres administratives (résiliation, réclamation, demande) au format normalisé</td><td>« écris une lettre à », « rédige un courrier »</td></tr>
+    <tr><td class="crit">budget-mensuel</td><td>Catégorisation et synthèse à partir d'un relevé bancaire (en local, jamais cloud)</td><td>« mes dépenses », « catégoriser »</td></tr>
+    <tr><td class="crit">recettes-de-saison</td><td>Idées de recettes adaptées aux légumes de saison et au temps disponible</td><td>« quoi cuisiner », « recette rapide »</td></tr>
+    <tr><td class="crit">vacances-organisation</td><td>Planification d'un séjour : checklist, itinéraire, valise</td><td>« préparer un voyage », « checklist vacances »</td></tr>
   </tbody>
 </table>
-<h3>8.3. Méthode de construction</h3>
+
+<h3>8.3. Méthode de construction — la même pour tous</h3>
+<p>L'écosystème se construit <strong>par accumulation</strong>, jamais d'un bloc :</p>
 <ol>
   <li>Repérer une tâche que je fais <strong>plus d'une fois par semaine</strong>.</li>
-  <li>La faire une fois <em>avec</em> l'IA, en notant ce que je dois réexpliquer à chaque session.</li>
+  <li>La faire une fois <em>avec</em> l'IA, en notant ce que je dois lui réexpliquer à chaque session.</li>
   <li>Capturer ces explications dans un <code>SKILL.md</code> brouillon.</li>
   <li>Tester sur 2 à 3 cas réels. Ajuster.</li>
   <li>Geler la version, la nommer, la verser dans le dossier <code>skills/</code>.</li>
 </ol>
 </section>
 
+<!-- ========== 9 PROMPTS ========== -->
 <section id="ch2-prompts">
 <h2>9. Bibliothèque de prompts — exemples</h2>
-<p>Six exemples — trois enseignant, trois particulier. <strong>Ces prompts fonctionnent même sans skill installé</strong> : ils servent de modèles pour formuler une demande efficace.</p>
-<h3>Côté enseignant</h3>
-<ul>
-  <li><strong>Rédiger une appréciation</strong> — <em>« Rédige une appréciation de bulletin pour un élève de 3e en mathématiques. Notes : 12, 9, 14, 11. Observations : participe à l'oral, manque de rigueur à l'écrit, progrès en géométrie. 3 phrases max, ton bienveillant et factuel. »</em></li>
-  <li><strong>Différencier un exercice</strong> — <em>« Voici un exercice : [coller]. Produis 3 versions : consolidation, standard, approfondissement. Même objectif, niveaux d'aide différents. »</em></li>
-  <li><strong>Reformuler un mail aux parents</strong> — <em>« Reformule ce mail dans un ton calme, factuel, sans accusation, en proposant un rendez-vous. Texte : [coller]. »</em></li>
-</ul>
-<h3>Côté particulier</h3>
-<ul>
-  <li><strong>Menus de la semaine</strong> — <em>« Propose 7 dîners. Famille de 4. Pas de fruits à coque. Au moins 2 repas végé. Tableau jour/plat puis liste de courses par rayon. »</em></li>
-  <li><strong>Lettre de résiliation</strong> — <em>« Rédige une lettre de résiliation d'assurance habitation, motif déménagement, ton formel mais courtois, prête à imprimer. »</em></li>
-  <li><strong>Préparer un voyage</strong> — <em>« 5 jours à Lisbonne en mai à deux. Checklist administrative, liste valise, itinéraire jour par jour. »</em></li>
-</ul>
-</section>
 
-<section id="ch2-radioguider">
-<h2>10. Radioguider une autre personne — la méthode</h2>
-<p>Le but n'est pas de produire un expert, c'est de permettre à toute personne d'<strong>atteindre l'autonomie opérationnelle</strong> en quelques heures, en quatre demi-journées sur deux semaines.</p>
-<ol class="steps">
-  <li><strong>J1 — Cadrage et installation radioguidée (2 h)</strong><p>Lecture rapide des sections 1 à 3 du Chapitre 1. Ouverture d'une IA cloud, téléchargement du fichier du Ch.1, copier-coller du prompt de radio-guidage. Sortie : Ollama installé, un modèle, premier dialogue qui répond.</p></li>
-  <li><strong>J2 — Premier usage utile (2 h)</strong><p>Un cas réel choisi par la personne. On constate la valeur de l'outil <em>avant</em> d'écrire le moindre skill.</p></li>
-  <li><strong>J3 — Écriture du premier skill (3 h)</strong><p>Une seule tâche récurrente. Rédiger un <code>SKILL.md</code> minimal, tester sur 3 cas. La marche la plus exigeante.</p></li>
-  <li><strong>J4 — Autonomie et écosystème (2 h)</strong><p>La personne écrit un deuxième skill seule. Le radioguidage est terminé.</p></li>
-</ol>
-<div class="callout ok">
-  <p><strong class="tag">Indicateur de réussite</strong> Au bout de ces étapes, la personne doit pouvoir produire <strong>de mémoire</strong> un skill nouveau pour une tâche qu'elle choisit. Sinon, on reprend J3 sur un cas plus simple.</p>
+<p>Six exemples — trois côté enseignant, trois côté particulier — à copier-coller, ajuster, observer. <strong>Ces prompts fonctionnent même sans skill installé</strong> : ils servent de modèles pour comprendre comment formuler une demande efficace, et de point de départ pour rédiger le skill correspondant.</p>
+
+<h3>Côté enseignant</h3>
+<div class="prompts">
+  <div class="prompt-card">
+    <h4>Rédiger une appréciation</h4>
+    <p>Synthèse de bulletin équilibrée.</p>
+    <div class="ex">Rédige une appréciation de bulletin pour un élève de 3e en mathématiques. Notes : 12, 9, 14, 11. Observations : participe à l'oral, manque de rigueur à l'écrit, progrès en géométrie. 3 phrases max, ton bienveillant et factuel.</div>
+  </div>
+  <div class="prompt-card">
+    <h4>Différencier un exercice</h4>
+    <p>3 versions calibrées.</p>
+    <div class="ex">Voici un exercice de [discipline] : [coller l'énoncé]. Produis 3 versions : consolidation (élève fragile), standard (cœur de classe), approfondissement (élève autonome). Même objectif d'apprentissage, niveaux d'aide différents.</div>
+  </div>
+  <div class="prompt-card">
+    <h4>Reformuler un mail aux parents</h4>
+    <p>Ton mesuré, professionnel.</p>
+    <div class="ex">Reformule ce mail à un parent dans un ton calme, factuel, sans accusation, en proposant un rendez-vous. Texte initial : [coller]. Objectif : obtenir un échange constructif, pas envenimer.</div>
+  </div>
+</div>
+
+<h3>Côté particulier</h3>
+<div class="prompts">
+  <div class="prompt-card">
+    <h4>Menus de la semaine</h4>
+    <p>7 dîners + liste de courses.</p>
+    <div class="ex">Propose 7 dîners pour la semaine. Famille de 4 (2 adultes, 2 enfants de 8 et 11 ans). Pas de fruits à coque (allergie). Budget course raisonnable. Au moins 2 repas végé. Présente : tableau jour/plat, puis liste de courses par rayon.</div>
+  </div>
+  <div class="prompt-card">
+    <h4>Lettre de résiliation</h4>
+    <p>Courrier administratif normalisé.</p>
+    <div class="ex">Rédige une lettre de résiliation de contrat d'assurance habitation, échéance dans 2 mois, motif : déménagement. Ton formel mais courtois. Avec bloc adresse et formule de politesse standard. Format A4 prêt à imprimer.</div>
+  </div>
+  <div class="prompt-card">
+    <h4>Préparer un voyage</h4>
+    <p>Checklist + valise + itinéraire.</p>
+    <div class="ex">Je pars 5 jours à Lisbonne en mai avec mon conjoint. Aide-moi à préparer : checklist administrative (documents, billets), liste valise saison, idées d'itinéraire jour par jour avec un musée et une promenade à pied chaque jour.</div>
+  </div>
 </div>
 </section>
 
+<div class="page-break"></div>
+
+<!-- ========== 10 RADIOGUIDER ========== -->
+<section id="ch2-radioguider">
+<h2>10. Radioguider une autre personne — la méthode</h2>
+
+<p>Le but de ce guide n'est pas de produire un expert en IA, c'est de permettre à toute personne — collègue, conjoint, parent — d'<strong>atteindre l'autonomie opérationnelle</strong> en quelques heures. La séquence proposée tient en quatre demi-journées étalées sur deux semaines.</p>
+
+<ol class="steps">
+  <li>
+    <strong>J1 — Cadrage et installation radioguidée (2 h)</strong>
+    <p>Lecture rapide des sections 1 à 3 du <a href="#ch1-top">Chapitre 1</a> (le « pourquoi »). Ouverture de <a href="https://claude.ai">claude.ai</a> ou ChatGPT. Téléchargement du fichier du Chapitre 1, puis copier-coller du <strong>prompt du radio-guidage (Chapitre 1, §8)</strong>. Suivre les questions/étapes, envoyer des captures d'écran en cas de blocage. Sortie : Ollama installé, un modèle téléchargé, premier dialogue qui répond. Objectif : <em>« ça parle »</em>.</p>
+  </li>
+  <li>
+    <strong>J2 — Premier usage utile (2 h)</strong>
+    <p>Un cas réel choisi par la personne : reformuler un mail délicat, préparer un planning, expliquer une notion, organiser une checklist. On constate la valeur de l'outil <em>avant</em> d'écrire le moindre skill.</p>
+  </li>
+  <li>
+    <strong>J3 — Écriture du premier skill (3 h)</strong>
+    <p>Choisir <strong>une seule tâche</strong> récurrente. Rédiger un <code>SKILL.md</code> minimal (frontmatter + 30 lignes), inspiré des exemples (<a href="#ch2-exemple-a">§4</a> et <a href="#ch2-exemple-b">§5</a>). Tester sur 3 cas. C'est la marche la plus exigeante. Le mentor doit être disponible.</p>
+  </li>
+  <li>
+    <strong>J4 — Autonomie et écosystème (2 h)</strong>
+    <p>La personne a un skill qui marche. Elle en écrit un deuxième seule. Elle connaît la procédure et sait où trouver les ressources. Le radioguidage est terminé.</p>
+  </li>
+</ol>
+
+<div class="callout ok">
+  <p><strong class="tag">Indicateur de réussite</strong> Au bout de ces quatre étapes, la personne doit être capable de produire <strong>de mémoire</strong> un skill nouveau pour une tâche qu'elle choisit elle-même. Si ce n'est pas le cas, on reprend J3 sur un cas plus simple.</p>
+</div>
+</section>
+
+<div class="page-break"></div>
+
+<!-- ========== 11 RADIO-GUIDAGE ========== -->
 <section id="ch2-radio-guidage">
 <h2>11. Radio-guidage — écrire son premier skill avec une IA cloud</h2>
-<p>Voici l'outil pour <strong>écrire le vôtre</strong> : un prompt à coller dans une IA cloud, qui vous accompagne du choix de la tâche au skill testé et ajusté. (Le fichier Markdown du chapitre est à joindre à la conversation.)</p>
+
+<p>Vous avez lu le chapitre, vous comprenez ce qu'est un skill et pourquoi il change tout. Voici l'outil pour <strong>écrire le vôtre</strong> : un prompt à coller dans une IA cloud, qui devient votre assistant patient et vous accompagne étape par étape — du choix de la tâche au skill testé et ajusté.</p>
+
+<h3>11.1. Marche à suivre</h3>
+<ol class="steps">
+  <li><strong>Téléchargez le fichier du chapitre</strong> au format Markdown (bouton ci-dessous).</li>
+  <li><strong>Ouvrez une nouvelle conversation</strong> avec votre IA cloud habituelle — Claude, ChatGPT, Gemini ou Mistral Le Chat, peu importe.</li>
+  <li><strong>Joignez le fichier <code>.md</code></strong> à la conversation.</li>
+  <li><strong>Copiez-collez le prompt ci-dessous</strong> et envoyez-le.</li>
+  <li><strong>Suivez les questions de l'IA</strong>, une étape à la fois. Le skill que vous écrivez ne contient pas de données personnelles — c'est un fichier d'instructions.</li>
+</ol>
+
+
+
+<h3>11.2. Le prompt à copier</h3>
 <pre>Tu es mon assistant de mise en œuvre pour le document que je viens
 de te transmettre. Je l'ai parcouru mais je ne suis PAS développeur
 ni informaticien. J'ai besoin que tu deviennes mon radio-guide.
 
 RÈGLES NON NÉGOCIABLES
-1. UNE étape à la fois. Tu attends ma confirmation avant la suivante.
+1. UNE étape à la fois. Tu ne donnes JAMAIS plus d'une action par
+   message. Tu attends ma confirmation avant la suivante.
 2. Vocabulaire accessible. Aucun acronyme sans explication.
-3. Tu acceptes mes captures d'écran.
-4. Tu diagnostiques les erreurs en français courant.
-5. Si je décroche, on ralentit.
+3. Tu acceptes mes captures d'écran. Si je bloque, je t'envoie une
+   image, tu l'analyses, tu m'orientes.
+4. Tu diagnostiques les erreurs. Je colle le message, tu m'expliques
+   en français courant et tu proposes la correction.
+5. Si je décroche, on ralentit. Tu n'enchaînes pas.
 
-RÈGLES ANTI-DÉRIVE
-6. TU ES LE RADIO-GUIDE. Ne renvoie JAMAIS vers "une autre IA".
-7. TU NE VOIS PAS L'ÉCRAN sauf capture. Ne présume rien.
-8. TU NE CONNAIS PAS mon métier sauf si je te l'ai dit.
-9. SI TU ES UN MODÈLE LÉGER, reconnais-le et propose de basculer.
+RÈGLES ANTI-DÉRIVE — appris du terrain
+6. TU ES LE RADIO-GUIDE. Ne renvoie JAMAIS l'utilisateur vers
+   "une autre IA", "Claude dans un autre onglet" ou "ChatGPT".
+   Tu as le rôle, tu le tiens. Si une tâche te dépasse, dis-le
+   clairement et propose une alternative simple — mais ne te
+   défausse pas vers toi-même.
+7. TU NE VOIS PAS L'ÉCRAN sauf capture envoyée. Si l'utilisateur
+   écrit du texte confus, tronqué ou hors-contexte (typique
+   d'une dictée vocale ratée), NE PRÉSUME PAS de ce qu'il voit.
+   Demande une capture ou une reformulation. JAMAIS d'invention
+   sur l'état de son ordinateur.
+8. TU NE CONNAIS PAS le métier ni le contexte de l'utilisateur
+   sauf s'il te l'a dit. N'invente ni discipline enseignée, ni
+   domaine professionnel, ni projet en cours. Si ce contexte
+   t'aide, demande-le.
+9. SI TU ES UN MODÈLE LÉGER (Haiku, GPT-mini, Gemini Flash,
+   Mistral Small), reconnais-le en début de session : "Je suis
+   un modèle léger. Pour un radio-guidage technique long avec
+   utilisateur néophyte, un modèle plus capable (Sonnet, GPT-4o,
+   Gemini Pro) serait plus fiable. Veux-tu continuer ou basculer ?"
 
 OBJECTIF FINAL
-Écrire mon premier skill personnel et le tester avec succès :
-- Un dossier `mon-premier-skill/` avec `SKILL.md` (frontmatter
-  name + description, instructions claires).
-- Le skill mobilisé automatiquement par mon IA locale.
-- Trois tests réussis sur trois cas concrets.
+Écrire mon premier skill personnel et le tester avec succès. À la
+fin de cette session, j'aurai :
+- Un dossier `mon-premier-skill/` avec un fichier `SKILL.md`
+  contenant un frontmatter YAML (name, description) et des
+  instructions claires en français.
+- Le skill mobilisé automatiquement par mon IA locale dès que je
+  formule une demande qui correspond à sa description.
+- Trois tests réussis sur trois cas concrets de mon choix.
 
-PREMIÈRE ÉTAPE — DIAGNOSTIC
-a) Vérifie que j'ai une IA locale fonctionnelle (Chapitre 1).
-b) Demande-moi quelle tâche récurrente je voudrais déléguer.
-c) Aide-moi à formuler le skill (nom, description/déclencheurs,
-   règles, format de sortie).
-d) Accompagne-moi dans le test sur 3 cas et l'ajustement.
+PREMIÈRE ÉTAPE OBLIGATOIRE — DIAGNOSTIC PRÉALABLE
+a) Vérifie que j'ai bien une IA locale fonctionnelle (issue du
+   Chapitre 1). Si non, oriente-moi vers le Chapitre 1.
+b) Demande-moi quelle tâche récurrente je fais plus d'une fois
+   par semaine et que je voudrais déléguer à l'IA. Exemples
+   typiques : rédiger une appréciation de bulletin, préparer un
+   menu de la semaine, structurer un mail à un parent, reformuler
+   une consigne.
+c) À partir de ma réponse, aide-moi à formuler le skill : choix
+   du nom, rédaction de la description (déclencheurs),
+   structuration des règles, format de sortie attendu.
+d) Accompagne-moi dans le test sur 3 cas réels et l'ajustement du
+   skill jusqu'à ce qu'il produise un résultat satisfaisant.
 
-Le document est ci-joint. Commence par tes questions.</pre>
+Ne PROPOSE PAS d'écrire un skill avant d'avoir validé que l'IA
+locale tourne et identifié une tâche concrète à automatiser.
+
+Le document est ci-joint / ci-dessus. Commence par tes questions.</pre>
+
+<div class="callout info">
+  <p><strong class="tag">Le radio-guidage en détail</strong> Création d'un compte IA cloud, choix du modèle (Sonnet / GPT-4o / Gemini Pro / Mistral Large — pas les versions ultra-légères), les neuf règles du radio-guide expliquées, les trois phrases pour recadrer une IA qui dérape, les bonnes pratiques pendant la séance, et les trois cas où le radio-guidage par IA ne suffit pas : tout est rassemblé une fois pour toutes sur la page <a href="#rg-top"><strong>Radio-guidage</strong></a>.</p>
+</div>
 </section>
 
+<!-- ========== 12 ET MAINTENANT ========== -->
 <section id="ch2-et-maintenant">
 <h2>12. Vous savez créer des skills. Et maintenant ?</h2>
-<p>Le <strong>Chapitre 3</strong> explore une autre dimension : utiliser cette IA non plus seulement pour <em>vous</em>, mais comme <strong>assistant pédagogique pour vos élèves</strong>. C'est un saut de nature — on passe d'un usage privé à un usage public, d'une responsabilité technique à une responsabilité éducative.</p>
+
+<p>Vous avez compris le concept de skill, écrit votre premier skill, structuré un écosystème. Votre IA personnelle est maintenant calibrée sur votre travail.</p>
+
+<p>Le <strong>Chapitre 3</strong> explore une autre dimension : utiliser cette IA non plus seulement pour <em>vous</em>, mais comme <strong>assistant pédagogique pour vos élèves</strong>. C'est un saut de nature, pas juste de degré — on passe d'un usage privé à un usage public, d'une responsabilité technique à une responsabilité éducative.</p>
+
+
 </section>
 
+<!-- ========== 13 RESSOURCES ========== -->
 <section id="ch2-ressources">
 <h2>13. Ressources et liens</h2>
-<p><strong>Skills — documentation :</strong> <a href="https://docs.anthropic.com/en/docs/build-with-claude/skills">Anthropic — Skills</a> · <a href="https://github.com/anthropics/skills">GitHub anthropics/skills</a> · <a href="https://docs.openwebui.com/features/workspace/models">Open WebUI — modèles personnalisés</a> · <a href="https://github.com/ollama/ollama/blob/main/docs/modelfile.md">Ollama — Modelfile</a>.</p>
-<p><strong>Markdown et YAML :</strong> <a href="https://www.markdownguide.org/cheat-sheet/">Markdown — antisèche</a> · <a href="https://yaml.org/spec/1.2.2/">YAML — spécification</a>.</p>
+
+<div class="callout warn">
+  <p><strong class="tag">⚠ Liens fournis à titre indicatif</strong> Ne téléchargez pas tout en autonomie depuis cette liste. Le <a href="#ch2-radio-guidage">radio-guidage par IA cloud (§11)</a> vous indiquera exactement quelles ressources consulter et adapter à votre cas. Cette liste sert de référence pour qui veut voir d'où viennent les outils mentionnés — pas de check-list à exécuter.</p>
+</div>
+
+<h3>Skills — documentation</h3>
+<div class="links">
+  <a href="https://docs.anthropic.com/en/docs/build-with-claude/skills">Anthropic — Skills documentation</a>
+  <a href="https://github.com/anthropics/skills">GitHub anthropics/skills — exemples</a>
+  <a href="https://docs.openwebui.com/features/workspace/models">Open WebUI — modèles personnalisés</a>
+  <a href="https://github.com/ollama/ollama/blob/main/docs/modelfile.md">Ollama — Modelfile (équivalent skill)</a>
+</div>
+
+<h3>Markdown et YAML — pour écrire ses skills</h3>
+<div class="links">
+  <a href="https://www.markdownguide.org/cheat-sheet/">Markdown — antisèche</a>
+  <a href="https://yaml.org/spec/1.2.2/">YAML — spécification du frontmatter</a>
+</div>
+
+<div class="callout tip">
+  <p><strong class="tag">Suite du guide</strong></p>
+  <ul style="margin:.3em 0 .2em 1.2em">
+    <li><a href="#ch1-top"><strong>Chapitre 1 — Installer une IA native</strong></a> : le prérequis de ce chapitre.</li>
+    <li><a href="#ch3-top"><strong>Chapitre 3 — Transformer son IA native en assistant pédagogique</strong></a> : system prompt, couplage skill matière, multi-postes, charte d'usage, scénario de séance, évaluation.</li>
+    <li><a href="#ch4-top"><strong>Chapitre 4 — Optimiser son Obsidian</strong></a> : architecture du vault, branchement IA, conversion de l'existant, suivi élève sans double saisie.</li>
+    <li><a href="#rg-top"><strong>Annexe — Radio-guidage</strong></a> : la méthode commune à tous les chapitres, expliquée une fois pour toutes.</li>
+  </ul>
+</div>
 </section>
 
+
 </section>
-<section class="book-chapter" id="ch3-top">
-<div class="chapter-divider"><span class="kicker">Chapitre 3</span><h1 class="chapter-h1">Transformer son IA native en assistant pédagogique</h1></div>
+<section class="book-chapter" id="ch3-top"><div class="chapter-divider"><span class="kicker">Chapitre 3</span><h1 class="chapter-h1">Transformer son IA native en assistant pédagogique</h1></div>
 
 
 
@@ -1718,8 +1984,7 @@ Le document est ci-joint / ci-dessus. Commence par tes questions.</pre>
 
 
 </section>
-<section class="book-chapter" id="ch4-top">
-<div class="chapter-divider"><span class="kicker">Chapitre 4</span><h1 class="chapter-h1">Optimiser son Obsidian</h1></div>
+<section class="book-chapter" id="ch4-top"><div class="chapter-divider"><span class="kicker">Chapitre 4</span><h1 class="chapter-h1">Optimiser son Obsidian</h1></div>
 
 
 
@@ -2514,8 +2779,7 @@ Le document est ci-joint / ci-dessus. Commence par tes questions.</pre>
 
 
 </section>
-<section class="book-chapter" id="ch5-top">
-<div class="chapter-divider"><span class="kicker">Chapitre 5</span><h1 class="chapter-h1">Passer à l'agentique : Hermès</h1></div>
+<section class="book-chapter" id="ch5-top"><div class="chapter-divider"><span class="kicker">Chapitre 5</span><h1 class="chapter-h1">Passer à l'agentique : Hermès</h1></div>
 
 
 
@@ -2815,271 +3079,576 @@ Commence par me demander la première tâche et sur quel dossier.</pre>
 
 
 </section>
-<section class="book-chapter" id="rg-top">
-<div class="chapter-divider"><span class="kicker">Annexe A</span><h1 class="chapter-h1">Le radio-guidage par IA cloud</h1></div>
+<section class="book-chapter" id="rg-top"><div class="chapter-divider"><span class="kicker">Annexe A</span><h1 class="chapter-h1">Le radio-guidage par IA cloud</h1></div>
+
 
 <div class="callout info">
-  <p><strong class="tag">À quoi sert cette annexe</strong> Les chapitres du guide se terminent tous par une section « Radio-guidage » courte : un prompt à coller, un fichier à joindre. Cette annexe explique <strong>une seule fois</strong> tout ce qui est commun — le principe, le choix de l'IA cloud, les règles du radio-guide, les bonnes pratiques, les limites.</p>
+  <p><strong class="tag">À quoi sert cette page</strong> Les quatre chapitres du guide se terminent tous par une section « Radio-guidage » courte : un prompt à coller, un fichier à joindre. Cette annexe explique <strong>une seule fois</strong> tout ce qui est commun — le principe, le choix de l'IA cloud, les règles du radio-guide, les bonnes pratiques, les limites. Inutile de la lire en entier avant de commencer : revenez-y quand un point vous intrigue.</p>
 </div>
 
+
+
+<!-- 1 -->
+<section id="rg-principe">
 <h2>1. Le principe — se faire installer par une IA</h2>
-<p><strong>Pour installer et configurer une IA, le plus efficace est d'utiliser une IA.</strong> Un utilisateur non technique qui suit un tutoriel papier décroche à la première erreur inattendue. Celui qui dialogue avec une IA cloud avance à son rythme, lui montre ses écrans, lui fait diagnostiquer ses erreurs — et arrive au bout.</p>
-<p>Chaque chapitre est donc conçu pour être <strong>donné à une IA cloud</strong> (Claude, ChatGPT, Gemini, Mistral Le Chat), accompagné d'un prompt qui la transforme en <strong>radio-guide</strong> : un assistant patient, gratuit, accessible depuis un navigateur, qui vous accompagne pas à pas.</p>
+
+<p><strong>Pour installer et configurer une IA, le plus efficace est d'utiliser une IA.</strong> L'expérience le montre : un utilisateur non technique qui suit un tutoriel papier décroche à la première erreur inattendue. À l'inverse, celui qui dialogue avec une IA cloud avance à son rythme, lui montre ses écrans, lui fait diagnostiquer ses erreurs — et arrive au bout.</p>
+
+<p>Chaque chapitre du guide est donc conçu pour être <strong>donné à une IA cloud</strong> (Claude, ChatGPT, Gemini, Mistral Le Chat — celle que vous utilisez déjà), accompagné d'un prompt qui la transforme en <strong>radio-guide</strong> : un assistant patient, gratuit, accessible depuis un navigateur, qui vous accompagne pas à pas dans l'exécution.</p>
+
 <h3>1.1. Pourquoi ça marche</h3>
+<p>Le prompt de radio-guidage verrouille trois choses qui font échouer les tutoriels classiques :</p>
 <ul>
   <li><strong>La cadence.</strong> Une étape à la fois empêche de se perdre dans une procédure de douze étapes.</li>
   <li><strong>Le vocabulaire.</strong> Interdire les acronymes non expliqués force l'IA à parler simplement.</li>
   <li><strong>Le diagnostic.</strong> Les captures d'écran et les messages d'erreur sont traités au cas par cas — là où un PDF reste muet.</li>
 </ul>
-<div class="callout tip">
-  <p><strong class="tag">La contradiction assumée</strong> Oui, on utilise une IA cloud pour installer une IA locale. C'est un <strong>échafaudage temporaire</strong> : le cloud sert le temps de comprendre et d'installer, sur des contenus techniques <strong>sans aucune donnée personnelle</strong>. Une fois l'installation faite, l'IA locale prend le relais pour les usages sensibles.</p>
-</div>
 
+<div class="callout tip">
+  <p><strong class="tag">La contradiction assumée</strong> Oui, on utilise une IA cloud pour installer une IA locale. C'est un <strong>échafaudage temporaire</strong> : le cloud sert le temps de comprendre et d'installer, sur des contenus techniques <strong>sans aucune donnée personnelle</strong>. Une fois l'installation faite, l'IA locale prend le relais pour les usages sensibles. Cette contradiction apparente est en réalité le bon ordre des choses.</p>
+</div>
+</section>
+
+<!-- 2 -->
+<section id="rg-marche">
 <h2>2. La marche à suivre générique</h2>
+
+<p>La même séquence vaut pour les quatre chapitres. Seuls le fichier à joindre et le prompt à coller changent — ils sont donnés à la fin de chaque chapitre.</p>
+
 <ol class="steps">
-  <li><strong>Téléchargez le fichier du chapitre</strong> au format Markdown (bouton en fin de chapitre). Un seul fichier à la fois.</li>
-  <li><strong>Ouvrez une nouvelle conversation</strong> avec votre IA cloud habituelle. Une conversation neuve.</li>
-  <li><strong>Joignez le fichier <code>.md</code></strong> à la conversation, ou collez son texte.</li>
+  <li><strong>Téléchargez le fichier du chapitre</strong> au format Markdown (bouton en fin de chapitre). Un seul fichier à la fois, celui du chapitre que vous exécutez.</li>
+  <li><strong>Ouvrez une nouvelle conversation</strong> avec votre IA cloud habituelle. Une conversation neuve, pas un fil déjà encombré.</li>
+  <li><strong>Joignez le fichier <code>.md</code></strong> à la conversation (pièce jointe), ou collez son texte si la pièce jointe n'est pas disponible.</li>
   <li><strong>Copiez-collez le prompt de radio-guidage</strong> donné en fin de chapitre, et envoyez-le.</li>
-  <li><strong>Suivez les questions de l'IA</strong>, une étape à la fois. Envoyez une capture dès que vous bloquez.</li>
+  <li><strong>Suivez les questions de l'IA</strong>, une étape à la fois. Envoyez une capture d'écran dès que vous bloquez, collez les messages d'erreur tels quels.</li>
 </ol>
 
-<h2>3. Pas encore d'IA cloud ? Créer un compte en 2 minutes</h2>
-<p>Quatre services principaux. Compte gratuit, <strong>une simple adresse mail suffit</strong>, aucune carte bancaire pour la version gratuite.</p>
-<ul>
-  <li><strong>ChatGPT</strong> — <a href="https://chat.openai.com">chat.openai.com</a> — OpenAI (US).</li>
-  <li><strong>Claude</strong> — <a href="https://claude.ai">claude.ai</a> — Anthropic (US). Bon support des pièces jointes et captures.</li>
-  <li><strong>Gemini</strong> — <a href="https://gemini.google.com">gemini.google.com</a> — Google, connexion via compte Google.</li>
-  <li><strong>Mistral Le Chat</strong> — <a href="https://chat.mistral.ai">chat.mistral.ai</a> — éditeur français.</li>
-</ul>
-<div class="callout danger">
-  <p><strong class="tag">Cadre RGPD — important</strong> Ces services hébergent vos conversations sur leurs serveurs. On les utilise <strong>uniquement pour la configuration</strong> (installation, écriture de skills, débogage). <strong>Jamais</strong> pour traiter des données d'élèves, de famille, de santé. Une conversation de radio-guidage parle de fichiers, de commandes — pas de personnes.</p>
+<div class="callout info">
+  <p><strong class="tag">Une session = un objectif</strong> Chaque chapitre a son propre prompt, calibré sur sa cible : installation pour le Chapitre 1, écriture d'un skill pour le Chapitre 2, chatbot pédagogique pour le Chapitre 3, vault Obsidian pour le Chapitre 4. Ne mélangez pas : une conversation, un chapitre, un objectif.</p>
 </div>
+</section>
 
-<h2>4. Quel modèle d'IA cloud choisir ?</h2>
+<!-- 3 -->
+<section id="rg-compte">
+<h2>3. Pas encore d'IA cloud ? Créer un compte en 2 minutes</h2>
+
+<p>Quatre services principaux. Compte gratuit, <strong>une simple adresse mail suffit</strong>, aucune carte bancaire pour la version gratuite. Choisissez celui que vous préférez — vous pourrez toujours en changer. Le choix dépendra de vos habitudes, des accès disponibles et du cadre fixé par votre établissement.</p>
+
+<ul>
+  <li><strong>ChatGPT</strong> — <a href="https://chat.openai.com">chat.openai.com</a>. Le plus connu, très polyvalent. Éditeur : OpenAI (US).</li>
+  <li><strong>Claude</strong> — <a href="https://claude.ai">claude.ai</a>. Bon support des pièces jointes et des captures d'écran. Éditeur : Anthropic (US).</li>
+  <li><strong>Gemini</strong> — <a href="https://gemini.google.com">gemini.google.com</a>. L'IA de Google. Connexion directe via votre compte Google si vous en avez un.</li>
+  <li><strong>Mistral Le Chat</strong> — <a href="https://chat.mistral.ai">chat.mistral.ai</a>. Éditeur français, à privilégier pour qui souhaite un acteur européen.</li>
+</ul>
+
+<p style="font-size:.95em;font-style:italic;color:var(--gris-texte)"><strong>Note de l'auteur.</strong> À titre personnel, j'ai obtenu de bons résultats avec Claude pour le radio-guidage technique. Cette préférence est à éprouver soi-même ; tous les outils listés ci-dessus sont adaptés à la tâche.</p>
+
+<div class="callout danger">
+  <p><strong class="tag">Cadre RGPD — important</strong> Ces services hébergent vos conversations sur leurs serveurs (États-Unis ou UE selon l'éditeur). C'est pourquoi on les utilise <strong>uniquement pour la configuration</strong> (installation, écriture de skills, débogage technique). <strong>Jamais</strong> pour traiter des données d'élèves, de famille, de patients, de santé, ou tout contenu personnel identifiable. Une conversation de radio-guidage parle de fichiers, de commandes, de logiciels — pas de personnes. C'est précisément l'usage à risque minimal de ces services cloud.</p>
+</div>
+</section>
+
+<!-- 4 -->
+<section id="rg-modele">
+<h2>4. Quel modèle d'IA cloud choisir pour le radio-guidage ?</h2>
+
+<p>Tous les modèles ne se valent pas pour ce rôle exigeant. Privilégier les modèles capables :</p>
+
 <ul>
   <li><strong>Claude Sonnet ou Opus</strong> (pas Haiku seul)</li>
   <li><strong>ChatGPT GPT-4o ou GPT-5</strong> (pas GPT-mini)</li>
   <li><strong>Gemini Pro</strong> (pas Flash)</li>
   <li><strong>Mistral Large</strong></li>
 </ul>
-<p>Les modèles ultra-légers (Haiku, mini, Flash, Small) sont parfaits pour la conversation courante mais peuvent décrocher sur un radio-guidage technique long avec un utilisateur néophyte.</p>
 
+<p>Les modèles ultra-légers (Haiku, mini, Flash, Small) sont parfaits pour la conversation courante mais peuvent décrocher sur un radio-guidage technique long avec un utilisateur néophyte — ils ont tendance à se défausser, à halluciner du contexte, ou à supposer ce qu'ils ne savent pas. Si vous démarrez avec un modèle léger et que ça déraille, basculez sur un modèle plus puissant.</p>
+</section>
+
+<div class="page-break"></div>
+
+<!-- 5 -->
+<section id="rg-regles">
 <h2>5. Les neuf règles du radio-guide</h2>
-<p>Ces neuf règles sont intégrées <strong>à l'identique dans le prompt de chaque chapitre</strong>. Les cinq premières cadrent la posture ; les quatre suivantes — anti-dérive — ont été ajoutées après des tests réels.</p>
-<h3>5.1. Règles de posture (1 à 5)</h3>
-<div class="rule"><span class="n">1</span><strong>Une étape à la fois.</strong> Jamais plus d'une action par message ; l'IA attend votre confirmation.</div>
-<div class="rule"><span class="n">2</span><strong>Vocabulaire accessible.</strong> Aucun acronyme sans explication.</div>
-<div class="rule"><span class="n">3</span><strong>Captures d'écran acceptées.</strong> Quand vous bloquez, vous envoyez une image ; l'IA l'analyse.</div>
-<div class="rule"><span class="n">4</span><strong>Diagnostic des erreurs.</strong> Vous collez le message ; l'IA l'explique et propose la correction.</div>
-<div class="rule"><span class="n">5</span><strong>Si vous décrochez, on ralentit.</strong> L'IA n'enchaîne pas.</div>
-<h3>5.2. Règles anti-dérive (6 à 9)</h3>
-<div class="rule anti"><span class="n">6</span><strong>L'IA est le radio-guide.</strong> Elle ne vous renvoie jamais vers « une autre IA ». Si une tâche la dépasse, elle le dit et propose une alternative — elle ne se défausse pas.</div>
-<div class="rule anti"><span class="n">7</span><strong>L'IA ne voit pas votre écran</strong> sauf capture envoyée. Elle ne présume rien sur l'état de votre ordinateur.</div>
-<div class="rule anti"><span class="n">8</span><strong>L'IA ne connaît pas votre métier</strong> ni votre contexte sauf si vous le lui avez dit. Elle n'invente rien.</div>
-<div class="rule anti"><span class="n">9</span><strong>Un modèle léger se déclare</strong> en début de session et propose de basculer sur un modèle plus capable.</div>
 
+<p>Ces neuf règles sont intégrées <strong>à l'identique dans le prompt de chaque chapitre</strong>. Les cinq premières cadrent la posture ; les quatre suivantes — les règles anti-dérive — ont été ajoutées après des tests réels où des modèles légers déraillaient. Les voici expliquées.</p>
+
+<h3>5.1. Règles de posture (1 à 5)</h3>
+<div class="rule"><span class="n">1</span><strong>Une étape à la fois.</strong> L'IA ne donne jamais plus d'une action par message et attend votre confirmation. C'est ce qui empêche de se noyer.</div>
+<div class="rule"><span class="n">2</span><strong>Vocabulaire accessible.</strong> Aucun acronyme sans explication. L'IA part du principe que vous ne savez rien — et c'est très bien ainsi.</div>
+<div class="rule"><span class="n">3</span><strong>Captures d'écran acceptées.</strong> Quand vous bloquez, vous envoyez une image ; l'IA l'analyse et vous oriente. C'est souvent plus rapide que de décrire.</div>
+<div class="rule"><span class="n">4</span><strong>Diagnostic des erreurs.</strong> Vous collez le message d'erreur tel quel ; l'IA l'explique en français courant et propose la correction.</div>
+<div class="rule"><span class="n">5</span><strong>Si vous décrochez, on ralentit.</strong> L'IA n'enchaîne pas : elle pose une question pour comprendre où vous en êtes.</div>
+
+<h3>5.2. Règles anti-dérive (6 à 9)</h3>
+<div class="rule anti"><span class="n">6</span><strong>L'IA est le radio-guide.</strong> Elle ne vous renvoie jamais vers « une autre IA » ou « Claude dans un autre onglet ». Si une tâche la dépasse, elle le dit clairement et propose une alternative simple — elle ne se défausse pas.</div>
+<div class="rule anti"><span class="n">7</span><strong>L'IA ne voit pas votre écran</strong> sauf capture envoyée. Si votre message est confus ou tronqué (typique d'une dictée vocale ratée), elle ne présume rien : elle demande une capture ou une reformulation. Jamais d'invention sur l'état de votre ordinateur.</div>
+<div class="rule anti"><span class="n">8</span><strong>L'IA ne connaît pas votre métier</strong> ni votre contexte, sauf si vous le lui avez dit. Elle n'invente ni discipline enseignée, ni domaine professionnel, ni projet en cours. Si ce contexte l'aide, elle le demande.</div>
+<div class="rule anti"><span class="n">9</span><strong>Un modèle léger se déclare.</strong> Si l'IA est un modèle léger (Haiku, GPT-mini, Gemini Flash, Mistral Small), elle le reconnaît en début de session et vous propose de basculer sur un modèle plus capable.</div>
+
+<div class="callout warn">
+  <p><strong class="tag">Leçon de terrain</strong> Les règles 6 à 9 viennent d'observations réelles. Lors d'un test avec un modèle léger, l'IA a improvisé sans relire le document, halluciné l'état d'un écran qu'elle ne voyait pas, et tenté de se défausser. Ces quatre règles sont les garde-fous qui évitent ces dérives — elles sont dans le prompt de chaque chapitre, ne les retirez pas.</p>
+</div>
+</section>
+
+<!-- 6 -->
+<section id="rg-recadrer">
 <h2>6. Trois phrases pour recadrer une IA qui dérape</h2>
+
+<p>À garder sous la main, à utiliser dès que l'IA semble s'égarer pendant une séance :</p>
+
 <div class="callout tip">
   <p>Si elle vous renvoie vers une autre IA : <em>« Non, c'est toi mon radio-guide. Reprends ton rôle, une étape à la fois. »</em></p>
   <p>Si elle parle d'un contexte que vous n'avez pas mentionné : <em>« Tu inventes un contexte qui n'est pas le mien. Recommence sans supposer. »</em></p>
   <p>Si elle prétend voir votre écran sans capture : <em>« Tu ne peux pas voir mon écran. Demande-moi une capture, ne devine pas. »</em></p>
 </div>
+</section>
 
+<!-- 7 -->
+<section id="rg-bonnes-pratiques">
 <h2>7. Bonnes pratiques pendant une séance</h2>
-<ul>
-  <li><strong>Ne jamais coller de données personnelles</strong> dans la conversation — ni élève, ni famille, ni santé.</li>
-  <li><strong>Capture d'écran &gt; recopie à la main.</strong> L'IA lit l'image et gagne du temps.</li>
-  <li><strong>Dire « je ne comprends pas »</strong> dès qu'un mot accroche. L'IA reformule.</li>
-  <li><strong>Une session = un poste.</strong> Un fil distinct par ordinateur.</li>
-  <li><strong>Ne pas tout enchaîner.</strong> Mieux vaut une heure par jour pendant une semaine.</li>
-</ul>
 
+<ul>
+  <li><strong>Ne jamais coller de données personnelles</strong> dans la conversation de radio-guidage — ni élève, ni famille, ni santé. Le sujet est purement technique : fichiers, commandes, logiciels.</li>
+  <li><strong>Capture d'écran &gt; recopie à la main.</strong> L'IA lit l'image, situe précisément la fenêtre, gagne du temps et évite les erreurs de transcription.</li>
+  <li><strong>Dire « je ne comprends pas »</strong> dès qu'un mot accroche. L'IA reformule — c'est exactement son rôle.</li>
+  <li><strong>Une session = un poste.</strong> Si vous installez sur plusieurs ordinateurs, ouvrez un fil distinct par poste : les configurations diffèrent.</li>
+  <li><strong>Ne pas tout enchaîner.</strong> Mieux vaut une heure par jour pendant une semaine qu'un marathon d'une après-midi. Les sessions courtes vont au bout.</li>
+</ul>
+</section>
+
+<!-- 8 -->
+<section id="rg-limites">
 <h2>8. Quand le radio-guidage par IA ne suffit pas</h2>
+
+<p>Le radio-guidage couvre la grande majorité des cas. Trois situations demandent toutefois un arbitrage humain — l'IA donnera des pistes, mais pas la décision :</p>
+
 <table class="cmp">
 <thead><tr><th>Situation</th><th>Que faire</th></tr></thead>
 <tbody>
-<tr><td class="crit">Poste académique verrouillé, sans droits administrateur</td><td>Docker demande les droits admin. En parler au RUPN / référent informatique. À défaut, LM Studio s'installe en mode utilisateur.</td></tr>
-<tr><td class="crit">Blocage réseau du proxy d'établissement</td><td>Le filtrage peut bloquer certains ports. À étudier avec le référent numérique : réseau dédié, reverse proxy HTTPS, instance par salle.</td></tr>
-<tr><td class="crit">Carte graphique non reconnue</td><td>L'IA propose des pistes (pilotes, mode CPU) ; une carte non supportée peut imposer un modèle léger en CPU.</td></tr>
+<tr><td class="crit">Poste académique verrouillé, sans droits administrateur</td><td>L'installation de Docker (et parfois d'autres logiciels) demande les droits administrateur. En parler en amont au RUPN / référent informatique. À défaut, LM Studio s'installe en mode utilisateur sans droits étendus.</td></tr>
+<tr><td class="crit">Blocage réseau du proxy d'établissement</td><td>Le filtrage académique peut bloquer certains ports ou protocoles. Solutions à étudier avec le référent numérique : réseau pédagogique dédié, reverse proxy HTTPS, instance par salle.</td></tr>
+<tr><td class="crit">Carte graphique non reconnue par le moteur</td><td>Cas matériel spécifique. L'IA peut proposer des pistes (pilotes, mode CPU), mais une carte non supportée peut imposer de rester sur un modèle léger en CPU, ou de demander l'avis d'un collègue référent.</td></tr>
 </tbody>
 </table>
+
 <div class="callout info">
-  <p><strong class="tag">En résumé</strong> Dans ces trois cas, le radio-guidage reste utile pour <em>comprendre</em> le blocage et préparer la discussion — mais la résolution passe par un humain : référent numérique, chef d'établissement, ou collègue plus avancé.</p>
+  <p><strong class="tag">En résumé</strong> Dans ces trois cas, le radio-guidage reste utile pour <em>comprendre</em> le blocage et préparer la discussion — mais la résolution passe par un humain : référent numérique, chef d'établissement, ou collègue plus avancé. Ce n'est pas un échec de la méthode, c'est sa limite normale.</p>
 </div>
+</section>
+
 
 </section>
-<section class="book-chapter" id="glo-top">
-<div class="chapter-divider"><span class="kicker">Annexe B</span><h1 class="chapter-h1">Glossaire du guide</h1></div>
+<section class="book-chapter" id="glo-top"><div class="chapter-divider"><span class="kicker">Annexe B</span><h1 class="chapter-h1">Glossaire du guide</h1></div>
+
 
 <div class="callout tip">
-  <p><strong class="tag">Comment utiliser ce glossaire</strong> Définitions accessibles aux non-techniciens des termes utilisés dans le guide. Cherchez un mot avec <code>Ctrl + F</code>, ou donnez ce document à votre IA cloud comme référence pour qu'elle explique un terme à la volée.</p>
+  <p><strong class="tag">Comment utiliser ce glossaire</strong> Trois façons : <strong>(1)</strong> chercher un mot directement avec <code>Ctrl + F</code> dans votre navigateur ; <strong>(2)</strong> cliquer sur une lettre dans la barre alphabétique ci-dessous ; <strong>(3)</strong> donner ce document à votre IA cloud en plus du chapitre en cours — elle pourra ainsi expliquer un terme à la volée, dans le contexte de votre installation.</p>
+</div>
+
+<div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:#eef4fb;border:1px solid #2c5a8f;border-radius:8px;padding:16px 20px;margin:16px 0">
+  <span style="flex:1;min-width:240px">
+    <strong style="font-family:'Trebuchet MS','Segoe UI',sans-serif;font-size:1.05em;color:#1b3a63">Le glossaire à joindre à votre IA</strong><br>
+    <span style="font-size:.92em;color:#3a3f47">Téléchargez le glossaire au format Markdown et donnez-le à votre IA cloud en plus du chapitre en cours : elle pourra expliquer n'importe quel terme à la volée, dans le contexte de votre installation.</span>
+  </span>
+  <a href="glossaire.md" download style="background:#1b3a63;color:#fff;font-family:'Trebuchet MS','Segoe UI',sans-serif;font-weight:700;padding:10px 22px;border-radius:6px;white-space:nowrap;text-decoration:none">Télécharger le glossaire (.md)</a>
+</div>
+
+<h3>Aller directement à une lettre</h3>
+<div class="alphabet">
+  <a href="#glo-L-A">A</a><a href="#glo-L-B">B</a><a href="#glo-L-C">C</a><a href="#glo-L-D">D</a><a href="#glo-L-E">E</a><a href="#glo-L-F">F</a><a href="#glo-L-G">G</a><a href="#glo-L-H">H</a><a href="#glo-L-I">I</a><a href="#glo-L-J">J</a><a href="#glo-L-L">L</a><a href="#glo-L-M">M</a><a href="#glo-L-O">O</a><a href="#glo-L-P">P</a><a href="#glo-L-Q">Q</a><a href="#glo-L-R">R</a><a href="#glo-L-S">S</a><a href="#glo-L-T">T</a><a href="#glo-L-U">U</a><a href="#glo-L-V">V</a><a href="#glo-L-W">W</a><a href="#glo-L-Y">Y</a>
+</div>
+
+<h3>Aller par thème</h3>
+<div class="themes">
+  <div class="theme-card"><a href="#glo-theme-ia">IA et modèles</a></div>
+  <div class="theme-card"><a href="#glo-theme-logiciels">Logiciels et outils</a></div>
+  <div class="theme-card"><a href="#glo-theme-technique">Concepts techniques</a></div>
+  <div class="theme-card"><a href="#glo-theme-rgpd">RGPD et réglementaire</a></div>
+  <div class="theme-card"><a href="#glo-theme-edu">Pédagogie et milieu éducatif</a></div>
 </div>
 
 <dl class="glossary">
-<dt>Agentique <span class="anchor">[IA]</span></dt>
-<dd>Qualifie une IA qui ne se contente pas de répondre mais qui <em>agit</em> — envoie un mail, dépose un fichier, déclenche une action. Objet du Chapitre 5.</dd>
-<dt>AESH <span class="acro">Accompagnant d'Élève en Situation de Handicap</span> <span class="anchor">[Édu]</span></dt>
+
+<!-- A -->
+<section class="letter-section"><h3 id="glo-L-A">A</h3>
+
+<dt id="glo-agentique">Agentique <span class="anchor">[IA]</span></dt>
+<dd>Qualifie une IA qui ne se contente pas de répondre mais qui <em>agit</em> — envoie un mail, dépose un fichier, déclenche une action. Sujet de prolongements techniques encore en brouillon, hors du périmètre diffusé.</dd>
+
+<dt id="glo-aesh">AESH <span class="acro">Accompagnant d'Élève en Situation de Handicap</span> <span class="anchor">[Édu]</span></dt>
 <dd>Professionnel qui accompagne au quotidien un élève bénéficiant d'un PPS ou d'un PAP.</dd>
-<dt>API <span class="acro">Application Programming Interface</span> <span class="anchor">[Technique]</span></dt>
-<dd>Façon dont deux logiciels se parlent. Une « clé API » permet à un programme d'utiliser un service distant.</dd>
-<dt>B <span class="acro">Billions (milliards de paramètres)</span> <span class="anchor">[IA]</span></dt>
-<dd>Le « 8B » dans « Llama 3.1 8B » = 8 milliards de paramètres. Plus le nombre est élevé, plus le modèle est intelligent — et lourd à faire tourner.</dd>
-<dt>BOM <span class="acro">Byte Order Mark</span> <span class="anchor">[Technique]</span></dt>
-<dd>Marque cachée au début d'un fichier indiquant son encodage. Certains logiciels exigent un CSV avec BOM en UTF-8 pour bien lire les accents.</dd>
-<dt>CFA <span class="acro">Centre de Formation d'Apprentis</span> <span class="anchor">[Édu]</span></dt>
+
+<dt id="glo-api">API <span class="acro">Application Programming Interface</span> <span class="anchor">[Technique]</span></dt>
+<dd>Façon dont deux logiciels se parlent. Une « clé API » permet à un programme d'utiliser un service distant (par exemple appeler ChatGPT depuis un autre logiciel).</dd>
+
+</section>
+
+<!-- B -->
+<section class="letter-section"><h3 id="glo-L-B">B</h3>
+
+<dt id="glo-b-billions">B <span class="acro">Billions (milliards de paramètres)</span> <span class="anchor">[IA]</span></dt>
+<dd>Le « 8B » dans « Llama 3.1 8B » signifie 8 milliards de paramètres. Plus le nombre est élevé, plus le modèle est intelligent — et plus il est lourd à faire tourner.</dd>
+
+<dt id="glo-bom">BOM <span class="acro">Byte Order Mark</span> <span class="anchor">[Technique]</span></dt>
+<dd>Marque cachée au début d'un fichier indiquant son encodage. Certains logiciels (comme Charlemagne Pro) exigent un fichier CSV avec BOM en UTF-8 pour bien lire les accents.</dd>
+
+</section>
+
+<!-- C -->
+<section class="letter-section"><h3 id="glo-L-C">C</h3>
+
+<dt id="glo-cfa">CFA <span class="acro">Centre de Formation d'Apprentis</span> <span class="anchor">[Édu]</span></dt>
 <dd>Structure qui dispense la formation en alternance des apprentis.</dd>
-<dt>Charlemagne Pro <span class="anchor">[Logiciel]</span></dt>
-<dd>Logiciel de gestion administrative et pédagogique de certains établissements (notes, absences, compétences, communication aux familles).</dd>
-<dt>Chatbot <span class="anchor">[IA]</span></dt>
-<dd>Programme qui dialogue avec l'utilisateur. ChatGPT, Claude, Gemini sont des chatbots IA.</dd>
-<dt>ChatGPT <span class="anchor">[Logiciel]</span></dt>
-<dd>Assistant IA conversationnel édité par OpenAI (US). <a href="https://chat.openai.com">chat.openai.com</a>.</dd>
-<dt>Claude <span class="anchor">[Logiciel]</span></dt>
-<dd>Assistant IA conversationnel édité par Anthropic (US). <a href="https://claude.ai">claude.ai</a>.</dd>
-<dt>CLI <span class="acro">Command-Line Interface</span> <span class="anchor">[Technique]</span></dt>
-<dd>Interface en ligne de commande — on tape des instructions texte. Terminal (Mac), PowerShell/cmd (Windows).</dd>
-<dt>Cloud <span class="anchor">[Technique]</span></dt>
-<dd>Services hébergés sur des serveurs distants, accessibles par Internet. Opposé à « local ».</dd>
-<dt>CNIL <span class="acro">Commission Nationale de l'Informatique et des Libertés</span> <span class="anchor">[RGPD]</span></dt>
-<dd>Autorité française indépendante de protection des données personnelles.</dd>
-<dt>CPE <span class="acro">Conseiller Principal d'Éducation</span> <span class="anchor">[Édu]</span></dt>
-<dd>Personnel chargé de la vie scolaire, du suivi des élèves, de l'animation éducative.</dd>
-<dt>CPU <span class="acro">Central Processing Unit</span> <span class="anchor">[Technique]</span></dt>
-<dd>Processeur principal. Sur un PC sans carte graphique dédiée, c'est lui qui fait tourner l'IA — plus lentement qu'un GPU.</dd>
-<dt>CRCN <span class="acro">Cadre de Référence des Compétences Numériques</span> <span class="anchor">[Édu]</span></dt>
-<dd>Référentiel officiel des compétences numériques à valider tout au long de la scolarité.</dd>
-<dt>CSV <span class="acro">Comma-Separated Values</span> <span class="anchor">[Technique]</span></dt>
-<dd>Format de fichier tableau texte. Format d'échange universel entre Obsidian et les logiciels de vie scolaire.</dd>
-<dt>Docker <span class="anchor">[Logiciel]</span></dt>
-<dd>Logiciel qui installe et fait tourner d'autres logiciels dans des « conteneurs » isolés. Utilisé ici pour Open WebUI. <a href="https://docker.com">docker.com</a>.</dd>
-<dt>DOCX / PPTX / XLSX <span class="anchor">[Technique]</span></dt>
-<dd>Formats Microsoft Word / PowerPoint / Excel modernes (fichiers XML compressés).</dd>
-<dt>DPO <span class="acro">Délégué à la Protection des Données</span> <span class="anchor">[RGPD]</span></dt>
+
+<dt id="glo-charlemagne">Charlemagne Pro <span class="acro">C-Pro</span> <span class="anchor">[Logiciel]</span></dt>
+<dd>Logiciel de gestion administrative et pédagogique de certains établissements scolaires (suivi des notes, des absences, des compétences, communication aux familles).</dd>
+
+<dt id="glo-chatbot">Chatbot <span class="anchor">[IA]</span></dt>
+<dd>Programme qui dialogue avec l'utilisateur sous forme de conversation. ChatGPT, Claude, Gemini sont des chatbots IA. Le Chapitre 3 explique comment en créer un dédié pour les élèves.</dd>
+
+<dt id="glo-chatgpt">ChatGPT <span class="anchor">[Logiciel]</span></dt>
+<dd>Assistant IA conversationnel édité par <strong>OpenAI</strong> (US). Le plus connu du grand public. Accessible sur <a href="https://chat.openai.com">chat.openai.com</a>.</dd>
+
+<dt id="glo-claude">Claude <span class="anchor">[Logiciel]</span></dt>
+<dd>Assistant IA conversationnel édité par <strong>Anthropic</strong> (US). Préconisé à titre personnel par l'auteur du guide pour le radio-guidage technique. Accessible sur <a href="https://claude.ai">claude.ai</a>.</dd>
+
+<dt id="glo-cli">CLI <span class="acro">Command-Line Interface</span> <span class="anchor">[Technique]</span></dt>
+<dd>Interface en ligne de commande — on tape des instructions texte plutôt que de cliquer. Le « Terminal » sur Mac, « PowerShell » ou « cmd » sur Windows.</dd>
+
+<dt id="glo-cloud">Cloud <span class="anchor">[Technique]</span></dt>
+<dd>Services hébergés sur des serveurs distants, accessibles par Internet. Opposé à « local » (sur votre propre machine). ChatGPT et Claude tournent en cloud ; Ollama tourne en local.</dd>
+
+<dt id="glo-cnil">CNIL <span class="acro">Commission Nationale de l'Informatique et des Libertés</span> <span class="anchor">[RGPD]</span></dt>
+<dd>Autorité française indépendante de protection des données personnelles. Émet des recommandations et peut sanctionner.</dd>
+
+<dt id="glo-cpe">CPE <span class="acro">Conseiller Principal d'Éducation</span> <span class="anchor">[Édu]</span></dt>
+<dd>Personnel d'éducation chargé de la vie scolaire, du suivi des élèves, de l'animation éducative.</dd>
+
+<dt id="glo-cpu">CPU <span class="acro">Central Processing Unit</span> <span class="anchor">[Technique]</span></dt>
+<dd>Le processeur principal de l'ordinateur. Sur un PC sans carte graphique dédiée, c'est lui qui fait tourner l'IA — plus lentement qu'un GPU.</dd>
+
+<dt id="glo-crcn">CRCN <span class="acro">Cadre de Référence des Compétences Numériques</span> <span class="anchor">[Édu]</span></dt>
+<dd>Référentiel officiel des compétences numériques à valider tout au long de la scolarité. Utilisé dans le Chapitre 3 pour positionner l'usage de l'IA par l'élève.</dd>
+
+<dt id="glo-csv">CSV <span class="acro">Comma-Separated Values</span> <span class="anchor">[Technique]</span></dt>
+<dd>Format de fichier tableau texte. Chaque ligne du fichier est une ligne du tableau, les colonnes sont séparées par virgules ou points-virgules. Format d'échange universel entre Obsidian et Charlemagne Pro / École Directe.</dd>
+
+</section>
+
+<!-- D -->
+<section class="letter-section"><h3 id="glo-L-D">D</h3>
+
+<dt id="glo-docker">Docker <span class="anchor">[Logiciel]</span></dt>
+<dd>Logiciel qui permet d'installer et faire tourner d'autres logiciels dans des « conteneurs » isolés. Utilisé ici pour installer Open WebUI en une commande. À télécharger sur <a href="https://docker.com">docker.com</a> (Docker Desktop).</dd>
+
+<dt id="glo-docx">DOCX / PPTX / XLSX <span class="anchor">[Technique]</span></dt>
+<dd>Formats Microsoft Word (DOCX), PowerPoint (PPTX), Excel (XLSX) modernes — depuis 2007. Reconnaissables au « X » final, qui signifie qu'il s'agit de fichiers XML compressés.</dd>
+
+<dt id="glo-dpo">DPO <span class="acro">Data Protection Officer / Délégué à la Protection des Données</span> <span class="anchor">[RGPD]</span></dt>
 <dd>Personne chargée de veiller au respect du RGPD dans une organisation. Chaque académie a un DPO.</dd>
-<dt>DYS <span class="anchor">[Édu]</span></dt>
-<dd>Famille de troubles des apprentissages : dyslexie, dyspraxie, dysorthographie, dyscalculie… Justifient des aménagements.</dd>
-<dt>École Directe <span class="anchor">[Logiciel]</span></dt>
-<dd>Outil numérique de vie scolaire largement utilisé dans les établissements privés.</dd>
-<dt>Embedding <span class="anchor">[IA]</span></dt>
-<dd>Représentation numérique d'un texte sous forme de vecteur. Permet de trouver des notes « similaires en sens ».</dd>
-<dt>ENT <span class="acro">Espace Numérique de Travail</span> <span class="anchor">[Édu]</span></dt>
-<dd>Plateforme institutionnelle agrégeant les outils numériques d'un établissement.</dd>
-<dt>Frontmatter <span class="anchor">[Technique]</span></dt>
-<dd>En-tête YAML en haut d'un fichier markdown, encadré par des <code>---</code>. Contient les métadonnées (titre, classe, date, tags).</dd>
-<dt>Gemini <span class="anchor">[Logiciel]</span></dt>
-<dd>Assistant IA conversationnel édité par Google (US). <a href="https://gemini.google.com">gemini.google.com</a>.</dd>
-<dt>Gemma 3 <span class="anchor">[IA]</span></dt>
-<dd>Famille de modèles open weights de Google DeepMind. Gemma 3 12B : bon compromis qualité/poids en local francophone.</dd>
-<dt>Go (gigaoctet) <span class="anchor">[Technique]</span></dt>
-<dd>Unité de stockage/mémoire. Un modèle Llama 3.1 8B pèse ~4,7 Go ; Gemma 3 12B ~8 Go.</dd>
-<dt>GPU <span class="acro">Graphics Processing Unit</span> <span class="anchor">[Technique]</span></dt>
-<dd>Carte graphique, essentielle pour accélérer l'IA. NVIDIA RTX (3060+) ou Mac Apple Silicon (M1+).</dd>
-<dt>Hallucination <span class="anchor">[IA]</span></dt>
-<dd>Quand l'IA invente une information plausible mais fausse. Le principal défaut des LLM. À neutraliser par des règles strictes et de bons skills.</dd>
-<dt>HTML <span class="anchor">[Technique]</span></dt>
-<dd>Format des pages web. Les chapitres de ce guide sont en HTML (liens, sommaire cliquable, boutons « copier »).</dd>
-<dt>HTTPS / HTTP <span class="anchor">[Technique]</span></dt>
-<dd>Protocoles de transport web. HTTPS est chiffré (le « S » pour Secure) ; HTTP ne l'est pas.</dd>
-<dt>IA <span class="acro">Intelligence Artificielle</span> <span class="anchor">[IA]</span></dt>
-<dd>Programmes qui imitent certaines fonctions cognitives. Le sujet du moment : l'<strong>IA générative</strong> (texte, image, son).</dd>
-<dt>IA native (ou IA locale) <span class="anchor">[IA]</span></dt>
-<dd>IA qui s'exécute sur la machine de l'utilisateur ; les prompts y sont traités localement, sans transmission cloud (sous réserve de configuration). Objet du Chapitre 1.</dd>
-<dt>IP / IPv4 <span class="anchor">[Technique]</span></dt>
-<dd>Adresse numérique unique d'un appareil sur un réseau (ex. <code>192.168.1.42</code>).</dd>
-<dt>JSON <span class="anchor">[Technique]</span></dt>
-<dd>Format de données texte structurées, lisible par les humains et les programmes.</dd>
-<dt>Llama <span class="anchor">[IA]</span></dt>
-<dd>Famille de modèles open weights de Meta (US). Excellente en français. Llama 3.1 8B : référence milieu de gamme.</dd>
-<dt>LLM <span class="acro">Large Language Model</span> <span class="anchor">[IA]</span></dt>
-<dd>« Grand modèle de langage » : Llama, Mistral, Gemma, ChatGPT, Claude. Tous prédisent le mot suivant dans un texte.</dd>
-<dt>LM Studio <span class="anchor">[Logiciel]</span></dt>
-<dd>Application desktop tout-en-un pour faire tourner des LLM en local. Plus simple qu'Ollama, moins flexible. <a href="https://lmstudio.ai">lmstudio.ai</a>.</dd>
-<dt>Local <span class="anchor">[Technique]</span></dt>
-<dd>Sur votre propre machine. Opposé à « cloud ». Une IA locale tourne sans Internet une fois installée.</dd>
-<dt>Localhost <span class="anchor">[Technique]</span></dt>
-<dd>« Votre propre machine », vue depuis le réseau. <code>localhost:3000</code> ouvre Open WebUI dans le navigateur.</dd>
-<dt>Markdown <span class="acro">.md</span> <span class="anchor">[Technique]</span></dt>
-<dd>Format texte enrichi très léger. Utilisé pour les skills, les notes Obsidian, et le source de ce guide.</dd>
-<dt>Mistral / Mixtral <span class="anchor">[IA]</span></dt>
-<dd>Modèles open weights de Mistral AI (français). Choix souverain européen. Mistral 7B : référence légère.</dd>
-<dt>Modèle (au sens IA) <span class="anchor">[IA]</span></dt>
-<dd>Le « cerveau » de l'IA, sous forme d'un gros fichier (plusieurs Go) contenant les « poids » du réseau de neurones.</dd>
-<dt>Multimodal <span class="anchor">[IA]</span></dt>
-<dd>Modèle capable de traiter plusieurs types de contenu — texte, image, audio.</dd>
-<dt>Obsidian <span class="anchor">[Logiciel]</span></dt>
-<dd>Logiciel de prise de notes en markdown, local par conception, à plugins. Devient une « mémoire long-terme » du prof. <em>Certains plugins font appel à des API cloud — à vérifier avant tout usage sensible.</em> Sujet du Chapitre 4.</dd>
-<dt>Ollama <span class="anchor">[Logiciel]</span></dt>
-<dd>Moteur open source qui fait tourner des LLM en local, en ligne de commande simple. Cœur de l'installation du Chapitre 1. <a href="https://ollama.com">ollama.com</a>.</dd>
-<dt>Open source / Open weights <span class="anchor">[IA]</span></dt>
-<dd>Logiciels (ou modèles) dont les fichiers sont publics et utilisables librement. Llama, Mistral, Gemma, Qwen — c'est ce qui rend possible l'IA native.</dd>
-<dt>Open WebUI <span class="anchor">[Logiciel]</span></dt>
-<dd>Interface web (type ChatGPT) qui se branche sur Ollama. Permet de créer des « models » personnalisés. <a href="https://docs.openwebui.com">docs.openwebui.com</a>.</dd>
-<dt>Pare-feu <span class="anchor">[Technique]</span></dt>
-<dd>Logiciel qui filtre les connexions réseau. Peut bloquer un service Open WebUI accessible aux postes élèves.</dd>
-<dt>PFMP <span class="acro">Période de Formation en Milieu Professionnel</span> <span class="anchor">[Édu]</span></dt>
+
+<dt id="glo-dys">DYS <span class="acro">Troubles « DYS »</span> <span class="anchor">[Édu]</span></dt>
+<dd>Famille de troubles des apprentissages : dyslexie, dyspraxie, dysorthographie, dyscalculie, etc. Justifient des aménagements pédagogiques.</dd>
+
+</section>
+
+<!-- E -->
+<section class="letter-section"><h3 id="glo-L-E">E</h3>
+
+<dt id="glo-ed">École Directe <span class="acro">ED</span> <span class="anchor">[Logiciel]</span></dt>
+<dd>Outil numérique de vie scolaire largement utilisé dans les établissements privés (notes, absences, cahier de texte, communication familles).</dd>
+
+<dt id="glo-embedding">Embedding <span class="anchor">[IA]</span></dt>
+<dd>Représentation numérique d'un texte sous forme de vecteur de nombres. Permet à l'IA de trouver des notes « similaires en sens » — pas seulement en mots-clés. Utilisé par le plugin Smart Connections dans Obsidian.</dd>
+
+<dt id="glo-ent">ENT <span class="acro">Espace Numérique de Travail</span> <span class="anchor">[Édu]</span></dt>
+<dd>Plateforme institutionnelle d'un établissement, agrégeant les outils numériques (mail, agenda, ressources, vie scolaire).</dd>
+
+</section>
+
+<!-- F -->
+<section class="letter-section"><h3 id="glo-L-F">F</h3>
+
+<dt id="glo-f12">F12 <span class="anchor">[Technique]</span></dt>
+<dd>Touche du clavier qui ouvre les outils de développement dans la plupart des navigateurs. Permet d'inspecter le code d'une page web, de récupérer un tableau, de voir les en-têtes d'un formulaire (utile pour adapter un skill à un outil comme Charlemagne).</dd>
+
+<dt id="glo-frontmatter">Frontmatter <span class="anchor">[Technique]</span></dt>
+<dd>En-tête YAML placé en haut d'un fichier markdown. Encadré par des <code>---</code>. Contient les métadonnées (titre, classe, date, tags) qui rendent la note filtrable. Voir le Chapitre 4 §4.2.</dd>
+
+</section>
+
+<!-- G -->
+<section class="letter-section"><h3 id="glo-L-G">G</h3>
+
+<dt id="glo-gemini">Gemini <span class="anchor">[Logiciel]</span></dt>
+<dd>Assistant IA conversationnel édité par <strong>Google</strong> (US). Accessible sur <a href="https://gemini.google.com">gemini.google.com</a>, connexion via compte Google.</dd>
+
+<dt id="glo-gemma">Gemma 3 <span class="anchor">[IA]</span></dt>
+<dd>Famille de modèles open weights publiée par Google DeepMind. Gemma 3 12B est aujourd'hui un des meilleurs compromis qualité/poids pour un usage local francophone. Voir Chapitre 1 §5.2.</dd>
+
+<dt id="glo-go">Go (gigaoctet) <span class="anchor">[Technique]</span></dt>
+<dd>Unité de mesure du stockage et de la mémoire. 1 Go = 1 milliard d'octets. Un modèle Llama 3.1 8B pèse environ 4,7 Go ; Gemma 3 12B pèse environ 8 Go.</dd>
+
+<dt id="glo-gpu">GPU <span class="acro">Graphics Processing Unit</span> <span class="anchor">[Technique]</span></dt>
+<dd>Carte graphique. Initialement pour les jeux vidéo, devenue essentielle pour accélérer l'IA. Les NVIDIA RTX (3060+) sont la cible idéale ; les Mac Apple Silicon (M1+) sont excellents grâce à leur mémoire unifiée.</dd>
+
+<dt id="glo-greta">GRETA <span class="acro">Groupement d'Établissements</span> <span class="anchor">[Édu]</span></dt>
+<dd>Structure de l'Éducation nationale dédiée à la formation continue des adultes.</dd>
+
+</section>
+
+<!-- H -->
+<section class="letter-section"><h3 id="glo-L-H">H</h3>
+
+<dt id="glo-hallucination">Hallucination <span class="anchor">[IA]</span></dt>
+<dd>Quand l'IA invente une information plausible mais fausse — une référence inexistante, une date inventée, une norme imaginée. Le principal défaut des LLM. À neutraliser par des règles strictes dans le system prompt (Chapitre 3 §4.1) et par l'usage de skills bien construits.</dd>
+
+<dt id="glo-headless">Headless <span class="anchor">[Technique]</span></dt>
+<dd>« Sans tête », sans interface graphique. Un navigateur en mode headless tourne sans fenêtre — utile pour automatiser. Le script <code>generer-pdf.bat</code> utilise Edge en mode headless pour produire le PDF du guide.</dd>
+
+<dt id="glo-html">HTML <span class="acro">HyperText Markup Language</span> <span class="anchor">[Technique]</span></dt>
+<dd>Format des pages web. Les chapitres de ce guide sont en HTML, ce qui leur permet d'être interactifs (liens, sommaire cliquable, boutons « copier »).</dd>
+
+<dt id="glo-https">HTTPS / HTTP <span class="anchor">[Technique]</span></dt>
+<dd>Protocoles de transport web. <strong>HTTPS</strong> est chiffré (le « S » pour Secure) ; <strong>HTTP</strong> ne l'est pas. Le proxy d'un établissement peut bloquer HTTP non chiffré sur certains ports.</dd>
+
+</section>
+
+<!-- I -->
+<section class="letter-section"><h3 id="glo-L-I">I</h3>
+
+<dt id="glo-ia">IA <span class="acro">Intelligence Artificielle</span> <span class="anchor">[IA]</span></dt>
+<dd>Terme générique pour les programmes qui imitent certaines fonctions cognitives humaines. Aujourd'hui, le sujet du moment est l'<strong>IA générative</strong>, capable de produire texte, image, son.</dd>
+
+<dt id="glo-ia-native">IA native (ou IA locale) <span class="anchor">[IA]</span></dt>
+<dd>Au sens de ce guide : IA qui s'exécute sur la machine de l'utilisateur. Les prompts y sont traités localement, sans transmission à un service cloud — sous réserve de ne pas activer de connecteur externe, plugin cloud ou synchronisation non maîtrisée. Synonymes : IA locale, IA on-device, IA en local. Tout l'objet du Chapitre 1.</dd>
+
+<dt id="glo-ip">IP / IPv4 <span class="acro">Internet Protocol</span> <span class="anchor">[Technique]</span></dt>
+<dd>Adresse numérique unique d'un appareil sur un réseau. Format <code>192.168.1.42</code> typique d'un réseau local. Permet à un poste élève de joindre l'IA installée sur le poste enseignant (Chapitre 3 §7).</dd>
+
+</section>
+
+<!-- J -->
+<section class="letter-section"><h3 id="glo-L-J">J</h3>
+
+<dt id="glo-json">JSON <span class="acro">JavaScript Object Notation</span> <span class="anchor">[Technique]</span></dt>
+<dd>Format de données texte structurées, à la fois lisible par les humains et par les programmes. Utilisé pour configurer beaucoup d'outils modernes.</dd>
+
+</section>
+
+<!-- L -->
+<section class="letter-section"><h3 id="glo-L-L">L</h3>
+
+<dt id="glo-llama">Llama <span class="anchor">[IA]</span></dt>
+<dd>Famille de modèles open weights publiée par <strong>Meta</strong> (US). Excellente en français, très polyvalente. Llama 3.1 8B est une référence en milieu de gamme.</dd>
+
+<dt id="glo-llm">LLM <span class="acro">Large Language Model</span> <span class="anchor">[IA]</span></dt>
+<dd>« Grand modèle de langage ». La famille des IA conversationnelles modernes : Llama, Mistral, Gemma, ChatGPT, Claude. Tous fonctionnent sur le même principe : prédire le mot suivant dans un texte.</dd>
+
+<dt id="glo-lm-studio">LM Studio <span class="anchor">[Logiciel]</span></dt>
+<dd>Application desktop tout-en-un pour faire tourner des modèles LLM en local. Plus simple à installer qu'Ollama (un seul installateur), mais moins flexible. <a href="https://lmstudio.ai">lmstudio.ai</a>.</dd>
+
+<dt id="glo-local">Local <span class="anchor">[Technique]</span></dt>
+<dd>Sur votre propre machine. Opposé à « cloud » (sur un serveur distant). Une IA locale tourne sans Internet une fois installée.</dd>
+
+<dt id="glo-localhost">Localhost <span class="anchor">[Technique]</span></dt>
+<dd>« Votre propre machine », vue depuis le réseau. <code>localhost:3000</code> signifie « accéder au service qui écoute sur le port 3000 de ma machine ». C'est ainsi qu'on ouvre Open WebUI depuis le navigateur.</dd>
+
+</section>
+
+<!-- M -->
+<section class="letter-section"><h3 id="glo-L-M">M</h3>
+
+<dt id="glo-markdown">Markdown <span class="acro">.md</span> <span class="anchor">[Technique]</span></dt>
+<dd>Format texte enrichi très léger, lisible tel quel. Quelques caractères suffisent à produire des titres, des listes, du gras. Utilisé pour les fichiers de skills, les notes Obsidian, et le source de ce guide.</dd>
+
+<dt id="glo-mistral">Mistral / Mixtral <span class="anchor">[IA]</span></dt>
+<dd>Famille de modèles open weights publiée par <strong>Mistral AI</strong> (français). Excellente en français, choix souverain européen. Mistral 7B est une référence légère.</dd>
+
+<dt id="glo-modele">Modèle (au sens IA) <span class="anchor">[IA]</span></dt>
+<dd>Le « cerveau » de l'IA, sous forme d'un gros fichier (plusieurs Go) contenant les « poids » du réseau de neurones. Exemples : Llama 3.1 8B, Gemma 3 12B, Mistral 7B.</dd>
+
+<dt id="glo-multimodal">Multimodal <span class="anchor">[IA]</span></dt>
+<dd>Qualifie un modèle capable de traiter plusieurs types de contenu — texte, image, audio. Gemma 3 a une version multimodale qui lit les images.</dd>
+
+</section>
+
+<!-- O -->
+<section class="letter-section"><h3 id="glo-L-O">O</h3>
+
+<dt id="glo-obsidian">Obsidian <span class="anchor">[Logiciel]</span></dt>
+<dd>Logiciel de prise de notes en markdown, <strong>local par conception</strong> (les notes restent dans un dossier sur votre disque), avec un système de plugins très riche. Devient, avec une IA branchée via plugins adaptés, une « mémoire long-terme » du prof. <em>Attention : certains plugins Obsidian font appel à des API cloud — à vérifier avant tout usage avec des données sensibles.</em> Sujet du Chapitre 4. <a href="https://obsidian.md">obsidian.md</a>.</dd>
+
+<dt id="glo-ollama">Ollama <span class="anchor">[Logiciel]</span></dt>
+<dd>Moteur open source qui fait tourner des modèles LLM en local. S'utilise en ligne de commande mais avec une syntaxe très simple. C'est le cœur de l'installation du Chapitre 1. <a href="https://ollama.com">ollama.com</a>.</dd>
+
+<dt id="glo-open-source">Open source / Open weights <span class="anchor">[IA]</span></dt>
+<dd>Logiciels (ou modèles) dont les fichiers sont publics et utilisables librement, sous licence. Llama, Mistral, Gemma, Qwen sont des modèles « open weights » — c'est ce qui rend possible l'IA native.</dd>
+
+<dt id="glo-open-webui">Open WebUI <span class="anchor">[Logiciel]</span></dt>
+<dd>Interface web (type ChatGPT) qui se branche sur Ollama pour offrir une expérience graphique aux utilisateurs. Permet de créer des « models » personnalisés (Chapitre 3). <a href="https://docs.openwebui.com">docs.openwebui.com</a>.</dd>
+
+</section>
+
+<!-- P -->
+<section class="letter-section"><h3 id="glo-L-P">P</h3>
+
+<dt id="glo-parefeu">Pare-feu <span class="anchor">[Technique]</span></dt>
+<dd>Logiciel qui filtre les connexions réseau entrantes et sortantes d'un ordinateur. Peut bloquer un service Open WebUI accessible aux postes élèves — à autoriser sur le profil « réseau privé ».</dd>
+
+<dt id="glo-pfmp">PFMP <span class="acro">Période de Formation en Milieu Professionnel</span> <span class="anchor">[Édu]</span></dt>
 <dd>Stages obligatoires des élèves en filière professionnelle (CAP, BAC PRO).</dd>
-<dt>Piper <span class="anchor">[Logiciel]</span></dt>
-<dd>Logiciel open source de synthèse vocale (texte → voix), léger, local. Voir Chapitre 3.</dd>
-<dt>Plugin <span class="anchor">[Technique]</span></dt>
-<dd>Extension d'un logiciel. Smart Connections, Local GPT, Templater sont des plugins d'Obsidian.</dd>
-<dt>Port <span class="anchor">[Technique]</span></dt>
-<dd>Numéro identifiant un service sur une machine. Ollama écoute sur <strong>11434</strong>, Open WebUI sur <strong>3000</strong>.</dd>
-<dt>Pronote <span class="anchor">[Logiciel]</span></dt>
+
+<dt id="glo-piper">Piper <span class="anchor">[Logiciel]</span></dt>
+<dd>Logiciel open source de synthèse vocale (texte → voix), léger, exécutable en local. Permet à un chatbot IA de parler à l'élève. Voir Chapitre 3 §6.</dd>
+
+<dt id="glo-plugin">Plugin <span class="anchor">[Technique]</span></dt>
+<dd>Extension d'un logiciel ajoutant des fonctionnalités. Smart Connections, Local GPT, Templater sont des plugins d'Obsidian.</dd>
+
+<dt id="glo-port">Port <span class="anchor">[Technique]</span></dt>
+<dd>Numéro identifiant un service sur une machine. Ollama écoute sur le port <strong>11434</strong>, Open WebUI sur le <strong>3000</strong>. Un proxy d'établissement peut bloquer certains ports.</dd>
+
+<dt id="glo-pronote">Pronote <span class="anchor">[Logiciel]</span></dt>
 <dd>Outil numérique de vie scolaire utilisé dans la majorité des établissements publics et certains privés.</dd>
-<dt>Prompt <span class="anchor">[IA]</span></dt>
-<dd>Le message qu'on envoie à l'IA (consigne + contexte). Un bon prompt fait 80 % de la qualité de la réponse.</dd>
-<dt>Proxy <span class="anchor">[Technique]</span></dt>
-<dd>Intermédiaire réseau. Dans les établissements, il filtre les connexions et peut bloquer certains ports.</dd>
-<dt>Quantification <span class="anchor">[IA]</span></dt>
-<dd>Compression d'un modèle pour qu'il tienne sur du matériel modeste. Un modèle « Q4 » pèse ~4 fois moins, avec une perte minime. Appliquée automatiquement par Ollama.</dd>
-<dt>Qwen <span class="anchor">[IA]</span></dt>
-<dd>Modèles open weights d'Alibaba (Chine). Excellents en raisonnement et code. Provenance = point de vigilance institutionnel selon le contexte.</dd>
-<dt>RAG <span class="acro">Retrieval-Augmented Generation</span> <span class="anchor">[IA]</span></dt>
-<dd>Technique où l'IA va d'abord chercher dans une base (vos notes, PDF, référentiels) <em>avant</em> de répondre. Plus précis, moins d'hallucinations.</dd>
-<dt>RAM <span class="acro">mémoire vive</span> <span class="anchor">[Technique]</span></dt>
-<dd>Mémoire de travail. Pour un LLM : 8 Go (léger), 16 Go (confortable), 32 Go+ (avancé).</dd>
-<dt>Référentiel <span class="anchor">[Édu]</span></dt>
-<dd>Document officiel décrivant compétences, savoirs et évaluation d'un diplôme. Transformation en skill au Chapitre 4.</dd>
-<dt>Reverse proxy <span class="anchor">[Technique]</span></dt>
-<dd>Service intermédiaire entre les utilisateurs et un serveur, souvent pour ajouter HTTPS. Utile pour exposer Open WebUI en HTTPS.</dd>
-<dt>RGPD <span class="acro">Règlement Général sur la Protection des Données</span> <span class="anchor">[RGPD]</span></dt>
-<dd>Règlement européen 2016/679 (mai 2018). Cadre légal de la protection des données personnelles dans l'UE.</dd>
-<dt>RUPN <span class="acro">Référent d'Usage Pédagogique du Numérique</span> <span class="anchor">[Édu]</span></dt>
-<dd>Enseignant accompagnant l'usage pédagogique du numérique. Interlocuteur clé pour le déploiement multi-postes.</dd>
-<dt>SEGPA <span class="anchor">[Édu]</span></dt>
-<dd>Section d'Enseignement Général et Professionnel Adapté, pour des élèves en grande difficulté scolaire.</dd>
-<dt>Skill <span class="anchor">[IA]</span></dt>
-<dd>Dossier contenant un <code>SKILL.md</code> qui décrit à l'IA <em>quand</em> et <em>comment</em> se comporter sur une tâche. L'extension cognitive du prof. Voir Chapitre 2.</dd>
-<dt>Smart Connections <span class="anchor">[Logiciel]</span></dt>
-<dd>Plugin Obsidian qui indexe sémantiquement le vault et permet la recherche par <em>sens</em>. Voir Chapitre 4.</dd>
-<dt>Sous-traitant (RGPD) <span class="anchor">[RGPD]</span></dt>
-<dd>Entité qui traite des données pour le compte d'un responsable. Une école utilisant ChatGPT pour des copies devrait avoir un contrat de sous-traitance — jamais le cas, d'où le risque.</dd>
-<dt>System prompt <span class="anchor">[IA]</span></dt>
-<dd>Message d'amorçage caché qui définit la posture de l'IA pour toute une conversation. Voir Chapitre 3.</dd>
-<dt>TDAH <span class="anchor">[Édu]</span></dt>
-<dd>Trouble du Déficit de l'Attention avec ou sans Hyperactivité. Justifie des aménagements (consignes courtes, pauses…).</dd>
-<dt>Terminal <span class="anchor">[Technique]</span></dt>
-<dd>Application pour taper des commandes texte. Windows : PowerShell/cmd ; Mac : Terminal ; Linux : bash.</dd>
-<dt>Token <span class="anchor">[IA]</span></dt>
-<dd>Unité élémentaire d'un LLM — ~4 caractères en français. Une page ≈ 500 tokens. Fenêtre de contexte exprimée en tokens.</dd>
-<dt>UTF-8 <span class="anchor">[Technique]</span></dt>
-<dd>Encodage standard des caractères gérant les accents du français.</dd>
-<dt>Vault <span class="anchor">[Logiciel]</span></dt>
-<dd>Dans Obsidian : dossier racine contenant toutes les notes. Voir Chapitre 4.</dd>
-<dt>VRAM <span class="acro">mémoire vive de la carte graphique</span> <span class="anchor">[Technique]</span></dt>
-<dd>Mémoire dédiée du GPU. 8 Go permettent des modèles moyens en accélération GPU ; 16 Go+ pour les plus puissants.</dd>
-<dt>Whisper <span class="anchor">[Logiciel]</span></dt>
-<dd>Logiciel open source de reconnaissance vocale (voix → texte), exécutable en local. Voir Chapitre 3.</dd>
-<dt>YAML <span class="anchor">[Technique]</span></dt>
-<dd>Format texte de configuration structuré par indentation. Utilisé pour les frontmatter des notes et des SKILL.md.</dd>
+
+<dt id="glo-prompt">Prompt <span class="anchor">[IA]</span></dt>
+<dd>Le message qu'on envoie à l'IA, qui contient à la fois la consigne et le contexte. Un bon prompt fait 80 % de la qualité de la réponse. Voir Chapitre 2 §9 (bibliothèque de prompts).</dd>
+
+<dt id="glo-proxy">Proxy <span class="anchor">[Technique]</span></dt>
+<dd>Intermédiaire réseau. Dans les établissements scolaires, le proxy filtre les connexions vers Internet et peut bloquer certains ports ou certains sites. À coordonner avec le référent numérique pour l'installation.</dd>
+
+</section>
+
+<!-- Q -->
+<section class="letter-section"><h3 id="glo-L-Q">Q</h3>
+
+<dt id="glo-quantification">Quantification / Quantifié <span class="anchor">[IA]</span></dt>
+<dd>Technique de compression d'un modèle pour qu'il tienne sur du matériel modeste. Un modèle « quantifié en Q4 » pèse environ 4 fois moins qu'en pleine précision, avec une perte de qualité minime. La quantification est appliquée automatiquement par Ollama pour la plupart des modèles téléchargés.</dd>
+
+<dt id="glo-qwen">Qwen <span class="anchor">[IA]</span></dt>
+<dd>Famille de modèles open weights publiée par <strong>Alibaba</strong> (Chine). Excellente en raisonnement structuré et en code. La provenance peut soulever des questions de gouvernance institutionnelle — point de vigilance selon le contexte.</dd>
+
+</section>
+
+<!-- R -->
+<section class="letter-section"><h3 id="glo-L-R">R</h3>
+
+<dt id="glo-rag">RAG <span class="acro">Retrieval-Augmented Generation</span> <span class="anchor">[IA]</span></dt>
+<dd>Technique où l'IA va d'abord chercher des informations dans une base (vos notes, vos PDF, vos référentiels) <em>avant</em> de répondre. Plus précis, moins d'hallucinations. C'est ce que font Smart Connections + Local GPT dans Obsidian.</dd>
+
+<dt id="glo-ram">RAM <span class="acro">Random Access Memory — mémoire vive</span> <span class="anchor">[Technique]</span></dt>
+<dd>Mémoire de travail de l'ordinateur. Pour faire tourner un LLM, il faut suffisamment de RAM : <strong>8 Go</strong> pour un usage léger, <strong>16 Go</strong> pour un usage confortable, <strong>32 Go+</strong> pour les modèles avancés.</dd>
+
+<dt id="glo-referentiel">Référentiel <span class="anchor">[Édu]</span></dt>
+<dd>Document officiel décrivant les compétences, savoirs, modalités d'évaluation d'un diplôme. La transformation d'un référentiel en skill est traitée au Chapitre 4 §7.</dd>
+
+<dt id="glo-reverse-proxy">Reverse proxy <span class="anchor">[Technique]</span></dt>
+<dd>Service qui sert d'intermédiaire entre les utilisateurs et un serveur, souvent utilisé pour ajouter HTTPS, du cache ou de la sécurité. Utile pour exposer Open WebUI en HTTPS sur le réseau pédagogique.</dd>
+
+<dt id="glo-rgpd">RGPD <span class="acro">Règlement Général sur la Protection des Données</span> <span class="anchor">[RGPD]</span></dt>
+<dd>Règlement européen 2016/679 entré en application en mai 2018. Cadre légal de la protection des données personnelles dans l'UE. <a href="https://gdpr-info.eu">gdpr-info.eu</a>.</dd>
+
+<dt id="glo-rupn">RUPN <span class="acro">Référent d'Usage Pédagogique du Numérique</span> <span class="anchor">[Édu]</span></dt>
+<dd>Enseignant chargé d'accompagner l'usage pédagogique du numérique dans son établissement. Souvent synonyme de « référent numérique d'établissement ». Interlocuteur clé pour le déploiement multi-postes (Chapitre 3 §7).</dd>
+
+</section>
+
+<!-- S -->
+<section class="letter-section"><h3 id="glo-L-S">S</h3>
+
+<dt id="glo-segpa">SEGPA <span class="acro">Section d'Enseignement Général et Professionnel Adapté</span> <span class="anchor">[Édu]</span></dt>
+<dd>Section accueillant des élèves rencontrant des difficultés scolaires graves et durables, dans le second degré.</dd>
+
+<dt id="glo-skill">Skill <span class="anchor">[IA]</span></dt>
+<dd>Au sens de ce guide : dossier contenant un fichier <code>SKILL.md</code> qui décrit à l'IA <em>quand</em> et <em>comment</em> se comporter sur une tâche donnée. L'extension cognitive du prof, capturée une fois, réutilisable mille fois. Voir Chapitre 2.</dd>
+
+<dt id="glo-smart-connections">Smart Connections <span class="anchor">[Logiciel]</span></dt>
+<dd>Plugin Obsidian qui indexe sémantiquement le vault et permet la recherche par <em>sens</em>, pas seulement par mots-clés. Essentiel pour brancher l'IA sur Obsidian (Chapitre 4 §5).</dd>
+
+<dt id="glo-sous-traitant">Sous-traitant (au sens RGPD) <span class="anchor">[RGPD]</span></dt>
+<dd>Entité qui traite des données personnelles pour le compte d'un responsable. Une école qui utilise ChatGPT pour traiter des copies d'élèves devrait avoir signé un contrat de sous-traitance avec OpenAI. Ce qui n'est jamais le cas — d'où le risque RGPD.</dd>
+
+<dt id="glo-system-prompt">System prompt <span class="anchor">[IA]</span></dt>
+<dd>Message d'amorçage caché qui définit la posture de l'IA pour toute une conversation. Visible par l'enseignant qui le rédige, invisible pour l'élève qui dialogue avec l'IA. Voir Chapitre 3 §4.</dd>
+
+</section>
+
+<!-- T -->
+<section class="letter-section"><h3 id="glo-L-T">T</h3>
+
+<dt id="glo-tdah">TDAH <span class="acro">Trouble du Déficit de l'Attention avec ou sans Hyperactivité</span> <span class="anchor">[Édu]</span></dt>
+<dd>Trouble neurodéveloppemental qui affecte l'attention, l'impulsivité, parfois l'activité motrice. Justifie des aménagements (consignes courtes, pauses, etc.).</dd>
+
+<dt id="glo-terminal">Terminal <span class="anchor">[Technique]</span></dt>
+<dd>Application qui permet de taper des commandes texte. Sur Windows : <strong>PowerShell</strong> ou <strong>cmd</strong>. Sur Mac : <strong>Terminal</strong>. Sur Linux : généralement <strong>bash</strong>.</dd>
+
+<dt id="glo-token">Token <span class="anchor">[IA]</span></dt>
+<dd>Unité élémentaire que manipule un LLM — environ 4 caractères en français. Une page de texte ≈ 500 tokens. Les modèles ont une « fenêtre de contexte » exprimée en tokens (Gemma 3 : 128 000 tokens).</dd>
+
+</section>
+
+<!-- U -->
+<section class="letter-section"><h3 id="glo-L-U">U</h3>
+
+<dt id="glo-utf8">UTF-8 <span class="anchor">[Technique]</span></dt>
+<dd>Encodage standard des caractères, gérant les accents et caractères spéciaux du français. Beaucoup d'outils (dont Charlemagne Pro pour les imports CSV) exigent ce format, parfois avec un BOM en plus.</dd>
+
+</section>
+
+<!-- V -->
+<section class="letter-section"><h3 id="glo-L-V">V</h3>
+
+<dt id="glo-vault">Vault <span class="anchor">[Logiciel]</span></dt>
+<dd>Dans Obsidian : dossier racine d'un projet, contenant toutes les notes. Synonyme de « votre base de notes ». Voir Chapitre 4 §4 pour l'architecture en couches.</dd>
+
+<dt id="glo-vram">VRAM <span class="acro">Video RAM — mémoire vive de la carte graphique</span> <span class="anchor">[Technique]</span></dt>
+<dd>Mémoire dédiée du GPU. 8 Go de VRAM permettent de faire tourner des modèles de taille moyenne en accélération GPU (très rapide). Au-delà de 16 Go, on accède aux modèles les plus puissants.</dd>
+
+</section>
+
+<!-- W -->
+<section class="letter-section"><h3 id="glo-L-W">W</h3>
+
+<dt id="glo-whisper">Whisper <span class="anchor">[Logiciel]</span></dt>
+<dd>Logiciel open source de reconnaissance vocale (voix → texte), édité initialement par OpenAI mais disponible en exécution locale. Permet à un chatbot IA d'écouter l'élève parler. Voir Chapitre 3 §6.</dd>
+
+</section>
+
+<!-- Y -->
+<section class="letter-section"><h3 id="glo-L-Y">Y</h3>
+
+<dt id="glo-yaml">YAML <span class="acro">YAML Ain't Markup Language</span> <span class="anchor">[Technique]</span></dt>
+<dd>Format texte de configuration, structuré par indentation. Utilisé pour les en-têtes (frontmatter) des notes Obsidian et des fichiers SKILL.md. Très simple à lire et à écrire.</dd>
+
+</section>
+
 </dl>
+
+<!-- Index thématiques -->
+<h2 id="glo-theme-index" style="margin-top:36px">Index thématique</h2>
+
+<h3 id="glo-theme-ia">IA et modèles</h3>
+<p style="font-size:.92em"><a href="#glo-agentique">Agentique</a> · <a href="#glo-b-billions">B (paramètres)</a> · <a href="#glo-chatbot">Chatbot</a> · <a href="#glo-embedding">Embedding</a> · <a href="#glo-gemma">Gemma 3</a> · <a href="#glo-hallucination">Hallucination</a> · <a href="#glo-ia">IA</a> · <a href="#glo-ia-native">IA native</a> · <a href="#glo-llama">Llama</a> · <a href="#glo-llm">LLM</a> · <a href="#glo-mistral">Mistral</a> · <a href="#glo-modele">Modèle</a> · <a href="#glo-multimodal">Multimodal</a> · <a href="#glo-open-source">Open source</a> · <a href="#glo-prompt">Prompt</a> · <a href="#glo-quantification">Quantification</a> · <a href="#glo-qwen">Qwen</a> · <a href="#glo-rag">RAG</a> · <a href="#glo-skill">Skill</a> · <a href="#glo-system-prompt">System prompt</a> · <a href="#glo-token">Token</a></p>
+
+<h3 id="glo-theme-logiciels">Logiciels et outils</h3>
+<p style="font-size:.92em"><a href="#glo-charlemagne">Charlemagne Pro</a> · <a href="#glo-chatgpt">ChatGPT</a> · <a href="#glo-claude">Claude</a> · <a href="#glo-docker">Docker</a> · <a href="#glo-ed">École Directe</a> · <a href="#glo-gemini">Gemini</a> · <a href="#glo-lm-studio">LM Studio</a> · <a href="#glo-obsidian">Obsidian</a> · <a href="#glo-ollama">Ollama</a> · <a href="#glo-open-webui">Open WebUI</a> · <a href="#glo-piper">Piper</a> · <a href="#glo-plugin">Plugin</a> · <a href="#glo-pronote">Pronote</a> · <a href="#glo-smart-connections">Smart Connections</a> · <a href="#glo-vault">Vault</a> · <a href="#glo-whisper">Whisper</a></p>
+
+<h3 id="glo-theme-technique">Concepts techniques</h3>
+<p style="font-size:.92em"><a href="#glo-api">API</a> · <a href="#glo-bom">BOM</a> · <a href="#glo-cli">CLI</a> · <a href="#glo-cloud">Cloud</a> · <a href="#glo-cpu">CPU</a> · <a href="#glo-csv">CSV</a> · <a href="#glo-docx">DOCX/PPTX/XLSX</a> · <a href="#glo-f12">F12</a> · <a href="#glo-frontmatter">Frontmatter</a> · <a href="#glo-go">Go</a> · <a href="#glo-gpu">GPU</a> · <a href="#glo-headless">Headless</a> · <a href="#glo-html">HTML</a> · <a href="#glo-https">HTTPS/HTTP</a> · <a href="#glo-ip">IP</a> · <a href="#glo-json">JSON</a> · <a href="#glo-local">Local</a> · <a href="#glo-localhost">Localhost</a> · <a href="#glo-markdown">Markdown</a> · <a href="#glo-parefeu">Pare-feu</a> · <a href="#glo-port">Port</a> · <a href="#glo-proxy">Proxy</a> · <a href="#glo-ram">RAM</a> · <a href="#glo-reverse-proxy">Reverse proxy</a> · <a href="#glo-terminal">Terminal</a> · <a href="#glo-utf8">UTF-8</a> · <a href="#glo-vram">VRAM</a> · <a href="#glo-yaml">YAML</a></p>
+
+<h3 id="glo-theme-rgpd">RGPD et réglementaire</h3>
+<p style="font-size:.92em"><a href="#glo-cnil">CNIL</a> · <a href="#glo-dpo">DPO</a> · <a href="#glo-rgpd">RGPD</a> · <a href="#glo-sous-traitant">Sous-traitant</a></p>
+
+<h3 id="glo-theme-edu">Pédagogie et milieu éducatif</h3>
+<p style="font-size:.92em"><a href="#glo-aesh">AESH</a> · <a href="#glo-cfa">CFA</a> · <a href="#glo-cpe">CPE</a> · <a href="#glo-crcn">CRCN</a> · <a href="#glo-dys">DYS</a> · <a href="#glo-ent">ENT</a> · <a href="#glo-greta">GRETA</a> · <a href="#glo-pfmp">PFMP</a> · <a href="#glo-referentiel">Référentiel</a> · <a href="#glo-rupn">RUPN</a> · <a href="#glo-segpa">SEGPA</a> · <a href="#glo-tdah">TDAH</a></p>
+
+<div class="callout info" style="margin-top:24px">
+  <p><strong class="tag">Manque un terme ?</strong> Ce glossaire est versionné. N'hésitez pas à signaler un terme manquant ou une définition à clarifier — l'objectif est qu'aucun mot du guide ne reste obscur pour qui le découvre.</p>
+</div>
+
 
 </section>
 </main>
-
-<script>
-document.querySelectorAll('main pre').forEach(pre=>{const w=document.createElement('div');w.style.position='relative';pre.parentNode.insertBefore(w,pre);w.appendChild(pre);const b=document.createElement('button');b.className='copy-btn';b.type='button';b.textContent='copier';b.addEventListener('click',e=>{e.preventDefault();navigator.clipboard.writeText(pre.innerText.trim()).then(()=>{b.textContent='copié ✓';setTimeout(()=>b.textContent='copier',1400)})});w.appendChild(b)});
-</script>
+<script>document.querySelectorAll('main pre').forEach(pre=>{const w=document.createElement('div');w.style.position='relative';pre.parentNode.insertBefore(w,pre);w.appendChild(pre);const b=document.createElement('button');b.className='copy-btn';b.type='button';b.textContent='copier';b.addEventListener('click',e=>{e.preventDefault();navigator.clipboard.writeText(pre.innerText.trim()).then(()=>{b.textContent='copié ✓';setTimeout(()=>b.textContent='copier',1400)})});w.appendChild(b)});</script>
 </body>
 </html>
